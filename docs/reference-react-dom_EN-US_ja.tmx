@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tmx SYSTEM "tmx14.dtd">
+<tmx version="1.4">
+  <header creationtool="OmegaT" o-tmf="OmegaT TMX" adminlang="EN-US" datatype="plaintext" creationtoolversion="4.3.2_0_6a661c5e0" segtype="sentence" srclang="EN-US"/>
+  <body>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you load React from a `&lt;script&gt;` tag, these top-level APIs are available on the `ReactDOM` global.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>`&lt;script&gt;` タグから React をロードすると、以下のトップレベル API をグローバル変数 `ReactDOM` で使用することができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you use ES6 with npm, you can write `import ReactDOM from 'react-dom'`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>npm と ES6 を使用している場合は、`import ReactDOM from 'react-dom'` と記述できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you use ES5 with npm, you can write `var ReactDOM = require('react-dom')`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>npm と ES5 を使用している場合は、`var ReactDOM = require('react-dom')` と記述できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Overview {#overview}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>## 概要 {#overview}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The `react-dom` package provides DOM-specific methods that can be used at the top level of your app and as an escape hatch to get outside of the React model if you need to.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>`react-dom` パッケージには、DOM 固有のメソッドが用意されており、アプリケーションのトップレベルで使用したり、必要に応じて React モデルから外れるための避難ハッチとして使用できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Most of your components should not need to use this module.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>ほとんどのコンポーネントでは、このモジュールを使用する必要はないはずです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Browser Support {#browser-support}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>### ブラウザサポート {#browser-support}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>React supports all popular browsers, including Internet Explorer 9 and above, although [some polyfills are required](/docs/javascript-environment-requirements.html) for older browsers such as IE 9 and IE 10.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>React は Internet Explorer 9 以降を含む全ての一般的なブラウザをサポートしていますが、IE 9 や IE 10 といった古いブラウザでは[いくつかのポリフィルが必要です](/docs/javascript-environment-requirements.html)。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt; Note
+&gt;
+&gt; We don't support older browsers that don't support ES5 methods, but you may find that your apps do work in older browsers if polyfills such as [es5-shim and es5-sham](https://github.com/es-shims/es5-shim) are included in the page.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>&gt; 補足
+&gt;
+&gt; React は ES5 をサポートしていない古いブラウザをサポートしていませんが、ページ内に [es5-shim や es5-sham](https://github.com/es-shims/es5-shim) のようなポリフィルが含まれている場合、古いブラウザでもアプリケーションが動作することがあります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You're on your own if you choose to take this path.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>この手段を選択するかどうかは自己責任で判断してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Reference {#reference}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>## リファレンス {#reference}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Render a React element into the DOM in the supplied `container` and return a [reference](/docs/more-about-refs.html) to the component (or returns `null` for [stateless components](/docs/components-and-props.html#function-and-class-components)).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>渡された `container` の DOM に React 要素をレンダーし、コンポーネントへの[参照](/docs/more-about-refs.html)（[ステートレスコンポーネント](/docs/components-and-props.html#function-and-class-components)の場合は `null`）を返します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If the React element was previously rendered into `container`, this will perform an update on it and only mutate the DOM as necessary to reflect the latest React element.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>React 要素がすでに `container` にレンダーされている場合は更新を行い、最新の React 要素を反映するために必要な DOM のみを変更します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If the optional callback is provided, it will be executed after the component is rendered or updated.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>オプションのコールバックが渡されている場合は、コンポーネントがレンダーまたは更新された後に実行されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt; Note:
+&gt;
+&gt; `ReactDOM.render()` controls the contents of the container node you pass in.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>&gt; 補足:
+&gt;
+&gt; `ReactDOM.render()` は与えられたコンテナの内容を制御します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Any existing DOM elements inside are replaced when first called.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>コンテナ内部のあらゆる既存の DOM 要素は、最初に呼び出された時に置き換えられます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Later calls use React’s DOM diffing algorithm for efficient updates.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>後続する呼び出しでは効率的な更新のために React の DOM 差分アルゴリズムを使用します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;
+&gt; `ReactDOM.render()` does not modify the container node (only modifies the children of the container).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>&gt;
+&gt; `ReactDOM.render()` はコンテナノードを変更しません（コンテナの子要素のみ変更します）。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It may be possible to insert a component to an existing DOM node without overwriting the existing children.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>既存の子要素を上書きせずにコンポーネントを既存の DOM ノードに挿入することが可能な場合があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;
+&gt; `ReactDOM.render()` currently returns a reference to the root `ReactComponent` instance.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>&gt;
+&gt; `ReactDOM.render()` は現時点ではルートの `ReactComponent` インスタンスへの参照を返します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>However, using this return value is legacy
+&gt; and should be avoided because future versions of React may render components asynchronously in some cases.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>&gt; しかし、この戻り値を使用する方法は古く、将来のバージョンの React では一部のケースで非同期にコンポーネントをレンダーするようになる可能性があるため、使用は避けるべきです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you need a reference to the root `ReactComponent` instance, the preferred solution is to attach a
+&gt; [callback ref](/docs/more-about-refs.html#the-ref-callback-attribute) to the root element.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>&gt; ルートの `ReactComponent` インスタンスへの参照が必要な場合は、ルート要素に[コールバックの ref](/docs/more-about-refs.html#the-ref-callback-attribute) を追加することを推奨します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;
+&gt; Using `ReactDOM.render()` to hydrate a server-rendered container is deprecated and will be removed in React 17.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>&gt;
+&gt; サーバで描画されたコンテナをクライアントで再利用するために `ReactDOM.render()` を使用することは非推奨となり、React 17 では削除されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Use [`hydrate()`](#hydrate) instead.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>代わりに [`hydrate()`](#hydrate) を使用してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Same as [`render()`](#render), but is used to hydrate a container whose HTML contents were rendered by [`ReactDOMServer`](/docs/react-dom-server.html).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>[`render()`](#render) と同様ですが、[`ReactDOMServer`](/docs/react-dom-server.html) により HTML コンテンツが描画されたコンテナをクライアントで再利用するために使用されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>React will attempt to attach event listeners to the existing markup.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>React は既存のマークアップにイベントリスナをアタッチしようとします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>React expects that the rendered content is identical between the server and the client.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>React はレンダーされる内容が、サーバ・クライアント間で同一であることを期待します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It can patch up differences in text content, but you should treat mismatches as bugs and fix them.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>React はテキストコンテンツの差異を修復することは可能ですが、その不一致はバグとして扱い、修正すべきです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In development mode, React warns about mismatches during hydration.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>開発用モードでは、React は両者のレンダーの不一致について警告します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>There are no guarantees that attribute differences will be patched up in case of mismatches.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>不一致がある場合に属性の差異が修復されるという保証はありません。これはパフォーマンス上の理由から重要です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is important for performance reasons because in most apps, mismatches are rare, and so validating all markup would be prohibitively expensive.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>なぜなら、ほとんどのアプリケーションにおいて不一致が発生するということは稀であり、全てのマークアップを検証することは許容不可能なほど高コストになるためです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If a single element's attribute or text content is unavoidably different between the server and the client (for example, a timestamp), you may silence the warning by adding `suppressHydrationWarning={true}` to the element.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>単一要素の属性やテキストコンテンツがサーバ・クライアント間においてやむを得ず異なってしまう場合（例えばタイムスタンプなど）、要素に `suppressHydrationWarning={true}` を追加することで警告の発生を停止させることが可能です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It only works one level deep, and is intended to be an escape hatch.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>それは 1 階層下の要素までで機能するものであり、また避難ハッチとして使われるものです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Don't overuse it.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>そのため、多用しないでください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Unless it's text content, React still won't attempt to patch it up, so it may remain inconsistent until future updates.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>テキストコンテンツでない限り、React は修復を試行しようとはしないため、将来の更新まで不整合が残る可能性があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you intentionally need to render something different on the server and the client, you can do a two-pass rendering.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>サーバとクライアントで異なるものをレンダーしたい場合は、2 パスレンダーを使用できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Components that render something different on the client can read a state variable like `this.state.isClient`, which you can set to `true` in `componentDidMount()`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>クライアント側で異なるものをレンダーするコンポーネントでは、`this.state.isClient` のような state 変数を読み込み、`componentDidMount()` で `true` を設定することができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This way the initial render pass will render the same content as the server, avoiding mismatches, but an additional pass will happen synchronously right after hydration.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>こうすると、最初のレンダーパスではサーバ側と同一の内容を描画して不一致を回避しますが、追加のパスが初回レンダーの直後に同期的に発生します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Note that this approach will make your components slower because they have to render twice, so use it with caution.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>このアプローチでは 2 回レンダーが発生することによりコンポーネントのパフォーマンスが低下しますので、注意して使用してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Remember to be mindful of user experience on slow connections.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>低速な接続下でのユーザ体験に留意することを忘れないでください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The JavaScript code may load significantly later than the initial HTML render, so if you render something different in the client-only pass, the transition can be jarring.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>JavaScript のコードは初回の HTML の描画より大幅に遅れてロードされる可能性があるため、クライアントでのみ何か異なるものを描画した場合、その変化は不快感を与える可能性があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>However, if executed well, it may be beneficial to render a "shell" of the application on the server, and only show some of the extra widgets on the client.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>しかしうまく実行されれば、サーバ上でアプリケーションの「外枠」を描画し、クライアント上でのみ追加のウィジェットを表示することは有益になるかもしれません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>To learn how to do this without getting the markup mismatch issues, refer to the explanation in the previous paragraph.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>マークアップの不一致の問題を発生させずにこれを実行する方法については、前の段落の説明をご参照ください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Remove a mounted React component from the DOM and clean up its event handlers and state.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>DOM からマウントされた React コンポーネントを削除し、イベントハンドラや state をクリーンアップします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If no component was mounted in the container, calling this function does nothing.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>コンテナにコンポーネントがマウントされていない場合、このメソッドを呼び出しても何も行いません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Returns `true` if a component was unmounted and `false` if there was no component to unmount.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>コンポーネントがアンマウントされた場合は `true` を返し、アンマウントすべきコンポーネントが存在しなかった場合は `false` を返します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt; Note:
+&gt;
+&gt; `findDOMNode` is an escape hatch used to access the underlying DOM node.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>&gt; 補足:
+&gt;
+&gt; `findDOMNode` は内在する DOM ノードにアクセスするために使用される避難ハッチです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In most cases, use of this escape hatch is discouraged because it pierces the component abstraction.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>ほとんどのケースにおいて、この避難ハッチの使用はコンポーネントの抽象化に穴を開けてしまうためおすすめしません。[`StrictMode` では非推奨になっています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>[It has been deprecated in `StrictMode`.](/docs/strict-mode.html#warning-about-deprecated-finddomnode-usage)</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>](/docs/strict-mode.html#warning-about-deprecated-finddomnode-usage)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>```javascript
+ReactDOM.findDOMNode(component)
+```
+If this component has been mounted into the DOM, this returns the corresponding native browser DOM element.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>```javascript
+ReactDOM.findDOMNode(component)
+```
+DOM にこのコンポーネントがマウントされている場合、このメソッドは対応するネイティブブラウザの DOM 要素を返します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This method is useful for reading values out of the DOM, such as form field values and performing DOM measurements.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>このメソッドはフォームフィールドの値や DOM の大きさを計測するのに便利です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>**In most cases, you can attach a ref to the DOM node and avoid using `findDOMNode` at all.**</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>**ほとんどのケースにおいて、DOM ノードに ref をアタッチすることで `findDOMNode` の使用を避けることができます。**</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>When a component renders to `null` or `false`, `findDOMNode` returns `null`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>コンポーネントが `null` や `false` をレンダーする場合、`findDOMNode` は `null` を返します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>When a component renders to a string, `findDOMNode` returns a text DOM node containing that value.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>コンポーネントが文字列をレンダーする場合、`findDOMNode` はその値を含んだテキスト DOM ノードを返します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>As of React 16, a component may return a fragment with multiple children, in which case `findDOMNode` will return the DOM node corresponding to the first non-empty child.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>React 16 以降、コンポーネントは複数の子要素を含むフラグメントを返すことがありますが、その場合 `findDOMNode` は最初の空でない子要素に対応する DOM ノードを返します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt; Note:
+&gt;
+&gt; `findDOMNode` only works on mounted components (that is, components that have been placed in the DOM).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>&gt; 補足:
+&gt;
+&gt; `findDOMNode` はマウントされたコンポーネントに対してのみ機能します（つまり、DOM に配置されたコンポーネント）。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you try to call this on a component that has not been mounted yet (like calling `findDOMNode()` in `render()` on a component that has yet to be created) an exception will be thrown.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>まだマウントされていないコンポーネントにおいてこのメソッドを呼ぼうとする場合（まだ作成されていないコンポーネントにおける `render()` の中で `findDOMNode()` を呼びだす場合など）、例外がスローされます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;
+&gt; `findDOMNode` cannot be used on function components.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>&gt;
+&gt; `findDOMNode` は関数コンポーネントでは使用できません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Creates a portal.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>ポータルを作成します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Portals provide a way to [render children into a DOM node that exists outside the hierarchy of the DOM component](/docs/portals.html).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071412Z">
+        <seg>ポータルは [DOM コンポーネントの階層の外側に存在している DOM ノードに対して子要素をレンダーする](/docs/portals.html)方法を提供します。</seg>
+      </tuv>
+    </tu>
+  </body>
+</tmx>

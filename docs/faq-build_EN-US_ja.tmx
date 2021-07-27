@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tmx SYSTEM "tmx14.dtd">
+<tmx version="1.4">
+  <header creationtool="OmegaT" o-tmf="OmegaT TMX" adminlang="EN-US" datatype="plaintext" creationtoolversion="4.3.2_0_6a661c5e0" segtype="sentence" srclang="EN-US"/>
+  <body>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>---
+id: faq-build
+title: Babel, JSX, and Build Steps
+permalink: docs/faq-build.html
+layout: docs
+category: FAQ
+---</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050524Z">
+        <seg>---
+id: faq-build
+title: Babel、JSX、ビルドステップ
+permalink: docs/faq-build.html
+layout: docs
+category: FAQ
+---</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Do I need to use JSX with React?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050524Z">
+        <seg>### React では JSX を使用する必要がありますか？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>No!</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050524Z">
+        <seg>いいえ！</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Check out ["React Without JSX"](/docs/react-without-jsx.html) to learn more.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050524Z">
+        <seg>詳細は ["JSX なしで React を使う"](/docs/react-without-jsx.html) をご覧ください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Do I need to use ES6 (+) with React?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050524Z">
+        <seg>### React では ES6（もしくはそれ以降のバージョン）を使用する必要がありますか？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>No!</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050524Z">
+        <seg>いいえ！</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Check out ["React Without ES6"](/docs/react-without-es6.html) to learn more.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050524Z">
+        <seg>詳細は ["ES6 なしで React を使う"](/docs/react-without-es6.html) をご覧ください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### How can I write comments in JSX?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050524Z">
+        <seg>### JSX の中にコメントを記述するには？</seg>
+      </tuv>
+    </tu>
+  </body>
+</tmx>

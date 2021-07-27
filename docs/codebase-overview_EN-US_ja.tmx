@@ -1,0 +1,754 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tmx SYSTEM "tmx14.dtd">
+<tmx version="1.4">
+  <header creationtool="OmegaT" o-tmf="OmegaT TMX" adminlang="EN-US" datatype="plaintext" creationtoolversion="4.3.2_0_6a661c5e0" segtype="sentence" srclang="EN-US"/>
+  <body>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>---
+id: codebase-overview
+title: Codebase Overview
+layout: contributing
+permalink: docs/codebase-overview.html
+prev: how-to-contribute.html
+next: implementation-notes.html
+redirect_from:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>---
+id: codebase-overview
+title: コードベースの概要
+layout: contributing
+permalink: docs/codebase-overview.html
+prev: how-to-contribute.html
+next: implementation-notes.html
+redirect_from:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This section will give you an overview of the React codebase organization, its conventions, and the implementation.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>このセクションでは React コードベースの構成や規則そして実装についての概要を説明します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you want to [contribute to React](/docs/how-to-contribute.html) we hope that this guide will help you feel more comfortable making changes.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>あなたが [React にコントリビュート](/docs/how-to-contribute.html)したい場合に、このガイドがあなたがより快適に変更を行えるように手助けとなる事を願っています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We don't necessarily recommend any of these conventions in React apps.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>これらの規約のいずれかをあなたの React アプリケーションで推奨しているというわけでは必ずしもありません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Many of them exist for historical reasons and might change with time.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>規約の多くは歴史的な理由で存在しており、時間とともに変化する可能性があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Top-Level Folders {#top-level-folders}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>### 最上位フォルダ {#top-level-folders}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>After cloning the [React repository](https://github.com/facebook/react), you will see a few top-level folders in it:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>[React リポジトリ](https://github.com/facebook/react)をクローンした後、プロジェクトのルートディレクトリに複数のフォルダがあることに気がつくでしょう：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* [`packages`](https://github.com/facebook/react/tree/main/packages) contains metadata (such as `package.json`) and the source code (`src` subdirectory) for all packages in the React repository.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>* [`packages`](https://github.com/facebook/react/tree/master/packages) には React リポジトリの全てのパッケージのメタデータ（`package.json` など）や、ソースコード（`src` サブディレクトリ）が含まれています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>**If your change is related to the code, the `src` subdirectory of each package is where you'll spend most of your time.**
+* [`fixtures`](https://github.com/facebook/react/tree/main/fixtures) contains a few small React test applications for contributors.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>**あなたの変更がコードに関するものなら、各パッケージの `src` サブディレクトリが作業時間のほとんどを過ごす場所となります**。* [`fixtures`](https://github.com/facebook/react/tree/master/fixtures) にはコントリビューター向けの React の小さなテスト用アプリケーションが含まれています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* `build` is the build output of React.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>* `build` は React のビルド出力です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It is not in the repository but it will appear in your React clone after you [build it](/docs/how-to-contribute.html#development-workflow) for the first time.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>リポジトリには存在しませんが、最初に [React をビルドした](/docs/how-to-contribute.html#development-workflow)後に clone した React ディレクトリに現れます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The documentation is hosted [in a separate repository from React](https://github.com/reactjs/reactjs.org).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>ドキュメントは [React 本体とは異なるリポジトリ](https://github.com/reactjs/reactjs.org)にホスティングされています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>There are a few other top-level folders but they are mostly used for the tooling and you likely won't ever encounter them when contributing.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>他にも最上位にあるフォルダがありますが、ほとんどはツールが使用するためのもので、コントリビュートする場合にそれらに直面することはほぼありません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Colocated Tests {#colocated-tests}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>### テストコードをソースコードのそばに格納する {#colocated-tests}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We don't have a top-level directory for unit tests.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>ユニットテスト用の最上位ディレクトリはありません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Instead, we put them into a directory called `__tests__` relative to the files that they test.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>代わりに、テスト対象のファイルのすぐ隣の `__tests__` というディレクトリに置いています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, a test for [`setInnerHTML.js`](https://github.com/facebook/react/blob/87724bd87506325fcaf2648c70fc1f43411a87be/src/renderers/dom/client/utils/setInnerHTML.js) is located in [`__tests__/setInnerHTML-test.js`](https://github.com/facebook/react/blob/87724bd87506325fcaf2648c70fc1f43411a87be/src/renderers/dom/client/utils/__tests__/setInnerHTML-test.js) right next to it.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>例えば、[`setInnerHTML.js`](https://github.com/facebook/react/blob/87724bd87506325fcaf2648c70fc1f43411a87be/src/renderers/dom/client/utils/setInnerHTML.js) のテストは、すぐ隣の [`__tests__/setInnerHTML-test.js`](https://github.com/facebook/react/blob/87724bd87506325fcaf2648c70fc1f43411a87be/src/renderers/dom/client/utils/__tests__/setInnerHTML-test.js) にあります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Warnings and Invariants {#warnings-and-invariants}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>### 警告と不変数 (Invariant) {#warnings-and-invariants}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The React codebase uses `console.error` to display warnings:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>React のコードベースは警告の表示に `console.error` を使用しています：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Warnings are only enabled in development.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>警告は開発時にのみ有効になります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In production, they are completely stripped out.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>本番時には警告は完全に取り除かれます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you need to forbid some code path from executing, use `invariant` module instead:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>コードの一部の実行を禁止する必要がある場合は、代わりに `invariant` モジュールを使用してください：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>**The invariant is thrown when the `invariant` condition is `false`.**</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>**invariant は `invariant` 内の条件が `false` のときスローされます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>"Invariant" is just a way of saying "this condition always holds true".</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>**"Invariant" とは "この条件は常に true である" ということの単なる言い換えです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can think about it as making an assertion.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>アサーションを作成していると考えることができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It is important to keep development and production behavior similar, so `invariant` throws both in development and in production.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>開発バージョンと本番バージョンで同じ動作となるようにしておく事は重要ですので、`invariant` は両方の環境でスローされます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The error messages are automatically replaced with error codes in production to avoid negatively affecting the byte size.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>本番バージョンではエラーメッセージは自動的にエラーコードに変換され、バイト数に悪影響が出ることを避けます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Development and Production {#development-and-production}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>### 開発バージョンと本番バージョン {#development-and-production}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can use `__DEV__` pseudo-global variable in the codebase to guard development-only blocks of code.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>コードベース内で `__DEV__` 擬似グローバル変数を使用して、開発用のコードブロックを保護することができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It is inlined during the compile step, and turns into `process.env.NODE_ENV !== 'production'` checks in the CommonJS builds.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>コンパイル時にインライン化され、CommonJS のビルド時には `process.env.NODE_ENV !== 'production'` というチェックに変換されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For standalone builds, it becomes `true` in the unminified build, and gets completely stripped out with the `if` blocks it guards in the minified build.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>スタンドアロンなビルドにおいては、minify されないビルドでは `true` となり、minify されたビルドではそれを囲む `if` ブロックごと完全に除去されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We recently started introducing [Flow](https://flow.org/) checks to the codebase.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>最近私たちはコードベースに [Flow](https://flow.org/) によるチェックを導入し始めました。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Files marked with the `@flow` annotation in the license header comment are being typechecked.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>ライセンスヘッダで `@flow` アノテーションがマークされているファイルは型チェックをされています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We accept pull requests [adding Flow annotations to existing code](https://github.com/facebook/react/pull/7600/files).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>[既存のコードに Flow アノテーションを追加する](https://github.com/facebook/react/pull/7600/files)プルリクエストを受けつけています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Flow annotations look like this:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>Flow アノテーションは以下のようになります：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>When possible, new code should use Flow annotations.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>可能であれば、新しいコードは Flow アノテーションを使うべきです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can run `yarn flow` locally to check your code with Flow.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>`yarn flow` を実行することでローカル環境で Flow を使ってコードをチェックできます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Multiple Packages {#multiple-packages}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>### 複数のパッケージ {#multiple-packages}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>React is a [monorepo](https://danluu.com/monorepo/).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>React は[単一リポジトリ (monorepo)](http://danluu.com/monorepo/) です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Its repository contains multiple separate packages so that their changes can be coordinated together, and issues live in one place.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>そのリポジトリには複数の別々のパッケージが含まれているので、それらの変更はまとめて調整でき、issue も 1 箇所にまとまっています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### React Core {#react-core}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>### React コア (core) {#react-core}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The "core" of React includes all the [top-level `React` APIs](/docs/top-level-api.html#react), for example:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>React の「コア (core)」は[最上位の React API](/docs/top-level-api.html#react) を全て含んでいます。例えば：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>**React core only includes the APIs necessary to define components.** It does not include the [reconciliation](/docs/reconciliation.html) algorithm or any platform-specific code.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>**React core にはコンポーネントの定義に必要な API のみが含まれています。**[リコンシリエーション](/docs/reconciliation.html)のアルゴリズムやあらゆるプラットフォーム固有のコードは含まれません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It is used both by React DOM and React Native components.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>コアは React DOM や React Native コンポーネントに使われています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The code for React core is located in [`packages/react`](https://github.com/facebook/react/tree/main/packages/react) in the source tree.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>React core のコードはソースツリーの [`packages/react`](https://github.com/facebook/react/tree/master/packages/react) に格納されています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It is available on npm as the [`react`](https://www.npmjs.com/package/react) package.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>npm では [`react`](https://www.npmjs.com/package/react) パッケージとして利用可能です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The corresponding standalone browser build is called `react.js`, and it exports a global called `React`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>対応するスタンドアロンなブラウザ向けのビルドは `react.js` と呼ばれ、`React` というグローバル変数をエクスポートします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Renderers {#renderers}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>### レンダラ {#renderers}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>React was originally created for the DOM but it was later adapted to also support native platforms with [React Native](https://reactnative.dev/).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>React は元々 DOM のために作成されましたが、後になって [React Native](https://reactnative.dev/) によりネイティブなプラットフォームもサポートするようになりました。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This introduced the concept of "renderers" to React internals.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>これにより React の内部に "レンダラ (renderer)" の概念が導入されました。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>**Renderers manage how a React tree turns into the underlying platform calls.**</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>**レンダラは React ツリーを、基盤となるプラットフォーム固有の呼び出しへと変換する方法を管理します。**</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Renderers are also located in [`packages/`](https://github.com/facebook/react/tree/main/packages/):</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>レンダラは [`packages/`](https://github.com/facebook/react/tree/master/packages/) にも格納されています：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* [React DOM Renderer](https://github.com/facebook/react/tree/main/packages/react-dom) renders React components to the DOM. It implements [top-level `ReactDOM` APIs](/docs/react-dom.html) and is available as [`react-dom`](https://www.npmjs.com/package/react-dom) npm package.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>* [React DOM Renderer](https://github.com/facebook/react/tree/master/packages/react-dom) は React コンポーネントを DOM に変換します。[トップレベルの `ReactDOM` API](/docs/react-dom.html) を実装し、npm では [`react-dom`](https://www.npmjs.com/package/react-dom) パッケージとして利用可能です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It can also be used as standalone browser bundle called `react-dom.js` that exports a `ReactDOM` global.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>`react-dom.js` と呼ばれるスタンドアロンなブラウザ向けバンドルとしても使用でき、`ReactDOM` というグローバル変数をエクスポートします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* [React Native Renderer](https://github.com/facebook/react/tree/main/packages/react-native-renderer) renders React components to native views.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>* [React Native Renderer](https://github.com/facebook/react/tree/master/packages/react-native-renderer) は React コンポーネントをネイティブのビューに変換します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It is used internally by React Native.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>React Native の内部で使われています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* [React Test Renderer](https://github.com/facebook/react/tree/main/packages/react-test-renderer) renders React components to JSON trees.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>* [React Test Renderer](https://github.com/facebook/react/tree/master/packages/react-test-renderer) は React コンポーネントを JSON ツリーに変換します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It is used by the [Snapshot Testing](https://facebook.github.io/jest/blog/2016/07/27/jest-14.html) feature of [Jest](https://facebook.github.io/jest) and is available as [react-test-renderer](https://www.npmjs.com/package/react-test-renderer) npm package.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>[Jest](https://facebook.github.io/jest) の[スナップショットテスト機能](https://facebook.github.io/jest/blog/2016/07/27/jest-14.html)で使用され、npm では [react-test-renderer](https://www.npmjs.com/package/react-test-renderer) パッケージとして利用可能です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The only other officially supported renderer is [`react-art`](https://github.com/facebook/react/tree/main/packages/react-art).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>その他に公式にサポートしているレンダラは [`react-art`](https://github.com/facebook/react/tree/master/packages/react-art) だけです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It used to be in a separate [GitHub repository](https://github.com/reactjs/react-art) but we moved it into the main source tree for now.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>個別の [GitHub リポジトリ](https://github.com/reactjs/react-art)にありましたが、現在はメインのソースツリーに移動しました。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;**Note:**
+&gt;
+&gt;Technically the [`react-native-renderer`](https://github.com/facebook/react/tree/main/packages/react-native-renderer) is a very thin layer that teaches React to interact with React Native implementation.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>&gt;**補足：**
+&gt;
+&gt;技術的に、[`react-native-renderer`](https://github.com/facebook/react/tree/master/packages/react-native-renderer) は React に React Native の実装とやり取りの方法を教える非常に薄い層です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The real platform-specific code managing the native views lives in the [React Native repository](https://github.com/facebook/react-native) together with its components.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>ネイティブのビューを管理する実際のプラットフォーム固有のコードは、コンポーネントと共に [React Native リポジトリ](https://github.com/facebook/react-native) にあります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Reconcilers {#reconcilers}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>### リコンサイラ (reconciler) {#reconcilers}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Even vastly different renderers like React DOM and React Native need to share a lot of logic.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>React DOM と React Native のように大幅に異なるレンダラでも多くのロジックを共有する必要があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In particular, the [reconciliation](/docs/reconciliation.html) algorithm should be as similar as possible so that declarative rendering, custom components, state, lifecycle methods, and refs work consistently across platforms.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>特に、ツリーの[リコンシリエーション](/docs/reconciliation.html)のアルゴリズムは可能なかぎり同じものにして、宣言型レンダリング、独自コンポーネント、state、ライフサイクルメソッドおよび ref がプラットフォーム間で一貫した動作となるようにするべきです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>To solve this, different renderers share some code between them.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>異なるレンダラ間でコードの一部を共有することでこの課題を解決します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We call this part of React a "reconciler".</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>React のこの箇所を "リコンサイラ（reconciler, 差分検出処理）" と呼んでいます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>When an update such as `setState()` is scheduled, the reconciler calls `render()` on components in the tree and mounts, updates, or unmounts them.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>`setState()` のような更新がスケジュールされると、差分検出処理ではツリー内のコンポーネントで `render()` を呼び出して、コンポーネントをマウント、更新、もしくはアンマウントします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Reconcilers are not packaged separately because they currently have no public API.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>リコンサイラは、パブリック API がないため、個別にパッケージ化されていません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Instead, they are exclusively used by renderers such as React DOM and React Native.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>代わりに、それらは React DOM や React Native などのレンダラーによってのみ使用されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Stack Reconciler {#stack-reconciler}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>### スタック (stack) リコンサイラ {#stack-reconciler}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The "stack" reconciler is the implementation powering React 15 and earlier.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>"stack" リコンサイラは React 15 およびそれ以前で実装されています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We have since stopped using it, but it is documented in detail in the [next section](/docs/implementation-notes.html).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>それ以降は使用されていませんが、[次のセクション](/docs/implementation-notes.html)では詳細に説明されています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Fiber Reconciler {#fiber-reconciler}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>### Fiber リコンサイラ {#fiber-reconciler}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The "fiber" reconciler is a new effort aiming to resolve the problems inherent in the stack reconciler and fix a few long-standing issues.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>"fiber" リコンサイラは stack リコンサイラが内在的に抱える問題を解決し、いくつかの長年の問題を修正することを目的とした新しい取り組みです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It has been the default reconciler since React 16.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>React 16 以降はデフォルトのリコンサイラとなっています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Its main goals are:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>主な目的は以下の通りです：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* Ability to split interruptible work in chunks.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>* 中断可能な作業を小分けに分割する機能</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* Ability to prioritize, rebase and reuse work in progress.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>* 進行中の作業に優先順位を付けたり、再配置や再利用をする機能</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* Ability to yield back and forth between parents and children to support layout in React.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>* React でレイアウトをサポートするための親子間を行き来しながらレンダーする機能</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* Ability to return multiple elements from `render()`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>* render() から複数の要素を返す機能</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* Better support for error boundaries.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>* error boundary のサポートの向上</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can read more about React Fiber Architecture [here](https://github.com/acdlite/react-fiber-architecture) and [here](https://blog.ag-grid.com/inside-fiber-an-in-depth-overview-of-the-new-reconciliation-algorithm-in-react).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>React Fiber のアーキテクチャに関して[ここ](https://github.com/acdlite/react-fiber-architecture)や[ここ](https://blog.ag-grid.com/inside-fiber-an-in-depth-overview-of-the-new-reconciliation-algorithm-in-react)で読むことができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>While it has shipped with React 16, the async features are not enabled by default yet.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>React 16 と共にリリースされていますが、非同期機能についてはデフォルトではまだ有効化されていません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Its source code is located in [`packages/react-reconciler`](https://github.com/facebook/react/tree/main/packages/react-reconciler).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>ソースコードは [`packages/react-reconciler`](https://github.com/facebook/react/tree/master/packages/react-reconciler) に格納されています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Event System {#event-system}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>### イベントシステム {#event-system}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>React implements a layer over native events to smooth out cross-browser differences.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>React はブラウザ間でのイベント挙動の差異を吸収するため、ネイティブイベントの上にレイヤーを実装しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Its source code is located in [`packages/react-dom/src/events`](https://github.com/facebook/react/tree/main/packages/react-dom/src/events).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>ソースコードは [`packages/react-dom/src/events`](https://github.com/facebook/react/tree/master/packages/react-dom/src/events) にあります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### What Next?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>### この次は？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Read the [next section](/docs/implementation-notes.html) to learn about the pre-React 16 implementation of reconciler in more detail.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>React 16 以前のリコンサイラについてより詳細に学ぶには[次のセクション](/docs/implementation-notes.html)を読んでください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We haven't documented the internals of the new reconciler yet.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041724Z">
+        <seg>新しいリコンサイラの内部についてはまだドキュメント化していません。</seg>
+      </tuv>
+    </tu>
+  </body>
+</tmx>

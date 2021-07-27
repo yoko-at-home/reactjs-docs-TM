@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tmx SYSTEM "tmx14.dtd">
+<tmx version="1.4">
+  <header creationtool="OmegaT" o-tmf="OmegaT TMX" adminlang="EN-US" datatype="plaintext" creationtoolversion="4.3.2_0_6a661c5e0" segtype="sentence" srclang="EN-US"/>
+  <body>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>---
+id: uncontrolled-components
+title: Uncontrolled Components
+permalink: docs/uncontrolled-components.html
+---</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074616Z">
+        <seg>---
+id: uncontrolled-components
+title: 非制御コンポーネント
+permalink: docs/uncontrolled-components.html
+---</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In most cases, we recommend using [controlled components](/docs/forms.html#controlled-components) to implement forms.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074616Z">
+        <seg>ほとんどの場合では、フォームの実装には[制御されたコンポーネント](/docs/forms.html#controlled-components) (controlled component) を使用することをお勧めしています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In a controlled component, form data is handled by a React component.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074616Z">
+        <seg>制御されたコンポーネントでは、フォームのデータは React コンポーネントが扱います。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The alternative is uncontrolled components, where form data is handled by the DOM itself.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074616Z">
+        <seg>非制御コンポーネント (uncontrolled component) はその代替となるものであり、フォームデータを DOM 自身が扱います。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>To write an uncontrolled component, instead of writing an event handler for every state update, you can [use a ref](/docs/refs-and-the-dom.html) to get form values from the DOM.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074616Z">
+        <seg>非制御コンポーネントを記述するには、各 state の更新に対してイベントハンドラを書く代わりに、[ref を使用](/docs/refs-and-the-dom.html)して DOM からフォームの値を取得します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, this code accepts a single name in an uncontrolled component:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074616Z">
+        <seg>例えば、以下のコードは非制御コンポーネントで 1 つの名前を受け取ります：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>[**Try it on CodePen**](https://codepen.io/gaearon/pen/WooRWa?editors=0010)</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074616Z">
+        <seg>[**CodePen で試す**](https://codepen.io/gaearon/pen/WooRWa?editors=0010)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Since an uncontrolled component keeps the source of truth in the DOM, it is sometimes easier to integrate React and non-React code when using uncontrolled components.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074616Z">
+        <seg>非制御コンポーネントでは DOM に信頼できる情報源 (source of truth) を保持するため、使用すれば React と非 React のコードの統合が簡単になることがあります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It can also be slightly less code if you want to be quick and dirty.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074616Z">
+        <seg>汚くても構わないので速く記述したいと思うなら少しだけコード量も減らせます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Otherwise, you should usually use controlled components.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074616Z">
+        <seg>そうでなければ、通常の制御されたコンポーネントを使用するべきです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If it's still not clear which type of component you should use for a particular situation, you might find [this article on controlled versus uncontrolled inputs](https://goshakkk.name/controlled-vs-uncontrolled-inputs-react/) to be helpful.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074616Z">
+        <seg>特定の状況に対してどちらのタイプのコンポーネントを使用すれば良いかまだはっきりしない場合は、[制御された入力 vs 非制御入力の記事](https://goshakkk.name/controlled-vs-uncontrolled-inputs-react/)が参考になるでしょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Default Values {#default-values}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074616Z">
+        <seg>### デフォルト値 {#default-values}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In the React rendering lifecycle, the `value` attribute on form elements will override the value in the DOM.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074616Z">
+        <seg>React のレンダーのライフサイクルでは、フォーム要素の `value` 属性は DOM の値を上書きします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>With an uncontrolled component, you often want React to specify the initial value, but leave subsequent updates uncontrolled.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074616Z">
+        <seg>非制御コンポーネントでは、React に初期値を指定させるが後続の更新処理には関与しないようにしたいことがよくあるでしょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>To handle this case, you can specify a `defaultValue` attribute instead of `value`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074616Z">
+        <seg>このケースを扱うために、`value` の代わりに `defaultValue` 属性を指定できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Changing the value of `defaultValue` attribute after a component has mounted will not cause any update of the value in the DOM.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074616Z">
+        <seg>コンポーネントのマウント後に `defaultValue` 属性の値を変更しても DOM 内の値の更新は引き起こされません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Likewise, `&lt;input type="checkbox"&gt;` and `&lt;input type="radio"&gt;` support `defaultChecked`, and `&lt;select&gt;` and `&lt;textarea&gt;` supports `defaultValue`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074616Z">
+        <seg>同様に、`&lt;input type="checkbox"&gt;` と `&lt;input type="radio"&gt;` が `defaultChecked` を、そして `&lt;select&gt;` と `&lt;textarea&gt;` が `defaultValue` をサポートしています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## The file input Tag {#the-file-input-tag}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074616Z">
+        <seg>## ファイル input タグ {#the-file-input-tag}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In HTML, an `&lt;input type="file"&gt;` lets the user choose one or more files from their device storage to be uploaded to a server or manipulated by JavaScript via the [File API](https://developer.mozilla.org/en-US/docs/Web/API/File/Using_files_from_web_applications).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074616Z">
+        <seg>HTML では、`&lt;input type="file"&gt;` を利用してユーザに 1 つ以上のファイルをデバイスストレージから選択させ、サーバにアップロードしたり [File API](https://developer.mozilla.org/en-US/docs/Web/API/File/Using_files_from_web_applications) を通じて JavaScript で操作したりします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In React, an `&lt;input type="file" /&gt;` is always an uncontrolled component because its value can only be set by a user, and not programmatically.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074616Z">
+        <seg>React では、`&lt;input type="file" /&gt;` は値がユーザだけが設定できるものでありプログラムでは操作できないため、常に非制御コンポーネントです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You should use the File API to interact with the files.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074616Z">
+        <seg>ファイルをやり取りするのに File API を使用してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The following example shows how to create a [ref to the DOM node](/docs/refs-and-the-dom.html) to access file(s) in a submit handler:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074616Z">
+        <seg>以下の例では [DOM ノードへの ref](/docs/refs-and-the-dom.html) を作成し submit ハンドラでファイルにアクセスしています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>[](codepen://uncontrolled-components/input-type-file)</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074616Z">
+        <seg>**[CodePen で試す](codepen://uncontrolled-components/input-type-file)**</seg>
+      </tuv>
+    </tu>
+  </body>
+</tmx>

@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tmx SYSTEM "tmx14.dtd">
+<tmx version="1.4">
+  <header creationtool="OmegaT" o-tmf="OmegaT TMX" adminlang="EN-US" datatype="plaintext" creationtoolversion="4.3.2_0_6a661c5e0" segtype="sentence" srclang="EN-US"/>
+  <body>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>---
+id: conditional-rendering
+title: Conditional Rendering
+permalink: docs/conditional-rendering.html
+prev: handling-events.html
+next: lists-and-keys.html
+redirect_from:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T044855Z">
+        <seg>---
+id: conditional-rendering
+title: 条件付きレンダー
+permalink: docs/conditional-rendering.html
+prev: handling-events.html
+next: lists-and-keys.html
+redirect_from:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In React, you can create distinct components that encapsulate behavior you need.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T044855Z">
+        <seg>React ではあなたの必要なふるまいをカプセル化した独立したコンポーネントを作ることができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Then, you can render only some of them, depending on the state of your application.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T044855Z">
+        <seg>そして、あなたのアプリケーションの状態に応じて、その一部だけを描画することが可能です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Conditional rendering in React works the same way conditions work in JavaScript.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T044855Z">
+        <seg>React における条件付きレンダーは JavaScript における条件分岐と同じように動作します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Use JavaScript operators like [`if`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) or the [conditional operator](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) to create elements representing the current state, and let React update the UI to match them.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T044855Z">
+        <seg>[`if`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) もしくは[条件演算子](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)のような JavaScript 演算子を使用して現在の状態を表す要素を作成すれば、React はそれに一致するように UI を更新します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Consider these two components:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T044855Z">
+        <seg>以下の 2 つのコンポーネントを考えてみましょう：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We'll create a `Greeting` component that displays either of these components depending on whether a user is logged in:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T044855Z">
+        <seg>ユーザがログインしているかどうかによって、これらのコンポーネントの一方だけを表示する `Greeting` コンポーネントを作成しましょう：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This example renders a different greeting depending on the value of `isLoggedIn` prop.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T044855Z">
+        <seg>この例では `isLoggedIn` プロパティの値によって異なる挨拶メッセージを表示します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Element Variables {#element-variables}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T044855Z">
+        <seg>### 要素変数 {#element-variables}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can use variables to store elements.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T044855Z">
+        <seg>要素を保持しておくために変数を使うことができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This can help you conditionally render a part of the component while the rest of the output doesn't change.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T044855Z">
+        <seg>これは、出力の他の部分を変えずにコンポーネントの一部を条件付きでレンダーしたい時に役立ちます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Consider these two new components representing Logout and Login buttons:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T044855Z">
+        <seg>ログアウトとログインボタンを表す以下の 2 つの新しいコンポーネントを考えましょう：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In the example below, we will create a [stateful component](/docs/state-and-lifecycle.html#adding-local-state-to-a-class) called `LoginControl`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T044855Z">
+        <seg>以下の例では、`LoginControl` という[ステート付きコンポーネント](/docs/state-and-lifecycle.html#adding-local-state-to-a-class)を作成します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It will render either `&lt;LoginButton /&gt;` or `&lt;LogoutButton /&gt;` depending on its current state.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T044855Z">
+        <seg>`LoginControl` は現在の state によって `&lt;LoginButton /&gt;` もしくは `&lt;LogoutButton /&gt;` の一方をレンダーします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It will also render a `&lt;Greeting /&gt;` from the previous example:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T044855Z">
+        <seg>加えて、前の例の `&lt;Greeting /&gt;` もレンダーします：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>While declaring a variable and using an `if` statement is a fine way to conditionally render a component, sometimes you might want to use a shorter syntax.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T044855Z">
+        <seg>変数を宣言して `if` 文を使用することはコンポーネントを条件的にレンダーするなかなか良い方法ではありますが、より短い構文を使いたくなる時もあります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>There are a few ways to inline conditions in JSX, explained below.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T044855Z">
+        <seg>以下で述べるように、JSX でインラインで条件を記述する方法がいくつか存在します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Inline If with Logical &amp;&amp; Operator {#inline-if-with-logical--operator}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T044855Z">
+        <seg>### 論理 &amp;&amp; 演算子によるインライン If {#inline-if-with-logical--operator}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You may [embed expressions in JSX](/docs/introducing-jsx.html#embedding-expressions-in-jsx) by wrapping them in curly braces.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T044855Z">
+        <seg>中括弧で囲むことで、[JSX に式を埋め込む](/docs/introducing-jsx.html#embedding-expressions-in-jsx)ことができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This includes the JavaScript logical `&amp;&amp;` operator.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T044855Z">
+        <seg>これには JavaScript の論理 `&amp;&amp;` 演算子も含まれます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It can be handy for conditionally including an element:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T044855Z">
+        <seg>これは条件に応じて要素を含めたいというときに便利です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It works because in JavaScript, `true &amp;&amp; expression` always evaluates to `expression`, and `false &amp;&amp; expression` always evaluates to `false`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T044855Z">
+        <seg>これが動作するのは、JavaScript では `true &amp;&amp; expression` は必ず `expression` と評価され、`false &amp;&amp; expression` は必ず `false` と評価されるからです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Therefore, if the condition is `true`, the element right after `&amp;&amp;` will appear in the output.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T044855Z">
+        <seg>従って、条件部分が `true` であれば、`&amp;&amp;` の後に書かれた要素が出力に現れます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If it is `false`, React will ignore and skip it.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T044855Z">
+        <seg>もし `false` であれば、React はそれを無視して飛ばします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Note that returning a falsy expression will still cause the element after `&amp;&amp;` to be skipped but will return the falsy expression.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T044855Z">
+        <seg>falsy な値を返した場合、`&amp;&amp;` の後の要素の評価はスキップされますが、falsy な値そのものは返されるということに注意してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In the example below, `&lt;div&gt;0&lt;/div&gt;` will be returned by the render method.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T044855Z">
+        <seg>以下の例では `&lt;div&gt;0&lt;/div&gt;` がレンダーメソッドから返されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Inline If-Else with Conditional Operator {#inline-if-else-with-conditional-operator}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T044855Z">
+        <seg>### 条件演算子によるインライン If-Else {#inline-if-else-with-conditional-operator}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Another method for conditionally rendering elements inline is to use the JavaScript conditional operator [`condition ?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T044855Z">
+        <seg>条件的に要素をレンダーするもうひとつの方法は JavaScript の [`condition ?</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>true : false`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T044855Z">
+        <seg>true : false`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) 条件演算子を利用することです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In the example below, we use it to conditionally render a small block of text.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T044855Z">
+        <seg>以下の例では条件演算子を用いて、条件に応じてテキストの小さなブロックをレンダーします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It can also be used for larger expressions although it is less obvious what's going on:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T044855Z">
+        <seg>より大きな式にも適用することができますが、何が起こっているのか分かりづらくはなります：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Just like in JavaScript, it is up to you to choose an appropriate style based on what you and your team consider more readable.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T044855Z">
+        <seg>普通の JavaScript を書くときと同様、あなたとチームが読みやすいと思えるものに合わせて、適切なスタイルを選択してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Also remember that whenever conditions become too complex, it might be a good time to [extract a component](/docs/components-and-props.html#extracting-components).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T044855Z">
+        <seg>条件が複雑になりすぎたら、[コンポーネントを抽出](/docs/components-and-props.html#extracting-components)するべきタイミングかもしれない、ということにも留意してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Preventing Component from Rendering {#preventing-component-from-rendering}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T044855Z">
+        <seg>### コンポーネントのレンダーを防ぐ {#preventing-component-from-rendering}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In rare cases you might want a component to hide itself even though it was rendered by another component.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T044855Z">
+        <seg>稀なケースですが、他のコンポーネントによってレンダーされているにも関わらず、コンポーネントが自分のことを隠したい、ということがあるかもしれません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>To do this return `null` instead of its render output.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T044855Z">
+        <seg>その場合はレンダー出力の代わりに `null` を返すようにしてください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In the example below, the `&lt;WarningBanner /&gt;` is rendered depending on the value of the prop called `warn`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T044855Z">
+        <seg>以下の例では、`&lt;WarningBanner /&gt;` バナーは `warn` と呼ばれるプロパティの値に応じてレンダーされます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If the value of the prop is `false`, then the component does not render:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T044855Z">
+        <seg>そのプロパティの値が `false` なら、コンポーネントはレンダーされません：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Returning `null` from a component's `render` method does not affect the firing of the component's lifecycle methods.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T044855Z">
+        <seg>コンポーネントの `render` メソッドから `null` を返してもコンポーネントのライフサイクルメソッドの発火には影響しません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For instance `componentDidUpdate` will still be called.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T044855Z">
+        <seg>例えば `componentDidMount` は変わらず呼び出されます。</seg>
+      </tuv>
+    </tu>
+  </body>
+</tmx>

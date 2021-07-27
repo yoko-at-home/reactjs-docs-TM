@@ -1,0 +1,2287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tmx SYSTEM "tmx14.dtd">
+<tmx version="1.4">
+  <header creationtool="OmegaT" o-tmf="OmegaT TMX" adminlang="EN-US" datatype="plaintext" creationtoolversion="4.3.2_0_6a661c5e0" segtype="sentence" srclang="EN-US"/>
+  <body>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This page contains a detailed API reference for the React component class definition.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>このページには React コンポーネントクラス定義の詳細な API リファレンスがあります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It assumes you're familiar with fundamental React concepts, such as [Components and Props](/docs/components-and-props.html), as well as [State and Lifecycle](/docs/state-and-lifecycle.html).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>また、あなたが [コンポーネントや props](/docs/components-and-props.html) などの基本的な React の概念、および [state やライフサイクル](/docs/state-and-lifecycle.html)に精通していることを前提としています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you're not, read them first.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>そうでない場合は、まずそれらを読んでください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Overview {#overview}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>## 概要 {#overview}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>React lets you define components as classes or functions.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>React では、コンポーネントをクラスまたは関数として定義できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Components defined as classes currently provide more features which are described in detail on this page.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>クラスとして定義されたコンポーネントは現在このページで詳細に説明されているより多くの機能を提供します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>To define a React component class, you need to extend `React.Component`:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>React コンポーネントクラスを定義するには、`React.Component` を継承する必要があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The only method you *must* define in a `React.Component` subclass is called [`render()`](#render).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>`React.Component` サブクラスで*必ず*定義しなければならない唯一のメソッドは [`render()`](#render) です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>All the other methods described on this page are optional.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>このページで説明されている他のすべてのメソッドは任意です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>**We strongly recommend against creating your own base component classes.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>**独自の基底コンポーネントクラスを作成しないことを強くおすすめします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>** In React components, [code reuse is primarily achieved through composition rather than inheritance](/docs/composition-vs-inheritance.html).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>**React コンポーネントでは、[コードの再利用は主に継承ではなく合成によって行われます](/docs/composition-vs-inheritance.html)。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;Note:
+&gt;
+&gt;React doesn't force you to use the ES6 class syntax.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>&gt;補足:
+&gt;
+&gt;React は ES6 クラスの構文を使うことを強制していません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you prefer to avoid it, you may use the `create-react-class` module or a similar custom abstraction instead.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>回避したい場合は、代わりに `create-react-class` モジュールまたは、同様の独自の抽象化を使用できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Take a look at [Using React without ES6](/docs/react-without-es6.html) to learn more.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>詳しくは、[Using React without ES6](/docs/react-without-es6.html) をご覧ください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### The Component Lifecycle {#the-component-lifecycle}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>### コンポーネントライフサイクル {#the-component-lifecycle}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Each component has several "lifecycle methods" that you can override to run code at particular times in the process.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>各コンポーネントには、処理の過程の特定の時点でコードを実行するためにオーバーライドできるいくつかの「ライフサイクルメソッド」があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>**You can use [this lifecycle diagram](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/) as a cheat sheet.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>**この[ライフサイクル図](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)をチートシートとして使用できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>** In the list below, commonly used lifecycle methods are marked as **bold**.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>**以下のリストでは、よく使われるライフサイクルメソッドは**太字**で表示されています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The rest of them exist for relatively rare use cases.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>それらの残りは比較的まれなユースケースのために存在します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>#### Mounting {#mounting}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>#### マウント {#mounting}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>These methods are called in the following order when an instance of a component is being created and inserted into the DOM:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>コンポーネントのインスタンスが作成されて DOM に挿入されるときに、これらのメソッドが次の順序で呼び出されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;Note:
+&gt;
+&gt;These methods are considered legacy and you should [avoid them](/blog/2018/03/27/update-on-async-rendering.html) in new code:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>&gt;補足:
+&gt;
+&gt;これらのメソッドはレガシーだと考えられているため、新しいコードでは[避ける](/blog/2018/03/27/update-on-async-rendering.html)べきです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>#### Updating {#updating}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>#### 更新 {#updating}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>An update can be caused by changes to props or state.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>更新は props や state の変更によって発生する可能性があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>These methods are called in the following order when a component is being re-rendered:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>コンポーネントが再レンダーされるときに、これらのメソッドは次の順序で呼び出されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;Note:
+&gt;
+&gt;These methods are considered legacy and you should [avoid them](/blog/2018/03/27/update-on-async-rendering.html) in new code:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>&gt;補足:
+&gt;
+&gt;これらのメソッドはレガシーと見なされ、新しいコードでは避けるべきです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>#### Unmounting {#unmounting}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>#### アンマウント {#unmounting}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This method is called when a component is being removed from the DOM:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>このメソッドは、コンポーネントが DOM から削除されるときに呼び出されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>#### Error Handling {#error-handling}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>#### エラーハンドリング {#error-handling}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>These methods are called when there is an error during rendering, in a lifecycle method, or in the constructor of any child component.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>これらのメソッドは任意の子コンポーネントのレンダー中、ライフサイクルメソッド内、またはコンストラクタ内でエラーが発生したときに呼び出されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Other APIs {#other-apis}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>### 他の API {#other-apis}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Each component also provides some other APIs:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>各コンポーネントはその他にもいくつかの API を提供します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Class Properties {#class-properties}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>### クラスプロパティ {#class-properties}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Instance Properties {#instance-properties}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>### インスタンスプロパティ {#instance-properties}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Reference {#reference}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>## リファレンス {#reference}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Commonly Used Lifecycle Methods {#commonly-used-lifecycle-methods}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>### よく使われるライフサイクルメソッド {#commonly-used-lifecycle-methods}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The methods in this section cover the vast majority of use cases you'll encounter creating React components.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>このセクションのメソッドは、React コンポーネントを作成する際に遭遇する大部分のユースケースを網羅しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>**For a visual reference, check out [this lifecycle diagram](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/).**</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>視覚的なリファレンスとして、この[ライフサイクル図](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)もチェックしてみてください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The `render()` method is the only required method in a class component.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>`render()` メソッドは、クラスコンポーネントで必ず定義しなければならない唯一のメソッドです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>When called, it should examine `this.props` and `this.state` and return one of the following types:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>呼び出されると、`this.props` と `this.state` を調べて、次のいずれかの型を返します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>- **React elements.** Typically created via [JSX](/docs/introducing-jsx.html).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>- **React 要素** 通常は [JSX](/docs/introducing-jsx.html) 経由で作成されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, `&lt;div /&gt;` and `&lt;MyComponent /&gt;` are React elements that instruct React to render a DOM node, or another user-defined component, respectively.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>例えば、`&lt;div /&gt;` や `&lt;MyComponent /&gt;` はそれぞれ React に DOM ノードやユーザが定義した他のコンポーネントをレンダーするように指示する React 要素です</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>- **Arrays and fragments.** Let you return multiple elements from render.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>- **配列とフラグメント** 複数の要素を `render()` から返します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>See the documentation on [fragments](/docs/fragments.html) for more details.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>詳しくは [フラグメント](/docs/fragments.html) を参照してください</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>- **Portals**.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>- **ポータル</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Let you render children into a different DOM subtree.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>** 子を異なる DOM サブツリーにレンダーします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>See the documentation on [portals](/docs/portals.html) for more details.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>詳しくは [ポータル](/docs/portals.html) を参照してください</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>- **String and numbers.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>- **文字列と数値</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>** These are rendered as text nodes in the DOM.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>** これは DOM のテキストノードとしてレンダーされます</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>- **Booleans or `null`**.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>- **真偽値または `null`</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Render nothing.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>** 何もレンダーしません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>(Mostly exists to support `return test &amp;&amp; &lt;Child /&gt;` pattern, where `test` is boolean.)</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>(ほとんどの場合、`return test &amp;&amp; &lt;Child /&gt;` パターンをサポートするために存在しています。ここで、`test` は真偽値です）</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The `render()` function should be pure, meaning that it does not modify component state, it returns the same result each time it's invoked, and it does not directly interact with the browser.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>`render()` 関数は「純粋」でなければなりません。つまり、コンポーネントの state を変更せず、呼び出されるたびに同じ結果を返し、ブラウザと直接対話しないということです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you need to interact with the browser, perform your work in `componentDidMount()` or the other lifecycle methods instead.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>ブラウザと対話する必要がある場合は、代わりに `componentDidMount()` や他のライフサイクルメソッドで行います。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Keeping `render()` pure makes components easier to think about.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>`render()` を純粋にしておくことで、コンポーネントについて考えやすくなります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt; Note
+&gt;
+&gt; `render()` will not be invoked if [`shouldComponentUpdate()`](#shouldcomponentupdate) returns false.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>&gt; 補足
+&gt;
+&gt; [`shouldComponentUpdate()`](#shouldcomponentupdate) が false を返した場合、`render()` は呼び出されません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>**If you don't initialize state and you don't bind methods, you don't need to implement a constructor for your React component.**</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>**state の初期化もメソッドのバインドもしないのであれば、React コンポーネントのコンストラクタを実装する必要はありません。**</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The constructor for a React component is called before it is mounted.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>React コンポーネントのコンストラクタは、マウントされる前に呼び出されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>When implementing the constructor for a `React.Component` subclass, you should call `super(props)` before any other statement.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>`React.Component` サブクラスのコンストラクタを実装するときは、他の文の前に `super(props)` を呼び出す必要があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Otherwise, `this.props` will be undefined in the constructor, which can lead to bugs.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>そうでなければ、`this.props` はコンストラクタ内で未定義になり、バグの原因となる可能性があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Typically, in React constructors are only used for two purposes:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>通常、React では、コンストラクタは 2 つの目的にのみ使用されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* Initializing [local state](/docs/state-and-lifecycle.html) by assigning an object to `this.state`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>* `this.state` にオブジェクトを代入して [ローカル state](/docs/state-and-lifecycle.html) を初期化すること</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* Binding [event handler](/docs/handling-events.html) methods to an instance.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>* [イベントハンドラ](/docs/handling-events.html) をインスタンスにバインドすること</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You **should not call `setState()`** in the `constructor()`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>`constructor()` の中で **`setState()` を呼び出さないでください**。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Instead, if your component needs to use local state, **assign the initial state to `this.state`** directly in the constructor:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>代わりに、コンポーネントがローカル state を使用する必要がある場合は、コンストラクタで直接 **`this.state` に初期状態を割り当てます**。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>// Don't call this.setState() here!</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>// ここで this.setState() を呼び出さないでください</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Constructor is the only place where you should assign `this.state` directly.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>コンストラクタは、`this.state` を直接代入する唯一の場所です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In all other methods, you need to use `this.setState()` instead.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>他のすべてのメソッドでは、代わりに `this.setState()` を使う必要があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Avoid introducing any side-effects or subscriptions in the constructor.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>コンストラクタに副作用や購読を導入しないでください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For those use cases, use `componentDidMount()` instead.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>そのような場合は、代わりに `componentDidMount()` を使用してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;Note
+&gt;
+&gt;**Avoid copying props into state!</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>&gt;補足
+&gt;
+&gt;**props を state にコピーしないでください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is a common mistake:**
+&gt;
+&gt;```js
+&gt;constructor(props) {
+&gt;  super(props);
+&gt;  // Don't do this!</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>これはよくある間違いです。**
+&gt;
+&gt;```js
+&gt;constructor(props) {
+&gt;  super(props);
+&gt;  // してはいけません</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;  this.state = { color: props.color };
+&gt;}
+&gt;```
+&gt;
+&gt;The problem is that it's both unnecessary (you can use `this.props.color` directly instead), and creates bugs (updates to the `color` prop won't be reflected in the state).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>&gt;  this.state = { color: props.color };
+&gt;}
+&gt;```
+&gt;
+&gt;この問題はそれが不要(代わりに `this.props.color` を直接使用することができるため)であり、バグの作成につながる(`color` プロパティの更新は state に反映されないため)ことです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;
+&gt;**Only use this pattern if you intentionally want to ignore prop updates.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>&gt;
+&gt;**意図的にプロパティの更新を無視したい場合にのみ、このパターンを使用してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>** In that case, it makes sense to rename the prop to be called `initialColor` or `defaultColor`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>**その場合は、プロパティの名前を `initialColor` または `defaultColor` に変更してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can then force a component to "reset" its internal state by [changing its `key`](/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-uncontrolled-component-with-a-key) when necessary.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>その後、必要に応じて[キーを変更する](/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-uncontrolled-component-with-a-key)ことで、コンポーネントにその内部の state を「リセット」させることができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;
+&gt;Read our [blog post on avoiding derived state](/blog/2018/06/07/you-probably-dont-need-derived-state.html) to learn about what to do if you think you need some state to depend on the props.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>&gt;
+&gt;もしあなたが props に依存する何らかの state が必要だと思うなら、どうすればいいのか学ぶために私達の[派生 state を避けることについてのブログ記事](/blog/2018/06/07/you-probably-dont-need-derived-state.html)を読んでください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>`componentDidMount()` is invoked immediately after a component is mounted (inserted into the tree).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>`componentDidMount()` は、コンポーネントがマウントされた（ツリーに挿入された）直後に呼び出されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Initialization that requires DOM nodes should go here.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>DOM ノードを必要とする初期化はここで行われるべきです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you need to load data from a remote endpoint, this is a good place to instantiate the network request.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>リモートエンドポイントからデータをロードする必要がある場合、これはネットワークリクエストを送信するのに適した場所です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This method is a good place to set up any subscriptions.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>このメソッドは、購読を設定するのに適した場所です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you do that, don't forget to unsubscribe in `componentWillUnmount()`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>設定した場合は、`componentWillUnmount()` で購読を解除することを忘れないでください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You **may call `setState()` immediately** in `componentDidMount()`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>`componentDidMount()` の中で、あなたは**すぐに `setState()` を呼び出すことができます**。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It will trigger an extra rendering, but it will happen before the browser updates the screen.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>それは余分なレンダーを引き起こしますが、ブラウザが画面を更新する前に起こります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This guarantees that even though the `render()` will be called twice in this case, the user won't see the intermediate state.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>これにより、この場合 `render()` が 2 回呼び出されても、ユーザには中間状態が表示されません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Use this pattern with caution because it often causes performance issues.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>このパターンはパフォーマンス上の問題を引き起こすことが多いので、慎重に使用してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In most cases, you should be able to assign the initial state in the `constructor()` instead.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>ほとんどの場合、代わりに `constructor()` で初期状態を state に代入できるはずです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It can, however, be necessary for cases like modals and tooltips when you need to measure a DOM node before rendering something that depends on its size or position.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>ただし、モーダルやツールチップのような場合に、サイズや位置に応じて何かをレンダーする前に DOM ノードを測定することが必要になる場合があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>`componentDidUpdate()` is invoked immediately after updating occurs.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>更新が行われた直後に `componentDidUpdate()` が呼び出されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This method is not called for the initial render.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>このメソッドは最初のレンダーでは呼び出されません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Use this as an opportunity to operate on the DOM when the component has been updated.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>コンポーネントが更新されたときに DOM を操作する機会にこれを使用してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is also a good place to do network requests as long as you compare the current props to previous props (e.g. a network request may not be necessary if the props have not changed).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>現在の props と前の props を比較している限り、これはネットワークリクエストを行うのにも適した場所です（たとえば、props が変更されていない場合、ネットワークリクエストは必要ないかもしれません）。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>// Typical usage (don't forget to compare props):</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>// 典型的な使い方(props を比較することを忘れないでください)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You **may call `setState()` immediately** in `componentDidUpdate()` but note that **it must be wrapped in a condition** like in the example above, or you'll cause an infinite loop.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>`componentDidUpdate()` の中で、あなたは**すぐに `setState()` を呼び出すことができます**が、それは上記の例のような**条件でラップされなければならない**ことに注意してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It would also cause an extra re-rendering which, while not visible to the user, can affect the component performance.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>そうしなければ、無限ループを引き起こすでしょう。また、余分な再レンダーが発生し、ユーザには見えないものの、コンポーネントのパフォーマンスに影響を与える可能性があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you're trying to "mirror" some state to a prop coming from above, consider using the prop directly instead.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>親から来る props を何らかの state に「反映」しようとしている場合は、代わりに props を直接使用することを検討してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Read more about [why copying props into state causes bugs](/blog/2018/06/07/you-probably-dont-need-derived-state.html).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>[props を state にコピーするとバグが発生する理由](/blog/2018/06/07/you-probably-dont-need-derived-state.html)をよく読んでください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If your component implements the `getSnapshotBeforeUpdate()` lifecycle (which is rare), the value it returns will be passed as a third "snapshot" parameter to `componentDidUpdate()`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>コンポーネントが `getSnapshotBeforeUpdate()` ライフサイクルを実装している場合（これはまれです）、それが返す値は 3 番目の「スナップショット」パラメータとして `componentDidUpdate()` に渡されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Otherwise this parameter will be undefined.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>それ以外の場合、このパラメータは未定義になります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt; Note
+&gt;
+&gt; `componentDidUpdate()` will not be invoked if [`shouldComponentUpdate()`](#shouldcomponentupdate) returns false.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>&gt; 補足
+&gt;
+&gt; [`shouldComponentUpdate()`](#shouldcomponentupdate) が false を返した場合、`componentDidUpdate()` は呼び出されません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>`componentWillUnmount()` is invoked immediately before a component is unmounted and destroyed.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>`componentWillUnmount()` は、コンポーネントがアンマウントされて破棄される直前に呼び出されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Perform any necessary cleanup in this method, such as invalidating timers, canceling network requests, or cleaning up any subscriptions that were created in `componentDidMount()`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>タイマーの無効化、ネットワークリクエストのキャンセル、`componentDidMount()` で作成された購読の解除など、このメソッドで必要なクリーンアップを実行します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You **should not call `setState()`** in `componentWillUnmount()` because the component will never be re-rendered.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>コンポーネントは再レンダーされないため、`componentWillUnmount()` で **`setState()` を呼び出さないでください**。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Once a component instance is unmounted, it will never be mounted again.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>コンポーネントインスタンスがアンマウントされると、再度マウントされることはありません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Rarely Used Lifecycle Methods {#rarely-used-lifecycle-methods}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>### まれに使われるライフサイクルメソッド {#rarely-used-lifecycle-methods}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The methods in this section correspond to uncommon use cases.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>このセクションのメソッドは、一般的でないユースケースに対応しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>They're handy once in a while, but most of your components probably don't need any of them.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>これらは時々便利に使えますが、あなたのコンポーネントのほとんどはおそらくそれらのどれも必要としないでしょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>**You can see most of the methods below on [this lifecycle diagram](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/) if you click the "Show less common lifecycles" checkbox at the top of it.**</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>**この[ライフサイクル図](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)の上部にある「あまり一般的ではないライフサイクルを表示する」チェックボックスをクリックすると、以下のほとんどの方法が表示されます。**</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Use `shouldComponentUpdate()` to let React know if a component's output is not affected by the current change in state or props.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>コンポーネントの出力が現在の state の変化や props の影響を受けていないかどうかを React に知らせるには `shouldComponentUpdate()` を使用します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The default behavior is to re-render on every state change, and in the vast majority of cases you should rely on the default behavior.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>デフォルトの振る舞いはすべての状態変化を再レンダーすることです、そして大部分の場合、あなたはデフォルトの振る舞いに頼るべきです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>`shouldComponentUpdate()` is invoked before rendering when new props or state are being received.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>新しい props または state が受け取られると、レンダーする前に `shouldComponentUpdate()` が呼び出されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Defaults to `true`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>デフォルトは `true` です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This method is not called for the initial render or when `forceUpdate()` is used.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>このメソッドは最初のレンダーや `forceUpdate()` の使用時には呼び出されません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This method only exists as a **[performance optimization](/docs/optimizing-performance.html).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>このメソッドは[パフォーマンスの最適化](/docs/optimizing-performance.html)としてのみ存在します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>** Do not rely on it to "prevent" a rendering, as this can lead to bugs.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>バグを引き起こす可能性があるので、レンダーを「抑止する」ためにそれを使用しないでください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>**Consider using the built-in [`PureComponent`](/docs/react-api.html#reactpurecomponent)** instead of writing `shouldComponentUpdate()` by hand.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>`shouldComponentUpdate()` を書く代わりに、**組み込みの [PureComponent](/docs/react-api.html#reactpurecomponent)** を使用することを検討してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>`PureComponent` performs a shallow comparison of props and state, and reduces the chance that you'll skip a necessary update.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>`PureComponent` は props と state を浅く比較し、必要なアップデートをスキップする可能性を減らします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you are confident you want to write it by hand, you may compare `this.props` with `nextProps` and `this.state` with `nextState` and return `false` to tell React the update can be skipped.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>あなたが手でそれを書きたいと確信しているなら、あなたは `nextProps` と `this.props` または `nextState` と `this.state` を比較して、更新をスキップできることを React に伝えるために `false` を返すことができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Note that returning `false` does not prevent child components from re-rendering when *their* state changes.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>`false` を返しても、*子コンポーネントの* state が変化したときに子コンポーネントが再レンダーされるのを防ぐことはできません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We do not recommend doing deep equality checks or using `JSON.stringify()` in `shouldComponentUpdate()`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>等価性を深く調べることや `shouldComponentUpdate()` で `JSON.stringify()` を使用することはおすすめしません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It is very inefficient and will harm performance.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>これは非常に非効率的であり、パフォーマンスに悪影響を及ぼします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Currently, if `shouldComponentUpdate()` returns `false`, then [`UNSAFE_componentWillUpdate()`](#unsafe_componentwillupdate), [`render()`](#render), and [`componentDidUpdate()`](#componentdidupdate) will not be invoked.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>現在、`shouldComponentUpdate()` が `false` を返す場合、[`UNSAFE_componentWillUpdate()`](#unsafe_componentwillupdate)、[`render()`](#render)、および [`componentDidUpdate()`](#componentdidupdate) は呼び出されません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In the future React may treat `shouldComponentUpdate()` as a hint rather than a strict directive, and returning `false` may still result in a re-rendering of the component.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>将来的には、React は `shouldComponentUpdate()` を厳密な命令ではなくヒントとして扱うようになり、`false` を返してもコンポーネントが再レンダーされる可能性があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>`getDerivedStateFromProps` is invoked right before calling the render method, both on the initial mount and on subsequent updates.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>`getDerivedStateFromProps` は、初期マウント時とその後の更新時の両方で、`render()` メソッドを呼び出す直前に呼び出されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It should return an object to update the state, or `null` to update nothing.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>state を更新するためにオブジェクトを返すか、何も更新しない場合は `null` を返すべきです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This method exists for [rare use cases](/blog/2018/06/07/you-probably-dont-need-derived-state.html#when-to-use-derived-state) where the state depends on changes in props over time.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>このメソッドは、state が時間の経過とともに変化する props に依存するような[まれな使用例](/blog/2018/06/07/you-probably-dont-need-derived-state.html#when-to-use-derived-state)のために存在します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, it might be handy for implementing a `&lt;Transition&gt;` component that compares its previous and next children to decide which of them to animate in and out.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>たとえば、以前と以降の子を比較してどちらの子をアニメーションするかを決定する `&lt;Transition&gt;` コンポーネントを実装するときに便利です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Deriving state leads to verbose code and makes your components difficult to think about.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>state を派生させると冗長なコードにつながり、コンポーネントを考えるのが難しくなります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>[Make sure you're familiar with simpler alternatives:](/blog/2018/06/07/you-probably-dont-need-derived-state.html)</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>[より簡単な方法があるのでまずそちらに慣れるようにしてください。](/blog/2018/06/07/you-probably-dont-need-derived-state.html)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* If you need to **perform a side effect** (for example, data fetching or an animation) in response to a change in props, use [`componentDidUpdate`](#componentdidupdate) lifecycle instead.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>* props の変更に応じて**副作用を実行する**必要がある場合は（データのフェッチやアニメーションなど）、代わりに [`componentDidUpdate`](#componentdidupdate) ライフサイクルを使用してください</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* If you want to **re-compute some data only when a prop changes**, [use a memoization helper instead](/blog/2018/06/07/you-probably-dont-need-derived-state.html#what-about-memoization).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>* **プロパティが変更されたときにのみデータを再計算したい**場合は、[代わりにメモ化ヘルパーを使用してください](/blog/2018/06/07/you-probably-dont-need-derived-state.html#what-about-memoization)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* If you want to **"reset" some state when a prop changes**, consider either making a component [fully controlled](/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-controlled-component) or [fully uncontrolled with a `key`](/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-uncontrolled-component-with-a-key) instead.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>* **プロパティが変更されたときに何かの state を「リセット」したい**場合は、代わりにコンポーネントを[完全に制御する](/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-controlled-component)か、または [`key` を使って全く制御しない](/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-uncontrolled-component-with-a-key)かを検討してください</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This method doesn't have access to the component instance.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>このメソッドはコンポーネントインスタンスにアクセスできません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you'd like, you can reuse some code between `getDerivedStateFromProps()` and the other class methods by extracting pure functions of the component props and state outside the class definition.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>必要に応じて、コンポーネントの props と state の純粋な関数を抽出し、クラス定義外に記述することで、`getDerivedStateFromProps()` と他のクラスメソッドの間でコードを再利用できます。このメソッドは、原因に関係なく、*すべての*レンダーで起動されることに注意してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Note that this method is fired on *every* render, regardless of the cause.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>これは `UNSAFE_componentWillReceiveProps` とは対照的です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is in contrast to `UNSAFE_componentWillReceiveProps`, which only fires when the parent causes a re-render and not as a result of a local `setState`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>`UNSAFE_componentWillReceiveProps` は、ローカルの `setState()` に依らず、親が再レンダーを行ったときにのみ発生します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>`getSnapshotBeforeUpdate()` is invoked right before the most recently rendered output is committed to e.g. the DOM.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>`getSnapshotBeforeUpdate()` は、最後にレンダーされた出力が DOM などにコミットされる直前に呼び出されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It enables your component to capture some information from the DOM (e.g. scroll position) before it is potentially changed.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>これはコンポーネントが変更される可能性があるときに、変更される前に DOM から何らかの情報（たとえば、スクロール位置）を取得しておくことを可能にします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Any value returned by this lifecycle method will be passed as a parameter to `componentDidUpdate()`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>このライフサイクルメソッドによって返された値はすべて、`componentDidUpdate()` へのパラメータとして渡されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This use case is not common, but it may occur in UIs like a chat thread that need to handle scroll position in a special way.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>このユースケースは一般的ではありませんが、スクロール位置を特別な方法で処理する必要があるチャットのスレッドのような UI で発生する可能性があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>A snapshot value (or `null`) should be returned.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>スナップショット値（または `null`）が返されるべきです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>例：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In the above examples, it is important to read the `scrollHeight` property in `getSnapshotBeforeUpdate` because there may be delays between "render" phase lifecycles (like `render`) and "commit" phase lifecycles (like `getSnapshotBeforeUpdate` and `componentDidUpdate`).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>この例では、`getSnapshotBeforeUpdate` の中で `scrollHeight` プロパティを読み取ることが重要です。これは、（`render` のような）「描画」フェーズライフサイクルと（`getSnapshotBeforeUpdate` および `componentDidUpdate` のような）「コミット」フェーズライフサイクルの間に遅延が生じるためです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Error boundaries {#error-boundaries}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>### error boundary {#error-boundaries}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>[Error boundaries](/docs/error-boundaries.html) are React components that catch JavaScript errors anywhere in their child component tree, log those errors, and display a fallback UI instead of the component tree that crashed.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>[error boundary](/docs/error-boundaries.html) は、子コンポーネントツリーのどこかで JavaScript エラーを捕捉し、それらのエラーを記録し、クラッシュしたコンポーネントツリーの代わりにフォールバック UI を表示する React コンポーネントです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Error boundaries catch errors during rendering, in lifecycle methods, and in constructors of the whole tree below them.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>error boundary は、その下のツリー全体のレンダー中、ライフサイクルメソッド内、およびコンストラクタ内で発生したエラーを捕捉します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>A class component becomes an error boundary if it defines either (or both) of the lifecycle methods `static getDerivedStateFromError()` or `componentDidCatch()`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>クラスコンポーネントは、ライフサイクルメソッド `static getDerivedStateFromError()` または `componentDidCatch()` のいずれか（または両方）を定義すると、error boundary になります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Updating state from these lifecycles lets you capture an unhandled JavaScript error in the below tree and display a fallback UI.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>これらのライフサイクルから state を更新すると、下のツリーで発生した未処理の JavaScript エラーを捕捉してフォールバック UI を表示できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Only use error boundaries for recovering from unexpected exceptions; **don't try to use them for control flow.**</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>error boundary は予期しない例外からの回復のためだけに使用してください。**それらを制御フローに使用しないでください**。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For more details, see [*Error Handling in React 16*](/blog/2017/07/26/error-handling-in-react-16.html).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>詳細については、[*React 16 のエラーハンドリング*](/blog/2017/07/26/error-handling-in-react-16.html)を参照してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt; Note
+&gt;
+&gt; Error boundaries only catch errors in the components **below** them in the tree.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>&gt; 補足
+&gt;
+&gt; error boundary は、ツリー内でその**下**にあるコンポーネント内のエラーのみを捕捉します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>An error boundary can’t catch an error within itself.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>error boundary はそれ自体の中でエラーを捉えることはできません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This lifecycle is invoked after an error has been thrown by a descendant component.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>このライフサイクルは、子孫コンポーネントによってエラーがスローされた後に呼び出されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It receives the error that was thrown as a parameter and should return a value to update state.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>パラメータとしてスローされたエラーを受け取り、state を更新するための値を返すべきです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>// Update state so the next render will show the fallback UI.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>// 次のレンダーでフォールバック UI が表示されるように state を更新する</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>// You can render any custom fallback UI</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>// 任意のフォールバック UI をレンダーできます</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt; Note
+&gt;
+&gt; `getDerivedStateFromError()` is called during the "render" phase, so side-effects are not permitted.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>&gt; 補足
+&gt;
+&gt; `getDerivedStateFromError()` は「描画」フェーズ中に呼び出されるので、副作用は許可されていません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For those use cases, use `componentDidCatch()` instead.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>そのような場合は、代わりに `componentDidCatch()` を使用してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This lifecycle is invoked after an error has been thrown by a descendant component.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>このライフサイクルは、子孫コンポーネントによってエラーがスローされた後に呼び出されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It receives two parameters:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>以下の 2 つのパラメータを受け取ります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>`error` - The error that was thrown.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>`error` - スローされたエラー
+2.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>2. `info` - An object with a `componentStack` key containing [information about which component threw the error](/docs/error-boundaries.html#component-stack-traces).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>`info` - [どのコンポーネントがエラーをスローしたかについての情報](/docs/error-boundaries.html#component-stack-traces)を含む `componentStack` キーを持つオブジェクト</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>`componentDidCatch()` is called during the "commit" phase, so side-effects are permitted.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>`componentDidCatch()` は「コミット」フェーズ中に呼び出されるため、副作用は許可されています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It should be used for things like logging errors:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>ロギング時のエラーなどのために使用されるべきです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>// Update state so the next render will show the fallback UI.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>// 次のレンダーでフォールバック UI が表示されるように state を更新します</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>// You can render any custom fallback UI</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>// 任意のフォールバック UI をレンダーできます</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Production and development builds of React slightly differ in the way `componentDidCatch()` handles errors.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>React の本番用ビルドと開発用ビルドでは、`componentDidCatch()` がエラーを処理する方法がわずかに異なります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>On development, the errors will bubble up to `window`, this means that any `window.onerror` or `window.addEventListener('error', callback)` will intercept the errors that have been caught by `componentDidCatch()`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>開発用ビルドでは、エラーは `window` までバブリングするため、`componentDidCatch()` が捕捉したエラーを `window.onerror` や `window.addEventListener('error', callback)` でもインターセプトすることができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>On production, instead, the errors will not bubble up, which means any ancestor error handler will only receive errors not explicitly caught by `componentDidCatch()`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>一方で本番用ビルドではエラーはバブリングしないため、祖先要素のエラーハンドラは `componentDidCatch()` で明示的に捕捉されていないエラーのみを受け取ります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt; Note
+&gt;
+&gt; In the event of an error, you can render a fallback UI with `componentDidCatch()` by calling `setState`, but this will be deprecated in a future release.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>&gt; 補足
+&gt;
+&gt; エラーが発生した場合は、`setState` を呼び出す `componentDidCatch()` を使用してフォールバック UI をレンダーできますが、これは将来のリリースでは推奨されなくなります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt; Use `static getDerivedStateFromError()` to handle fallback rendering instead.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>&gt; 代わりにフォールバックの描画を扱うために、`static getDerivedStateFromError()` を使用してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Legacy Lifecycle Methods {#legacy-lifecycle-methods}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>### レガシーなライフサイクルメソッド {#legacy-lifecycle-methods}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The lifecycle methods below are marked as "legacy".</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>以下のライフサイクルメソッドは「レガシー」としてマークされています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>They still work, but we don't recommend using them in the new code.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>動作はしますが、新しいコードで使用することはおすすめしません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can learn more about migrating away from legacy lifecycle methods in [this blog post](/blog/2018/03/27/update-on-async-rendering.html).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>この[ブログ記事](/blog/2018/03/27/update-on-async-rendering.html)では、レガシーなライフサイクルメソッドからの移行についてさらに学ぶことができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt; Note
+&gt;
+&gt; This lifecycle was previously named `componentWillMount`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>&gt; 補足
+&gt;
+&gt; このライフサイクルは、以前は `componentWillMount` という名前でした。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>That name will continue to work until version 17.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>その名前はバージョン 17 まで機能し続けます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Use the [`rename-unsafe-lifecycles` codemod](https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles) to automatically update your components.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>コンポーネントを自動的に更新するには、[`rename-unsafe-lifecycles` codemod](https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles) を使用してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>`UNSAFE_componentWillMount()` is invoked just before mounting occurs.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>マウントが行われる直前に `UNSAFE_componentWillMount()` が呼び出されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It is called before `render()`, therefore calling `setState()` synchronously in this method will not trigger an extra rendering.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>これは `render()` の前に呼び出されるので、このメソッドで `setState()` を同期的に呼び出しても余分なレンダーは行われません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Generally, we recommend using the `constructor()` instead for initializing state.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>一般に、state を初期化するためには代わりに `constructor()` を使うことをおすすめします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Avoid introducing any side-effects or subscriptions in this method.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>このメソッドでは、副作用や購読を導入しないでください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For those use cases, use `componentDidMount()` instead.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>そのような場合は、代わりに `componentDidMount()` を使用してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is the only lifecycle method called on server rendering.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>これは、サーバレンダリングで呼び出される唯一のライフサイクルメソッドです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### `UNSAFE_componentWillReceiveProps()` {#unsafe_componentwillreceiveprops}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>### `UNSAFE_componentWillReceiveProps()` {#unsafe_componentwillreceiveprops}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt; Note
+&gt;
+&gt; This lifecycle was previously named `componentWillReceiveProps`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>&gt; 補足
+&gt;
+&gt; このライフサイクルは、以前は `componentWillReceiveProps` という名前でした。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>That name will continue to work until version 17.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>その名前はバージョン 17 まで機能し続けます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Use the [`rename-unsafe-lifecycles` codemod](https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles) to automatically update your components.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>コンポーネントを自動的に更新するには、[`rename-unsafe-lifecycles` codemod](https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles) を使用してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt; Note:
+&gt;
+&gt; Using this lifecycle method often leads to bugs and inconsistencies</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>&gt; 補足:
+&gt;
+&gt;
+&gt; このライフサイクルメソッドを使用すると、しばしばバグや矛盾が発生します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;
+&gt; * If you need to **perform a side effect** (for example, data fetching or an animation) in response to a change in props, use [`componentDidUpdate`](#componentdidupdate) lifecycle instead.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>&gt;
+&gt; * props の変更に応じて**副作用を実行する**必要がある場合は（データの取得やアニメーションなど）、代わりに [`componentDidUpdate`](#componentdidupdate) ライフサイクルを使用してください</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt; * If you used `componentWillReceiveProps` for **re-computing some data only when a prop changes**, [use a memoization helper instead](/blog/2018/06/07/you-probably-dont-need-derived-state.html#what-about-memoization).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>&gt; * `componentWillReceiveProps` を **props が変更されたときにのみデータを再計算する**ために使う代わりに、[メモ化ヘルパーを使用してください](/blog/2018/06/07/you-probably-dont-need-derived-state.html#what-about-memoization)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt; * If you used `componentWillReceiveProps` to **"reset" some state when a prop changes**, consider either making a component [fully controlled](/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-controlled-component) or [fully uncontrolled with a `key`](/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-uncontrolled-component-with-a-key) instead.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>&gt; * `componentWillReceiveProps` を **props が変更されたときに何かの state を「リセット」する**ために使う代わりに、コンポーネントを[完全に制御する](/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-controlled-component)か、または [`key` を使って全く制御しない](/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-uncontrolled-component-with-a-key)かを検討してください</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;
+&gt; For other use cases, [follow the recommendations in this blog post about derived state](/blog/2018/06/07/you-probably-dont-need-derived-state.html).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>&gt;
+&gt; その他の使用例については、[派生 state に関するこのブログ投稿の推奨事項に従ってください](/blog/2018/06/07/you-probably-dont-need-derived-state.html)。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>`UNSAFE_componentWillReceiveProps()` is invoked before a mounted component receives new props.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>`UNSAFE_componentWillReceiveProps()` は、マウントされたコンポーネントが新しい props を受け取る前に呼び出されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you need to update the state in response to prop changes (for example, to reset it), you may compare `this.props` and `nextProps` and perform state transitions using `this.setState()` in this method.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>prop の変更に応じて state を更新する必要がある場合（たとえばリセットする必要がある場合）は、`this.props` と `nextProps` を比較し、このメソッドで `this.setState()` を使用して状態遷移を実行できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Note that if a parent component causes your component to re-render, this method will be called even if props have not changed.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>親コンポーネントによってコンポーネントが再レンダーされる場合、props が変更されていなくてもこのメソッドが呼び出されることに注意してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Make sure to compare the current and next values if you only want to handle changes.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>変更だけを処理したい場合は、必ず現在の値と次の値を比較してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>React doesn't call `UNSAFE_componentWillReceiveProps()` with initial props during [mounting](#mounting).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>[マウント](#mounting)時に、React は最初の props で `UNSAFE_componentWillReceiveProps()` を呼び出しません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It only calls this method if some of component's props may update.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>一部のコンポーネントの props が更新される可能性がある場合にのみ、このメソッドを呼び出します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Calling `this.setState()` generally doesn't trigger `UNSAFE_componentWillReceiveProps()`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>`this.setState()` を呼び出しても、通常 `UNSAFE_componentWillReceiveProps()` は呼び出されません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt; Note
+&gt;
+&gt; This lifecycle was previously named `componentWillUpdate`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>&gt; 補足
+&gt;
+&gt; このライフサイクルは、以前は `componentWillUpdate` と呼ばれていました。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>That name will continue to work until version 17.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>その名前はバージョン 17 まで機能し続けます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Use the [`rename-unsafe-lifecycles` codemod](https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles) to automatically update your components.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>コンポーネントを自動的に更新するには、[`rename-unsafe-lifecycles` codemod](https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles) を使用してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>`UNSAFE_componentWillUpdate()` is invoked just before rendering when new props or state are being received.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>`UNSAFE_componentWillUpdate()` は、新しい props または state を受け取ったときにレンダーの直前に呼び出されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Use this as an opportunity to perform preparation before an update occurs.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>更新が発生する前の準備する機会としてこれを使用してください。このメソッドは最初のレンダーでは呼び出されません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This method is not called for the initial render.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>ここで `this.setState()` を呼び出すことはできません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Note that you cannot call `this.setState()` here; nor should you do anything else (e.g. dispatch a Redux action) that would trigger an update to a React component before `UNSAFE_componentWillUpdate()` returns.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>また、`UNSAFE_componentWillUpdate()` が返る前に React コンポーネントへの更新を引き起こすような何か他のこと（たとえば、Redux アクションのディスパッチ）をするべきでもありません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Typically, this method can be replaced by `componentDidUpdate()`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>通常、このメソッドは `componentDidUpdate()` に置き換えることができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you were reading from the DOM in this method (e.g. to save a scroll position), you can move that logic to `getSnapshotBeforeUpdate()`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>このメソッドで DOM から読んでいる場合（スクロール位置を保存するなど）は、そのロジックを `getSnapshotBeforeUpdate()` に移動できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt; Note
+&gt;
+&gt; `UNSAFE_componentWillUpdate()` will not be invoked if [`shouldComponentUpdate()`](#shouldcomponentupdate) returns false.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>&gt; 補足
+&gt;
+&gt; [`shouldComponentUpdate()`](#shouldcomponentupdate) が false を返した場合、`UNSAFE_componentWillUpdate()` は呼び出されません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Other APIs {#other-apis-1}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>## 他の API {#other-apis-1}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Unlike the lifecycle methods above (which React calls for you), the methods below are the methods *you* can call from your components.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>上記のライフサイクルメソッド（React が呼び出すもの）とは異なり、以下のメソッドは*あなたが*コンポーネントから呼び出すことができるメソッドです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>There are just two of them: `setState()` and `forceUpdate()`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>それは `setState()` と `forceUpdate()` の 2 つだけです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>`setState()` enqueues changes to the component state and tells React that this component and its children need to be re-rendered with the updated state.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>`setState()` はコンポーネントの state への変更をエンキューし、このコンポーネントとその子を更新された state で再レンダーする必要があることを React に伝えます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is the primary method you use to update the user interface in response to event handlers and server responses.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>これは、イベントハンドラとサーバの応答に応じてユーザインターフェイスを更新するために使用する主な方法です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Think of `setState()` as a *request* rather than an immediate command to update the component.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>`setState()` は、コンポーネントを更新するための即時のコマンドではなく、**要求**として考えてください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For better perceived performance, React may delay it, and then update several components in a single pass.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>パフォーマンスをよくするために、React はそれを遅らせて、単一パスで複数のコンポーネントを更新することがあります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>React does not guarantee that the state changes are applied immediately.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>React は state の変更がすぐに適用されることを保証しません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>`setState()` does not always immediately update the component.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>`setState()` は常にコンポーネントを直ちに更新するわけではありません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It may batch or defer the update until later.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>それはバッチ式に更新するか後で更新を延期するかもしれません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This makes reading `this.state` right after calling `setState()` a potential pitfall.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>これは `setState()` を呼び出した直後に `this.state` を読み取ることが潜在的な危険になります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Instead, use `componentDidUpdate` or a `setState` callback (`setState(updater, callback)`), either of which are guaranteed to fire after the update has been applied.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>代わりに、`componentDidUpdate` または `setState` コールバック（`setState(updater, callback)`）を使用してください。どちらも更新が適用された後に起動することが保証されています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you need to set the state based on the previous state, read about the `updater` argument below.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>前の state に基づいて state を設定する必要がある場合は、下記の `updater` 引数についてお読みください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>`setState()` will always lead to a re-render unless `shouldComponentUpdate()` returns `false`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>`shouldComponentUpdate()` が `false` を返さない限り、`setState()` は常に再レンダーされます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If mutable objects are being used and conditional rendering logic cannot be implemented in `shouldComponentUpdate()`, calling `setState()` only when the new state differs from the previous state will avoid unnecessary re-renders.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>ミュータブルなオブジェクトが使用されていて、条件付きでレンダーを行うためのロジックを `shouldComponentUpdate()` に実装できない場合、新しい state が前の state と異なるときにのみ `setState()` を呼び出すと、不要な再レンダーを回避できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The first argument is an `updater` function with the signature:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>最初の引数の `updater` 関数は次のようなシグネチャです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>`state` is a reference to the component state at the time the change is being applied.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>`state` は、変更が適用されているときのコンポーネントの state への参照です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It should not be directly mutated.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>直接変更するべきではありません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Instead, changes should be represented by building a new object based on the input from `state` and `props`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>代わりに、`state` と `props` からの入力に基づいて新しいオブジェクトを構築することによって変更を表現する必要があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For instance, suppose we wanted to increment a value in state by `props.step`:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>たとえば、`props.step` によって `state` の値を増加したいとします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Both `state` and `props` received by the updater function are guaranteed to be up-to-date.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>updater 関数が受け取る `state` と `props` の両方が最新のものであることが保証されています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The output of the updater is shallowly merged with `state`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>アップデータの出力は `state` と浅くマージされています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The second parameter to `setState()` is an optional callback function that will be executed once `setState` is completed and the component is re-rendered.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>`setState()` の 2 番目のパラメータは、`setState` が完了してコンポーネントが再レンダーされると実行される省略可能なコールバック関数です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Generally we recommend using `componentDidUpdate()` for such logic instead.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>通常、そのようなロジックには代わりに `componentDidUpdate()` を使用することをおすすめします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You may optionally pass an object as the first argument to `setState()` instead of a function:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>関数の代わりに、オブジェクトを `setState()` の最初の引数として渡すこともできます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This performs a shallow merge of `stateChange` into the new state, e.g., to adjust a shopping cart item quantity:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>これは、たとえば、ショッピングカートの商品数を調整するために、`stateChange` の新しい state への浅いマージを実行します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This form of `setState()` is also asynchronous, and multiple calls during the same cycle may be batched together.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>この形式の `setState()` も非同期であり、同じサイクル中の複数の呼び出しをまとめてバッチ処理することができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, if you attempt to increment an item quantity more than once in the same cycle, that will result in the equivalent of:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>たとえば、同じサイクルで品目数量を複数回増やそうとすると、次のようになります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>```javaScript
+Object.assign(</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>```javascript
+Object.assign(</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Subsequent calls will override values from previous calls in the same cycle, so the quantity will only be incremented once.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>後続の呼び出しは、同じサイクル内の前の呼び出しの値を上書きするため、数量は 1 回だけ増分されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If the next state depends on the current state, we recommend using the updater function form, instead:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>次の state が現在の state に依存する場合は、代わりに updater 関数の形式を使用することをおすすめします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>```js
+this.setState((state) =&gt; {</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>```js
+this.setState((state) =&gt; {</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For more detail, see:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>詳しくは以下を参照してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* [State and Lifecycle guide](/docs/state-and-lifecycle.html)</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>* [state と ライフサイクル](/docs/state-and-lifecycle.html)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* [In depth: When and why are `setState()` calls batched?](https://stackoverflow.com/a/48610973/458193)</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>* [詳細: `setState()` はいつ、なぜバッチ処理されるのですか？](https://stackoverflow.com/a/48610973/458193)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* [In depth: Why isn't `this.state` updated immediately?](https://github.com/facebook/react/issues/11527#issuecomment-360199710)</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>* [詳細: `this.state` が直ちに更新されないのはなぜですか？](https://github.com/facebook/react/issues/11527#issuecomment-360199710)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>By default, when your component's state or props change, your component will re-render.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>デフォルトでは、コンポーネントの state や props が変わると、コンポーネントは再レンダーされます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If your `render()` method depends on some other data, you can tell React that the component needs re-rendering by calling `forceUpdate()`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>`render()` メソッドが他のデータに依存している場合は、`forceUpdate()` を呼び出してコンポーネントの再レンダーが必要であることを React に伝えることができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Calling `forceUpdate()` will cause `render()` to be called on the component, skipping `shouldComponentUpdate()`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>`forceUpdate()` を呼び出すと、`shouldComponentUpdate()` をスキップして、コンポーネントに対して `render()` が呼び出されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This will trigger the normal lifecycle methods for child components, including the `shouldComponentUpdate()` method of each child.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>これにより、それぞれの子の `shouldComponentUpdate()` メソッドを含む、子コンポーネントの通常のライフサイクルメソッドがトリガーされます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>React will still only update the DOM if the markup changes.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>マークアップが変更された場合にのみ React は DOM を更新します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Normally you should try to avoid all uses of `forceUpdate()` and only read from `this.props` and `this.state` in `render()`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>通常は全ての `forceUpdate()` の使用を避け、`render()` の `this.props` と `this.state` からのみ読み取るようにしてください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Class Properties {#class-properties-1}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>## クラスプロパティ {#class-properties-1}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>`defaultProps` can be defined as a property on the component class itself, to set the default props for the class.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>`defaultProps` は、コンポーネントクラス自体のプロパティとして定義して、そのクラスのデフォルトの props を設定できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is used for `undefined` props, but not for `null` props.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>これは `undefined` であるプロパティに使用されますが、`null` であるプロパティには使用されません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>例えば：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If `props.color` is not provided, it will be set by default to `'blue'`:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>`props.color` が提供されていない場合は、デフォルトで `'blue'` に設定されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>return &lt;CustomButton /&gt; ; // props.color will be set to blue</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>return &lt;CustomButton /&gt; ; // props.color は blue にセットされます</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If `props.color` is set to `null`, it will remain `null`:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>`props.color` が `null` に設定されている場合、それは `null` のままになります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>return &lt;CustomButton color={null} /&gt; ; // props.color will remain null</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>return &lt;CustomButton color={null} /&gt; ; // props.color は null のままになります</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The `displayName` string is used in debugging messages.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>`displayName` 文字列はデバッグメッセージに使用されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Usually, you don't need to set it explicitly because it's inferred from the name of the function or class that defines the component.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>通常、コンポーネントを定義する関数またはクラスの名前から推測されるため、明示的に設定する必要はありません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You might want to set it explicitly if you want to display a different name for debugging purposes or when you create a higher-order component, see [Wrap the Display Name for Easy Debugging](/docs/higher-order-components.html#convention-wrap-the-display-name-for-easy-debugging) for details.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>デバッグ目的で別の名前を表示する場合や、高階コンポーネントを作成する場合には、明示的に設定したくなるかもしれません。詳細については、[簡単なデバッグのために表示名をラップする](/docs/higher-order-components.html#convention-wrap-the-display-name-for-easy-debugging)を参照してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Instance Properties {#instance-properties-1}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>## インスタンスプロパティ {#instance-properties-1}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>`this.props` contains the props that were defined by the caller of this component.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>`this.props` には、このコンポーネントの呼び出し元によって定義された props が含まれています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>See [Components and Props](/docs/components-and-props.html) for an introduction to props.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>props の紹介は [コンポーネントと props](/docs/components-and-props.html) を見てください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In particular, `this.props.children` is a special prop, typically defined by the child tags in the JSX expression rather than in the tag itself.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>特に、`this.props.children` は特別なプロパティで、通常はタグ自体にではなく JSX 式の子タグによって定義されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The state contains data specific to this component that may change over time.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>state には、そのコンポーネント固有のデータが含まれており、これは時間の経過とともに変化する可能性があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The state is user-defined, and it should be a plain JavaScript object.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>state はユーザ定義のものであり、プレーンな JavaScript オブジェクトでなければなりません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If some value isn't used for rendering or data flow (for example, a timer ID), you don't have to put it in the state.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>レンダーやデータフローに値が使用されていない場合（たとえば、タイマー ID）は、値を state にする必要はありません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Such values can be defined as fields on the component instance.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>そのような値は、コンポーネントインスタンスのフィールドとして定義できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>See [State and Lifecycle](/docs/state-and-lifecycle.html) for more information about the state.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>state の詳細については、[state とライフサイクル](/docs/state-and-lifecycle.html)を参照してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Never mutate `this.state` directly, as calling `setState()` afterwards may replace the mutation you made.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>後で `setState()` を呼び出すと、行った変更が置き換えられる可能性があるため、`this.state` を直接変更しないでください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Treat `this.state` as if it were immutable.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071131Z">
+        <seg>`this.state` がイミュータブルであるかのように扱ってください。</seg>
+      </tuv>
+    </tu>
+  </body>
+</tmx>

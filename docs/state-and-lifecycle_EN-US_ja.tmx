@@ -1,0 +1,767 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tmx SYSTEM "tmx14.dtd">
+<tmx version="1.4">
+  <header creationtool="OmegaT" o-tmf="OmegaT TMX" adminlang="EN-US" datatype="plaintext" creationtoolversion="4.3.2_0_6a661c5e0" segtype="sentence" srclang="EN-US"/>
+  <body>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>---
+id: state-and-lifecycle
+title: State and Lifecycle
+permalink: docs/state-and-lifecycle.html
+redirect_from:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>---
+id: state-and-lifecycle
+title: state とライフサイクル
+permalink: docs/state-and-lifecycle.html
+redirect_from:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This page introduces the concept of state and lifecycle in a React component.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>このページでは React コンポーネントにおける state とライフサイクルについての導入を行います。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can find a [detailed component API reference here](/docs/react-component.html).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>[詳細なコンポーネントの API リファレンスはこちら](/docs/react-component.html)にあります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Consider the ticking clock example from [one of the previous sections](/docs/rendering-elements.html#updating-the-rendered-element).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>[以前の章のひとつ](/docs/rendering-elements.html#updating-the-rendered-element)にあった秒刻みの時計の例を考えてみましょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In [Rendering Elements](/docs/rendering-elements.html#rendering-an-element-into-the-dom), we have only learned one way to update the UI.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>[要素のレンダー](/docs/rendering-elements.html#rendering-an-element-into-the-dom)の章にて、UI を更新するための方法をひとつだけ学びました。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We call `ReactDOM.render()` to change the rendered output:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>それはレンダーされた出力を更新するために `ReactDOM.render()` を呼び出す、というものでした。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In this section, we will learn how to make the `Clock` component truly reusable and encapsulated.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>このセクションでは、この `Clock` コンポーネントを真に再利用可能かつカプセル化されたものにする方法を学びます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It will set up its own timer and update itself every second.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>コンポーネントが自身でタイマーをセットアップし、自身を毎秒更新するようにします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We can start by encapsulating how the clock looks:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>時計の見た目をカプセル化するところから始めてみましょう：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>However, it misses a crucial requirement: the fact that the `Clock` sets up a timer and updates the UI every second should be an implementation detail of the `Clock`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>しかし上記のコードは重要な要件を満たしていません：`Clock` がタイマーを設定して UI を毎秒ごとに更新するという処理は、`Clock` の内部実装の詳細 (implementation detail) であるべきだということです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Ideally we want to write this once and have the `Clock` update itself:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>理想的には以下のコードを一度だけ記述して、`Clock` に自身を更新させたいのです：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>To implement this, we need to add "state" to the `Clock` component.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>これを実装するには、`Clock` コンポーネントに "ステート (state)" を追加する必要があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>State is similar to props, but it is private and fully controlled by the component.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>state は props に似ていますが、コンポーネントによって完全に管理されるプライベートなものです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Converting a Function to a Class {#converting-a-function-to-a-class}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>## 関数をクラスに変換する {#converting-a-function-to-a-class}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can convert a function component like `Clock` to a class in five steps:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>以下の 5 ステップで、`Clock` のような関数コンポーネントをクラスに変換することができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Create an [ES6 class](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes), with the same name, that extends `React.Component`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>`React.Component` を継承する同名の [ES6 クラス](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes)を作成する。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Add a single empty method to it called `render()`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>`render()` と呼ばれる空のメソッドを 1 つ追加する。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Move the body of the function into the `render()` method.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>関数の中身を `render()` メソッドに移動する。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Replace `props` with `this.props` in the `render()` body.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>`render()` 内の `props` を `this.props` に書き換える。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Delete the remaining empty function declaration.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>空になった関数の宣言部分を削除する。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>`Clock` is now defined as a class rather than a function.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>これで、`Clock` は関数ではなくクラスとして定義されるようになりました。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The `render` method will be called each time an update happens, but as long as we render `&lt;Clock /&gt;` into the same DOM node, only a single instance of the `Clock` class will be used.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>`render` メソッドは更新が発生した際に毎回呼ばれますが、同一の DOM ノード内で `&lt;Clock /&gt;` をレンダーしている限り、`Clock` クラスのインスタンスは 1 つだけ使われます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This lets us use additional features such as local state and lifecycle methods.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>このことにより、ローカル state やライフサイクルメソッドといった追加の機能が利用できるようになります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Adding Local State to a Class {#adding-local-state-to-a-class}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>## クラスにローカルな state を追加する {#adding-local-state-to-a-class}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We will move the `date` from props to state in three steps:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>以下の 3 ステップで `date` を props から state に移します：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>1) Replace `this.props.date` with `this.state.date` in the `render()` method:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>1) `render()` メソッド内の `this.props.date` を `this.state.date` に書き換える：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>2) Add a [class constructor](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes#Constructor) that assigns the initial `this.state`:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>2) `this.state` の初期状態を設定する[クラスコンストラクタ](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes#Constructor)を追加する：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Note how we pass `props` to the base constructor:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>親クラスのコンストラクタへの `props` の渡し方に注目してください：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Class components should always call the base constructor with `props`. 3)</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>クラスのコンポーネントは常に `props` を引数として親クラスのコンストラクタを呼び出す必要があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Remove the `date` prop from the `&lt;Clock /&gt;` element:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>3) `&lt;Clock /&gt;` 要素から `date` プロパティを削除する：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We will later add the timer code back to the component itself.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>タイマーのコードはコンポーネント自身に後で追加しなおします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The result looks like this:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>結果は以下のようになります：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Next, we'll make the `Clock` set up its own timer and update itself every second.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>次に、`Clock` が自分でタイマーを設定し、毎秒ごとに自分を更新するようにします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Adding Lifecycle Methods to a Class {#adding-lifecycle-methods-to-a-class}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>## クラスにライフサイクルメソッドを追加する {#adding-lifecycle-methods-to-a-class}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In applications with many components, it's very important to free up resources taken by the components when they are destroyed.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>多くのコンポーネントを有するアプリケーションでは、コンポーネントが破棄された場合にそのコンポーネントが占有していたリソースを解放することがとても重要です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We want to [set up a timer](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval) whenever the `Clock` is rendered to the DOM for the first time.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>[タイマーを設定](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval)したいのは、最初に `Clock` が DOM として描画されるときです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is called "mounting" in React.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>このことを React では "マウント (mounting)" と呼びます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We also want to [clear that timer](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/clearInterval) whenever the DOM produced by the `Clock` is removed.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>また[タイマーをクリア](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/clearInterval)したいのは、`Clock` が生成した DOM が削除されるときです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is called "unmounting" in React.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>このことを React では "アンマウント (unmounting)" と呼びます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We can declare special methods on the component class to run some code when a component mounts and unmounts:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>コンポーネントクラスで特別なメソッドを宣言することで、コンポーネントがマウントしたりアンマウントしたりした際にコードを実行することができます：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>These methods are called "lifecycle methods".</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>これらのメソッドは "ライフサイクルメソッド (lifecycle method)" と呼ばれます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The `componentDidMount()` method runs after the component output has been rendered to the DOM. This is a good place to set up a timer:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>`componentDidMount()` メソッドは、出力が DOM にレンダーされた後に実行されます。ここがタイマーをセットアップするのによい場所です：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Note how we save the timer ID right on `this` (`this.timerID`).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>タイマー ID を直接 `this` 上に（`this.timerID` として）格納したことに注目してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>While `this.props` is set up by React itself and `this.state` has a special meaning, you are free to add additional fields to the class manually if you need to store something that doesn’t participate in the data flow (like a timer ID).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>`this.props` は React 自体によって設定され、また `this.state` は特別な意味を持っていますが、何かデータフローに影響しないデータ（タイマー ID のようなもの）を保存したい場合に、追加のフィールドを手動でクラスに追加することは自由です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We will tear down the timer in the `componentWillUnmount()` lifecycle method:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>タイマーの後片付けは `componentWillUnmount()` というライフサイクルメソッドで行います：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Finally, we will implement a method called `tick()` that the `Clock` component will run every second.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>最後に、`Clock` コンポーネントが毎秒ごとに実行する `tick()` メソッドを実装します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It will use `this.setState()` to schedule updates to the component local state:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>コンポーネントのローカル state の更新をスケジュールするために `this.setState()` を使用します：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Now the clock ticks every second.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>これで、この時計は毎秒ごとに時間を刻みます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Let's quickly recap what's going on and the order in which the methods are called:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>何が起こったのかをメソッドが呼び出される順序にそって簡単に振り返ってみましょう：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>1) When `&lt;Clock /&gt;` is passed to `ReactDOM.render()`, React calls the constructor of the `Clock` component.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>1) `&lt;Clock /&gt;` が `ReactDOM.render()` に渡されると、React は `Clock` コンポーネントのコンストラクタを呼び出します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Since `Clock` needs to display the current time, it initializes `this.state` with an object including the current time.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>`Clock` は現在時刻を表示する必要があるので、現在時刻を含んだオブジェクトで `this.state` を初期化します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We will later update this state.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>あとでこの state を更新していきます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>2) React then calls the `Clock` component's `render()` method.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>2) 次に React は `Clock` コンポーネントの `render()` メソッドを呼び出します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is how React learns what should be displayed on the screen.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>これにより React は画面に何を表示すべきか知ります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>React then updates the DOM to match the `Clock`'s render output.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>そののちに、React は DOM を `Clock` のレンダー出力と一致するように更新します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>3) When the `Clock` output is inserted in the DOM, React calls the `componentDidMount()` lifecycle method.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>3) `Clock` の出力が DOM に挿入されると、React は `componentDidMount()` ライフサイクルメソッドを呼び出します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Inside it, the `Clock` component asks the browser to set up a timer to call the component's `tick()` method once a second. 4)</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>その中で、`Clock` コンポーネントは毎秒ごとにコンポーネントの `tick()` メソッドを呼び出すためにタイマーを設定するようブラウザに要求します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Every second the browser calls the `tick()` method.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>4) ブラウザは、毎秒ごとに `tick()` メソッドを呼び出します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Inside it, the `Clock` component schedules a UI update by calling `setState()` with an object containing the current time.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>その中で `Clock` コンポーネントは、現在時刻を含んだオブジェクトを引数として `setState()` を呼び出すことで、UI の更新をスケジュールします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Thanks to the `setState()` call, React knows the state has changed, and calls the `render()` method again to learn what should be on the screen.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>`setState()` が呼び出されたおかげで、React は state が変わったということが分かるので、`render()` メソッドを再度呼び出して、画面上に何を表示すべきかを知ります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This time, `this.state.date` in the `render()` method will be different, and so the render output will include the updated time.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>今回は、`render()` メソッド内の `this.state.date` が異なっているので、レンダーされる出力には新しく更新された時間が含まれています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>React updates the DOM accordingly.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>それに従って React は DOM を更新します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>5) If the `Clock` component is ever removed from the DOM, React calls the `componentWillUnmount()` lifecycle method so the timer is stopped.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>5) この後に `Clock` コンポーネントが DOM から削除されることがあれば、React は `componentWillUnmount()` ライフサイクルメソッドを呼び出し、これによりタイマーが停止します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Using State Correctly {#using-state-correctly}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>## state を正しく使用する {#using-state-correctly}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>There are three things you should know about `setState()`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>`setState()` について知っておくべきことが 3 つあります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Do Not Modify State Directly {#do-not-modify-state-directly}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>### state を直接変更しないこと {#do-not-modify-state-directly}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, this will not re-render a component:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>例えば、以下のコードではコンポーネントは再レンダーされません：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Instead, use `setState()`:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>代わりに `setState()` を使用してください：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The only place where you can assign `this.state` is the constructor.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>`this.state` に直接代入してよい唯一の場所はコンストラクタです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### State Updates May Be Asynchronous {#state-updates-may-be-asynchronous}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>### state の更新は非同期に行われる可能性がある {#state-updates-may-be-asynchronous}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>React may batch multiple `setState()` calls into a single update for performance.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>React はパフォーマンスのために、複数の `setState()` 呼び出しを 1 度の更新にまとめて処理することがあります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Because `this.props` and `this.state` may be updated asynchronously, you should not rely on their values for calculating the next state.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>`this.props` と `this.state` は非同期に更新されるため、次の state を求める際に、それらの値に依存するべきではありません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, this code may fail to update the counter:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>例えば、以下のコードはカウンターの更新に失敗することがあります：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>To fix it, use a second form of `setState()` that accepts a function rather than an object.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>これを修正するために、オブジェクトではなく関数を受け取る `setState()` の 2 つ目の形を使用します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>That function will receive the previous state as the first argument, and the props at the time the update is applied as the second argument:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>その関数は前の state を最初の引数として受け取り、更新が適用される時点での props を第 2 引数として受け取ります：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We used an [arrow function](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions) above, but it also works with regular functions:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>上記のコードでは[アロー関数](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions)を使いましたが、通常の関数でも動作します：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### State Updates are Merged {#state-updates-are-merged}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>### state の更新はマージされる {#state-updates-are-merged}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>When you call `setState()`, React merges the object you provide into the current state.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>`setState()` を呼び出した場合、React は与えられたオブジェクトを現在の state にマージします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, your state may contain several independent variables:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>例えば、あなたの state はいくつかの独立した変数を含んでいるかもしれません：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Then you can update them independently with separate `setState()` calls:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>その場合、別々の `setState()` 呼び出しで、それらの変数を独立して更新することができます：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The merging is shallow, so `this.setState({comments})` leaves `this.state.posts` intact, but completely replaces `this.state.comments`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>マージは浅く (shallow) 行われるので、`this.setState({comments})` は `this.state.posts` をそのまま残しますが、`this.state.comments` を完全に置き換えます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## The Data Flows Down {#the-data-flows-down}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>## データは下方向に伝わる {#the-data-flows-down}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Neither parent nor child components can know if a certain component is stateful or stateless, and they shouldn't care whether it is defined as a function or a class.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>親コンポーネントであれ子コンポーネントであれ、特定の他のコンポーネントがステートフルかステートレスかを知ることはできませんし、特定のコンポーネントの定義が関数型かクラス型かを気にするべきではありません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is why state is often called local or encapsulated.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>これが、state はローカルのものである、ないしはカプセル化されている、と言われる理由です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It is not accessible to any component other than the one that owns and sets it.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>state を所有してセットするコンポーネント自身以外からはその state にアクセスすることができません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>A component may choose to pass its state down as props to its child components:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>コンポーネントはその子コンポーネントに props として自身の state を渡してもかまいません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The `FormattedDate` component would receive the `date` in its props and wouldn't know whether it came from the `Clock`'s state, from the `Clock`'s props, or was typed by hand:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>`FormattedDate` コンポーネントは props 経由で `date` を受け取りますが、それが `Clock` の state から来たのか、`Clock` の props から来たのか、もしくは手書きされたものなのかは分かりません：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is commonly called a "top-down" or "unidirectional" data flow.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>このデータフローは一般的には "トップダウン" もしくは "単一方向" データフローと呼ばれます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Any state is always owned by some specific component, and any data or UI derived from that state can only affect components "below" them in the tree.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>いかなる state も必ず特定のコンポーネントが所有し、state から生ずる全てのデータまたは UI は、ツリーでそれらの "下" にいるコンポーネントにのみ影響します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you imagine a component tree as a waterfall of props, each component's state is like an additional water source that joins it at an arbitrary point but also flows down.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>コンポーネントツリーとは props が流れ落ちる滝なのだと想像すると、各コンポーネントの state とは任意の場所で合流してくる追加の水源であり、それらもまた下に流れ落ちていくものなのです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>To show that all components are truly isolated, we can create an `App` component that renders three `&lt;Clock&gt;`s:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>全てのコンポーネントが本当に独立していることを示すのに、3 つの `&lt;Clock&gt;` をレンダーする `App` コンポーネントを作成します：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Each `Clock` sets up its own timer and updates independently.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>各 `Clock` は独立してタイマーをセットし、独立して更新されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In React apps, whether a component is stateful or stateless is considered an implementation detail of the component that may change over time.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>React アプリケーションでは、コンポーネントがステートフルかステートレスかは、コンポーネントにおける内部実装の詳細 (implementation detail) とみなされ、それは時間と共に変化しうるものです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can use stateless components inside stateful components, and vice versa.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072638Z">
+        <seg>ステートレスなコンポーネントをステートフルなコンポーネントの中で使うことが可能であり、その逆も同様です。</seg>
+      </tuv>
+    </tu>
+  </body>
+</tmx>

@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tmx SYSTEM "tmx14.dtd">
+<tmx version="1.4">
+  <header creationtool="OmegaT" o-tmf="OmegaT TMX" adminlang="EN-US" datatype="plaintext" creationtoolversion="4.3.2_0_6a661c5e0" segtype="sentence" srclang="EN-US"/>
+  <body>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>---
+id: components-and-props
+title: Components and Props
+permalink: docs/components-and-props.html
+redirect_from:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>---
+id: components-and-props
+title: コンポーネントと props
+permalink: docs/components-and-props.html
+redirect_from:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Components let you split the UI into independent, reusable pieces, and think about each piece in isolation.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>コンポーネントにより UI を独立した再利用できる部品に分割し、部品それぞれを分離して考えることができるようになります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This page provides an introduction to the idea of components.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>このページではコンポーネントという概念の導入を行います。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can find a [detailed component API reference here](/docs/react-component.html).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>[詳細な API リファレンスはこちら](/docs/react-component.html)で参照できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Conceptually, components are like JavaScript functions.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>概念的には、コンポーネントは JavaScript の関数と似ています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>They accept arbitrary inputs (called "props") and return React elements describing what should appear on the screen.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>（"props" と呼ばれる）任意の入力を受け取り、画面上に表示すべきものを記述する React 要素を返します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Function and Class Components {#function-and-class-components}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>## 関数コンポーネントとクラスコンポーネント {#function-and-class-components}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The simplest way to define a component is to write a JavaScript function:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>コンポーネントを定義する最もシンプルな方法は JavaScript の関数を書くことです：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This function is a valid React component because it accepts a single "props" (which stands for properties) object argument with data and returns a React element.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>この関数は、データの入った "props"（「プロパティ」の意味）というオブジェクトを引数としてひとつ受け取り、React 要素を返すので、有効な React コンポーネントです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We call such components "function components" because they are literally JavaScript functions.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>これは文字通り JavaScript の関数ですので、このようなコンポーネントのことを "関数コンポーネント (function component)" と呼びます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can also use an [ES6 class](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes) to define a component:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>コンポーネントを定義するために [ES6 クラス](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes)も使用できます：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The above two components are equivalent from React's point of view.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>上記 2 つのコンポーネントは React の視点からは等価です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Function and Class components both have some additional features that we will discuss in the [next sections](/docs/state-and-lifecycle.html).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>関数コンポーネントとクラスコンポーネントには、[次のセクション](/docs/state-and-lifecycle.html)で説明するようにそれぞれ幾つかの追加機能があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Rendering a Component {#rendering-a-component}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>## コンポーネントのレンダー {#rendering-a-component}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Previously, we only encountered React elements that represent DOM tags:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>前節では、DOM のタグを表す React 要素のみを扱いました：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>However, elements can also represent user-defined components:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>しかし、要素はユーザ定義のコンポーネントを表すこともできます：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>When React sees an element representing a user-defined component, it passes JSX attributes and children to this component as a single object.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>React がユーザ定義のコンポーネントを見つけた場合、JSX に書かれている属性と子要素を単一のオブジェクトとしてこのコンポーネントに渡します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We call this object "props".</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>このオブジェクトのことを "props" と呼びます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, this code renders "Hello, Sara" on the page:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>例えば以下のコードではページ上に "Hello, Sara" を表示します：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Let's recap what happens in this example:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>この例で何が起こるのかおさらいしてみましょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We call `ReactDOM.render()` with the `&lt;Welcome name="Sara" /&gt;` element.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>`&lt;Welcome name="Sara" /&gt;` という要素を引数として `ReactDOM.render()` を呼び出します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>React calls the `Welcome` component with `{name: 'Sara'}` as the props.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>React は `Welcome` コンポーネントを呼び出し、そのときに props として `{name: 'Sara'}` を渡します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Our `Welcome` component returns a `<bpt i="1" x="1">&lt;h1&gt;</bpt>Hello, Sara<ept i="1">&lt;/h1&gt;</ept>` element as the result.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>`Welcome` コンポーネントは出力として `<bpt i="1" x="1">&lt;h1&gt;</bpt>Hello, Sara<ept i="1">&lt;/h1&gt;</ept>` 要素を返します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>React DOM efficiently updates the DOM to match `<bpt i="1" x="1">&lt;h1&gt;</bpt>Hello, Sara<ept i="1">&lt;/h1&gt;</ept>`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>React DOM は `<bpt i="1" x="1">&lt;h1&gt;</bpt>Hello, Sara<ept i="1">&lt;/h1&gt;</ept>` に一致するよう、DOM を効率的に更新します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;**Note:** Always start component names with a capital letter.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>&gt;**補足:** コンポーネント名は常に大文字で始めてください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;
+&gt;React treats components starting with lowercase letters as DOM tags.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>&gt;
+&gt;React は小文字で始まるコンポーネントを DOM タグとして扱います。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, `&lt;div /&gt;` represents an HTML div tag, but `&lt;Welcome /&gt;` represents a component and requires `Welcome` to be in scope.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>例えば、`&lt;div /&gt;` は HTML の div タグを表しますが、`&lt;Welcome /&gt;` はコンポーネントを表しており、スコープ内に `Welcome` が存在する必要があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;
+&gt;To learn more about the reasoning behind this convention, please read [JSX In Depth](/docs/jsx-in-depth.html#user-defined-components-must-be-capitalized).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>&gt;
+&gt;この規約の背後にある理由については [JSX を深く理解する](/docs/jsx-in-depth.html#user-defined-components-must-be-capitalized)を参照してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Composing Components {#composing-components}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>## コンポーネントを組み合わせる {#composing-components}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Components can refer to other components in their output.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>コンポーネントは自身の出力の中で他のコンポーネントを参照できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This lets us use the same component abstraction for any level of detail.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>これにより、どの詳細度のレベルにおいても、コンポーネントという単一の抽象化を利用できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>A button, a form, a dialog, a screen: in React apps, all those are commonly expressed as components.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>ボタン、フォーム、ダイアログ、画面：React アプリでは、これらは共通してコンポーネントとして表現されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, we can create an `App` component that renders `Welcome` many times:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>例えば、`Welcome` を何回もレンダーする `App` コンポーネントを作成できます：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Typically, new React apps have a single `App` component at the very top.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>典型的には、新規の React アプリは階層の一番上に単一の `App` コンポーネントを持っています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>However, if you integrate React into an existing app, you might start bottom-up with a small component like `Button` and gradually work your way to the top of the view hierarchy.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>しかし、既存のアプリに React を統合する場合は、`Button` のような小さなコンポーネントからボトムアップで始め、徐々にビューの階層構造の頂上に向かって進んでいってもよいでしょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Extracting Components {#extracting-components}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>## コンポーネントの抽出 {#extracting-components}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Don't be afraid to split components into smaller components.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>コンポーネントをより小さなコンポーネントに分割することを恐れないでください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, consider this `Comment` component:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>例えば、この `Comment` コンポーネントについて考えましょう：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It accepts `author` (an object), `text` (a string), and `date` (a date) as props, and describes a comment on a social media website.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>これは props として `author`（オブジェクト）、`text`（文字列）、および `date`（日付）を受け取り、ソーシャルメディアサイトにおける 1 つのコメントを表します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This component can be tricky to change because of all the nesting, and it is also hard to reuse individual parts of it.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>これだけのネストがあるため、このコンポーネントの変更には苦労を伴い、また内部の個々の部品を再利用することも困難です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Let's extract a few components from it.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>ここからいくつかのコンポーネントを抽出しましょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>First, we will extract `Avatar`:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>まず、`Avatar` を抽出します：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The `Avatar` doesn't need to know that it is being rendered inside a `Comment`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>`Avatar` は、自身が `Comment` の内側でレンダーされているということを知っている必要はありません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is why we have given its prop a more generic name: `user` rather than `author`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>なので props の名前として、`author` ではなく `user` というもっと一般的な名前を付けました。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We recommend naming props from the component's own point of view rather than the context in which it is being used.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>コンポーネントが使用される文脈ではなく、コンポーネント自身からの観点で props の名前を付けることをお勧めします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We can now simplify `Comment` a tiny bit:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>これで `Comment` をほんの少しシンプルにできます：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Next, we will extract a `UserInfo` component that renders an `Avatar` next to the user's name:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>次に、ユーザ名の隣の `Avatar` をレンダーするために使われる、`UserInfo` コンポーネントを抽出しましょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This lets us simplify `Comment` even further:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>これにより `Comment` をさらにシンプルにできます：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Extracting components might seem like grunt work at first, but having a palette of reusable components pays off in larger apps.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>コンポーネントの抽出は最初は面倒な仕事のように思えますが、再利用できるコンポーネントをパレットとして持っておくことは、アプリケーションが大きくなれば努力に見合った利益を生みます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>A good rule of thumb is that if a part of your UI is used several times (`Button`, `Panel`, `Avatar`), or is complex enough on its own (`App`, `FeedStory`, `Comment`), it is a good candidate to be extracted to a separate component.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>役に立つ経験則として、UI の一部（`Button`、`Panel`、`Avatar` など）が複数回使われている場合、またはその UI 自体が複雑（`App`、`FeedStory`、`Comment` など）である場合、それらは別のコンポーネントに抽出する有力な候補であるといえます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Props are Read-Only {#props-are-read-only}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>## Props は読み取り専用 {#props-are-read-only}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Whether you declare a component [as a function or a class](#function-and-class-components), it must never modify its own props.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>コンポーネントを[関数で宣言するかクラスで宣言するか](#function-and-class-components)に関わらず、自分自身の props は決して変更してはいけません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Consider this `sum` function:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>この `sum` 関数を考えましょう：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Such functions are called ["pure"](https://en.wikipedia.org/wiki/Pure_function) because they do not attempt to change their inputs, and always return the same result for the same inputs.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>このような関数は入力されたものを変更しようとせず、同じ入力に対し同じ結果を返すので ["純粋 (pure)"](https://en.wikipedia.org/wiki/Pure_function) であると言われます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In contrast, this function is impure because it changes its own input:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>対照的に、以下の関数は自身への入力を変更するため純関数ではありません：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>React is pretty flexible but it has a single strict rule:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>React は柔軟ですが、1 つだけ厳格なルールがあります：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>**All React components must act like pure functions with respect to their props.**</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>**全ての React コンポーネントは、自己の props に対して純関数のように振る舞わねばなりません。**</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Of course, application UIs are dynamic and change over time.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>もちろんアプリケーションの UI は動的で、時間に応じて変化するものです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In the [next section](/docs/state-and-lifecycle.html), we will introduce a new concept of "state".</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>[次の章](/docs/state-and-lifecycle.html)では、"state" という新しい概念を紹介します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>State allows React components to change their output over time in response to user actions, network responses, and anything else, without violating this rule.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T041955Z">
+        <seg>state により React コンポーネントは上述のルールを壊すことなく、時間と共にユーザのアクション、ネットワークのレスポンスや他の様々な事に反応して、出力を変更することができます。</seg>
+      </tuv>
+    </tu>
+  </body>
+</tmx>

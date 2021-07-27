@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tmx SYSTEM "tmx14.dtd">
+<tmx version="1.4">
+  <header creationtool="OmegaT" o-tmf="OmegaT TMX" adminlang="EN-US" datatype="plaintext" creationtoolversion="4.3.2_0_6a661c5e0" segtype="sentence" srclang="EN-US"/>
+  <body>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>---
+id: faq-ajax
+title: AJAX and APIs
+permalink: docs/faq-ajax.html
+layout: docs
+category: FAQ
+---</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050409Z">
+        <seg>---
+id: faq-ajax
+title: AJAX と API
+permalink: docs/faq-ajax.html
+layout: docs
+category: FAQ
+---</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### How can I make an AJAX call?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050409Z">
+        <seg>### AJAX コールをする方法は？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can use any AJAX library you like with React.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050409Z">
+        <seg>任意の AJAX ライブラリを React と共に利用可能です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Some popular ones are [Axios](https://github.com/axios/axios), [jQuery AJAX](https://api.jquery.com/jQuery.ajax/), and the browser built-in [window.fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050409Z">
+        <seg>人気のあるものとしては、[Axios](https://github.com/axios/axios)、[jQuery AJAX](https://api.jquery.com/jQuery.ajax/)、ブラウザ組み込みの [window.fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) などがあります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Where in the component lifecycle should I make an AJAX call?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050409Z">
+        <seg>### コンポーネントのどのライフサイクルで AJAX コールすべきか？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You should populate data with AJAX calls in the [`componentDidMount`](/docs/react-component.html#mounting) lifecycle method.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050409Z">
+        <seg>AJAX コールによるデータ取得は [`componentDidMount`](/docs/react-component.html#mounting) のライフサイクルメソッドで行うべきです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is so you can use `setState` to update your component when the data is retrieved.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050409Z">
+        <seg>データ取得後に `setState` でコンポーネントを更新できるようにするためです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Example: Using AJAX results to set local state {#example-using-ajax-results-to-set-local-state}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050409Z">
+        <seg>### 例：ローカル state に AJAX の通信結果をセットする {#example-using-ajax-results-to-set-local-state}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The component below demonstrates how to make an AJAX call in `componentDidMount` to populate local component state.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050409Z">
+        <seg>下記のコンポーネントは、`componentDidMount` で AJAX コールして得られたデータをローカルコンポーネントの state に流し込んでいます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The example API returns a JSON object like this:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050409Z">
+        <seg>このサンプル API が返す JSON オブジェクトはこのようになります：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>// Note: it's important to handle errors here</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050409Z">
+        <seg>// 補足：コンポーネント内のバグによる例外を隠蔽しないためにも</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>// instead of a catch() block so that we don't swallow // exceptions from actual bugs in components.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050409Z">
+        <seg>// catch()ブロックの代わりにここでエラーハンドリングすることが重要です</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Here is the equivalent with [Hooks](https://reactjs.org/docs/hooks-intro.html):</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050409Z">
+        <seg>こちらが[フック](/docs/hooks-intro.html)による同等版です：</seg>
+      </tuv>
+    </tu>
+  </body>
+</tmx>

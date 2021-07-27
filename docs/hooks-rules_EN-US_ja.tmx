@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tmx SYSTEM "tmx14.dtd">
+<tmx version="1.4">
+  <header creationtool="OmegaT" o-tmf="OmegaT TMX" adminlang="EN-US" datatype="plaintext" creationtoolversion="4.3.2_0_6a661c5e0" segtype="sentence" srclang="EN-US"/>
+  <body>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>---
+id: hooks-rules
+title: Rules of Hooks
+permalink: docs/hooks-rules.html
+next: hooks-custom.html
+prev: hooks-effect.html
+---</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T061154Z">
+        <seg>---
+id: hooks-rules
+title: フックのルール
+permalink: docs/hooks-rules.html
+next: hooks-custom.html
+prev: hooks-effect.html
+---</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>*Hooks* are a new addition in React 16.8.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T061154Z">
+        <seg>*フック (hook)* は React 16.8 で追加された新機能です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>They let you use state and other React features without writing a class.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T061154Z">
+        <seg>state などの React の機能を、クラスを書かずに使えるようになります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Hooks are JavaScript functions, but you need to follow two rules when using them.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T061154Z">
+        <seg>フックは JavaScript の関数ですが、それらを使う際には以下の 2 つのルールに従う必要があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We provide a [linter plugin](https://www.npmjs.com/package/eslint-plugin-react-hooks) to enforce these rules automatically:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T061154Z">
+        <seg>我々は自動的にこのルールを強制するための [linter プラグイン](https://www.npmjs.com/package/eslint-plugin-react-hooks) を提供しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Only Call Hooks at the Top Level {#only-call-hooks-at-the-top-level}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T061154Z">
+        <seg>### フックを呼び出すのはトップレベルのみ {#only-call-hooks-at-the-top-level}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>**Don't call Hooks inside loops, conditions, or nested functions.** Instead, always use Hooks at the top level of your React function, before any early returns.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T061154Z">
+        <seg>**フックをループや条件分岐、あるいはネストされた関数内で呼び出してはいけません。**代わりに、あなたの React の関数のトップレベルでのみ、あらゆる早期 return 文よりも前の場所で呼び出してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>By following this rule, you ensure that Hooks are called in the same order each time a component renders.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T061154Z">
+        <seg>これを守ることで、コンポーネントがレンダーされる際に毎回同じ順番で呼び出されるということが保証されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>That's what allows React to correctly preserve the state of Hooks between multiple `useState` and `useEffect` calls.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T061154Z">
+        <seg>これが、複数回 `useState` や `useEffect` が呼び出された場合でも React がフックの状態を正しく保持するための仕組みです（興味がある場合は[ページ下部](#explanation)で詳しく説明しています）。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>(If you're curious, we'll explain this in depth [below](#explanation).)</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T061154Z">
+        <seg>### フックを呼び出すのは React の関数内のみ {#only-call-hooks-from-react-functions}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Only Call Hooks from React Functions {#only-call-hooks-from-react-functions}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T061154Z">
+        <seg>**フックを通常の JavaScript 関数から呼び出さないでください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>**Don't call Hooks from regular JavaScript functions.** Instead, you can:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T061154Z">
+        <seg>**代わりに以下のようにします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* ✅ Call Hooks from React function components.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T061154Z">
+        <seg>- ✅ React の関数コンポーネント内から呼び出す。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* ✅ Call Hooks from custom Hooks (we'll learn about them [on the next page](/docs/hooks-custom.html)).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T061154Z">
+        <seg>- ✅ カスタムフック内（[次のページで説明します](/docs/hooks-custom.html)）から呼び出す。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>By following this rule, you ensure that all stateful logic in a component is clearly visible from its source code.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T061154Z">
+        <seg>このルールを守ることで、コンポーネント内のすべての state を使うロジックがソースコードから間違いなく参照可能になります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## ESLint Plugin {#eslint-plugin}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T061154Z">
+        <seg>## ESLint プラグイン {#eslint-plugin}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We released an ESLint plugin called [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks) that enforces these two rules.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T061154Z">
+        <seg>これらの 2 つのルールを強制できる [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks) という ESLint のプラグインをリリースしました。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can add this plugin to your project if you'd like to try it:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T061154Z">
+        <seg>試したい場合はあなたのプロジェクトに以下のようにして加えることができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This plugin is included by default in [Create React App](/docs/create-a-new-react-app.html#create-react-app).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T061154Z">
+        <seg>このプラグインは [Create React App](/docs/create-a-new-react-app.html#create-react-app) ではデフォルトで含まれています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>**You can skip to the next page explaining how to write [your own Hooks](/docs/hooks-custom.html) now.** On this page, we'll continue by explaining the reasoning behind these rules.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T061154Z">
+        <seg>**次のページまで飛ばして[独自のフック](/docs/hooks-custom.html)を書く方法について学んでも構いません。**このページの続きの部分ではこれらのルールの背後にある根拠について述べていきます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Explanation {#explanation}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T061154Z">
+        <seg>## 解説 {#explanation}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>As we [learned earlier](/docs/hooks-state.html#tip-using-multiple-state-variables), we can use multiple State or Effect Hooks in a single component:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T061154Z">
+        <seg>[既に学んだ通り](/docs/hooks-state.html#tip-using-multiple-state-variables)、ひとつのコンポーネント内で複数の state や副作用を使うことができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>So how does React know which state corresponds to which `useState` call?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T061154Z">
+        <seg>では React は、どの `useState` の呼び出しがどの state に対応するのか、どうやって知るのでしょうか？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The answer is that **React relies on the order in which Hooks are called**.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T061154Z">
+        <seg>その答えは「**React はフックが呼ばれる順番に依存している**」です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Our example works because the order of the Hook calls is the same on every render:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T061154Z">
+        <seg>我々の例が動作するのは、フックの呼び出しの順序が毎回のレンダーごとに同じだからです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>As long as the order of the Hook calls is the same between renders, React can associate some local state with each of them.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T061154Z">
+        <seg>フックへの呼び出しの順番がレンダー間で変わらない限り、React はそれらのフックにローカル state を割り当てることができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>But what happens if we put a Hook call (for example, the `persistForm` effect) inside a condition?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T061154Z">
+        <seg>ですがフックの呼び出しを条件分岐内（例えば `persistForm` 副作用の内部で）で行ったらどうなるでしょうか？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The `name !== ''` condition is `true` on the first render, so we run this Hook.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T061154Z">
+        <seg>`name !== ''` という条件は初回のレンダー時には `true` なので、フックは実行されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>However, on the next render the user might clear the form, making the condition `false`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T061154Z">
+        <seg>しかし次回のレンダー時にはユーザがフォームをクリアしているかもしれず、その場合にこの条件は `false` になります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Now that we skip this Hook during rendering, the order of the Hook calls becomes different:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T061154Z">
+        <seg>するとレンダー途中でこのフックがスキップされるため、フックの呼ばれる順番が変わってしまいます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>React wouldn't know what to return for the second `useState` Hook call.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T061154Z">
+        <seg>React は 2 つ目の `useState` の呼び出しに対して何を返せばいいのか分からなくなります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>React expected that the second Hook call in this component corresponds to the `persistForm` effect, just like during the previous render, but it doesn't anymore.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T061154Z">
+        <seg>React は 2 つめのフックの呼び出しは前回レンダー時と同様に `persistForm` に対応するものだと期待しているのですが、それが成り立たなくなっています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>From that point, every next Hook call after the one we skipped would also shift by one, leading to bugs.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T061154Z">
+        <seg>この部分より先では、スキップされたもの以降のすべてのフックがひとつずつずれているため、バグを引き起こします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>**This is why Hooks must be called on the top level of our components.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T061154Z">
+        <seg>**これがフックを呼び出すのがトップレベルのみでなければならない理由です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>** If we want to run an effect conditionally, we can put that condition *inside* our Hook:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T061154Z">
+        <seg>**条件付きで副作用を走らせたい場合は、その条件をフックの*内部*に入れることができます：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>**Note that you don't need to worry about this problem if you use the [provided lint rule](https://www.npmjs.com/package/eslint-plugin-react-hooks).** But now you also know *why* Hooks work this way, and which issues the rule is preventing.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T061154Z">
+        <seg>**[上記の lint ルール](https://www.npmjs.com/package/eslint-plugin-react-hooks)を使えばこの問題について心配する必要はない、ということに注意してください。**しかしフックが*なぜ*このように動作するのか、このルールがどんな問題を防いでいるのかについて学びました。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Next Steps {#next-steps}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T061154Z">
+        <seg>## 次のステップ {#next-steps}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Finally, we're ready to learn about [writing your own Hooks](/docs/hooks-custom.html)!</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T061154Z">
+        <seg>ついに[自分独自のフックの書き方](/docs/hooks-custom.html)について学ぶ準備ができました！</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Custom Hooks let you combine Hooks provided by React into your own abstractions, and reuse common stateful logic between different components.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T061154Z">
+        <seg>カスタムフックを使えば React から提供されるフックを組み合わせて自分独自の抽象化を作り出し、複数の異なるコンポーネント間で state を使う共通のロジックを再利用することができるようになります。</seg>
+      </tuv>
+    </tu>
+  </body>
+</tmx>

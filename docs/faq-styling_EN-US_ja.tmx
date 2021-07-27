@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tmx SYSTEM "tmx14.dtd">
+<tmx version="1.4">
+  <header creationtool="OmegaT" o-tmf="OmegaT TMX" adminlang="EN-US" datatype="plaintext" creationtoolversion="4.3.2_0_6a661c5e0" segtype="sentence" srclang="EN-US"/>
+  <body>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>---
+id: faq-styling
+title: Styling and CSS
+permalink: docs/faq-styling.html
+layout: docs
+category: FAQ
+---</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051846Z">
+        <seg>---
+id: faq-styling
+title: CSS とスタイルの使用
+permalink: docs/faq-styling.html
+layout: docs
+category: FAQ
+---</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### How do I add CSS classes to components?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051846Z">
+        <seg>### CSS のクラスをコンポーネントに適用するにはどうすれば？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Pass a string as the `className` prop:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051846Z">
+        <seg>このようにクラス名を文字列として `className` プロパティに与えてください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It is common for CSS classes to depend on the component props or state:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051846Z">
+        <seg>このようにコンポーネントの props や state の状態を元に CSS クラスを割り当てる方法もよく使用されています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;Tip
+&gt;
+&gt;If you often find yourself writing code like this, [classnames](https://www.npmjs.com/package/classnames#usage-with-reactjs) package can simplify it.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051846Z">
+        <seg>&gt;ヒント
+&gt;
+&gt;もしあなたが上記のようなコードを書くことが多い場合、[classnames](https://www.npmjs.com/package/classnames#usage-with-reactjs) という npm パッケージを使うことで簡略化できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Can I use inline styles?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051846Z">
+        <seg>### インラインスタイルは使えますか？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Yes, see the docs on styling [here](/docs/dom-elements.html#style).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051846Z">
+        <seg>はい、スタイルの書き方については[この資料](/docs/dom-elements.html#style)をご覧ください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Are inline styles bad?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051846Z">
+        <seg>### インラインスタイルは悪なの？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>CSS classes are generally better for performance than inline styles.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051846Z">
+        <seg>パフォーマンス観点から言えば、基本的に CSS クラスを使う方が、インラインスタイルを用いるよりも優れています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### What is CSS-in-JS?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051846Z">
+        <seg>### CSS-in-JS とは?</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>"CSS-in-JS" refers to a pattern where CSS is composed using JavaScript instead of defined in external files.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051846Z">
+        <seg>"CSS-in-JS" とは外部ファイルでスタイルを定義するのとは違い、JavaScript を用いて CSS を生成するパターンのことを指します。_注意：この機能は React の一部ではありません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051846Z">
+        <seg>サードパーティのライブラリ群により提供される機能です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>_Note that this functionality is not a part of React, but provided by third-party libraries._ React does not have an opinion about how styles are defined; if in doubt, a good starting point is to define your styles in a separate `*.css` file as usual and refer to them using [`className`](/docs/dom-elements.html#classname).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051846Z">
+        <seg>_React はスタイルがどのように定義されているかには関心を持ちません。判断に困った場合は、まずは別の `*.css` にスタイルを定義して、[`className`](/docs/dom-elements.html#classname) を使って参照するところからはじめると良いでしょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Can I do animations in React?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051846Z">
+        <seg>### React でアニメーションは使えますか？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>React can be used to power animations.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051846Z">
+        <seg>React を使ってアニメーションを動かすことは可能です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>See [React Transition Group](https://reactcommunity.org/react-transition-group/) and [React Motion](https://github.com/chenglou/react-motion) or [React Spring](https://github.com/react-spring/react-spring), for example.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051846Z">
+        <seg>例として、[React Transition Group](https://reactcommunity.org/react-transition-group/) や [React Motion](https://github.com/chenglou/react-motion)、[React Spring](https://github.com/react-spring/react-spring) をご覧ください。</seg>
+      </tuv>
+    </tu>
+  </body>
+</tmx>

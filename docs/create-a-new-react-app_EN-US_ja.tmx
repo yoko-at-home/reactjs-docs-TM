@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tmx SYSTEM "tmx14.dtd">
+<tmx version="1.4">
+  <header creationtool="OmegaT" o-tmf="OmegaT TMX" adminlang="EN-US" datatype="plaintext" creationtoolversion="4.3.2_0_6a661c5e0" segtype="sentence" srclang="EN-US"/>
+  <body>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>---
+id: create-a-new-react-app
+title: Create a New React App
+permalink: docs/create-a-new-react-app.html
+redirect_from:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>---
+id: create-a-new-react-app
+title: 新しい React アプリを作る
+permalink: docs/create-a-new-react-app.html
+redirect_from:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Use an integrated toolchain for the best user and developer experience.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>もっとも良いユーザ・開発体験を得るために統合されたツールチェインを使いましょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This page describes a few popular React toolchains which help with tasks like:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>このページではいくつかの人気のある React ツールチェインを説明します。これは次のようなタスクに役立ちます：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* Scaling to many files and components.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>* 大量のファイルとコンポーネントでスケールする</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* Using third-party libraries from npm.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>* npm を通してサードパーティライブラリを利用する</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* Detecting common mistakes early.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>* よくある間違いを早期に発見する</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* Live-editing CSS and JS in development.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>* 開発環境で CSS と JS をライブ編集する</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* Optimizing the output for production.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>* 本番用の出力を最適化する</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The toolchains recommended on this page **don't require configuration to get started**.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>このページで推奨されているツールチェインは**始めるにあたって設定が不要です**。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## You Might Not Need a Toolchain {#you-might-not-need-a-toolchain}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>## ツールチェインが必要ない場合 {#you-might-not-need-a-toolchain}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you don't experience the problems described above or don't feel comfortable using JavaScript tools yet, consider [adding React as a plain `&lt;script&gt;` tag on an HTML page](/docs/add-react-to-a-website.html), optionally [with JSX](/docs/add-react-to-a-website.html#optional-try-react-with-jsx).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>あなたが上記のような問題を経験していなかったり、まだ JavaScript のツールを利用するのに慣れていない場合、[HTML ページに簡単な `&lt;script&gt;` タグで React を追加](/docs/add-react-to-a-website.html)することを検討してください（[JSX の利用](/docs/add-react-to-a-website.html#optional-try-react-with-jsx)も検討してみてください）。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is also **the easiest way to integrate React into an existing website.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>これは**既存のウェブサイトに React を統合する最も簡単な方法**でもあります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>** You can always add a larger toolchain if you find it helpful!</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>あなたが役立つと思えばいつでもより大きなツールチェインを追加できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Recommended Toolchains {#recommended-toolchains}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>## 推奨するツールチェイン {#recommended-toolchains}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The React team primarily recommends these solutions:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>React チームは主に以下のソリューションを推奨します：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>- If you're **learning React** or **creating a new [single-page](/docs/glossary.html#single-page-application) app,** use [Create React App](#create-react-app).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>- **React を学習中**か、**新しい[シングルページ](/docs/glossary.html#single-page-application)アプリケーションを作成したい**場合、[Create React App](#create-react-app) を利用してください</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>- If you're building a **server-rendered website with Node.js,** try [Next.js](#nextjs).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>- **Node.js でサーバサイドでレンダーされたウェブサイト**を構築するなら、[Next.js](#nextjs) を試してください</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>- If you're building a **static content-oriented website,** try [Gatsby](#gatsby).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>- **静的なコンテンツ中心のウェブサイト**を構築するなら、[Gatsby](#gatsby) を試してください</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>- If you're building a **component library** or **integrating with an existing codebase**, try [More Flexible Toolchains](#more-flexible-toolchains).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>- **コンポーネントライブラリ**の構築や**既存のコードベースへの統合**をするなら、[その他の柔軟なツールチェイン](#more-flexible-toolchains)を試してください</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>[Create React App](https://github.com/facebookincubator/create-react-app) is a comfortable environment for **learning React**, and is the best way to start building **a new [single-page](/docs/glossary.html#single-page-application) application** in React.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>[Create React App](https://github.com/facebookincubator/create-react-app) は **React を学習する**のに快適な環境であり、React で**新しい[シングルページ](/docs/glossary.html#single-page-application)アプリケーション**を作成するのに最も良い方法です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It sets up your development environment so that you can use the latest JavaScript features, provides a nice developer experience, and optimizes your app for production.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>開発環境をセットアップして最新の JavaScript の機能を使えるようにし、快適な開発体験を提供し、そして本番環境用の最適化を行います。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You’ll need to have [Node &gt;= 10.16 and npm &gt;= 5.6](https://nodejs.org/en/) on your machine.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>あなたのマシンに [Node &gt;= 10.16 及び npm &gt;= 5.6](https://nodejs.org/en/) の環境が必要です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>To create a project, run:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>プロジェクトを作成するには次を実行します：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;Note
+&gt;
+&gt;`npx` on the first line is not a typo -- it's a [package runner tool that comes with npm 5.2+](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>&gt;補足
+&gt;
+&gt;最初の行の `npx` は打ち間違いではありません -- これは [npm 5.2 から利用できるパッケージランナーツール](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b)です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Create React App doesn't handle backend logic or databases; it just creates a frontend build pipeline, so you can use it with any backend you want.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>Create React App はバックエンドのロジックやデータベース接続は扱いません。フロントエンドのビルドパイプラインを構築するだけであり、バックエンドに関しては好きなものを組み合わせて使って構いません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Under the hood, it uses [Babel](https://babeljs.io/) and [webpack](https://webpack.js.org/), but you don't need to know anything about them.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>内部では [Babel](https://babeljs.io/) と [webpack](https://webpack.js.org/) を利用していますが、それらについて知る必要はありません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>When you're ready to deploy to production, running `npm run build` will create an optimized build of your app in the `build` folder.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>本番環境にデプロイする準備ができたら、`npm run build` を実行すれば、`build` フォルダ内に最適化されたアプリケーションのビルドが生成されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can learn more about Create React App [from its README](https://github.com/facebookincubator/create-react-app#create-react-app--) and the [User Guide](https://facebook.github.io/create-react-app/).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>Create React App の詳細については、[該当ツールの README](https://github.com/facebookincubator/create-react-app#create-react-app--) および [ユーザガイド](https://facebook.github.io/create-react-app/) を参照してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>[Next.js](https://nextjs.org/) is a popular and lightweight framework for **static and server‑rendered applications** built with React.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>[Next.js](https://nextjs.org/) は React を使って**静的なサイトやサーバサイドでレンダーされるアプリケーション**を構築する場合に人気のある軽量フレームワークです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It includes **styling and routing solutions** out of the box, and assumes that you're using [Node.js](https://nodejs.org/) as the server environment.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>すぐに使える**スタイルおよびルーティングのソリューション**を含み、サーバ環境として [Node.js](https://nodejs.org/) を利用することを想定しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Learn Next.js from [its official guide](https://nextjs.org/learn/).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>Next.js の[オフィシャルガイド](https://nextjs.org/learn/)を参照してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>[Gatsby](https://www.gatsbyjs.org/) is the best way to create **static websites** with React.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>[Gatsby](https://www.gatsbyjs.org/) は React で**静的なウェブサイト**を作成するのに最も良い方法です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It lets you use React components, but outputs pre-rendered HTML and CSS to guarantee the fastest load time.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>React コンポーネントを使用しながらも、事前レンダーされた HTML と CSS を出力することで最速のロード時間を保証します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Learn Gatsby from [its official guide](https://www.gatsbyjs.org/docs/) and a [gallery of starter kits](https://www.gatsbyjs.org/docs/gatsby-starters/).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>Gatsby の[オフィシャルガイド](https://www.gatsbyjs.org/docs/) および [スターターキットのギャラリー](https://www.gatsbyjs.org/docs/gatsby-starters/)を参照してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### More Flexible Toolchains {#more-flexible-toolchains}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>### その他の柔軟なツールチェイン {#more-flexible-toolchains}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The following toolchains offer more flexibility and choice.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>以下のツールチェインはより大きな柔軟性や選択肢を提供します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We recommend them to more experienced users:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>経験豊富なユーザにこれらを推奨します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>- **[Neutrino](https://neutrinojs.org/)** combines the power of [webpack](https://webpack.js.org/) with the simplicity of presets, and includes a preset for [React apps](https://neutrinojs.org/packages/react/) and [React components](https://neutrinojs.org/packages/react-components/).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>- **[Neutrino](https://neutrinojs.org/)** は [webpack](https://webpack.js.org/) のパワーとプリセットのシンプルさを兼ね備えています。プリセットには [React アプリ](https://neutrinojs.org/packages/react/) と [React コンポーネント](https://neutrinojs.org/packages/react-components/)用のものがあります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>- **[Nx](https://nx.dev/react)** is a toolkit for full-stack monorepo development, with built-in support for React, Next.js, [Express](https://expressjs.com/), and more.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>- **[Nx](https://nx.dev/react)** はフルスタックの monorepo 開発用ツールキットであり、React、Next.js、[Express](https://expressjs.com/) などのビルトインサポートを有しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>- **[Parcel](https://parceljs.org/)** is a fast, zero configuration web application bundler that [works with React](https://parceljs.org/recipes.html#react).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>- **[Parcel](https://parceljs.org/)** は高速な、ゼロ設定のウェブアプリケーションバンドラであり、[React と共に利用](https://parceljs.org/recipes.html#react)できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>- **[Razzle](https://github.com/jaredpalmer/razzle)** is a server-rendering framework that doesn't require any configuration, but offers more flexibility than Next.js.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>- **[Razzle](https://github.com/jaredpalmer/razzle)** は設定不要のサーバレンダリングフレームワークでありながら、Next.js よりも柔軟性があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Creating a Toolchain from Scratch {#creating-a-toolchain-from-scratch}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>## ゼロからツールチェインを作成する {#creating-a-toolchain-from-scratch}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>A JavaScript build toolchain typically consists of:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>JavaScript ビルドツールチェインは一般的に次から成ります：* **パッケージマネジャ**。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* A **package manager**, such as [Yarn](https://yarnpkg.com/) or [npm](https://www.npmjs.com/).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>[Yarn](https://yarnpkg.com/) や [npm](https://www.npmjs.com/) など。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It lets you take advantage of a vast ecosystem of third-party packages, and easily install or update them.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>サードパーティのパッケージの広大なエコシステムを利用でき、それらを簡単にインストールしたりアップデートしたりできます。* **バンドラ**。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* A **bundler**, such as [webpack](https://webpack.js.org/) or [Parcel](https://parceljs.org/).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>[webpack](https://webpack.js.org/) や [Parcel](https://parceljs.org/) など。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It lets you write modular code and bundle it together into small packages to optimize load time.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>モジュール化されたコードを書けるようになり、それを小さなパッケージにまとめてバンドルしてロード時間の最適化を行います。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* A **compiler** such as [Babel](https://babeljs.io/).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>* **コンパイラ**。[Babel](https://babeljs.io/) など。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It lets you write modern JavaScript code that still works in older browsers.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>未だ動作している古いブラウザでもモダンな JavaScript コードを書いて動作させることができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you prefer to set up your own JavaScript toolchain from scratch, [check out this guide](https://blog.usejournal.com/creating-a-react-app-from-scratch-f3c693b84658) that re-creates some of the Create React App functionality.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>ゼロから独自の JavaScript ツールチェインを設定したい場合、[こちらのガイドをチェック](https://blog.usejournal.com/creating-a-react-app-from-scratch-f3c693b84658)すると Create React App の機能の一部を再現できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Don't forget to ensure your custom toolchain [is correctly set up for production](/docs/optimizing-performance.html#use-the-production-build).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045742Z">
+        <seg>カスタムしたツールチェインは忘れずに[本番環境用に正しく設定](/docs/optimizing-performance.html#use-the-production-build)してください。</seg>
+      </tuv>
+    </tu>
+  </body>
+</tmx>

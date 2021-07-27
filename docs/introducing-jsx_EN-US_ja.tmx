@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tmx SYSTEM "tmx14.dtd">
+<tmx version="1.4">
+  <header creationtool="OmegaT" o-tmf="OmegaT TMX" adminlang="EN-US" datatype="plaintext" creationtoolversion="4.3.2_0_6a661c5e0" segtype="sentence" srclang="EN-US"/>
+  <body>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>---
+id: introducing-jsx
+title: Introducing JSX
+permalink: docs/introducing-jsx.html
+prev: hello-world.html
+next: rendering-elements.html
+---</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>---
+id: introducing-jsx
+title: JSX の導入
+permalink: docs/introducing-jsx.html
+prev: hello-world.html
+next: rendering-elements.html
+---</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Consider this variable declaration:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>以下の変数宣言を考えてみましょう：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This funny tag syntax is neither a string nor HTML.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>このおかしなタグ構文は文字列でも HTML でもありません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It is called JSX, and it is a syntax extension to JavaScript.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>これは JSX と呼ばれる JavaScript の構文の拡張です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We recommend using it with React to describe what the UI should look like.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>UI がどのような見た目かを記述するために、React とともに JSX を使用することを私たちはお勧めしています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>JSX may remind you of a template language, but it comes with the full power of JavaScript.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>JSX はテンプレート言語を連想させるでしょうが、JavaScript の機能を全て備えたものです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>JSX produces React "elements".</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>JSX は React "要素" を生成します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We will explore rendering them to the DOM in the [next section](/docs/rendering-elements.html).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>[次の章](/docs/rendering-elements.html)で React 要素を DOM に変換する方法について見ていきます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Below, you can find the basics of JSX necessary to get you started.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>以下では、JSX を使い始めるのに必要な基礎を学ぶことができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Why JSX? {#why-jsx}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>### JSXを使う理由 {#why-jsx}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>React embraces the fact that rendering logic is inherently coupled with other UI logic: how events are handled, how the state changes over time, and how the data is prepared for display.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>表示のためのロジックは、イベントへの応答や経時的な状態の変化、画面表示のためのデータを準備する方法といった、他の UI ロジックと本質的に結合したものであり、React はその事実を受け入れます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Instead of artificially separating *technologies* by putting markup and logic in separate files, React [separates *concerns*](https://en.wikipedia.org/wiki/Separation_of_concerns) with loosely coupled units called "components" that contain both.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>マークアップとロジックを別々のファイルに書いて人為的に*技術*を分離するのではなく、React はマークアップとロジックを両方含む疎結合の「コンポーネント」という単位を用いて[*関心*を分離](https://en.wikipedia.org/wiki/Separation_of_concerns)します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We will come back to components in a [further section](/docs/components-and-props.html), but if you're not yet comfortable putting markup in JS, [this talk](https://www.youtube.com/watch?v=x7cQ3mrcKaY) might convince you otherwise.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>[後のセクション](/docs/components-and-props.html)でコンポーネントについては改めて詳しく紹介しますが、現時点で JavaScript にマークアップを書くことが気にくわない場合、[こちらの議論](https://www.youtube.com/watch?v=x7cQ3mrcKaY)で考えが改まるかもしれません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>React [doesn't require](/docs/react-without-jsx.html) using JSX, but most people find it helpful as a visual aid when working with UI inside the JavaScript code.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>React で JSX を使うことは[必須ではありません](/docs/react-without-jsx.html)が、ほとんどの人は JavaScript コード中で UI を扱う際に、JSX を見た目に有用なものだと感じています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It also allows React to show more useful error and warning messages.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>また、JSX があるために React は有用なエラーや警告をより多く表示することができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>With that out of the way, let's get started!</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>前置きはこのくらいにして、早速始めましょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Embedding Expressions in JSX {#embedding-expressions-in-jsx}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>### JSX に式を埋め込む {#embedding-expressions-in-jsx}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In the example below, we declare a variable called `name` and then use it inside JSX by wrapping it in curly braces:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>以下の例では、`name` という変数を宣言して、それを中括弧に囲んで JSX 内で使用しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can put any valid [JavaScript expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Expressions) inside the curly braces in JSX.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>あらゆる有効な [JavaScript の式](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Expressions)を JSX 内で中括弧に囲んで使用できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, `2 + 2`, `user.firstName`, or `formatName(user)` are all valid JavaScript expressions.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>例えば、`2 + 2` や `user.firstName` や `formatName(user)` はすべて有効な JavaScript の式です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In the example below, we embed the result of calling a JavaScript function, `formatName(user)`, into an `<it pos="begin" x="1">&lt;h1&gt;</it>` element.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>以下の例では、`formatName(user)` という JavaScript 関数の結果を `<it pos="begin" x="1">&lt;h1&gt;</it>` 要素内に埋め込んでいます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We split JSX over multiple lines for readability.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>読みやすさのため JSX を複数行に分けています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>While it isn't required, when doing this, we also recommend wrapping it in parentheses to avoid the pitfalls of [automatic semicolon insertion](https://stackoverflow.com/q/2846283).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>必須ではありませんが、複数行に分割する場合には、[自動セミコロン挿入](https://stackoverflow.com/q/2846283)の落とし穴にはまらないように括弧で囲むことをおすすめします</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### JSX is an Expression Too {#jsx-is-an-expression-too}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>### JSX もまた式である {#jsx-is-an-expression-too}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>After compilation, JSX expressions become regular JavaScript function calls and evaluate to JavaScript objects.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>コンパイルの後、JSX の式は普通の JavaScript の関数呼び出しに変換され、JavaScript オブジェクトへと評価されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This means that you can use JSX inside of `if` statements and `for` loops, assign it to variables, accept it as arguments, and return it from functions:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>これは JSX を `if` 文や `for` ループの中で使用したり、変数に代入したり、引数として受け取ったり、関数から返したりすることができるということです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Specifying Attributes with JSX {#specifying-attributes-with-jsx}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>### JSX で属性を指定する {#specifying-attributes-with-jsx}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You may use quotes to specify string literals as attributes:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>文字列リテラルを属性として指定するために引用符を使用できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You may also use curly braces to embed a JavaScript expression in an attribute:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>属性に JavaScript 式を埋め込むために中括弧を使用することもできます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Don't put quotes around curly braces when embedding a JavaScript expression in an attribute.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>属性に JavaScript 式を埋め込む時に中括弧を囲む引用符を書かないでください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You should either use quotes (for string values) or curly braces (for expressions), but not both in the same attribute.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>（文字列の場合は）引用符、もしくは（式の場合は）中括弧のどちらか一方を使用するようにし、同じ属性に対して両方を使用するべきではありません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;**Warning:**
+&gt;
+&gt;Since JSX is closer to JavaScript than to HTML, React DOM uses `camelCase` property naming convention instead of HTML attribute names.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>&gt;**警告:**
+&gt;
+&gt;JSX は HTML よりも JavaScript に近いものですので、React DOM は HTML の属性ではなくキャメルケース (camelCase) のプロパティ命名規則を使用します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;
+&gt;For example, `class` becomes [`className`](https://developer.mozilla.org/en-US/docs/Web/API/Element/className) in JSX, and `tabindex` becomes [`tabIndex`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/tabIndex).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>&gt;
+&gt;JSX では例えば、`class` は [`className`](https://developer.mozilla.org/en-US/docs/Web/API/Element/className) となり、`tabindex` は  [`tabIndex`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/tabIndex) となります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Specifying Children with JSX {#specifying-children-with-jsx}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>### JSX で子要素を指定する {#specifying-children-with-jsx}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If a tag is empty, you may close it immediately with `/&gt;`, like XML:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>タグが空の場合、XML のように `/&gt; `でタグを閉じる事ができます：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>JSX tags may contain children:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>JSX のタグは子要素を持つことができます：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### JSX Prevents Injection Attacks {#jsx-prevents-injection-attacks}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>### JSX はインジェクション攻撃を防ぐ {#jsx-prevents-injection-attacks}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It is safe to embed user input in JSX:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>JSX にユーザの入力を埋め込むことは安全です：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>By default, React DOM [escapes](https://stackoverflow.com/questions/7381974/which-characters-need-to-be-escaped-on-html) any values embedded in JSX before rendering them.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>デフォルトでは、React DOM は JSX に埋め込まれた値をレンダー前に[エスケープ](https://stackoverflow.com/questions/7381974/which-characters-need-to-be-escaped-on-html)します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Thus it ensures that you can never inject anything that's not explicitly written in your application.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>このため、自分のアプリケーションで明示的に書かれたものではないあらゆるコードは、注入できないことが保証されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Everything is converted to a string before being rendered.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>レンダーの前に全てが文字列に変換されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This helps prevent [XSS (cross-site-scripting)](https://en.wikipedia.org/wiki/Cross-site_scripting) attacks.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>これは [XSS (cross-site-scripting)](https://en.wikipedia.org/wiki/Cross-site_scripting) 攻撃の防止に役立ちます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### JSX Represents Objects {#jsx-represents-objects}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>### JSX はオブジェクトの表現である {#jsx-represents-objects}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Babel compiles JSX down to `React.createElement()` calls.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>Babel は JSX を `React.createElement()` の呼び出しへとコンパイルします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>These two examples are identical:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>以下の 2 つの例は等価です：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>`React.createElement()` performs a few checks to help you write bug-free code but essentially it creates an object like this:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>`React.createElement()` はバグの混入を防止するためにいくつかのチェックも行いますが、本質的には以下のようなオブジェクトを生成します：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>These objects are called "React elements".</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>このようなオブジェクトは "React 要素" と呼ばれます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can think of them as descriptions of what you want to see on the screen.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>これらは画面に表示したいものの説明書きとして考えることができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>React reads these objects and uses them to construct the DOM and keep it up to date.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>React はこれらのオブジェクトを読み取り、DOM を構築して最新に保ちます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We will explore rendering React elements to the DOM in the [next section](/docs/rendering-elements.html).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>[次の章](/docs/rendering-elements.html)では React 要素を DOM に変換することについて見ていきましょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;**Tip:**
+&gt;
+&gt;We recommend using the ["Babel" language definition](https://babeljs.io/docs/en/next/editors) for your editor of choice so that both ES6 and JSX code is properly highlighted.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063402Z">
+        <seg>&gt;**ヒント:**
+&gt;
+&gt;利用したいエディタで ["Babel" 言語定義](https://babeljs.io/docs/en/next/editors)を使用して、ES6 と JSX が適切にハイライトされるようにしておくことをお勧めします。</seg>
+      </tuv>
+    </tu>
+  </body>
+</tmx>

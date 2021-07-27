@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tmx SYSTEM "tmx14.dtd">
+<tmx version="1.4">
+  <header creationtool="OmegaT" o-tmf="OmegaT TMX" adminlang="EN-US" datatype="plaintext" creationtoolversion="4.3.2_0_6a661c5e0" segtype="sentence" srclang="EN-US"/>
+  <body>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>---
+id: javascript-environment-requirements
+title: JavaScript Environment Requirements
+layout: docs
+category: Reference
+permalink: docs/javascript-environment-requirements.html
+---</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T065741Z">
+        <seg>---
+id: javascript-environment-requirements
+title: JavaScript 環境の要件
+layout: docs
+category: Reference
+permalink: docs/javascript-environment-requirements.html
+---</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>React 16 depends on the collection types [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) and [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T065741Z">
+        <seg>React 16 はコレクション型 [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) および [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) に依存しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you support older browsers and devices which may not yet provide these natively (e.g. IE &lt; 11) or which have non-compliant implementations (e.g. IE 11), consider including a global polyfill in your bundled application, such as [core-js](https://github.com/zloirock/core-js).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T065741Z">
+        <seg>これらの機能をネイティブに提供しない（IE 11 未満など）、または標準非準拠な挙動をする（IE 11 など）古いブラウザやデバイスをサポートする場合は、[core-js](https://github.com/zloirock/core-js) のようなグローバルなポリフィルをバンドルしたアプリケーションに含めることを検討してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>A polyfilled environment for React 16 using core-js to support older browsers might look like:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T065741Z">
+        <seg>古いブラウザをサポートするため、core-js を利用してポリフィルを含めた React 16 向けの環境は次のようになります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>React also depends on `requestAnimationFrame` (even in test environments).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T065741Z">
+        <seg>React は（テスト環境であっても）`requestAnimationFrame` に依存します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can use the [raf](https://www.npmjs.com/package/raf) package to shim `requestAnimationFrame`:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T065741Z">
+        <seg>`requestAnimationFrame` の役割を補うため [raf](https://www.npmjs.com/package/raf) を使用します。</seg>
+      </tuv>
+    </tu>
+  </body>
+</tmx>

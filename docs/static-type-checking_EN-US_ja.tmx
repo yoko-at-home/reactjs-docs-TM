@@ -1,0 +1,1096 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tmx SYSTEM "tmx14.dtd">
+<tmx version="1.4">
+  <header creationtool="OmegaT" o-tmf="OmegaT TMX" adminlang="EN-US" datatype="plaintext" creationtoolversion="4.3.2_0_6a661c5e0" segtype="sentence" srclang="EN-US"/>
+  <body>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>---
+id: static-type-checking
+title: Static Type Checking
+permalink: docs/static-type-checking.html
+---</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>---
+id: static-type-checking
+title: 静的型チェック
+permalink: docs/static-type-checking.html
+---</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Static type checkers like [Flow](https://flow.org/) and [TypeScript](https://www.typescriptlang.org/) identify certain types of problems before you even run your code.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>[Flow](https://flow.org/) や [TypeScript](https://www.typescriptlang.org/) のような静的型チェッカーを使用することでコードを実行する前の早期段階に型不整合等の問題を検知することができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>They can also improve developer workflow by adding features like auto-completion.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>他にも型解析言語を使用することで補完などの機能が追加され、開発体験を上げることができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For this reason, we recommend using Flow or TypeScript instead of `PropTypes` for larger code bases.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>これらの理由から、大きいコードベースでは `PropTypes` の代わりに Flow や TypeScript を使うことをおすすめします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>[Flow](https://flow.org/) is a static type checker for your JavaScript code.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>[Flow](https://flow.org/) は JavaScript 用の静的型チェック機能です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It is developed at Facebook and is often used with React.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>Facebook で開発されており、React と一緒に使われることが多いです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It lets you annotate the variables, functions, and React components with a special type syntax, and catch mistakes early.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>変数、関数や React コンポーネントに型を足すことができ、型不整合を早期に発見できるようになります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can read an [introduction to Flow](https://flow.org/en/docs/getting-started/) to learn its basics.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>[はじめての Flow](https://flow.org/en/docs/getting-started/) に基本情報が記載されているので、それを読むと良いでしょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>To use Flow, you need to:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>Flow を使用するには以下の手順を踏みます：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* Add Flow to your project as a dependency.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>* Flow をプロジェクトの dependency に入れる。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* Ensure that Flow syntax is stripped from the compiled code.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>* Flow の型定義をコンパイル時にコードから剥がすように設定する。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* Add type annotations and run Flow to check them.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>* 型定義を追加し、Flow を起動して確認する。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We will explain these steps below in detail.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>順を追って説明します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Adding Flow to a Project {#adding-flow-to-a-project}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>### Flow をプロジェクトに追加する {#adding-flow-to-a-project}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>First, navigate to your project directory in the terminal.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>まず、ターミナル上であなたのプロジェクトが含まれているディレクトリに入り、以下のコマンドを入力してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You will need to run the following command:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>[Yarn](https://yarnpkg.com/) を使っている場合：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you use [Yarn](https://yarnpkg.com/), run:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>```bash
+yarn add --dev flow-bin
+```</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>```bash
+yarn add --dev flow-bin
+```</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>[npm](https://www.npmjs.com/) を使っている場合：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you use [npm](https://www.npmjs.com/), run:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>```bash
+npm install --save-dev flow-bin
+```</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>```bash
+npm install --save-dev flow-bin
+```</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>このコマンドによって Flow の最新版をあなたのプロジェクトに入れることができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This command installs the latest version of Flow into your project.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>次に、`package.json` の `"scripts"` に `flow` を追加しましょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Now, add `flow` to the `"scripts"` section of your `package.json` to be able to use this from the terminal:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>これで、ターミナルで Flow を実行できるようになります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Finally, run one of the following commands:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>最後に、以下のコマンドを実行します：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you use [Yarn](https://yarnpkg.com/), run:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>[Yarn](https://yarnpkg.com/) を使っている場合：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you use [npm](https://www.npmjs.com/), run:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>[npm](https://www.npmjs.com/) を使っている場合：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This command will create a Flow configuration file that you will need to commit.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>このコマンドで Flow の設定ファイルを生成することができます。この設定ファイルはバージョン管理しましょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Stripping Flow Syntax from the Compiled Code {#stripping-flow-syntax-from-the-compiled-code}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>### Flow の型定義をコンパイル時にコードから剥がす {#stripping-flow-syntax-from-the-compiled-code}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Flow extends the JavaScript language with a special syntax for type annotations.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>Flow は JavaScript 言語を拡張し、型定義のための特殊な記法を使えるようにします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>However, browsers aren't aware of this syntax, so we need to make sure it doesn't end up in the compiled JavaScript bundle that is sent to the browser.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>しかし、ブラウザはその記法について知らない為、ブラウザに送信されるコンパイル後の JavaScript バンドルに含まれないようにしなければいけません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The exact way to do this depends on the tools you use to compile JavaScript.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>剥がす方法は使用している JavaScript のコンパイルツールによって変わってきます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If your project was set up using [Create React App](https://github.com/facebookincubator/create-react-app), congratulations!</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>もし、あなたのプロジェクトが [Create React App](https://github.com/facebookincubator/create-react-app) によって生成されている場合、おめでとうございます！</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The Flow annotations are already being stripped by default so you don't need to do anything else in this step.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>既にビルド時に Flow の型定義は剥がされる設定になっているため、このステップで何もする必要はありません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;Note:
+&gt;
+&gt;These instructions are *not* for Create React App users.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>&gt;補足:
+&gt;
+&gt;以下の手順は Create React App で React をセットアップしている方向けでは*ありません*。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Even though Create React App uses Babel under the hood, it is already configured to understand Flow.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>Create React App も内部で Babel を使用していますが、既に Flow を使えるように設定されています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Only follow this step if you *don't* use Create React App.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>以下の手順は Create React App を使って*いない*場合のみ実行してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you manually configured Babel for your project, you will need to install a special preset for Flow.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>もし、あなたが手動で Babel の設定を行っていた場合、以下のコマンドで Flow 用の Babel プリセットをインストールする必要があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you use Yarn, run:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>yarn を使っている場合：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you use npm, run:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>npm を使っている場合：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Then add the `flow` preset to your [Babel configuration](https://babeljs.io/docs/usage/babelrc/).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>そして、`flow` のプリセットを [Babel の設定ファイル](https://babeljs.io/docs/usage/babelrc/) に追加してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, if you configure Babel through `.babelrc` file, it could look like this:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>例えば、Babel の設定を `.babelrc` ファイルで行っている場合は以下のようになります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This will let you use the Flow syntax in your code.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>これであなたのコードで Flow の型定義が使えるようになります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;Note:
+&gt;
+&gt;Flow does not require the `react` preset, but they are often used together.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>&gt;補足:
+&gt;
+&gt;Flow を使うためには必ず `react` のプリセットが必要というわけではありません。ただ、よく組み合わせて使われています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Flow itself understands JSX syntax out of the box.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>Flow はそのままでも JSX のシンタックスを認識できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>#### Other Build Setups {#other-build-setups}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>#### 他のビルド設定 {#other-build-setups}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you don't use either Create React App or Babel, you can use [flow-remove-types](https://github.com/flowtype/flow-remove-types) to strip the type annotations.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>もし、Create React App も Babel も使用していない場合、[flow-remove-types](https://github.com/flowtype/flow-remove-types) を使って Flow の型定義を剥がすことができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Running Flow {#running-flow}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>### Flow の実行 {#running-flow}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you followed the instructions above, you should be able to run Flow for the first time.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>もし、今までの手順を踏んでいる場合、以下のコマンドで Flow が実行されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you use npm, run:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>npm を使っている場合：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You should see a message like:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>以下のようなメッセージが表示されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Adding Flow Type Annotations {#adding-flow-type-annotations}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>### Flow の型定義の追記 {#adding-flow-type-annotations}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>By default, Flow only checks the files that include this annotation:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>Flow の初期設定では、以下のコメントが含まれているファイルのみ型チェックを行います。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Typically it is placed at the top of a file.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>上記コメントは基本的にファイルの頭に記載します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Try adding it to some files in your project and run `yarn flow` or `npm run flow` to see if Flow already found any issues.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>あなたのプロジェクトのいくつかのファイルに足してみて、`yarn flow` や `npm run flow` を実行して Flow が何か問題を検知するかどうかを確認してみましょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>There is also [an option](https://flow.org/en/docs/config/options/#toc-all-boolean) to force Flow to check *all* files regardless of the annotation.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>Flow の型チェックを、コメントが含まれているかにかかわらず*全て*のファイルに対してかける[設定](https://flow.org/en/docs/config/options/#toc-all-boolean)も存在します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This can be too noisy for existing projects, but is reasonable for a new project if you want to fully type it with Flow.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>これは既存のプロジェクトに対してかけると確認箇所が大量に出てしまいますが、新規プロジェクトの立ち上げで全てのファイルに型を入れたい場合は合理的な選択でしょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Now you're all set!</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>これで準備は整いました！</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We recommend to check out the following resources to learn more about Flow:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>Flow についてより深く知りたい場合には以下の資料が役立つでしょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>[TypeScript](https://www.typescriptlang.org/) is a programming language developed by Microsoft.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>[TypeScript](https://www.typescriptlang.org/) は Microsoft によって開発されたプログラミング言語です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It is a typed superset of JavaScript, and includes its own compiler.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>型を所有した JavaScript のスーパーセットで、独自のコンパイラを所持しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Being a typed language, TypeScript can catch errors and bugs at build time, long before your app goes live.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>TypeScript は型言語であるため、実行前のビルド時にエラーやバグを検知することができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can learn more about using TypeScript with React [here](https://github.com/Microsoft/TypeScript-React-Starter#typescript-react-starter).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>React と TypeScript を組み合わせて使うことに関しては、[ここ](https://github.com/Microsoft/TypeScript-React-Starter#typescript-react-starter)にも詳しく記載されています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>To use TypeScript, you need to:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>TypeScript を使うためには以下のことを行います。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* Add TypeScript as a dependency to your project</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>* TypeScript をプロジェクトの dependency に入れる。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* Configure the TypeScript compiler options</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>* TypeScript のコンパイラの設定を行う。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* Use the right file extensions</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>* TypeScript 用のファイル拡張子を使用する。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* Add definitions for libraries you use</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>* 使用するライブラリの型定義をインストールする。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Let's go over these in detail.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>順を追って説明します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Using TypeScript with Create React App {#using-typescript-with-create-react-app}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>### Create React App で TypeScript を使用する{#using-typescript-with-create-react-app}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Create React App supports TypeScript out of the box.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>Create React App には最初から TypeScript のサポートが含まれています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>To create a **new project** with TypeScript support, run:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>TypeScript サポートが含まれている**新規プロジェクト**を作成するには、以下のコマンドを実行します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can also add it to an **existing Create React App project**, [as documented here](https://facebook.github.io/create-react-app/docs/adding-typescript).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>[この資料に記載されているように、](https://facebook.github.io/create-react-app/docs/adding-typescript)**既存の Create React App のプロジェクト**にも TypeScript のサポートを追加することができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;Note:
+&gt;
+&gt;If you use Create React App, you can **skip the rest of this page**.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>&gt;補足:
+&gt;
+&gt;もし、Create React App を使っている場合、**以下の記述は全て飛ばして大丈夫です**。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It describes the manual setup which doesn't apply to Create React App users.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>Create React App を使用していない場合のセットアップ手順について記載しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Adding TypeScript to a Project {#adding-typescript-to-a-project}
+It all begins with running one command in your terminal.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>### TypeScript をプロジェクトに追加する {#adding-typescript-to-a-project}
+全ては TypeScript をインストールするところから始まります。プロジェクトが入っているフォルダで以下のコマンドを入力してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you use [Yarn](https://yarnpkg.com/), run:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>[Yarn](https://yarnpkg.com/) を使っている場合：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you use [npm](https://www.npmjs.com/), run:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>[npm](https://www.npmjs.com/) を使っている場合：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Congrats!</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>おめでとうございます！</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You've installed the latest version of TypeScript into your project.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>これで最新の TypeScript があなたのプロジェクトにインストールされました。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Installing TypeScript gives us access to the `tsc` command.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>これによって、`tsc` コマンドが使えるようになります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Before configuration, let's add `tsc` to the "scripts" section in our `package.json`:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>設定をする前に、まずは `tsc` を `package.json` の `"scripts"` に追加しましょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Configuring the TypeScript Compiler {#configuring-the-typescript-compiler}
+The compiler is of no help to us until we tell it what to do.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>### TypeScript コンパイラの設定 {#configuring-the-typescript-compiler}
+コンパイラはこちらから設定しないと無価値です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In TypeScript, these rules are defined in a special file called `tsconfig.json`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>TypeScript ではコンパイラの設定は `tsconfig.json` というファイルで定義します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>To generate this file:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>このファイルを生成するには以下のコマンドを実行してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you use [Yarn](https://yarnpkg.com/), run:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>[Yarn](https://yarnpkg.com/) を使っている場合：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you use [npm](https://www.npmjs.com/), run:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>[npm](https://www.npmjs.com/) を使っている場合：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Looking at the now generated `tsconfig.json`, you can see that there are many options you can use to configure the compiler.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>新しく生成された `tsconfig.json` を見てみると、コンパイラ設定用の様々なオプションがあることがわかります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For a detailed description of all the options, check [here](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>これら全てのオプションの詳細に関しては[こちら](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html)を参照してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Of the many options, we'll look at `rootDir` and `outDir`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>たくさんの設定の中から `rootDir` と `outDir` に注目します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In its true fashion, the compiler will take in typescript files and generate javascript files.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>本来、コンパイラは TypeScript のファイルから JavaScript のファイルを生成します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>However we don't want to get confused with our source files and the generated output.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>しかし、既存のソースコードと生成されたコードが混合してしまうことは避けるべきです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We'll address this in two steps:
+* Firstly, let's arrange our project structure like this.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>以上の問題を 2 つの手順によって対応します。* まず、プロジェクトの構成を以下のように変更しましょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We'll place all our source code in the `src` directory.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>全てのソースコードを `src` ディレクトリに移動します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* Next, we'll tell the compiler where our source code is and where the output should go.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>* 次に、`tsconfig.json` を編集してコンパイラにソースコードの場所と生成する場所を設定します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Great!</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>素晴らしい！</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Now when we run our build script the compiler will output the generated javascript to the `build` folder.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>これで `build` のスクリプトを実行した際、コンパイラが生成したコードは `build` ディレクトリに格納されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The [TypeScript React Starter](https://github.com/Microsoft/TypeScript-React-Starter/blob/master/tsconfig.json) provides a `tsconfig.json` with a good set of rules to get you started.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>他の設定に関しては、[TypeScript React Starter](https://github.com/Microsoft/TypeScript-React-Starter/blob/master/tsconfig.json) に React プロジェクト始めるのにおすすめな `tsconfig.json` を提供しているので、そちらを参照してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Generally, you don't want to keep the generated javascript in your source control, so be sure to add the build folder to your `.gitignore`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>基本的に、生成された JavaScript のコードはバージョン管理するべきではありません。`build` フォルダは `.gitignore` に追記しましょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### File extensions {#file-extensions}
+In React, you most likely write your components in a `.js` file.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>### ファイル拡張子 {#file-extensions}
+React ではおそらくコンポーネントを `.js` ファイルに書いていたと思います。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In TypeScript we have 2 file extensions:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>TypeScript には 2 種類のファイル拡張子が存在します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>`.ts` is the default file extension while `.tsx` is a special extension used for files which contain `JSX`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>`.ts` がデフォルトの拡張子で、`JSX` が含まれているファイルは `.tsx` を使います。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Running TypeScript {#running-typescript}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>### TypeScript の実行 {#running-typescript}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you followed the instructions above, you should be able to run TypeScript for the first time.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>上記の手順を踏んでいれば、以下のコマンドで TypeScript を実行することができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you use npm, run:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>[npm](https://www.npmjs.com/) を使っている場合：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you see no output, it means that it completed successfully.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>実行結果に何も表示されない場合は、正常に完了したと言うことです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Type Definitions {#type-definitions}
+To be able to show errors and hints from other packages, the compiler relies on declaration files.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>### 型宣言 {#type-definitions}
+他のライブラリを使用している時の型エラーやヒントを表示させるために、コンパイラは型宣言ファイルを参照します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>A declaration file provides all the type information about a library.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>型宣言ファイルにはそのライブラリが使用する全ての型の情報が含まれています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This enables us to use javascript libraries like those on npm in our project.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>これを使うことによって、npm 等から取得した JavaScript のライブラリをそのまま使うことができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>There are two main ways to get declarations for a library:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>ライブラリの型宣言ファイルを取得するには主に以下の 2 つの方法があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>__Bundled__ - The library bundles its own declaration file.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>__Bundled__ - これはライブラリ自体が型宣言ファイルを所有している場合です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is great for us, since all we need to do is install the library, and we can use it right away.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>この場合、ライブラリをインストールするだけでそのまま使用することができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>To check if a library has bundled types, look for an `index.d.ts` file in the project.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>ライブラリが型宣言ファイルを所有しているかどうか確認するには、プロジェクトに `index.d.ts` ファイルがあるかどうかを見ます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Some libraries will have it specified in their `package.json` under the `typings` or `types` field.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>一部のライブラリは `package.json` の `typings`、または `types` の下に型宣言ファイルのパスを指定しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>__[DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped)__ - DefinitelyTyped is a huge repository of declarations for libraries that don't bundle a declaration file.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>__[DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped)__ - DefinitelyTyped には型宣言ファイルがバンドルされていない様々なライブラリのための型定義が用意されています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The declarations are crowd-sourced and managed by Microsoft and open source contributors.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>これらの型定義はクラウドソースにより Microsoft とオープンソースのコントリビュータが管理しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>React for example doesn't bundle its own declaration file. Instead we can get it from DefinitelyTyped.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>例えば、React には型宣言ファイルが含まれておりませんが、DefinitelyTyped から取得することができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>To do so enter this command in your terminal.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>取得するにはターミナルに以下のコマンドを入力してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>__Local Declarations__
+Sometimes the package that you want to use doesn't bundle declarations nor is it available on DefinitelyTyped. In that case, we can have a local declaration file.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>__ローカル型定義__
+もし、使用しているライブラリに型宣言ファイルが含まれておらず、DefinitelyTyped にも該当する型宣言ファイルがない場合、自前で型宣言ファイルを作成することができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>To do this, create a `declarations.d.ts` file in the root of your source directory.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>それを行うには `declarations.d.ts` をソースディレクトリのルートに作成します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>A simple declaration could look like this:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>型宣言は以下のように行なえます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You are now ready to code!</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>これでコードを書く準備は整いました！</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We recommend to check out the following resources to learn more about TypeScript:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>TypeScript についてより深く知りたい場合には以下の資料が役立つでしょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>## Reason {#reason}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>[Reason](https://reasonml.github.io/) は新しい言語ではありません。歴戦の言語である [OCaml](https://ocaml.org/) によって動く新しい記法及びツールチェインです。Reason は OCaml に JavaScript を書く人には見慣れた記法を提供し、既存の NPM/Yarn を使ったワークフローに寄せています。Reason は Facebook で開発されており、Messenger 等のプロダクトに既に使われてます。まだ試験的段階ですが、Facebook によって管理された [React を書くためのライブラリ](https://reasonml.github.io/reason-react/)や、[活発なコミュニティ](https://reasonml.github.io/docs/en/community.html)が存在します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Kotlin {#kotlin}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>## Kotlin {#kotlin}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>[Kotlin](https://kotlinlang.org/) is a statically typed language developed by JetBrains.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>[Kotlin](https://kotlinlang.org/) は JetBrains により開発された静的型言語です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Its target platforms include the JVM, Android, LLVM, and [JavaScript](https://kotlinlang.org/docs/reference/js-overview.html).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>JVM、Android、LLVM、や [JavaScript](https://kotlinlang.org/docs/reference/js-overview.html) といったプラットフォームを対象としています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>JetBrains develops and maintains several tools specifically for the React community: [React bindings](https://github.com/JetBrains/kotlin-wrappers) as well as [Create React Kotlin App](https://github.com/JetBrains/create-react-kotlin-app).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>JetBrains は [React bindings](https://github.com/JetBrains/kotlin-wrappers) や [Create React Kotlin App](https://github.com/JetBrains/create-react-kotlin-app) のような様々な React コミュニティの為のツールの開発、運営を行っています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The latter helps you start building React apps with Kotlin with no build configuration.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>後者は React アプリをビルド設定いらずで Kotlin で書き始めることができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Other Languages {#other-languages}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>## 他の言語 {#other-languages}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Note there are other statically typed languages that compile to JavaScript and are thus React compatible.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>JavaScript にコンパイルされ、React にも活用できる静的型言語は他にも存在します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, [F#/Fable](https://fable.io/) with [elmish-react](https://elmish.github.io/react).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>例えば、[F#/Fable](https://fable.io/) と [elmish-react](https://elmish.github.io/react) の組み合わせです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Check out their respective sites for more information, and feel free to add more statically typed languages that work with React to this page!</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073254Z">
+        <seg>詳細はそれぞれのサイトを確認してください。他にも React を活用できる静的型言語があれば、ぜひこのページに追記してください！</seg>
+      </tuv>
+    </tu>
+  </body>
+</tmx>

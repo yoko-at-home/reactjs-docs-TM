@@ -1,0 +1,1505 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tmx SYSTEM "tmx14.dtd">
+<tmx version="1.4">
+  <header creationtool="OmegaT" o-tmf="OmegaT TMX" adminlang="EN-US" datatype="plaintext" creationtoolversion="4.3.2_0_6a661c5e0" segtype="sentence" srclang="EN-US"/>
+  <body>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>---
+id: design-principles
+title: Design Principles
+layout: contributing
+permalink: docs/design-principles.html
+prev: implementation-notes.html
+redirect_from:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>---
+id: design-principles
+title: 設計原則
+layout: contributing
+permalink: docs/design-principles.html
+prev: implementation-notes.html
+redirect_from:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We wrote this document so that you have a better idea of how we decide what React does and what React doesn't do, and what our development philosophy is like.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>このドキュメントを作成したのは、React が何をして何をしないのか、そして開発理念がどのようなものなのかをより理解できるようにするためです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>While we are excited to see community contributions, we are not likely to choose a path that violates one or more of these principles.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>私たちはコミュニティへの貢献を見ることにわくわくしています。しかしこれらの原則の 1 つ以上に違反する道を選ぶことはありません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;**Note:**
+&gt;
+&gt;This document assumes a strong understanding of React.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>&gt;**注意:**
+&gt;
+&gt;このドキュメントは React を強く理解していることを前提としています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It describes the design principles of *React itself*, not React components or applications.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>React のコンポーネントやアプリケーションではなく、*React 自体*の設計原則について説明しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;
+&gt;For an introduction to React, check out [Thinking in React](/docs/thinking-in-react.html) instead.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>&gt;
+&gt;React の紹介については、代わりに [React の流儀](/docs/thinking-in-react.html)を調べてください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Composition {#composition}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>### コンポジション {#composition}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The key feature of React is composition of components.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>React の主な機能はコンポーネントのコンポジションです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Components written by different people should work well together.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>異なる人々によって書かれたコンポーネントは一緒にうまく動くべきです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It is important to us that you can add functionality to a component without causing rippling changes throughout the codebase.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>コードベース全体に波及する変更を引き起こすことなく、コンポーネントに機能を追加できるということが重要です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, it should be possible to introduce some local state into a component without changing any of the components using it.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>たとえば、コンポーネントを使用する側を変更せずに、コンポーネントにローカル state を導入することが可能であるべきです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Similarly, it should be possible to add some initialization and teardown code to any component when necessary.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>同様に、必要に応じて初期化と終了処理を任意のコンポーネントに追加できるべきです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>There is nothing "bad" about using state or lifecycle methods in components.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>コンポーネントで state またはライフサイクルメソッドを使用することについて「悪い」ことは何もありません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Like any powerful feature, they should be used in moderation, but we have no intention to remove them.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>他の強力な機能と同様に適度に使用する必要がありますが、私たちはそれらを削除するつもりはありません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>On the contrary, we think they are integral parts of what makes React useful.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>それどころか、それらは React を有用にするものとして不可欠な部分であると思います。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We might enable [more functional patterns](https://github.com/reactjs/react-future/tree/master/07%20-%20Returning%20State) in the future, but both local state and lifecycle methods will be a part of that model.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>将来的には[より関数型的なパターン](https://github.com/reactjs/react-future/tree/master/07%20-%20Returning%20State)を使用可能にするかもしれませんが、ローカルステートとライフサイクルメソッドの両方がそのモデルの一部になるでしょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Components are often described as "just functions" but in our view they need to be more than that to be useful.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>コンポーネントはしばしば「単なる関数」と表現されますが、私たちの見解では、それらは有用であるために単なる関数以上である必要があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In React, components describe any composable behavior, and this includes rendering, lifecycle, and state.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>React では、コンポーネントは組み合わせ可能な動作を記述します。そしてこれには、レンダリング、ライフサイクル、および state が含まれます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Some external libraries like [Relay](https://facebook.github.io/relay/) augment components with other responsibilities such as describing data dependencies.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>[Relay](https://facebook.github.io/relay/) のようないくつかの外部ライブラリは、データの依存関係を記述するといったような他の責任をコンポーネントに付け加えます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It is possible that those ideas might make it back into React too in some form.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>それらのアイデアが何らかの形で React に改めて取り込まれるということも有り得ます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Common Abstraction {#common-abstraction}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>### 共通の抽象化 {#common-abstraction}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In general we [resist adding features](https://www.youtube.com/watch?v=4anAwXYqLG8) that can be implemented in userland.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>一般的に私たちはユーザ側で実装できる[機能の追加をできるだけ避けます](https://www.youtube.com/watch?v=4anAwXYqLG8)。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We don't want to bloat your apps with useless library code.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>使用されない無駄なライブラリコードであなたのアプリを肥大化させたくありません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>However, there are exceptions to this.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>ただし、これには例外があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, if React didn't provide support for local state or lifecycle methods, people would create custom abstractions for them.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>たとえば、もし React がローカル state やライフサイクルメソッドをサポートしなかったなら、人々はそれらに対して独自の抽象化を作成したことでしょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>When there are multiple abstractions competing, React can't enforce or take advantage of the properties of either of them.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>複数の抽象化が競合している場合、React はどちらかの利用を勧めたりどちらか一方のみにある特性を利用したりすることができなくなります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It has to work with the lowest common denominator.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>最小公倍数の機能でやっていかなければならないのです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is why sometimes we add features to React itself.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>これが、React 自体に機能を追加することがある理由です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If we notice that many components implement a certain feature in incompatible or inefficient ways, we might prefer to bake it into React.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>多くのコンポーネントが互換性のない、または非効率的な方法で特定の機能を実装していることに気づいたら、React にそれを織り込むかもしれません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We don't do it lightly.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>しかし私たちは気軽にはそれをしません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>When we do it, it's because we are confident that raising the abstraction level benefits the whole ecosystem.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>それをするときは抽象化レベルを上げることがエコシステム全体に利益をもたらすと確信しているからです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>State, lifecycle methods, cross-browser event normalization are good examples of this.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>state、ライフサイクルメソッド、クロスブラウザのイベント正規化などがその好例です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We always discuss such improvement proposals with the community.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>私たちは常にそのような改善提案をコミュニティーと話し合います。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can find some of those discussions by the ["big picture"](https://github.com/facebook/react/issues?q=is:open+is:issue+label:"Type:+Big+Picture") label on the React issue tracker.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>それらの議論のいくつかは React イシュートラッカーの ["big picture"](https://github.com/facebook/react/issues?q=is:open+is:issue+label:"Type:+Big+Picture") ラベルで見つけることができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Escape Hatches {#escape-hatches}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>### 避難ハッチ {#escape-hatches}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>React is pragmatic.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>React は実用主義的です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It is driven by the needs of the products written at Facebook.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>それは Facebook で書かれた製品のニーズによって推進されています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>While it is influenced by some paradigms that are not yet fully mainstream such as functional programming, staying accessible to a wide range of developers with different skills and experience levels is an explicit goal of the project.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>関数型プログラミングなど、まだ完全には主流になっていない、いくつかのパラダイムによって影響を受けますが、さまざまなスキルや経験レベルを持つ幅広い開発者がアクセスしやすいことがプロジェクトの明確な目標です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If we want to deprecate a pattern that we don't like, it is our responsibility to consider all existing use cases for it and [educate the community about the alternatives](/blog/2016/07/13/mixins-considered-harmful.html) before we deprecate it.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>私たちが好まないパターンを非推奨にしたい場合は非推奨にする前に、既存のすべてのユースケースを検討し、[コミュニティに代替案について教育する](/blog/2016/07/13/mixins-considered-harmful.html)ことが私たちの責任です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If some pattern that is useful for building apps is hard to express in a declarative way, we will [provide an imperative API](/docs/more-about-refs.html) for it.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>アプリを構築するのに有用なパターンを宣言的に表現するのが難しい場合は、[命令的な API を提供](/docs/more-about-refs.html)します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If we can't figure out a perfect API for something that we found necessary in many apps, we will [provide a temporary subpar working API](/docs/legacy-context.html) as long as it is possible to get rid of it later and it leaves the door open for future improvements.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>多くのアプリで必要と思われるものに最適な API を見つけられないときは、[一時的な標準未満の作業用 API](/docs/legacy-context.html) を提供します（後で取り除くことが可能で、将来の改善の余地がある場合に限ります）。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Stability {#stability}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>### 安定性 {#stability}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We value API stability.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>私たちは API の安定性を重視しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>At Facebook, we have more than 50 thousand components using React.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>Facebook には、React を使った 5 万以上のコンポーネントがあります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Many other companies, including [Twitter](https://twitter.com/) and [Airbnb](https://www.airbnb.com/), are also heavy users of React.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>[Twitter](https://twitter.com/) や [Airbnb](https://www.airbnb.com/) を含む他の多くの会社もまた React のヘビーユーザです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is why we are usually reluctant to change public APIs or behavior.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>これが私たちが公開された API や振る舞いを変更することに大抵消極的である理由です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>However we think stability in the sense of "nothing changes" is overrated.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>しかし、「何も変わらない」という意味での安定性を人々は過大評価している、と私たちは考えます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It quickly turns into stagnation.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>それはすぐに停滞に変わってしまいます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Instead, we prefer the stability in the sense of "It is heavily used in production, and when something changes, there is a clear (and preferably automated) migration path."</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>代わりに、「本番環境では頻繁に使用され、何かが変わったときには明確な（できれば自動化された）移行方法がある」という意味での安定性を優先します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>When we deprecate a pattern, we study its internal usage at Facebook and add deprecation warnings.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>あるパターンを非推奨にするときは、Facebook 内部でその使用法を調べ、非推奨警告を追加します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>They let us assess the impact of the change.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>これにより変化の影響が評価できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Sometimes we back out if we see that it is too early, and we need to think more strategically about getting the codebases to the point where they are ready for this change.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>変更が時期尚早であり、準備が整うところまでコードベースを持っていくのにさらに戦略的に検討する必要があると分かった場合、変更を差し戻すことがあります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If we are confident that the change is not too disruptive and the migration strategy is viable for all use cases, we release the deprecation warning to the open source community.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>変更があまり破壊的でなく、移行戦略がすべてのユースケースで実行可能であると確信している場合は、非推奨の警告をオープンソースコミュニティに公開します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We are closely in touch with many users of React outside of Facebook, and we monitor popular open source projects and guide them in fixing those deprecations.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>私たちは Facebook 以外の多くの React ユーザと密接に連絡を取り合っており、人気のあるオープンソースプロジェクトを監視し、非推奨警告の修正を手引きしています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Given the sheer size of the Facebook React codebase, successful internal migration is often a good indicator that other companies won't have problems either.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>Facebook の React コードベースのサイズが非常に大きいことを考えると、社内での移行が成功することは、他の企業でも問題ないことを示す良い指標となります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Nevertheless sometimes people point out additional use cases we haven't thought of, and we add escape hatches for them or rethink our approach.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>それでも、時々人々は私達が考えていなかった新たなユースケースを指摘するため、私たちはそれらのための避難ハッチを追加したり、アプローチを再考したりします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We don't deprecate anything without a good reason.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>正当な理由がない限り、私たちは何も非推奨にすることはありません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We recognize that sometimes deprecations warnings cause frustration but we add them because deprecations clean up the road for the improvements and new features that we and many people in the community consider valuable.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>非推奨警告は時々イライラさせられるということを認識していますが、それを追加するのは、私たちとコミュニティの多くの人々が価値あると考える改善と新機能追加のための道が、非推奨化によって開かれるからです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, we added a [warning about unknown DOM props](/warnings/unknown-prop.html) in React 15.2.0.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>たとえば、React 15.2.0 で[未知の DOM props に関する警告](/warnings/unknown-prop.html)を追加しました。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Many projects were affected by this.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>多くのプロジェクトがこの影響を受けました。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>However fixing this warning is important so that we can introduce the support for [custom attributes](https://github.com/facebook/react/issues/140) to React.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>しかしこの警告を修正することは、React に[カスタム属性](https://github.com/facebook/react/issues/140)のサポートを導入できるようにするために重要でした。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>There is a reason like this behind every deprecation that we add.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>私たちが追加するすべての非推奨化の背景には、このような理由があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>When we add a deprecation warning, we keep it for the rest of the current major version, and [change the behavior in the next major version](/blog/2016/02/19/new-versioning-scheme.html).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>非推奨警告を追加すると、現在のメジャーバージョンの残りの部分では警告のまま残り、[次のメジャーバージョンでは動作が変更](/blog/2016/02/19/new-versioning-scheme.html)されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If there is a lot of repetitive manual work involved, we release a [codemod](https://www.youtube.com/watch?v=d0pOgY8__JM) script that automates most of the change.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>繰り返し行われる手作業が多い場合は、変更の大部分を自動化する [codemod](https://www.youtube.com/watch?v=d0pOgY8__JM) スクリプトをリリースします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Codemods enable us to move forward without stagnation in a massive codebase, and we encourage you to use them as well.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>Codemod を使用すると、大規模なコードベースでも移行を滞りなく進めることができます。それらを使用することをお勧めします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can find the codemods that we released in the [react-codemod](https://github.com/reactjs/react-codemod) repository.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>私たちがリリースした codemod は、[react-codemod](https://github.com/reactjs/react-codemod) リポジトリで見つけることができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Interoperability {#interoperability}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>### 相互運用性 {#interoperability}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We place high value in interoperability with existing systems and gradual adoption.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>私たちは既存のシステムとの相互運用性と段階的な導入に高い価値を置いています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Facebook has a massive non-React codebase.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>Facebook は巨大な非 React のコードベースを持っています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Its website uses a mix of a server-side component system called XHP, internal UI libraries that came before React, and React itself.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>Facebook の Web サイトでは、XHP と呼ばれるサーバサイドのコンポーネントシステム、React よりも前に開発された内部 UI ライブラリ、そして React 自体を組み合わせて使用​​しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It is important to us that any product team can [start using React for a small feature](https://www.youtube.com/watch?v=BF58ZJ1ZQxY) rather than rewrite their code to bet on it.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>私たちにとって重要なことは、どの製品チームでも、賭けるようにコードを書き換えるのではなく、[小さな機能に対して React を使い始める](https://www.youtube.com/watch?v=BF58ZJ1ZQxY)ことができるということです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is why React provides escape hatches to work with mutable models, and tries to work well together with other UI libraries.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>これが、React がミュータブルなモデルを扱うための避難ハッチを提供し、他の UI ライブラリと一緒にうまく機能しようとする理由です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can wrap an existing imperative UI into a declarative component, and vice versa.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>既存の命令的な UI を宣言型コンポーネントにラップすることも、その逆も可能です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is crucial for gradual adoption.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>これは段階的な採用には不可欠です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Scheduling {#scheduling}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>### スケジューリング {#scheduling}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Even when your components are described as functions, when you use React you don't call them directly.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>コンポーネントが関数として記述されていても、React を使うときはそれらを直接呼び出さないでください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Every component returns a [description of what needs to be rendered](/blog/2015/12/18/react-components-elements-and-instances.html#elements-describe-the-tree), and that description may include both user-written components like `&lt;LikeButton&gt;` and platform-specific components like `&lt;div&gt;`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>すべてのコンポーネントは[何をレンダーする必要があるかの説明書き](/blog/2015/12/18/react-components-elements-and-instances.html#elements-describe-the-tree)を返し、その説明書きには `&lt;LikeButton&gt;` のようなユーザ作成のコンポーネントと `&lt;div&gt;` のようなプラットフォーム固有のコンポーネントの両方を含めることができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It is up to React to "unroll" `&lt;LikeButton&gt;` at some point in the future and actually apply changes to the UI tree according to the render results of the components recursively.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>将来のある時点で `&lt;LikeButton&gt;` を「展開」して、コンポーネントのレンダー結果に従って UI ツリーを実際に再帰的に変更するのは、React の責務です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is a subtle distinction but a powerful one.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>これは微妙な違いですが強力なものです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Since you don't call that component function but let React call it, it means React has the power to delay calling it if necessary.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>あなたがコンポーネント関数を呼び出さずに React が呼び出します。それは React は必要に応じて呼び出しを遅らせる権限があるということを意味します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In its current implementation React walks the tree recursively and calls render functions of the whole updated tree during a single tick.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>現在の React の実装ではツリーを再帰的に調べて、1 回のイベントループの間に更新されたツリー全体のレンダー関数を呼び出します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>However in the future it might start [delaying some updates to avoid dropping frames](https://github.com/facebook/react/issues/6170).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>しかし、将来的には[フレームのドロップを避けるため](https://github.com/facebook/react/issues/6170)にいくつかの更新を遅らせるかもしれません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is a common theme in React design.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>これは React の設計の共通テーマです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Some popular libraries implement the "push" approach where computations are performed when the new data is available.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>いくつかの人気のあるライブラリは、新しいデータが利用可能になったときに計算が実行される「プッシュ」アプローチを実装しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>React, however, sticks to the "pull" approach where computations can be delayed until necessary.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>しかし React は、計算が必要になるまで遅らせることができる「プル」アプローチを採用しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>React is not a generic data processing library.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>React は汎用的なデータ処理ライブラリではありません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It is a library for building user interfaces.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>ユーザインターフェイスを構築するためのライブラリです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We think that it is uniquely positioned in an app to know which computations are relevant right now and which are not.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>アプリ内において React は、どの計算が今すぐ必要でどの計算がそうでないのかを知ることができる特殊な位置づけにある、と私たちは考えています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If something is offscreen, we can delay any logic related to it.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>何かが画面外にある場合は、それに関連するロジックを遅らせることができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If data is arriving faster than the frame rate, we can coalesce and batch updates.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>データがフレームレートよりも早く到着する場合は、合体してバッチ更新することができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We can prioritize work coming from user interactions (such as an animation caused by a button click) over less important background work (such as rendering new content just loaded from the network) to avoid dropping frames.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>フレームを落とさないように、重要度の低いバックグラウンド作業（ネットワークからロードされたばかりの新しいコンテンツのレンダーなど）よりも、ユーザの操作による操作（ボタンクリックによるアニメーションなど）を優先できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>To be clear, we are not taking advantage of this right now.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>念のために言うと、今の時点ではこれらの可能性は実現していません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>However the freedom to do something like this is why we prefer to have control over scheduling, and why `setState()` is asynchronous.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>しかし、このようなことを自由に行いたいということが、私たちがスケジューリングを制御したい理由であり、`setState()` が非同期である理由です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Conceptually, we think of it as "scheduling an update".</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>概念的には、`setState()` を「更新のスケジュール」だと考えています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The control over scheduling would be harder for us to gain if we let the user directly compose views with a "push" based paradigm common in some variations of [Functional Reactive Programming](https://en.wikipedia.org/wiki/Functional_reactive_programming).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>ユーザが[関数型リアクティブプログラミング](https://en.wikipedia.org/wiki/Functional_reactive_programming)のいくつかのバリエーションで一般的な「プッシュ」ベースのパラダイムでビューを直接構成させた場合、スケジューリングに対する制御を得るのが難しくなります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We want to own the "glue" code.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>「糊付け部分」のコードは私たちが管理したいのです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It is a key goal for React that the amount of the user code that executes before yielding back into React is minimal.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>React の主な目標は、React 内部に戻る前に実行されるユーザコードの量を最小限にすることです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This ensures that React retains the capability to schedule and split work in chunks according to what it knows about the UI.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>これは React が UI について知っていることに従ってスケジュールしたり小分けに作業を分割したりする能力を保持することを保証します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>There is an internal joke in the team that React should have been called "Schedule" because React does not want to be fully "reactive".</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>React は完全に「リアクティブ」であることを望んでいないため、React は "Schedule" と呼ばれるべきだったというチーム内の冗談があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Developer Experience {#developer-experience}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>### 開発体験 {#developer-experience}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Providing a good developer experience is important to us.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>良い開発者経験を提供することは私達にとって重要です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, we maintain [React DevTools](https://github.com/facebook/react/tree/main/packages/react-devtools) which let you inspect the React component tree in Chrome and Firefox.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>たとえば、Chrome と Firefox で React コンポーネントツリーを調べることができる [React DevTools](https://github.com/facebook/react/tree/master/packages/react-devtools) をメンテしています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We have heard that it brings a big productivity boost both to the Facebook engineers and to the community.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>私たちは、それが Facebook エンジニアとコミュニティの両方に大きな生産性向上をもたらしていると聞いています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We also try to go an extra mile to provide helpful developer warnings.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>私たちは開発者向けの有用な警告を提供するために、一層の努力をするようにしています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, React warns you in development if you nest tags in a way that the browser doesn't understand, or if you make a common typo in the API.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>たとえば、React は開発中にブラウザが理解できない方法でタグをネストした場合、または API で一般的な入力ミスをした場合に警告します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Developer warnings and the related checks are the main reason why the development version of React is slower than the production version.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>開発者向けの警告とそれに関連するチェックが、React の開発版が製品版より遅い主な理由です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The usage patterns that we see internally at Facebook help us understand what the common mistakes are, and how to prevent them early.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>Facebook で内部的に見られる使用パターンは、よくある間違いとは何か、そしてそれらを早期に防ぐ方法を理解するのに役立ちます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>When we add new features, we try to anticipate the common mistakes and warn about them.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>私たちが新しい機能を追加するとき、私たちはよくある間違いを予想してそれらについて警告しようとします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We are always looking out for ways to improve the developer experience.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>私たちは開発者の体験を向上させる方法を常に探しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We love to hear your suggestions and accept your contributions to make it even better.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>体験をさらに良くするために、ぜひ皆さんの提案を聞き、貢献を受け入れたいと思っています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Debugging {#debugging}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>### デバッグ {#debugging}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>When something goes wrong, it is important that you have breadcrumbs to trace the mistake to its source in the codebase.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>問題が発生した場合は、コードベースでその間違いの原因を突き止めるための "パンくず" (breadcrumb) を作成することが重要です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In React, props and state are those breadcrumbs.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>React では、props と state がそのようなパンくずです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you see something wrong on the screen, you can open React DevTools, find the component responsible for rendering, and then see if the props and state are correct.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>画面に問題がある場合は、React DevTools を開いてレンダーを担当するコンポーネントを見つけ、次に props と state が正しいかどうかを確認できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If they are, you know that the problem is in the component’s `render()` function, or some function that is called by `render()`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>そうであれば、問題はコンポーネントの `render()` 関数、または `render()` によって呼び出される関数にあることがわかります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The problem is isolated.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>これで問題が切り分けられました。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If the state is wrong, you know that the problem is caused by one of the `setState()` calls in this file.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>state が間違っている場合、問題はこのファイル内の `setState()` の呼び出しの 1 つによって引き起こされていることがわかります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This, too, is relatively simple to locate and fix because usually there are only a few `setState()` calls in a single file.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>これも、通常は 1 つのファイル内に `setState()` の呼び出しは数回しかないため、検索と修正が比較的簡単です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If the props are wrong, you can traverse the tree up in the inspector, looking for the component that first "poisoned the well" by passing bad props down.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>props が間違っている場合は、インスペクタでツリーを上にたどり、悪い props を渡して最初に「井戸に毒を入れた」犯人のコンポーネントを探します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This ability to trace any UI to the data that produced it in the form of current props and state is very important to React.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>任意の UI を生成した元データまで props と state の現在値を使って追跡できるというこの能力は React にとって非常に重要です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It is an explicit design goal that state is not "trapped" in closures and combinators, and is available to React directly.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>state がクロージャやコンビネータに「閉じ込め」られておらず、React で直接利用できることは明示的な設計目標です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>While the UI is dynamic, we believe that synchronous `render()` functions of props and state turn debugging from guesswork into a boring but finite procedure.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>UI は動的ですが、props と state の同期的な `render()` 関数により、デバッグ作業が単なる当て推量から、退屈ながら有限の手順になると信じています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We would like to preserve this constraint in React even though it makes some use cases, like complex animations, harder.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>これにより複雑なアニメーションのようないくつかのユースケースがより困難になりますが、React ではこの制約を保持したいと思います。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Configuration {#configuration}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>### 設定 {#configuration}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We find global runtime configuration options to be problematic.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>グローバルな実行時設定オプションは問題があることがわかりました。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, it is occasionally requested that we implement a function like `React.configure(options)` or `React.register(component)`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>例えば、`React.configure(options)` や `React.register(component)` のような関数を実装することが時々要求されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>However this poses multiple problems, and we are not aware of good solutions to them.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>しかし、これは複数の問題を引き起こし、私たちはそれらに対する良い解決策を知りません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>What if somebody calls such a function from a third-party component library?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>誰かがサードパーティのコンポーネントライブラリからそのような関数を呼び出すとどうなりますか？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>What if one React app embeds another React app, and their desired configurations are incompatible?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>ある React アプリに別の React アプリが埋め込まれていて、それらの望ましい設定に互換性がない場合はどうなりますか？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>How can a third-party component specify that it requires a particular configuration?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>サードパーティコンポーネントは特定の設定をどのように必須にしますか？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We think that global configuration doesn't work well with composition.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>グローバル設定はコンポジションではうまく機能しないと考えています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Since composition is central to React, we don't provide global configuration in code.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>コンポジションは React の中心であるため、コードでグローバル設定を提供しません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We do, however, provide some global configuration on the build level.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>ただし、ビルドレベルでグローバル設定をいくつか提供します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, we provide separate development and production builds.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>たとえば、開発ビルドと本番ビルドを別々に提供しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We may also [add a profiling build](https://github.com/facebook/react/issues/6627) in the future, and we are open to considering other build flags.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>将来[プロファイリングビルドを追加する](https://github.com/facebook/react/issues/6627)かもしれませんし、また、他のビルドフラグの検討を受け入れています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Beyond the DOM {#beyond-the-dom}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>### DOM を超えて {#beyond-the-dom}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We see the value of React in the way it allows us to write components that have fewer bugs and compose together well.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>私たちは React の価値を、バグの少ないコンポーネントを書いてうまく構成することができるという点に見ています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>DOM is the original rendering target for React but [React Native](https://reactnative.dev/) is just as important both to Facebook and the community.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>DOM は React のオリジナルのレンダーターゲットですが、[React Native](https://reactnative.dev/) は Facebook とコミュニティの両方において同じくらい重要です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Being renderer-agnostic is an important design constraint of React.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>レンダラーに依存しないことは React の重要な設計上の制約です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It adds some overhead in the internal representations.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>それは内部表現にいくらかのオーバーヘッドを追加します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>On the other hand, any improvements to the core translate across platforms.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>その一方で、コアへの改善はすべてのプラットフォームに行きわたります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Having a single programming model lets us form engineering teams around products instead of platforms.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>単一のプログラミングモデルを持つことで、プラットフォームではなく製品を中心にエンジニアリングチームを形成できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>So far the tradeoff has been worth it for us.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>これまでのところ、そのトレードオフは私たちにとって価値があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Implementation {#implementation}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>### 実装 {#implementation}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We try to provide elegant APIs where possible.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>可能な限り洗練された API を提供しようとしています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We are much less concerned with the implementation being elegant.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>しかし実装がエレガントであることにはそれほど関心がありません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The real world is far from perfect, and to a reasonable extent we prefer to put the ugly code into the library if it means the user does not have to write it.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>現実の世界は完璧には程遠いので、ユーザが醜いコードを書かなくて済むのであれば、合理的な範囲で醜いコードをライブラリに入れることを選びます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>When we evaluate new code, we are looking for an implementation that is correct, performant and affords a good developer experience.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>新しいコードを評価するときには、正しく、パフォーマンスが高く、優れた開発者体験を提供する実装を求めます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Elegance is secondary.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>優雅さは二の次です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We prefer boring code to clever code.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>私たちは賢いコードより退屈なコードを好みます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Code is disposable and often changes.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>コードは使い捨てであり、しばしば変更されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>So it is important that it [doesn't introduce new internal abstractions unless absolutely necessary](https://youtu.be/4anAwXYqLG8?t=13m9s).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>したがって、それが[絶対に必要でない限り、新しい内部抽象化を導入しない](https://youtu.be/4anAwXYqLG8?t=13m9s)ことが重要です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Verbose code that is easy to move around, change and remove is preferred to elegant code that is prematurely abstracted and hard to change.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>移動、変更、削除が容易な冗長コードは、時期尚早に抽象化され変更が難しいエレガントなコードよりも優先されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Optimized for Tooling {#optimized-for-tooling}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>### ツールへの最適化 {#optimized-for-tooling}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Some commonly used APIs have verbose names.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>いくつかの一般的に使用される API は冗長な名前を持っています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, we use `componentDidMount()` instead of `didMount()` or `onMount()`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>例えば、`didMount()` や `onMount()` の代わりに `componentDidMount()` を使います。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is [intentional](https://github.com/reactjs/react-future/issues/40#issuecomment-142442124).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>これは[意図的](https://github.com/reactjs/react-future/issues/40#issuecomment-142442124)です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The goal is to make the points of interaction with the library highly visible.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>目的は、ライブラリとのやり取りのポイントをよく見えるようにすることです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In a massive codebase like Facebook, being able to search for uses of specific APIs is very important.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>Facebook のような大規模なコードベースでは、特定の API の使用を検索できることが非常に重要です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We value distinct verbose names, and especially for the features that should be used sparingly.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>他と区別しやすい冗長な名前を大切にしています。特に、控えめに使用する必要がある機能についてはそれが重要です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, `dangerouslySetInnerHTML` is hard to miss in a code review.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>例えば、`dangerouslySetInnerHTML` をコードレビューで見逃すことは難しいでしょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Optimizing for search is also important because of our reliance on [codemods](https://www.youtube.com/watch?v=d0pOgY8__JM) to make breaking changes.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>私たちは破壊的な変更を加える際に [codemods](https://www.youtube.com/watch?v=d0pOgY8__JM) に依存しているため、検索を最適化することも重要です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We want it to be easy and safe to apply vast automated changes across the codebase, and unique verbose names help us achieve this.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>膨大な自動化された変更をコードベース全体に適用するのが簡単で安全であることを望みます。区別しやすい冗長な名前を使用すると、これを実現できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Similarly, distinctive names make it easy to write custom [lint rules](https://github.com/yannickcr/eslint-plugin-react) about using React without worrying about potential false positives.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>同様に、他と区別可能な名前を使用すると、潜在的な誤検知を心配することなく、React の使用に関するカスタムの [lint ルール](https://github.com/yannickcr/eslint-plugin-react)を簡単に作成できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>[JSX](/docs/introducing-jsx.html) plays a similar role.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>[JSX](/docs/introducing-jsx.html) も同様の役割を果たします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>While it is not required with React, we use it extensively at Facebook both for aesthetic and pragmatic reasons.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>React では必須ではありませんが、美観上および実用上の理由から、Facebook で広く使用されています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In our codebase, JSX provides an unambiguous hint to the tools that they are dealing with a React element tree.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>私たちのコードベースでは、JSX はそれらが React 要素ツリーを扱っているというツールへの明白なヒントを提供します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This makes it possible to add build-time optimizations such as [hoisting constant elements](https://babeljs.io/docs/en/babel-plugin-transform-react-constant-elements/), safely lint and codemod internal component usage, and [include JSX source location](https://github.com/facebook/react/pull/6771) into the warnings.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>これにより、[定数要素の巻き上げ](https://babeljs.io/docs/plugins/transform-react-constant-elements/)、安全な lint および codemod 内部コンポーネントの使用などのビルド時の最適化を追加したり、[JSX ソースの場所](https://github.com/facebook/react/pull/6771)を警告に含めることができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Dogfooding {#dogfooding}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>### ドッグフーディング {#dogfooding}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We try our best to address the problems raised by the community.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>私たちはコミュニティーによって提起された問題に取り組むために最善を尽くします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>However we are likely to prioritize the issues that people are *also* experiencing internally at Facebook.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>しかし、私たちは Facebook *も*内部で経験している問題を優先する可能性があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Perhaps counter-intuitively, we think this is the main reason why the community can bet on React.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>直感に反するかもしれませんが、私たちはこれこそがコミュニティが React に賭けることができる主な理由であると思います。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Heavy internal usage gives us the confidence that React won't disappear tomorrow.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>大量に内部で使用していることで、React が明日消えないという自信が得られます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>React was created at Facebook to solve its problems.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>React は Facebook の問題を解決するために Facebook で作成されました。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It brings tangible business value to the company and is used in many of its products.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>それは Facebook に確かなビジネス価値をもたらし、多くの製品で使用されています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>[Dogfooding](https://en.wikipedia.org/wiki/Eating_your_own_dog_food) it means that our vision stays sharp and we have a focused direction going forward.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>[ドッグフーディング](https://en.wikipedia.org/wiki/Eating_your_own_dog_food)によって、私たちのビジョンが鮮明なままであり、私たちが今後も焦点を絞った方向性を持てるようになります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This doesn't mean that we ignore the issues raised by the community.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>これは、コミュニティが提起した問題を無視しているという意味ではありません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, we added support for [web components](/docs/webcomponents.html) and [SVG](https://github.com/facebook/react/pull/6243) to React even though we don't rely on either of them internally.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>たとえば、Facebook 内部で依存していないにも関わらず、React に [Web Components](/docs/webcomponents.html) および [SVG](https://github.com/facebook/react/pull/6243) のサポートを追加しました。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We are actively [listening to your pain points](https://github.com/facebook/react/issues/2686) and [address them](/blog/2016/07/11/introducing-reacts-error-code-system.html) to the best of our ability.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>私達は積極的に[皆さんの問題点を聞き](https://github.com/facebook/react/issues/2686)、私たちの能力の及ぶ限りで[それらに対処](/blog/2016/07/11/introducing-reacts-error-code-system.html)します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The community is what makes React special to us, and we are honored to contribute back.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>コミュニティは React を私たちにとって特別なものにしており、私たちもお返しとして喜んでコミュニティに貢献したいと考えています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>After releasing many open source projects at Facebook, we have learned that trying to make everyone happy at the same time produced projects with poor focus that didn't grow well.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>Facebook で多くのオープンソースプロジェクトをリリースした後、みんなを同時に幸せにすることを試みるが焦点が不十分なプロジェクトを生み出してもうまく成長しないということを学びました。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Instead, we found that picking a small audience and focusing on making them happy brings a positive net effect.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>代わりに、少人数の観客を選んで満足させることに集中すると最終的には良い効果があることがわかりました。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>That's exactly what we did with React, and so far solving the problems encountered by Facebook product teams has translated well to the open source community.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>これこそまさに私たちが React を使って行ったことであり、そして今のところ Facebook 製品チームが遭遇した問題を解決することは、オープンソースコミュニティにもうまく還元されています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The downside of this approach is that sometimes we fail to give enough focus to the things that Facebook teams don't have to deal with, such as the "getting started" experience.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>このアプローチの欠点は、React の初期体験の良し悪しなど、Facebook チームが対処する必要がないことに十分に焦点を当てることができないことです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We are acutely aware of this, and we are thinking of how to improve in a way that would benefit everyone in the community without making the same mistakes we did with open source projects before.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050008Z">
+        <seg>私たちはこのことを強く認識しており、以前にオープンソースプロジェクトで行ったのと同じ過ちを犯さずに、コミュニティのすべての人に利益をもたらすようなやり方でどのような改善ができるかを考えています。</seg>
+      </tuv>
+    </tu>
+  </body>
+</tmx>

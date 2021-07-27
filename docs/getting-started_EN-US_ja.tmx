@@ -1,0 +1,667 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tmx SYSTEM "tmx14.dtd">
+<tmx version="1.4">
+  <header creationtool="OmegaT" o-tmf="OmegaT TMX" adminlang="EN-US" datatype="plaintext" creationtoolversion="4.3.2_0_6a661c5e0" segtype="sentence" srclang="EN-US"/>
+  <body>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This page is an overview of the React documentation and related resources.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>このページは React のドキュメント、および関連する資料の概要となります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>**React** is a JavaScript library for building user interfaces.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>**React** はユーザインターフェースを作成する為の JavaScript のライブラリです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Learn what React is all about on [our homepage](/) or [in the tutorial](/tutorial/tutorial.html).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>[ここのホームページ](/)、または[このチュートリアル](/tutorial/tutorial.html)から React がどういうものかを学びましょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>- [Try React](#try-react)
+- [Learn React](#learn-react)
+- [Staying Informed](#staying-informed)
+- [Versioned Documentation](#versioned-documentation)
+- [Something Missing?](#something-missing)</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>- [React を試す](#try-react)
+- [React を学ぶ](#learn-react)
+- [最新の情報を追いたい人へ](#staying-informed)
+- [バージョン管理されたドキュメント](#versioned-documentation)
+- [足りないものがある？](#something-missing)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Try React {#try-react}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>## React を試す {#try-react}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>React has been designed from the start for gradual adoption, and</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>React は当初より、既存のプロジェクトに徐々に追加していけるようなデザインとなっています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>**you can use as little or as much React as you need.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>**たくさん React を使うのでも、少しだけ使うのでも構いません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>** Whether you want to get a taste of React, add some interactivity to a simple HTML page, or start a complex React-powered app, the links in this section will help you get started.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>**触りだけやってみるもよし、シンプルな HTML のページにインタラクティブな機能を追加するのに使うもよし、React をフル活用した複雑なアプリを作成するもよし。どのような目的にしても、このページにあるリンクが役に立つでしょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Online Playgrounds {#online-playgrounds}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>### Web 上で試せるオンラインエディタ {#online-playgrounds}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you're interested in playing around with React, you can use an online code playground.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>React をちょっと試してみたい場合、Web 上のコードエディタが使えます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Try a Hello World template on [CodePen](codepen://hello-world), [CodeSandbox](https://codesandbox.io/s/new), or [Stackblitz](https://stackblitz.com/fork/react).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>[CodePen](codepen://hello-world)、[CodeSandbox](https://codesandbox.io/s/new) や [Stackblitz](https://stackblitz.com/fork/react) で Hello World のテンプレートを使って試してみましょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you prefer to use your own text editor, you can also [download this HTML file](https://raw.githubusercontent.com/reactjs/reactjs.org/main/static/html/single-file-example.html), edit it, and open it from the local filesystem in your browser.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>自前のテキストエディタを使いたい場合は、[この HTML ファイル](https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html)をダウンロード・編集して、ブラウザを使ってからローカルファイルシステムから開くことができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It does a slow runtime code transformation, so we'd only recommend using this for simple demos.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>ランタイムでの遅いコード変換が行われる為、簡単なデモに留めておくことをおすすめします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Add React to a Website {#add-react-to-a-website}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>### React を Web サイトに追加する {#add-react-to-a-website}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can [add React to an HTML page in one minute](/docs/add-react-to-a-website.html).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>[React は HTML ページにすぐに追加することができます](/docs/add-react-to-a-website.html)。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can then either gradually expand its presence, or keep it contained to a few dynamic widgets.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>そのあと徐々に全体に反映させていくか、少数のダイナミックなウィジェットに留めるかはあなたの自由です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Create a New React App {#create-a-new-react-app}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>### 新規 React アプリの作成 {#create-a-new-react-app}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>When starting a React project, a [simple HTML page with script tags](/docs/add-react-to-a-website.html) might still be the best option.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>新しく React のプロジェクトを始めたい場合でも、まずは[シンプルな HTML ページに script タグを追加](/docs/add-react-to-a-website.html)するのがおすすめです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It only takes a minute to set up!</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>数分でセットアップできます！</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>As your application grows, you might want to consider a more integrated setup.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>アプリが成長するにつれて、より統合されたセットアップを行うことを考慮していきましょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>There are several JavaScript toolchains we recommend for larger applications.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>大きいアプリの場合におすすめの様々な JavaScript を用いたツールチェインが存在します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Each of them can work with little to no configuration and lets you take full advantage of the rich React ecosystem.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>それぞれわずかな設定、もしくは設定要らずでリッチな React のエコシステムをフル活用できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>[Learn how.](/docs/create-a-new-react-app.html)</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>[詳細はこちら。](/docs/create-a-new-react-app.html)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Learn React {#learn-react}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>## React を学ぶ {#learn-react}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>People come to React from different backgrounds and with different learning styles.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>React を学びたい人には様々な背景があり、それぞれいろんな学び方のスタイルがあるでしょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Whether you prefer a more theoretical or a practical approach, we hope you'll find this section helpful.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>理論から学びたい人も、実際に手を動かしながら学びたい人も、このセクションが役に立てれば幸いです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* If you prefer to **learn by doing**, start with our [practical tutorial](/tutorial/tutorial.html).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>* **実際に手を動かしながら学びたい人**は[チュートリアル](/tutorial/tutorial.html)からはじめましょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* If you prefer to **learn concepts step by step**, start with our [guide to main concepts](/docs/hello-world.html).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>* **コンセプトからひとつひとつ学んでいきたい人**は[こちらのガイド](/docs/hello-world.html)からはじめていきましょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Like any unfamiliar technology, React does have a learning curve.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>他の新しい技術を新しく学ぶ時と同様、React にも学習コストがあります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>With practice and some patience, you *will* get the hang of it.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>しかし、辛抱強く、地道にコツコツやっていくことで、*絶対に*できるようになります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### First Examples {#first-examples}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>### 最初の例 {#first-examples}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The [React homepage](/) contains a few small React examples with a live editor.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>[React のホームページ](/)にはライブエディタにて記入できる小さな React のサンプルがいくつか載っています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Even if you don't know anything about React yet, try changing their code and see how it affects the result.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>まだ React のことを何も知らなくても、実際に触ってみてどのように変化するか見てみましょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### React for Beginners {#react-for-beginners}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>### React 初心者向けのガイド {#react-for-beginners}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you feel that the React documentation goes at a faster pace than you're comfortable with, check out [this overview of React by Tania Rascia](https://www.taniarascia.com/getting-started-with-react/).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>もし、React の公式ドキュメントのペースが早すぎると感じた場合は、[Tania Rascia 氏によって書かれた React の概要](https://www.taniarascia.com/getting-started-with-react/)を読んでみましょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It introduces the most important React concepts in a detailed, beginner-friendly way.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>React の重要なコンセプトについて詳細に説明されており、初心者にもとても易しい作りとなっています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Once you're done, give the documentation another try!</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>それが終わったら、もう一度公式ドキュメントを読んでみましょう！</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### React for Designers {#react-for-designers}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>### デザイナ向けのガイド {#react-for-designers}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you're coming from a design background, [these resources](https://reactfordesigners.com/) are a great place to get started.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>もしあなたがデザイナのバックグラウンドを持っているなら、[これらの資料](https://reactfordesigners.com/)から始めることをおすすめします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### JavaScript Resources {#javascript-resources}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>### JavaScript 資料 {#javascript-resources}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The React documentation assumes some familiarity with programming in the JavaScript language.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>React の公式ドキュメントはあなたがある程度 JavaScript について知っていることを想定しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You don't have to be an expert, but it's harder to learn both React and JavaScript at the same time.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>JavaScript の達人である必要は全くありませんが、JavaScript と React を同時に習得するのは難しいでしょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We recommend going through [this JavaScript overview](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript) to check your knowledge level.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>JavaScript について自分がどれだけ知っているかを知るために、[この JavaScript の概要](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)を読んでおくことをおすすめします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It will take you between 30 minutes and an hour but you will feel more confident learning React.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>読むのに 30 分から 1 時間程かかってしまいますが、React を学ぶための自信へと繋がってくるでしょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;Tip
+&gt;
+&gt;Whenever you get confused by something in JavaScript, [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript) and [javascript.info](https://javascript.info/) are great websites to check.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>&gt; ヒント
+&gt;
+&gt;もし JavaScript で何か詰まった時は、[MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript) と [javascript.info](https://javascript.info/) を確認すると良いでしょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>There are also [community support forums](/community/support.html) where you can ask for help.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>また、[コミュニティ運営の掲示板](/community/support.html)を活用するのもおすすめします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Practical Tutorial {#practical-tutorial}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>### 実践チュートリアル {#practical-tutorial}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you prefer to **learn by doing,** check out our [practical tutorial](/tutorial/tutorial.html).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>**実際に手を動かしながら学びたい人**は[チュートリアル](/tutorial/tutorial.html)からはじめましょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In this tutorial, we build a tic-tac-toe game in React.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>このチュートリアルでは React を使って三目並べゲームを作成します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You might be tempted to skip it because you're not into building games -- but give it a chance.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>ゲーム作成に興味が無い方は飛ばそうと思うかもしれませんが、試してみてください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The techniques you'll learn in the tutorial are fundamental to building *any* React apps, and mastering it will give you a much deeper understanding.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>ここで学ぶテクニックは*全ての* React アプリの基礎となることであり、習得することで React に関する深い理解が得られます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Step-by-Step Guide {#step-by-step-guide}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>### 一歩づつ進めるためのガイド {#step-by-step-guide}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you prefer to **learn concepts step by step,** our [guide to main concepts](/docs/hello-world.html) is the best place to start.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>**コンセプトからひとつひとつ学んでいきたい人**は[こちらのガイド](/docs/hello-world.html)からはじめていきましょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Every next chapter in it builds on the knowledge introduced in the previous chapters so you won't miss anything as you go along.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>このガイドは章ごとに分かれていて、各章がそれまでに習ったことを上乗せする知識となっているため、余すことなく学ぶことができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Thinking in React {#thinking-in-react}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>### React 的な考え方 {#thinking-in-react}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Many React users credit reading [Thinking in React](/docs/thinking-in-react.html) as the moment React finally "clicked" for them.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>多くの React のユーザは [React の流儀](/docs/thinking-in-react.html)を読んだ時に React についてピンときたと高く評価しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It's probably the oldest React walkthrough but it's still just as relevant.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>この世に存在する一番古い React に関する資料ですが、今でも現役で使えます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Recommended Courses {#recommended-courses}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>### おすすめの資料 {#recommended-courses}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Sometimes people find third-party books and video courses more helpful than the official documentation.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>時には第三者が執筆した技術書やオンラインコース等が公式ドキュメントよりもわかりやすいという人もいます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We maintain [a list of commonly recommended resources](/community/courses.html), some of which are free.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>我々は[よく勧められている資料集](/community/courses.html)についてもまとめています。無料のものもあります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Advanced Concepts {#advanced-concepts}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>### 高度なコンセプト {#advanced-concepts}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Once you're comfortable with the [main concepts](/docs/hello-world.html) and played with React a little bit, you might be interested in more advanced topics.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>React の[基本コンセプト](/docs/hello-world.html)について慣れてきて、実際に手で動かしてみたら、今度はさらに高度な内容にも手を出したいと思うかもしれません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This section will introduce you to the powerful, but less commonly used React features like [context](/docs/context.html) and [refs](/docs/refs-and-the-dom.html).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>この資料では強力な、しかし普段使われることのない [コンテクスト](/docs/context.html) や [ref](/docs/refs-and-the-dom.html) といった React のさらなる機能について紹介します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### API Reference {#api-reference}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>### API リファレンス {#api-reference}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This documentation section is useful when you want to learn more details about a particular React API.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>この資料は特定の React API の詳細について学びたいときに役に立つでしょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, [`React.Component` API reference](/docs/react-component.html) can provide you with details on how `setState()` works, and what different lifecycle methods are useful for.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>例えば、[`React.Component` API リファレンス](/docs/react-component.html)では `setState()` がどう機能しているかについてより詳細に記載されていたり、種々のライフサイクルメソッドがどのように役に立つかについて書かれています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Glossary and FAQ {#glossary-and-faq}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>### 用語集と FAQ {#glossary-and-faq}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The [glossary](/docs/glossary.html) contains an overview of the most common terms you'll see in the React documentation.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>この[用語集](/docs/glossary.html)にはこのドキュメントにてよく使われる単語等が記載されています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>There is also a FAQ section dedicated to short questions and answers about common topics, including [making AJAX requests](/docs/faq-ajax.html), [component state](/docs/faq-state.html), and [file structure](/docs/faq-structure.html).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>FAQ もあり、[AJAX リクエストについて](/docs/faq-ajax.html)、[コンポーネントの state](/docs/faq-state.html)、[ファイル構成](/docs/faq-structure.html)などのよくある質問とそれらに対する回答が記載されています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Staying Informed {#staying-informed}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>## 最新の情報を追いたい人へ {#staying-informed}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The [React blog](/blog/) is the official source for the updates from the React team.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>[React ブログ](/blog/)は React チームからのアップデートが記載されている公式ブログです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Anything important, including release notes or deprecation notices, will be posted there first.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>リリースノートや機能の非推奨化の告知など、何か大事な発表がある時にはこのブログに真っ先に記載されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can also follow the [@reactjs account](https://twitter.com/reactjs) on Twitter, but you won't miss anything essential if you only read the blog.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>他にも [@reactjs](https://twitter.com/reactjs) のツイッターアカウントをフォローすることもできますが、公式ブログを追っていれば大事なことを見落とすことはないでしょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Not every React release deserves its own blog post, but you can find a detailed changelog for every release in the [`CHANGELOG.md` file in the React repository](https://github.com/facebook/react/blob/main/CHANGELOG.md), as well as on the [Releases](https://github.com/facebook/react/releases) page.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>全ての React のリリースにブログ記事があるわけではありませんが、リリースごとに詳細に書かれた changelog が [React リポジトリの `CHANGELOG.md`](https://github.com/facebook/react/blob/master/CHANGELOG.md)、および [Releases ページ](https://github.com/facebook/react/releases)に記載されています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Versioned Documentation {#versioned-documentation}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>## バージョン管理されたドキュメント {#versioned-documentation}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This documentation always reflects the latest stable version of React.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>このドキュメントは常に最新の stable 版の React に準拠しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Since React 16, you can find older versions of the documentation on a [separate page](/versions).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>React 16 からは古いバージョンのドキュメントも[別のページ](/versions)から閲覧できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Note that documentation for past versions is snapshotted at the time of the release, and isn't being continuously updated.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>古いバージョンのドキュメントは各バージョンリリース時のスナップショットであり、更新をかけることはありません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Something Missing?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>## 他に聞きたいことは？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If something is missing in the documentation or if you found some part confusing, please [file an issue for the documentation repository](https://github.com/reactjs/reactjs.org/issues/new) with your suggestions for improvement, or tweet at the [@reactjs account](https://twitter.com/reactjs).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>ドキュメントに記載されていないことがあったり、わかりにくい箇所があったりしたら、困ったことや改善案等を[この公式ドキュメントのリポジトリ](https://github.com/reactjs/reactjs.org/issues/new)に issue として立てるか、もしくは公式の [@reactjs](https://twitter.com/reactjs) までご連絡ください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We love hearing from you!</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T053253Z">
+        <seg>あなたのご意見をお待ちしております！</seg>
+      </tuv>
+    </tu>
+  </body>
+</tmx>

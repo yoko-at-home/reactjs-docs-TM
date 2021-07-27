@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tmx SYSTEM "tmx14.dtd">
+<tmx version="1.4">
+  <header creationtool="OmegaT" o-tmf="OmegaT TMX" adminlang="EN-US" datatype="plaintext" creationtoolversion="4.3.2_0_6a661c5e0" segtype="sentence" srclang="EN-US"/>
+  <body>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>---
+id: react-without-jsx
+title: React Without JSX
+permalink: docs/react-without-jsx.html
+---</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064805Z">
+        <seg>---
+id: react-without-jsx
+title: JSX なしで React を使う
+permalink: docs/react-without-jsx.html
+---</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>JSX is not a requirement for using React.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064805Z">
+        <seg>JSX は React を使うための必須事項ではありません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Using React without JSX is especially convenient when you don't want to set up compilation in your build environment.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064805Z">
+        <seg>JSX なしで React を使うことは、あなたのビルド環境で JSX のコンパイルの設定をしたくない時には便利です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Each JSX element is just syntactic sugar for calling `React.createElement(component, props, ...children)`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064805Z">
+        <seg>各 JSX 要素は、`React.createElement(component, props, ...children)` を呼び出すための単なるシンタックスシュガーです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>So, anything you can do with JSX can also be done with just plain JavaScript.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064805Z">
+        <seg>つまり、JSX を使ってできることは、普通の JavaScript を使ってもできます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, this code written with JSX:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064805Z">
+        <seg>例えば、JSX で書かれた以下のコードは：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>can be compiled to this code that does not use JSX:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064805Z">
+        <seg>JSX を使わない以下のコードにコンパイルできます：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you're curious to see more examples of how JSX is converted to JavaScript, you can try out [the online Babel compiler](babel://jsx-simple-example).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064805Z">
+        <seg>JSX から JavaScript への変換方法の例をもっと見たいなら、[オンラインの Babel コンパイラ](babel://jsx-simple-example)で試すことができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The component can either be provided as a string, as a subclass of `React.Component`, or a plain function.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064805Z">
+        <seg>コンポーネントは文字列、`React.Component` のサブクラス、もしくはプレーンな関数のいずれかで指定されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you get tired of typing `React.createElement` so much, one common pattern is to assign a shorthand:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064805Z">
+        <seg>たくさんの `React.createElement` をタイピングするのにうんざりした場合、一般的なパターンの 1 つは以下のショートハンドを割り当てることです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you use this shorthand form for `React.createElement`, it can be almost as convenient to use React without JSX.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064805Z">
+        <seg>このショートハンドを `React.createElement` に使用すれば、JSX なしで React を使うのにとても便利です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Alternatively, you can refer to community projects such as [`react-hyperscript`](https://github.com/mlmorg/react-hyperscript) and [`hyperscript-helpers`](https://github.com/ohanhi/hyperscript-helpers) which offer a terser syntax.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064805Z">
+        <seg>あるいは、簡潔な構文を提供する [`react-hyperscript`](https://github.com/mlmorg/react-hyperscript) や [`hyperscript-helpers`](https://github.com/ohanhi/hyperscript-helpers) のようなコミュニティプロジェクトも参照してみてください。</seg>
+      </tuv>
+    </tu>
+  </body>
+</tmx>

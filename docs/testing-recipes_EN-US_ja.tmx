@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tmx SYSTEM "tmx14.dtd">
+<tmx version="1.4">
+  <header creationtool="OmegaT" o-tmf="OmegaT TMX" adminlang="EN-US" datatype="plaintext" creationtoolversion="4.3.2_0_6a661c5e0" segtype="sentence" srclang="EN-US"/>
+  <body>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>---
+id: testing-recipes
+title: Testing Recipes
+permalink: docs/testing-recipes.html
+prev: testing.html
+next: testing-environments.html
+---</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>---
+id: testing-recipes
+title: テストのレシピ集
+permalink: docs/testing-recipes.html
+prev: testing.html
+next: testing-environments.html
+---</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Common testing patterns for React components.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>React コンポーネントのための一般的なテストのパターン集です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt; Note:
+&gt;
+&gt; This page assumes you're using [Jest](https://jestjs.io/) as a test runner.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>&gt; 補足：
+&gt;
+&gt; このページではテストランナーとして [Jest](https://jestjs.io/) を使用することを前提としています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you use a different test runner, you may need to adjust the API, but the overall shape of the solution will likely be the same.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>もし別のテストランナーを使う場合は API を修正する必要があるかもしれませんが、やり方の全体的な見た目についてはおそらく同じようなものになるはずです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Read more details on setting up a testing environment on the [Testing Environments](/docs/testing-environments.html) page.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>テスト環境のセットアップについては [テスト環境](/docs/testing-environments.html) のページをご覧ください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>On this page, we will primarily use function components.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>このページでは主に関数コンポーネントを利用します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>However, these testing strategies don't depend on implementation details, and work just as well for class components too.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>しかし以下に述べるテスト手法は実装の詳細には依存しませんので、クラスコンポーネントでも全く同様に動作します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>- [Setup/Teardown](#setup--teardown)
+- [`act()`](#act)
+- [Rendering](#rendering)
+- [Data Fetching](#data-fetching)
+- [Mocking Modules](#mocking-modules)
+- [Events](#events)
+- [Timers](#timers)
+- [Snapshot Testing](#snapshot-testing)
+- [Multiple Renderers](#multiple-renderers)
+- [Something Missing?](#something-missing)</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>- [セットアップ/後始末](#setup--teardown)
+- [`act()`](#act)
+- [レンダー](#rendering)
+- [データの取得](#data-fetching)
+- [モジュールのモック化](#mocking-modules)
+- [イベント](#events)
+- [タイマー](#timers)
+- [スナップショットテスト](#snapshot-testing)
+- [複数のレンダラ](#multiple-renderers)
+- [何かが足りない？](#something-missing)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Setup/Teardown {#setup--teardown}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>### セットアップ/後始末 {#setup--teardown}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For each test, we usually want to render our React tree to a DOM element that's attached to `document`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>それぞれのテストにおいて、通常われわれは React ツリーを `document` に結びついた DOM 要素として描画することになります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is important so that it can receive DOM events.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>これは DOM イベントを受け取れるようにするために重要です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>When the test ends, we want to "clean up" and unmount the tree from the `document`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>テストが終了した際に「クリーンアップ」を行い、`document` からツリーをアンマウントします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>A common way to do it is to use a pair of `beforeEach` and `afterEach` blocks so that they'll always run and isolate the effects of a test to itself:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>このためによく行うのは `beforeEach` と `afterEach` ブロックのペアを使い、それらを常に実行することで、各テストの副作用がそれ自身にとどまるようにすることです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You may use a different pattern, but keep in mind that we want to execute the cleanup _even if a test fails_.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>他のパターンを利用しても構いませんが、*仮にテストが失敗した場合でも*クリーンアップコードを実行するようにするべき、ということを覚えておいてください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Otherwise, tests can become "leaky", and one test can change the behavior of another test.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>さもなくば、テストは「穴の開いた」ものとなってしまい、あるテストが他のテストの挙動に影響するようになってしまいます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>That makes them difficult to debug.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>これはデバッグを困難にします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>When writing UI tests, tasks like rendering, user events, or data fetching can be considered as "units" of interaction with a user interface.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>UI テストを記述する際、レンダー、ユーザイベント、データの取得といったタスクはユーザインターフェースへのインタラクションの「ユニット (unit)」であると考えることができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>`react-dom/test-utils` provides a helper called [`act()`](/docs/test-utils.html#act) that makes sure all updates related to these "units" have been processed and applied to the DOM before you make any assertions:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>`react-dom/test-utils` が提供する [`act()`](/docs/test-utils.html#act) というヘルパーは、あなたが何らかのアサーションを行う前に、これらの「ユニット」に関連する更新がすべて処理され、DOM に反映されていることを保証します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This helps make your tests run closer to what real users would experience when using your application.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>これによりあなたのテストは、実際のユーザがアプリケーションを使う時に体験するのと近い状況で実行されるようになります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The rest of these examples use `act()` to make these guarantees.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>以下の例ではこのような保証を得るために `act()` を利用しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You might find using `act()` directly a bit too verbose.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>直接 `act()` を使うのはちょっと冗長だと感じるかもしれません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>To avoid some of the boilerplate, you could use a library like [React Testing Library](https://testing-library.com/react), whose helpers are wrapped with `act()`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>ボイラープレートの記述を軽減するために、[React Testing Library](https://testing-library.com/react) のようなライブラリを使うこともできます。このライブラリのヘルパは `act()` でラップされています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt; Note:
+&gt;
+&gt; The name `act` comes from the [Arrange-Act-Assert](http://wiki.c2.com/?ArrangeActAssert) pattern.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>&gt; 補足：
+&gt;
+&gt; `act` という名称は [Arrange-Act-Assert](http://wiki.c2.com/?ArrangeActAssert) パターンから来ています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Rendering {#rendering}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>### レンダー {#rendering}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Commonly, you might want to test whether a component renders correctly for given props.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>与えられた props に対してコンポーネントが正しくレンダーされているかをテストしたいことがよくあります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Consider a simple component that renders a message based on a prop:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>props の内容に応じてメッセージをレンダーする以下のシンプルなコンポーネントを考えてください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We can write a test for this component:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>このコンポーネントのテストは以下のように書くことができます：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Data Fetching {#data-fetching}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>### データの取得 {#data-fetching}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Instead of calling real APIs in all your tests, you can mock requests with dummy data.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>あなたのテスト内で本物の API を呼ぶかわりに、リクエストをモック化してダミーのデータを返すようにできます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Mocking data fetching with "fake" data prevents flaky tests due to an unavailable backend, and makes them run faster.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>データ取得をモック化して「フェイク」のデータを使うことで、バックエンドが利用できないせいでテストが不確実にならずに済み、テストの動作が高速になります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Note: you may still want to run a subset of tests using an ["end-to-end"](/docs/testing-environments.html#end-to-end-tests-aka-e2e-tests) framework that tells whether the whole app is working together.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>とはいえ、テストの一部については、アプリケーション全体が協調して動作しているかを確認できる ["end-to-end"](/docs/testing-environments.html#end-to-end-tests-aka-e2e-tests) のフレームワークを利用して実行したいかもしれません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We can write tests for it:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>このコンポーネントに対するテストは以下のように書けます：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Mocking Modules {#mocking-modules}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>### モジュールのモック化 {#mocking-modules}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Some modules might not work well inside a testing environment, or may not be as essential to the test itself.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>モジュールによってはテスト環境でうまく動かないものや、テスト自体にとって本質的でないものがあります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Mocking out these modules with dummy replacements can make it easier to write tests for your own code.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>これらのモジュールをモック化してダミーに置き換えることで、あなた自身のコードに対するテストが記述しやすくなることがあります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Consider a `Contact` component that embeds a third-party `GoogleMap` component:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>サードパーティの `GoogleMap` を埋め込んでいる `Contact` というコンポーネントがあるとします：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If we don't want to load this component in our tests, we can mock out the dependency itself to a dummy component, and run our tests:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>我々のテスト中でこのコンポーネントをロードしたくない場合、この依存モジュール自体をダミーのコンポーネントにモック化した上でテストを実行することができます：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Events {#events}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>### イベント {#events}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We recommend dispatching real DOM events on DOM elements, and then asserting on the result.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>DOM 要素に対して本物の DOM イベントをディスパッチし、その結果に対してアサーションを行うことをお勧めします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Consider a `Toggle` component:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>以下の `Toggle` コンポーネントを考えてみましょう：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We could write tests for it:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>これに対するテストは以下のように書けます：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Different DOM events and their properties are described in [MDN](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>その他の DOM イベントやそれらのプロパティは [MDN](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) で解説されています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Note that you need to pass `{ bubbles: true }` in each event you create for it to reach the React listener because React automatically delegates events to the root.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>React のリスナにイベントが到達するように、作成するそれぞれのイベントに対して `{ bubbles: true }` を指定する必要があることに気を付けてください。React ではイベントは自動的にルート要素にデリゲートする形で処理されるためです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt; Note:
+&gt;
+&gt; React Testing Library offers a [more concise helper](https://testing-library.com/docs/dom-testing-library/api-events) for firing events.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>&gt; 補足：
+&gt;
+&gt; React Testing Library にはイベントを発火するための[より簡便なヘルパ](https://testing-library.com/docs/dom-testing-library/api-events)があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Timers {#timers}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>### タイマー {#timers}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Your code might use timer-based functions like `setTimeout` to schedule more work in the future.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>あなたのコードでは、未来に行う作業をスケジュールするために `setTimeout` のようなタイマーベースの関数を使っているかもしれません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In this example, a multiple choice panel waits for a selection and advances, timing out if a selection isn't made in 5 seconds:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>以下の例では、選択肢のパネルを表示してどれかが選択されるまで待ちますが、5 秒以内に選択が起きなければタイムアウトするようになっています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We can write tests for this component by leveraging [Jest's timer mocks](https://jestjs.io/docs/en/timer-mocks), and testing the different states it can be in.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>このコンポーネントに対するテストは、[Jest のタイマーモック](https://jestjs.io/docs/en/timer-mocks)を活用し、可能性のある状態のそれぞれをテストする、というやりかたで書くことができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can use fake timers only in some tests.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>フェイクタイマーは一部のテストでのみ使うようにすることができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Above, we enabled them by calling `jest.useFakeTimers()`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>上記の例では、`jest.useFakeTimers()` を呼ぶことでフェイクタイマーを有効化しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The main advantage they provide is that your test doesn't actually have to wait five seconds to execute, and you also didn't need to make the component code more convoluted just for testing.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>これによる主な利点は、実行されるまで実際に 5 秒待つ必要がないということと、テストのためだけにコンポーネントのコードをより複雑にする必要がない、ということです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Snapshot Testing {#snapshot-testing}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>### スナップショットテスト {#snapshot-testing}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Frameworks like Jest also let you save "snapshots" of data with [`toMatchSnapshot` / `toMatchInlineSnapshot`](https://jestjs.io/docs/en/snapshot-testing).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>Jest のようなフレームワークでは、[`toMatchSnapshot` / `toMatchInlineSnapshot`](https://jestjs.io/docs/en/snapshot-testing) を使ってデータの「スナップショット」を保存することができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>With these, we can "save" the rendered component output and ensure that a change to it has to be explicitly committed as a change to the snapshot.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>これを使うことで、レンダーされたコンポーネントの出力を「セーブ」しておき、変更がスナップショットへの変更として明示的にコミットされるよう保証できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In this example, we render a component and format the rendered HTML with the [`pretty`](https://www.npmjs.com/package/pretty) package, before saving it as an inline snapshot:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>以下の例では、コンポーネントをレンダーし、作成された HTML を [`pretty`](https://www.npmjs.com/package/pretty) パッケージで整形し、インラインスナップショットとして保存します：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It's typically better to make more specific assertions than to use snapshots.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>一般的には、スナップショットを使うよりもより個別的なアサーションを行う方がベターです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>These kinds of tests include implementation details so they break easily, and teams can get desensitized to snapshot breakages.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>このようなテストは実装の詳細を含んでいるために壊れやすく、チームはスナップショットが壊れても気にならないようになってしまうかもしれません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Selectively [mocking some child components](#mocking-modules) can help reduce the size of snapshots and keep them readable for the code review.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>選択的に[一部の子コンポーネントをモックする](#mocking-modules)ことで、スナップショットのサイズを減らし、コードレビューで読みやすく保つことができるようになります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Multiple Renderers {#multiple-renderers}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>### 複数のレンダラ {#multiple-renderers}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In rare cases, you may be running a test on a component that uses multiple renderers.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>稀なケースにおいて、複数のレンダラを使うコンポーネントに対するテストを実行することがあるかもしれません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, you may be running snapshot tests on a component with `react-test-renderer`, that internally uses `ReactDOM.render` inside a child component to render some content.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>例えば、`react-test-renderer` を使ってコンポーネントのスナップショットテストを走らせているが、その内部で子コンポーネントが何かを表示するのに `ReactDOM.render` が使われている、ということがあるかもしれません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In this scenario, you can wrap updates with `act()`s corresponding to their renderers.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>このようなシナリオでは、それらのレンダラーに対応する複数の `act()` で更新をラップすることができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Something Missing?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>### 何かが足りない？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If some common scenario is not covered, please let us know on the [issue tracker](https://github.com/reactjs/reactjs.org/issues) for the documentation website.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T073916Z">
+        <seg>もしよくあるシナリオがカバーされていない場合は、ドキュメント用ウェブサイトの[イシュートラッカ](https://github.com/reactjs/reactjs.org/issues)でお知らせください。</seg>
+      </tuv>
+    </tu>
+  </body>
+</tmx>

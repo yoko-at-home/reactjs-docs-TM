@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tmx SYSTEM "tmx14.dtd">
+<tmx version="1.4">
+  <header creationtool="OmegaT" o-tmf="OmegaT TMX" adminlang="EN-US" datatype="plaintext" creationtoolversion="4.3.2_0_6a661c5e0" segtype="sentence" srclang="EN-US"/>
+  <body>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>**Importing**</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>**インポート**</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Overview {#overview}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>## 概要 {#overview}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This package provides a React renderer that can be used to render React components to pure JavaScript objects, without depending on the DOM or a native mobile environment.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>このパッケージは、DOM やネイティブのモバイル環境に依存せずに React コンポーネントをピュアな JavaScript オブジェクトにレンダーすることができる React レンダラを提供します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Essentially, this package makes it easy to grab a snapshot of the platform view hierarchy (similar to a DOM tree) rendered by a React DOM or React Native component without using a browser or [jsdom](https://github.com/tmpvar/jsdom).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>本質的にこのパッケージは、ブラウザや [jsdom](https://github.com/tmpvar/jsdom) を利用しなくても、React DOM や React Native コンポーネントがレンダーする（DOM ツリーに似た）ビューの階層構造のスナップショットを容易に取得できるようにするためのものです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Example:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>例：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can use Jest's snapshot testing feature to automatically save a copy of the JSON tree to a file and check in your tests that it hasn't changed: [Learn more about it](https://jestjs.io/docs/en/snapshot-testing).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>JSON ツリーを自動的にファイルに保存し、変更が起こったかをテストで確認するには、Jest のスナップショットテスト機能が利用できます。[詳細について知る](https://jestjs.io/docs/en/snapshot-testing)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can also traverse the output to find specific nodes and make assertions about them.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>出力を走査して特定のノードを検索し、それらに対してアサーションを行うこともできます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Reference {#reference}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>## リファレンス {#reference}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Create a `TestRenderer` instance with the passed React element.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>渡された React 要素から `TestRenderer` インスタンスを作成します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It doesn't use the real DOM, but it still fully renders the component tree into memory so you can make assertions about it.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>実際の DOM は使用しませんが、コンポーネントを完全な形でメモリにレンダーするので、アサーションを行うことができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Returns a [TestRenderer instance](#testrenderer-instance).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>返り値は [TestRenderer のインスタンス](#testrenderer-instance)となります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Similar to the [`act()` helper from `react-dom/test-utils`](/docs/test-utils.html#act), `TestRenderer.act` prepares a component for assertions.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>`TestRenderer.act` は [`react-dom/test-utils` の `act` ヘルパ](/docs/test-utils.html#act)と同じように、アサーション用のコンポーネントを準備します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Use this version of `act()` to wrap calls to `TestRenderer.create` and `testRenderer.update`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>このバージョンの `act()` を使って、`TestRenderer.create` と `testRenderer.update` の呼び出しをラップします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Return an object representing the rendered tree.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>レンダーされたツリーを表すオブジェクトを返します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This tree only contains the platform-specific nodes like `&lt;div&gt;` or `&lt;View&gt;` and their props, but doesn't contain any user-written components.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>このツリーは `&lt;div&gt;` もしくは `&lt;View&gt;` のようなプラットフォーム固有のノードとそのプロパティを含みますが、ユーザ定義のコンポーネントは含まれません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is handy for [snapshot testing](https://facebook.github.io/jest/docs/en/snapshot-testing.html#snapshot-testing-with-jest).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>[スナップショットテスト](https://facebook.github.io/jest/docs/en/snapshot-testing.html#snapshot-testing-with-jest)に便利です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Return an object representing the rendered tree.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>レンダーされたツリーを表すオブジェクトを返します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The representation is more detailed than the one provided by `toJSON()`, and includes the user-written components.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>`toJSON()` とは異なり、このツリーはより詳細なものであり、ユーザ定義のコンポーネントも含んでいます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You probably don't need this method unless you're writing your own assertion library on top of the test renderer.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>テストレンダラを利用して自作のアサーションライブラリを作成している場合以外は、おそらくこのメソッドが必要となることはないでしょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Re-render the in-memory tree with a new root element.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>メモリ上のツリーを新規のルート要素で再レンダーします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This simulates a React update at the root.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>ルートでの React の更新をシミュレートします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If the new element has the same type and key as the previous element, the tree will be updated; otherwise, it will re-mount a new tree.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>新しい要素が以前の要素と同じ型と key を持つ場合は、ツリーは更新されます。それ以外の場合は新しいツリーを再マウントします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Unmount the in-memory tree, triggering the appropriate lifecycle events.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>メモリ上のツリーをアンマウントし、適切なライフサイクルイベントを発生させます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Return the instance corresponding to the root element, if available.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>ルート要素に対応したインスタンスがある場合はそれを返します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This will not work if the root element is a function component because they don't have instances.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>関数コンポーネントはインスタンスを持たないため、ルート要素が関数コンポーネントの場合、このメソッドはうまく動作しません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Returns the root "test instance" object that is useful for making assertions about specific nodes in the tree.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>ツリー上の特定のノードに対してアサーションを行う際に役立つ、ルート「テストインスタンス」を返します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can use it to find other "test instances" deeper below.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>これは、配下の他の「テストインスタンス」を検索する際に使用することができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Find a single descendant test instance for which `test(testInstance)` returns `true`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>`test(testInstance)` が `true` を返す単一の子テストインスタンスを検索します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If `test(testInstance)` does not return `true` for exactly one test instance, it will throw an error.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>もし `test(testInstance)` に対して `true` を返すテストインスタンスの数がちょうど 1 でない場合は、エラーがスローされます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Find a single descendant test instance with the provided `type`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>与えられた `type` を持つ単一の子テストインスタンスを検索します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If there is not exactly one test instance with the provided `type`, it will throw an error.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>もし与えられた `type` を持つテストインスタンスの数がちょうど 1 でない場合、エラーがスローされます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Find a single descendant test instance with the provided `props`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>与えられた `props` を持つ単一の子テストインスタンスを検索します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If there is not exactly one test instance with the provided `props`, it will throw an error.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>もし与えられた `props` を持つテストインスタンスの数がちょうど 1 でない場合、エラーがスローされます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Find all descendant test instances for which `test(testInstance)` returns `true`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>`test(testInstance)` が `true` を返す全ての子テストインスタンスを検索します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Find all descendant test instances with the provided `type`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>与えられた `type` を持つ全ての子テストインスタンスを検索します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Find all descendant test instances with the provided `props`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>与えられた `props` を持つ全ての子テストインスタンスを検索します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The component instance corresponding to this test instance.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>当該テストインスタンスに対応するコンポーネントのインスタンスです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It is only available for class components, as function components don't have instances.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>関数コンポーネントはインスタンスを持たないため、クラスコンポーネントでのみ使用することができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It matches the `this` value inside the given component.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>与えられたコンポーネント内での `this` の値と一致します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The component type corresponding to this test instance.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>当該テストインスタンスに対応するコンポーネントの型です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, a `&lt;Button /&gt;` component has a type of `Button`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>例えば、`&lt;Button /&gt;` コンポーネントは `Button` 型を持っています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The props corresponding to this test instance.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>当該テストインスタンスに対応するコンポーネントの props です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, a `&lt;Button size="small" /&gt;` component has `{size: 'small'}` as props.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>例えば、`&lt;Button size="small" /&gt;` コンポーネントは `{size: 'small'}` を props として持っています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The parent test instance of this test instance.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>当該テストインスタンスの親テストインスタンスです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The children test instances of this test instance.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>当該テストインスタンスの子テストインスタンスです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Ideas {#ideas}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>## 使い方の一例 {#ideas}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can pass `createNodeMock` function to `TestRenderer.create` as the option, which allows for custom mock refs.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>オプションとして `createNodeMock` 関数を `TestRenderer.create` に渡すことで、独自のモック refs を作成することができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>`createNodeMock` accepts the current element and should return a mock ref object.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>`createNodeMock` は現在の要素を受け取り、モックの ref オブジェクトを返す必要があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is useful when you test a component that relies on refs.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T071651Z">
+        <seg>refs に依存したコンポーネントのテストに便利です。</seg>
+      </tuv>
+    </tu>
+  </body>
+</tmx>

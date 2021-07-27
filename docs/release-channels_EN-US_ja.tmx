@@ -1,0 +1,681 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tmx SYSTEM "tmx14.dtd">
+<tmx version="1.4">
+  <header creationtool="OmegaT" o-tmf="OmegaT TMX" adminlang="EN-US" datatype="plaintext" creationtoolversion="4.3.2_0_6a661c5e0" segtype="sentence" srclang="EN-US"/>
+  <body>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>---
+id: release-channels
+title: Release Channels
+permalink: docs/release-channels.html
+layout: docs
+category: installation
+prev: cdn-links.html
+next: hello-world.html
+---</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>---
+id: release-channels
+title: リリースチャンネル
+permalink: docs/release-channels.html
+layout: docs
+category: installation
+prev: cdn-links.html
+next: hello-world.html
+---</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>React relies on a thriving open source community to file bug reports, open pull requests, and [submit RFCs](https://github.com/reactjs/rfcs).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>React はバグを報告し、プルリクエストをオープンし、[RFC を投稿](https://github.com/reactjs/rfcs)してくださっている活発なオープンソースコミュニティを頼りにしています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>To encourage feedback we sometimes share special builds of React that include unreleased features.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>フィードバックを促すため、私たちはリリースされていない機能を含んだ React の特別なビルドを共有することがあります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt; This document will be most relevant to developers who work on frameworks, libraries, or developer tooling.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>&gt; このドキュメントは、フレームワーク、ライブラリ、開発者向けツールに取り組んでいる開発者に最も関連します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Developers who use React primarily to build user-facing applications should not need to worry about our prerelease channels.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>主にユーザ向けアプリケーションを構築するために React を使用している開発者は、プレリリースチャンネルについて心配する必要はありません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Each of React's release channels is designed for a distinct use case:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>React の各リリースチャンネルは、明確なユースケースのために設計されています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>- [**Latest**](#latest-channel) is for stable, semver React releases.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>- [**Latest**](#latest-channel) は安定版であり、セマンティック・バージョニングに基づいた React のリリースです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It's what you get when you install React from npm.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>それは npm から React をインストールすると得られるものです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is the channel you're already using today.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>これは、既にあなたが使用しているチャンネルです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>**Use this for all user-facing React applications.**</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>**全てのユーザ向け React アプリケーションのためにこれを使用します。**</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>- [**Next**](#next-channel) tracks the main branch of the React source code repository.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>- [**Next**](#next-channel) は React ソースコードのリポジトリの master ブランチを追跡します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Think of these as release candidates for the next minor semver release.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>これを、次のマイナーバージョンのリリース候補と考えてください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Use this for integration testing between React and third party projects.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>React とサードパーティプロジェクト間のインテグレーションテストにこれを使用します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>- [**Experimental**](#experimental-channel) includes experimental APIs and features that aren't available in the stable releases.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>- [**Experimental**](#experimental-channel) には、安定版のリリースでは使用できない実験的な API や機能が含まれます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>These also track the main branch, but with additional feature flags turned on.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>これも master ブランチを追跡しますが、追加のフィーチャー・フラグが有効になっています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Use this to try out upcoming features before they are released.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>近々予定されているリリース前の機能を試すためにこれを使用してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>All releases are published to npm, but only Latest uses [semantic versioning](/docs/faq-versioning.html).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>全てのリリースが npm に公開されていますが、Latest のみが[セマンティック・バージョニング](/docs/faq-versioning.html)を使用します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Prereleases (those in the Next and Experimental channels) have versions generated from a hash of their contents and the commit date, e.g. `0.0.0-68053d940-20210623` for Next and `0.0.0-experimental-68053d940-20210623` for Experimental.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>プレリリース（Next チャンネルと Experimental チャンネル）は、Next の場合は `0.0.0-68053d940-20210623`、Experimental の場合は `0.0.0-experimental-68053d940-20210623` のように、コンテンツのハッシュとコミット日時から生成されたバージョンを持ちます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>**The only officially supported release channel for user-facing applications is Latest**.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>**Latest が、ユーザ向けアプリケーションのために公式にサポートされた唯一のリリースチャンネルです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Next and Experimental releases are provided for testing purposes only, and we provide no guarantees that behavior won't change between releases.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>**Next と Experimental はテスト目的のためにのみ提供されており、また、リリース間で動作が変わらないことも保証されません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>They do not follow the semver protocol that we use for releases from Latest.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>これらは、Latest リリースで使用しているセマンティック・バージョニングに準拠していません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>By publishing prereleases to the same registry that we use for stable releases, we are able to take advantage of the many tools that support the npm workflow, like [unpkg](https://unpkg.com) and [CodeSandbox](https://codesandbox.io).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>プレリリースを安定版のリリースと同じレジストリに公開することで、[unpkg](https://unpkg.com) や [CodeSandbox](https://codesandbox.io) のような、npm のワークフローをサポートする多くのツールを活用できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Latest Channel {#latest-channel}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>### Latest チャンネル {#latest-channel}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Latest is the channel used for stable React releases.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>Latest チャンネルは、安定版の React をリリースするために使用するチャンネルです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It corresponds to the `latest` tag on npm.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>npm の `latest` タグに対応します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It is the recommended channel for all React apps that are shipped to real users.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>実際のユーザに提供される全ての React アプリケーションに対して、このチャンネルが推奨されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>**If you're not sure which channel you should use, it's Latest.** If you're a React developer, this is what you're already using.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>**どのチャンネルを使用すべきか分からない場合、Latest チャンネルを使用してください。**あなたが React 開発者なら、Latest チャンネルを既に利用しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can expect updates to Latest to be extremely stable.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>Latest のアップデートは非常に安定していると期待できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Versions follow the semantic versioning scheme.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>バージョンは、セマンティック・バージョニングのスキームに従います。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Learn more about our commitment to stability and incremental migration in our [versioning policy](/docs/faq-versioning.html).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>私たちの安定性と段階的移行への取り組みについては、[バージョニングポリシー](/docs/faq-versioning.html)をご覧ください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Next Channel {#next-channel}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>### Next チャンネル {#next-channel}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The Next channel is a prerelease channel that tracks the main branch of the React repository.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>Next チャンネルは、React リポジトリの master ブランチを追跡する、プレリリースチャンネルです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We use prereleases in the Next channel as release candidates for the Latest channel.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>私たちは Next チャンネルのプレリリースを、Latest チャンネルのリリース候補として使用します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can think of Next as a superset of Latest that is updated more frequently.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>Next を、より頻繁に更新が行われる Latest のスーパーセットだと考えることができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The degree of change between the most recent Next release and the most recent Latest release is approximately the same as you would find between two minor semver releases.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>最新の Next リリースと Latest リリース間の差分の程度は、2 つのマイナーリリース間とほぼ同じです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>However, **the Next channel does not conform to semantic versioning.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>しかし **Next チャンネルは、セマンティック・バージョニングに準拠していません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>** You should expect occasional breaking changes between successive releases in the Next channel.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>**連続したリリース間でしばしば破壊的変更が発生するということを、Next チャンネルでは予期しなければなりません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>**Do not use prereleases in user-facing applications.**</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>**プレリリースをユーザ向けアプリケーションに使用しないでください。**</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Releases in Next are published with the `next` tag on npm.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>Next リリースは、npm に `next` タグ付きで公開されています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Versions are generated from a hash of the build's contents and the commit date, e.g. `0.0.0-68053d940-20210623`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>`0.0.0-68053d940-20210623` のように、ビルドされたコンテンツのハッシュおよびコミット日時から、バージョンが生成されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>#### Using the Next Channel for Integration Testing {#using-the-next-channel-for-integration-testing}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>#### インテグレーションテストに Next チャンネルを使用する {#using-the-next-channel-for-integration-testing}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The Next channel is designed to support integration testing between React and other projects.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>Next チャンネルは、React と他のプロジェクト間のインテグレーションテストをサポートするように設計されています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>All changes to React go through extensive internal testing before they are released to the public.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>React に対する全ての変更は、一般向けリリース前に広範囲の内部テストを受けます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>However, there are a myriad of environments and configurations used throughout the React ecosystem, and it's not possible for us to test against every single one.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>しかし、React のエコシステム全体では無数の環境と構成が存在しており、その全てに対してテストを行うことは不可能です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you're the author of a third party React framework, library, developer tool, or similar infrastructure-type project, you can help us keep React stable for your users and the entire React community by periodically running your test suite against the most recent changes.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>あなたが React サードパーティのフレームワーク、ライブラリ、開発者向けツール、あるいは同様のインフラストラクチャ寄りのプロジェクトの作者である場合、最新の React の変更に対して定期的にテストスイートを実行することで、あなたのユーザや React コミュニティ全体のために React の安定化を助けることができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you're interested, follow these steps:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>興味がある場合、次の手順に従ってください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>- Set up a cron job using your preferred continuous integration platform.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>- お好みの継続的インテグレーションプラットフォームを利用して、クーロンジョブをセットアップします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Cron jobs are supported by both [CircleCI](https://circleci.com/docs/2.0/triggers/#scheduled-builds) and [Travis CI](https://docs.travis-ci.com/user/cron-jobs/).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>クーロンジョブは、[CircleCI](https://circleci.com/docs/2.0/triggers/#scheduled-builds) と [Travis CI](https://docs.travis-ci.com/user/cron-jobs/) の両方でサポートされています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>- In the cron job, update your React packages to the most recent React release in the Next channel, using `next` tag on npm.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>- クーロンジョブで npm の `next` タグを使い、React パッケージを Next チャンネルの最新のリリースにアップデートします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Using the npm cli:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>npm cli を使って：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Or yarn:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>もしくは yarn で：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>```
+- Run your test suite against the updated packages.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>```
+- アップデートされたパッケージに対してテストスイートを実行します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>- If everything passes, great!</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>- 全てのテストがパスしたのであれば、素晴らしいです！</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can expect that your project will work with the next minor React release.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>あなたのプロジェクトは次の React のマイナーリリースで動作することが期待できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>- If something breaks unexpectedly, please let us know by [filing an issue](https://github.com/facebook/react/issues).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>- 意図せず何かが壊れた場合は、[Issue を提出して](https://github.com/facebook/react/issues)お知らせください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>A project that uses this workflow is Next.js.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>このワークフローを使用しているプロジェクトとして、Next.js があります（シャレではありません！</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>(No pun intended!</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>真面目です！）。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Seriously!) You can refer to their [CircleCI configuration](https://github.com/zeit/next.js/blob/c0a1c0f93966fe33edd93fb53e5fafb0dcd80a9e/.circleci/config.yml) as an example.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>例として彼らの [CircleCI の設定](https://github.com/zeit/next.js/blob/c0a1c0f93966fe33edd93fb53e5fafb0dcd80a9e/.circleci/config.yml)を参照できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Experimental Channel {#experimental-channel}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>### Experimental チャンネル {#experimental-channel}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Like Next, the Experimental channel is a prerelease channel that tracks the main branch of the React repository.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>Next チャンネルと同じく、Experimental チャンネルは React リポジトリの master ブランチを追跡するプレリリースチャンネルです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Unlike Next, Experimental releases include additional features and APIs that are not ready for wider release.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>しかし Next とは異なり、Experimental リリースには、より広範にリリースするにはまだ準備ができていない追加の機能と API が含まれます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Usually, an update to Next is accompanied by a corresponding update to Experimental.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>通常、Next への更新には、対応した Experimental への更新が伴います。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>They are based on the same source revision, but are built using a different set of feature flags.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>これらは同じリビジョンのソースをベースにしていますが、異なるフィーチャー・フラグの設定を使用してビルドしています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Experimental releases may be significantly different than releases to Next and Latest.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>Experimental リリースは、Next や Latest のリリースとは大きく異なる場合があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>**Do not use Experimental releases in user-facing applications.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>**Experimental リリースを、ユーザ向けアプリケーションに使用しないでください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>** You should expect frequent breaking changes between releases in the Experimental channel.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>**リリース間で頻繁に破壊的変更が発生しうるということを、Experimental チャンネルでは予期しなければなりません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Releases in Experimental are published with the `experimental` tag on npm.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>Experimental リリースは、npm に `experimental` タグ付きで公開されています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Versions are generated from a hash of the build's contents and the commit date, e.g. `0.0.0-experimental-68053d940-20210623`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>`0.0.0-experimental-68053d940-20210623` のように、ビルドされたコンテンツのハッシュおよびコミット日時から、バージョンが生成されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>#### What Goes Into an Experimental Release?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>#### Experimental リリースには何が含まれていますか？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Experimental features are ones that are not ready to be released to the wider public, and may change drastically before they are finalized.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>実験的機能は、一般向けに広く公開するための準備ができていないものであり、最終決定までに大幅に変化する可能性があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Some experiments may never be finalized -- the reason we have experiments is to test the viability of proposed changes.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>いくつかの試みは、最終的に採用されない可能性があります。このような実験を行うのは、提案された変更内容の実行可能性をテストするためです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, if the Experimental channel had existed when we announced Hooks, we would have released Hooks to the Experimental channel weeks before they were available in Latest.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>例えば、フックを発表したときに Experimental が存在していた場合、Latest で利用可能になる数週間前に Experimental チャンネルでフックをリリースしていたでしょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You may find it valuable to run integration tests against Experimental.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>Experimental に対してインテグレーションテストを実行することには、価値があるかもしれません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is up to you.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>これはあなた次第です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>However, be advised that Experimental is even less stable than Next.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>しかし、Experimental は Next よりもさらに不安定であるとアドバイスしておきます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>**We do not guarantee any stability between Experimental releases.**</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>**Experimental のリリース間では安定性は何も保証されません。**</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>#### How Can I Learn More About Experimental Features?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>#### 実験的機能の詳細をどのように知ればよいですか？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Experimental features may or may not be documented.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>実験的機能については、ドキュメント化されることもあれば、されないこともあります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Usually, experiments aren't documented until they are close to shipping in Next or Latest.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>通常、Next もしくは Latest でのリリースが近づくまで、ドキュメント化されません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If a feature is not documented, they may be accompanied by an [RFC](https://github.com/reactjs/rfcs).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>ドキュメント化されていない機能については、[RFC](https://github.com/reactjs/rfcs) が付随することがあります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We will post to the [React blog](/blog) when we're ready to announce new experiments, but that doesn't mean we will publicize every experiment.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>新しい試みを発表する準備が整ったときに [React blog](/blog) にそのことを投稿しますが、全ての試みについて公開するとは限りません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can always refer to our public GitHub repository's [history](https://github.com/facebook/react/commits/main) for a comprehensive list of changes.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T072212Z">
+        <seg>GitHub で公開されている React のリポジトリの [history](https://github.com/facebook/react/commits/master) で、変更の包括的なリストをいつでも参照できます。</seg>
+      </tuv>
+    </tu>
+  </body>
+</tmx>

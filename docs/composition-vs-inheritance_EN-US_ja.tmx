@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tmx SYSTEM "tmx14.dtd">
+<tmx version="1.4">
+  <header creationtool="OmegaT" o-tmf="OmegaT TMX" adminlang="EN-US" datatype="plaintext" creationtoolversion="4.3.2_0_6a661c5e0" segtype="sentence" srclang="EN-US"/>
+  <body>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>---
+id: composition-vs-inheritance
+title: Composition vs Inheritance
+permalink: docs/composition-vs-inheritance.html
+redirect_from:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T042127Z">
+        <seg>---
+id: composition-vs-inheritance
+title: コンポジション vs 継承
+permalink: docs/composition-vs-inheritance.html
+redirect_from:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>React has a powerful composition model, and we recommend using composition instead of inheritance to reuse code between components.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T042127Z">
+        <seg>React は強力なコンポジションモデルを備えており、コンポーネント間のコードの再利用には継承よりもコンポジションをお勧めしています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In this section, we will consider a few problems where developers new to React often reach for inheritance, and show how we can solve them with composition.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T042127Z">
+        <seg>この章では、React を始めて間もない開発者が継承に手を出した時に陥りがちないくつかの問題と、コンポジションによりその問題がどのように解決できるのかについて考えてみます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Containment {#containment}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T042127Z">
+        <seg>## 子要素の出力 (Containment) {#containment}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Some components don't know their children ahead of time.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T042127Z">
+        <seg>コンポーネントの中には事前には子要素を知らないものもあります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is especially common for components like `Sidebar` or `Dialog` that represent generic "boxes".</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T042127Z">
+        <seg>これは `Sidebar` や `Dialog` のような汎用的な "入れ物" をあらわすコンポーネントではよく使われています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We recommend that such components use the special `children` prop to pass children elements directly into their output:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T042127Z">
+        <seg>このようなコンポーネントでは特別な `children` という props を使い、以下のようにして受け取った子要素を出力することができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This lets other components pass arbitrary children to them by nesting the JSX:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T042127Z">
+        <seg>これにより他のコンポーネントから JSX をネストすることで任意の子要素を渡すことができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Anything inside the `&lt;FancyBorder&gt;` JSX tag gets passed into the `FancyBorder` component as a `children` prop.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T042127Z">
+        <seg>`&lt;FancyBorder&gt;` JSX タグの内側のあらゆる要素は `FancyBorder` に `children` という props として渡されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Since `FancyBorder` renders `{props.children}` inside a `&lt;div&gt;`, the passed elements appear in the final output.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T042127Z">
+        <seg>`FancyBorder` は `&lt;div&gt;` の内側に `{props.children}` をレンダーするので、渡された要素が出力されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>While this is less common, sometimes you might need multiple "holes" in a component.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T042127Z">
+        <seg>あまり一般的ではありませんが、複数の箇所に子要素を追加したいケースも考えられます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In such cases you may come up with your own convention instead of using `children`:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T042127Z">
+        <seg>そのようなケースでは以下のように `children` の props の代わりに独自の props を作成して渡すことができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>React elements like `&lt;Contacts /&gt;` and `&lt;Chat /&gt;` are just objects, so you can pass them as props like any other data.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T042127Z">
+        <seg>`&lt;Contacts /&gt;` や `&lt;Chat /&gt;` のような React の要素はただのオブジェクトなので、他のあらゆるデータと同様に props として渡すことができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This approach may remind you of "slots" in other libraries but there are no limitations on what you can pass as props in React.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T042127Z">
+        <seg>このアプローチは他のライブラリで言うところの slot に似ていると感じるかもしれませんが、React のコンポーネントに props として渡せるものに制限はありません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Specialization {#specialization}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T042127Z">
+        <seg>## 特化したコンポーネント (Specialization) {#specialization}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Sometimes we think about components as being "special cases" of other components.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T042127Z">
+        <seg>コンポーネントを他のコンポーネントの "特別なケース" として考えることがあります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, we might say that a `WelcomeDialog` is a special case of `Dialog`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T042127Z">
+        <seg>例えば、`WelcomeDialog` は `Dialog` の特別なケースと言えるでしょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In React, this is also achieved by composition, where a more "specific" component renders a more "generic" one and configures it with props:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T042127Z">
+        <seg>React ではこれもコンポジションで実現できます。汎用的なコンポーネントに props を渡して設定することで、より特化したコンポーネントを作成することができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Composition works equally well for components defined as classes:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T042127Z">
+        <seg>コンポジションはクラスとして定義されたコンポーネントでも同じように動作します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## So What About Inheritance?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T042127Z">
+        <seg>## 継承はどうなの？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>At Facebook, we use React in thousands of components, and we haven't found any use cases where we would recommend creating component inheritance hierarchies.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T042127Z">
+        <seg>Facebook では、何千というコンポーネントで React を使用していますが、コンポーネント継承による階層構造が推奨されるケースは全く見つかっていません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Props and composition give you all the flexibility you need to customize a component's look and behavior in an explicit and safe way.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T042127Z">
+        <seg>props とコンポジションにより、コンポーネントの見た目と振る舞いを明示的かつ安全にカスタマイズするのに十分な柔軟性が得られます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Remember that components may accept arbitrary props, including primitive values, React elements, or functions.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T042127Z">
+        <seg>コンポーネントはどのような props でも受け付けることができ、それはプリミティブ値でも、React 要素でも、あるいは関数であってもよい、ということに留意してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you want to reuse non-UI functionality between components, we suggest extracting it into a separate JavaScript module.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T042127Z">
+        <seg>コンポーネント間で非 UI 機能を再利用したい場合は、それを別の JavaScript モジュールに抽出することをお勧めします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The components may import it and use that function, object, or a class, without extending it.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T042127Z">
+        <seg>コンポーネントはその関数やオブジェクト、クラスなどを継承することなくインポートすることで使用することができるでしょう。</seg>
+      </tuv>
+    </tu>
+  </body>
+</tmx>

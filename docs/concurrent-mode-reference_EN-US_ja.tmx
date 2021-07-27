@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tmx SYSTEM "tmx14.dtd">
+<tmx version="1.4">
+  <header creationtool="OmegaT" o-tmf="OmegaT TMX" adminlang="EN-US" datatype="plaintext" creationtoolversion="4.3.2_0_6a661c5e0" segtype="sentence" srclang="EN-US"/>
+  <body>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>---
+id: concurrent-mode-reference
+title: Concurrent Mode API Reference (Experimental)
+permalink: docs/concurrent-mode-reference.html
+prev: concurrent-mode-adoption.html
+---</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>---
+id: concurrent-mode-reference
+title: 並列モード API リファレンス（実験的機能）
+permalink: docs/concurrent-mode-reference.html
+prev: concurrent-mode-adoption.html
+---</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;Caution:
+&gt;
+&gt;This page was about experimental features that aren't yet available in a stable release. It was aimed at early adopters and people who are curious.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>&gt;警告:
+&gt;
+&gt; このページはアーリーアダプターや興味のある読者を対象に、安定リリースでまだ利用できない実験的機能を説明するために存在していました。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;
+&gt;Much of the information on this page is now outdated and exists only for archival purposes.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>&gt;
+&gt; このページの説明のほとんどは既に古くなっており、アーカイブの目的のためだけに残しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>**Please refer to the [React 18 Alpha announcement post](/blog/2021/06/08/the-plan-for-react-18.html
+) for the up-to-date information.**</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>最新の情報については [React 18 アルファのアナウンス](/blog/2021/06/08/the-plan-for-react-18.html)を参照してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;
+&gt;Before React 18 is released, we will replace this page with stable documentation.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>&gt;
+&gt; React 18 のリリースまでに、このページはより安定したドキュメントに置き換わる予定です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This page is an API reference for the React [Concurrent Mode](/docs/concurrent-mode-intro.html).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>このページは React の[並列モード](/docs/concurrent-mode-intro.html) についての API リファレンスです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you're looking for a guided introduction instead, check out [Concurrent UI Patterns](/docs/concurrent-mode-patterns.html).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>ガイド付きの案内記事を探している場合は、[並列的 UI パターン](/docs/concurrent-mode-patterns.html)を参照してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>**Note: This is a Community Preview and not the final stable version.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>**補足：これは公開プレビューであり最終安定板ではありません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>There will likely be future changes to these APIs.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>これらの API は将来高確率で変更されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Use at your own risk!**</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>自己責任で使ってください！**</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>- [Enabling Concurrent Mode](#concurrent-mode)</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>- [並列モードの有効化](#concurrent-mode)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>- [`createRoot`](#createroot)
+- [Suspense](#suspense)</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>- [`createRoot`](#createroot)
+- [サスペンス API](#suspense)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Enabling Concurrent Mode {#concurrent-mode}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>## 並列モードの有効化 {#concurrent-mode}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Replaces `ReactDOM.render(&lt;App /&gt;, rootNode)` and enables Concurrent Mode.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>`ReactDOM.render(&lt;App /&gt;, rootNode)` を置き換えて、並列モードを有効化します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For more information on Concurrent Mode, check out the [Concurrent Mode documentation.](/docs/concurrent-mode-intro.html)</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>並列モードについての詳細は[並列モードのドキュメント](/docs/concurrent-mode-intro.html)を参照してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Suspense API {#suspense}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>## サスペンス API {#suspense}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>`Suspense` lets your components "wait" for something before they can render, showing a fallback while waiting.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>`Suspense` により、レンダー可能になる前にコンポーネントが「待機」し、待機中にフォールバックを表示できるようになります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In this example, `ProfileDetails` is waiting for an asynchronous API call to fetch some data.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>上記の例では、`ProfileDetails` は何らかのデータを取得するために非同期 API コールを待機しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>While we wait for `ProfileDetails` and `ProfilePhoto`, we will show the `Loading...` fallback instead.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>`ProfileDetails` と `ProfilePhoto` を待機している間、`Loading...` というフォールバックを代わりに表示します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It is important to note that until all children inside `&lt;Suspense&gt;` have loaded, we will continue to show the fallback.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>`&lt;Suspense&gt;` 内のすべての子要素がロードされるまでは、フォールバックが表示されつづけることに注意することが重要です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>`Suspense` takes two props:
+* **fallback** takes a loading indicator.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>`Suspense` は 2 つの props を受け取ります：
+* **fallback** はローディングインジケータを受け取ります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The fallback is shown until all of the children of the `Suspense` component have finished rendering.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>フォールバックは `Suspense` コンポーネントのすべての子要素がレンダーを完了するまで表示されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* **unstable_avoidThisFallback** takes a boolean.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>* **unstable_avoidThisFallback** は真偽値を受け取ります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It tells React whether to "skip" revealing this boundary during the initial load.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>初回ロード時にこのバウンダリの開放を「スキップ」するかどうかを React に伝えます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This API will likely be removed in a future release.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>この API は将来のリリースで高確率で削除されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>`SuspenseList` helps coordinate many components that can suspend by orchestrating the order in which these components are revealed to the user.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>`SuspenseList` はサスペンドしうる多数のコンポーネントがユーザに開放される順番を制御することで、それらのコンポーネントが協調してうまく動くようにします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>When multiple components need to fetch data, this data may arrive in an unpredictable order.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>複数のコンポーネントがデータを取得する必要がある場合、それらのデータは予測不能な順番で到着するかもしれません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>However, if you wrap these items in a `SuspenseList`, React will not show an item in the list until previous items have been displayed (this behavior is adjustable).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>しかし、`SuspenseList` でこれらの要素をラップすることで、React は手前にある要素が全て表示されるまで、ある要素を表示しないようになります（この挙動は変更可能です）。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>`SuspenseList` takes two props:
+* **revealOrder (forwards, backwards, together)** defines the order in which the `SuspenseList` children should be revealed.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>`SuspenseList` は 2 つの props を受け取ります：
+* **revealOrder (forwards, backwards, together)** は `SuspenseList` の子要素が表示される順番を定義します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* `together` reveals *all* of them when they're ready instead of one by one.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>* `together` は 1 つずつではなく、*すべての*子要素を準備完了した時点でまとめて表示します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* **tail (collapsed, hidden)** dictates how unloaded items in a `SuspenseList` is shown.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>* **tail (collapsed, hidden)** `SuspenseList` 内のロードされていない要素がどのように表示されるかを記述します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* By default, `SuspenseList` will show all fallbacks in the list.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>* デフォルトでは `SuspenseList` はリスト中のすべてのフォールバックを表示します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* `collapsed` shows only the next fallback in the list.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>* `collapsed` はリスト内の次のフォールバックのみを表示します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* `hidden` doesn't show any unloaded items.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>* `hidden` は未ロードの要素を一切表示しません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Note that `SuspenseList` only operates on the closest `Suspense` and `SuspenseList` components below it.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>`SuspenseList` はすぐ直下にある `Suspense` と `SuspenseList` にのみ作用することに気をつけてください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It does not search for boundaries deeper than one level.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>1 階層分より深くまでバウンダリを探しに行くことはしません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>However, it is possible to nest multiple `SuspenseList` components in each other to build grids.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>しかし、複数の `SuspenseList` を互いにネストさせてグリッドを作ることは可能です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>`useTransition` allows components to avoid undesirable loading states by waiting for content to load before **transitioning to the next screen**.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>`useTransition` を使うことで、**次の画面に遷移する**前にコンテンツがロードされるのを待機し、コンポーネントが望ましくないロード中状態を表示することを避けられるようになります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It also allows components to defer slower, data fetching updates until subsequent renders so that more crucial updates can be rendered immediately.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>また、データ取得に関わる遅い更新を後続するレンダーへと遅延させることで、より重要な更新が即座にレンダーされるようにすることができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The `useTransition` hook returns two values in an array.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>`useTransition` フックは 2 つの値を配列に入れて返します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* `startTransition` is a function that takes a callback.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>* `startTransition` はコールバックを受け取る関数です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We can use it to tell React which state we want to defer.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>これを使って、React にどの state を遅延させたいのかを伝えることができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* `isPending` is a boolean.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>* `isPending` は真偽値です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It's React's way of informing us whether we're waiting for the transition to finish.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>これがトランジションの完了を待っているかどうかを React が伝えてくれる手段です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>**If some state update causes a component to suspend, that state update should be wrapped in a transition.**</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>**何らかの state の更新がコンポーネントのサスペンドを引き起こす場合は、その更新はトランジションでラップされるべきです。**</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In this code, we've wrapped our data fetching with `startTransition`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>このコードでは、`startTransition` を使ってデータの取得をラップしています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This allows us to start fetching the profile data right away, while deferring the render of the next profile page and its associated `Spinner` for 2 seconds (the time shown in `timeoutMs`).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>これにより即座にプロフィールの取得を開始できる一方で、次のプロフィールページとそれに結びついている `Spinner` の表示を 2 秒間（`timeoutMs` に示されている時間）遅延させます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The `isPending` boolean lets React know that our component is transitioning, so we are able to let the user know this by showing some loading text on the previous profile page.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>真偽値である `isPending` によってコンポーネントのトランジションが進行中かどうかを知ることができ、ユーザに前のプロフィールページ内で何らかのロード中テキストを表示してトランジションの進行中状態を伝えることができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>**For an in-depth look at transitions, you can read [Concurrent UI Patterns](/docs/concurrent-mode-patterns.html#transitions).**</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>**トランジションについての詳細な解説は[並列的 UI パターン](/docs/concurrent-mode-patterns.html#transitions)で読めます。**</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>#### useTransition Config {#usetransition-config}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>#### useTransition 設定 {#usetransition-config}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>`useTransition` accepts an **optional Suspense Config** with a `timeoutMs`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>`useTransition` はオプションで `timeoutMs` 値の入った **Suspense Config** を受け取ります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This timeout (in milliseconds) tells React how long to wait before showing the next state (the new Profile Page in the above example).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>このタイムアウト（ミリ秒で指定）は、React に次の state（上記の例では新しいプロフィールページ）を表示するまでにどれだけ待つかを伝えます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>**Note: We recommend that you share Suspense Config between different modules.**</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>**補足：Suspense Config は複数のモジュール間で共有することをお勧めします。**</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Returns a deferred version of the value that may "lag behind" it for at most `timeoutMs`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>最大で `timeoutMs` まで「遅れる」ことのできる、遅延されたバージョンの値を返します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is commonly used to keep the interface responsive when you have something that renders immediately based on user input and something that needs to wait for a data fetch.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>ユーザ入力に基づいて即座にレンダーされる何かや、データ取得を待つ必要がある何かがある場合に、インターフェイスをレスポンシブに保つためによく使われます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>A good example of this is a text input.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>よい例はテキスト入力です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This allows us to start showing the new text for the `input` immediately, which allows the webpage to feel responsive.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>これにより `input` が即座に新しいテキストを表示し始めることができ、ウェブページがレスポンシブに保たれます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Meanwhile, `MySlowList` "lags behind" for up to 2 seconds according to the `timeoutMs` before updating, allowing it to render with the current text in the background.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>その一方で `MySlowList` は、`timeoutMs` に書かれているとおり更新まで最大 2 秒間遅延されるので、バックグラウンドで現在のテキストの値がレンダーできるようになります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>**For an in-depth look at deferring values, you can read [Concurrent UI Patterns](/docs/concurrent-mode-patterns.html#deferring-a-value).**</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>**値の遅延についての詳細な解説は[並列的 UI パターン](/docs/concurrent-mode-patterns.html#deferring-a-value)で読めます。**</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>#### useDeferredValue Config {#usedeferredvalue-config}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>#### useDeferredValue 設定 {#usedeferredvalue-config}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>`useDeferredValue` accepts an **optional Suspense Config** with a `timeoutMs`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>`useDeferredValue` はオプションで `timeoutMs` 値の入った **Suspense Config** を受け取ります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This timeout (in milliseconds) tells React how long the deferred value is allowed to lag behind.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>このタイムアウト（ミリ秒で指定）は、React に遅延される値がどれだけ遅れても構わないのかを伝えます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>React will always try to use a shorter lag when network and device allows it.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T043735Z">
+        <seg>ネットワークやデバイス性能が許す範囲で、React は常にラグを短くしようとします。</seg>
+      </tuv>
+    </tu>
+  </body>
+</tmx>

@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tmx SYSTEM "tmx14.dtd">
+<tmx version="1.4">
+  <header creationtool="OmegaT" o-tmf="OmegaT TMX" adminlang="EN-US" datatype="plaintext" creationtoolversion="4.3.2_0_6a661c5e0" segtype="sentence" srclang="EN-US"/>
+  <body>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>---
+id: testing
+title: Testing Overview
+permalink: docs/testing.html
+redirect_from:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074054Z">
+        <seg>---
+id: testing
+title: テスト概要
+permalink: docs/testing.html
+redirect_from:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can test React components similar to testing other JavaScript code.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074054Z">
+        <seg>React コンポーネントは他の JavaScript のコードと同じようにテストできます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>There are a few ways to test React components. Broadly, they divide into two categories:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074054Z">
+        <seg>React コンポーネントをテストするのにはいくつか方法がありますが、大きく 2 つのカテゴリに分けられます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* **Rendering component trees** in a simplified test environment and asserting on their output. * **Running a complete app** in a realistic browser environment (also known as “end-to-end” tests).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074054Z">
+        <seg>* **コンポーネントツリーのレンダー** をシンプルなテスト環境で行い、その結果を検証する
+* **アプリケーション全体の動作** をブラウザ同等の環境で検証する（end-to-end テストとして知られる）</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This documentation section focuses on testing strategies for the first case.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074054Z">
+        <seg>このセクションでは、最初のケースにおけるテスト戦略にフォーカスします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>While full end-to-end tests can be very useful to prevent regressions to important workflows, such tests are not concerned with React components in particular, and are out of the scope of this section.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074054Z">
+        <seg>end-to-end テストが重要な機能のリグレッションを防ぐのに有効である一方で、そのようなテストは React コンポーネントとは特に関係なく、このセクションのスコープ外です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Tradeoffs {#tradeoffs}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074054Z">
+        <seg>### トレードオフ {#tradeoffs}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>When choosing testing tools, it is worth considering a few tradeoffs:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074054Z">
+        <seg>テストツールを選定する時、いくつかのトレードオフを考慮することは価値があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* **Iteration speed vs Realistic environment:** Some tools offer a very quick feedback loop between making a change and seeing the result, but don't model the browser behavior precisely.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074054Z">
+        <seg>* **実行速度 vs 環境の現実度：** 変更を加えてから結果を見るまでのフィードバックが早いツールは、ブラウザでの動作を正確に模倣しません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Other tools might use a real browser environment, but reduce the iteration speed and are flakier on a continuous integration server.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074054Z">
+        <seg>一方実際のブラウザ環境を使うようなツールは、イテレーションの速度が落ちる上 CI サーバでは壊れやすいです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* **How much to mock:** With components, the distinction between a "unit" and "integration" test can be blurry.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074054Z">
+        <seg>* **モックの粒度** コンポーネントのテストでは、ユニットテストとインテグレーションテストの区別は曖昧です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you're testing a form, should its test also test the buttons inside of it?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074054Z">
+        <seg>フォームをテストする時、そのテストはフォーム内のボタンもテストすべきでしょうか。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Or should a button component have its own test suite?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074054Z">
+        <seg>それともボタンコンポーネント自体が自身のテストを持つべきでしょうか。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Should refactoring a button ever break the form test?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074054Z">
+        <seg>ボタンのリファクタリングはフォームのテストを壊さないべきでしょうか。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Different answers may work for different teams and products.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074054Z">
+        <seg>チームやプロダクトに応じて、答えは違ってきます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Recommended Tools {#tools}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074054Z">
+        <seg>### 推奨ツール {#tools}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>**[Jest](https://facebook.github.io/jest/)** is a JavaScript test runner that lets you access the DOM via [`jsdom`](/docs/testing-environments.html#mocking-a-rendering-surface).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074054Z">
+        <seg>**[Jest](https://facebook.github.io/jest/)** は [`jsdom`](/docs/testing-environments.html#mocking-a-rendering-surface) を通じて DOM にアクセスできる JavaScript のテストランナーです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>While jsdom is only an approximation of how the browser works, it is often good enough for testing React components.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074054Z">
+        <seg>jsdom はブラウザの模倣環境にすぎませんが、React コンポーネントをテストするのには十分なことが多いです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Jest provides a great iteration speed combined with powerful features like mocking [modules](/docs/testing-environments.html#mocking-modules) and [timers](/docs/testing-environments.html#mocking-timers) so you can have more control over how the code executes.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074054Z">
+        <seg>Jest は [モジュール](/docs/testing-environments.html#mocking-modules) や [タイマー](/docs/testing-environments.html#mocking-timers) のモックのような機能を組み合わせて、高速にイテレーションを回すことができ、コードをどう実行するかをよりコントロールできます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>**[React Testing Library](https://testing-library.com/react)** is a set of helpers that let you test React components without relying on their implementation details.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074054Z">
+        <seg>**[React Testing Library](https://testing-library.com/react)** は実装の詳細に依存せずに React コンポーネントをテストすることができるツールセットです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This approach makes refactoring a breeze and also nudges you towards best practices for accessibility.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074054Z">
+        <seg>このアプローチはリファクタリングを容易にし、さらにアクセスビリティのベスト・プラクティスへと手向けてくれます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Although it doesn't provide a way to "shallowly" render a component without its children, a test runner like Jest lets you do this by [mocking](/docs/testing-recipes.html#mocking-modules).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074054Z">
+        <seg>コンポーネントを children 抜きに「浅く」レンダーする方法は提供していませんが、Jest のようなテストランナーで [モック](/docs/testing-recipes.html#mocking-modules) することで可能です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Learn More {#learn-more}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074054Z">
+        <seg>### より詳しく {#learn-more}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This section is divided in two pages:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074054Z">
+        <seg>このセクションは 2 つのページに分かれます：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>- [Recipes](/docs/testing-recipes.html): Common patterns when writing tests for React components.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074054Z">
+        <seg>- [レシピ集](/docs/testing-recipes.html)： React コンポーネントのテストを書く際の一般的なパターン集</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>- [Environments](/docs/testing-environments.html): What to consider when setting up a testing environment for React components.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074054Z">
+        <seg>- [環境](/docs/testing-environments.html)： React コンポーネントのためのテスト環境をセットアップする際に考えること</seg>
+      </tuv>
+    </tu>
+  </body>
+</tmx>

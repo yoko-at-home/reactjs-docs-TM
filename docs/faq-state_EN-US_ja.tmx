@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tmx SYSTEM "tmx14.dtd">
+<tmx version="1.4">
+  <header creationtool="OmegaT" o-tmf="OmegaT TMX" adminlang="EN-US" datatype="plaintext" creationtoolversion="4.3.2_0_6a661c5e0" segtype="sentence" srclang="EN-US"/>
+  <body>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>---
+id: faq-state
+title: Component State
+permalink: docs/faq-state.html
+layout: docs
+category: FAQ
+---</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>---
+id: faq-state
+title: コンポーネントの state
+permalink: docs/faq-state.html
+layout: docs
+category: FAQ
+---</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### What does `setState` do?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>### `setState` は何をしているのですか？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>`setState()` schedules an update to a component's `state` object.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>`setState()` はコンポーネントの `state` オブジェクト更新をスケジュールします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>When state changes, the component responds by re-rendering.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>state が更新されると、コンポーネントはそれに再レンダーで応じます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### What is the difference between `state` and `props`?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>### `state` と `props` の違いは何ですか？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>[`props`](/docs/components-and-props.html) (short for "properties") and [`state`](/docs/state-and-lifecycle.html) are both plain JavaScript objects.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>[`props`](/docs/components-and-props.html)（"properties" を短くしたもの）と [`state`](/docs/state-and-lifecycle.html) は、両方ともプレーンな JavaScript のオブジェクトです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>While both hold information that influences the output of render, they are different in one important way:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>どちらもレンダー結果に影響を及ぼす情報を持ってはいますが、ある重要な一点が異なっています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>`props` get passed *to* the component (similar to function parameters) whereas `state` is managed *within* the component (similar to variables declared within a function).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>つまり、`props` は（関数引数のように）コンポーネント*へ*渡されるのに対し、`state` は（関数内で宣言された変数のように）コンポーネント*の内部*で制御されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Here are some good resources for further reading on when to use `props` vs `state`:
+* [Props vs State](https://github.com/uberVU/react-guide/blob/master/props-vs-state.md)
+* [ReactJS: Props vs. State](https://lucybain.com/blog/2016/react-state-vs-pros/)</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>`props` と `state` のどちらをいつ使うべきかについて、こちらでより詳しく読むことができます。* [Props vs State](https://github.com/uberVU/react-guide/blob/master/props-vs-state.md)
+* [ReactJS: Props vs.State](https://lucybain.com/blog/2016/react-state-vs-pros/)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Why is `setState` giving me the wrong value?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>### `setState` が誤った値を返すのはなぜですか？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>{#why-is-setstate-giving-me-the-wrong-value}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>{#why-is-setstate-giving-me-the-wrong-value}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In React, both `this.props` and `this.state` represent the *rendered* values, i.e. what's currently on the screen.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>React では、`this.props` と `this.state` のいずれも、*レンダーされた*もの、つまりスクリーン上の値を表しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Calls to `setState` are asynchronous - don't rely on `this.state` to reflect the new value immediately after calling `setState`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>`setState` 呼び出しは非同期です。呼び出し直後から `this.state` が新しい値を反映することを期待しないでください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Pass an updater function instead of an object if you need to compute values based on the current state (see below for details).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>もし現在の state に基づいた値を計算する必要がある場合は、オブジェクトの代わりに更新関数を渡してください（詳しくは以下を参照）。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Example of code that will *not* behave as expected:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>このコード例は期待した通りには*動きません*。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>// Note: this will *not* work as intended.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>// 補足：これは意図通りに*動きません*</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>// Let's say `this.state.count` starts at 0.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>// `this.state.count` は 0 から始まるとします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>// When React re-renders the component, `this.state.count` will be 1, but you expected 3.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>// React がコンポーネントを再レンダーしても、`this.state.count` は意図通りの 3 ではなく 1 になります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>// This is because `incrementCount()` function above reads from `this.state.count`,</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>// これは、上記の `incrementCount()` 関数は `this.state.count` の値を読むのですが、</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>// but React doesn't update `this.state.count` until the component is re-rendered.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>// しかしコンポーネントが再レンダーされるまで React が `this.state.count` を更新しないためです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>// So `incrementCount()` ends up reading `this.state.count` as 0 every time, and sets it to 1.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>// そして `incrementCount()` は値が 0 のままの `this.state.count` を毎回読み、そして 1 をセットしてしまいます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>// The fix is described below!</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>// 対処法は下で説明していますよ！</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>See below for how to fix this problem.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>この問題を解決するには以下を見てください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### How do I update state with values that depend on the current state?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>### どうやって現在の state に依存する値を更新したらいいですか？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Pass a function instead of an object to `setState` to ensure the call always uses the most updated version of state (see below).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>`setState` へオブジェクトを渡す代わりに関数を渡してください。その関数は常に最新の状態の state を使って呼ばれることが保証されています（次項参照）。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### What is the difference between passing an object or a function in `setState`?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>### `setState` へオブジェクトを渡すのと関数を渡すのとのでは何が違いますか？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Passing an update function allows you to access the current state value inside the updater.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>更新関数を渡すと、その関数内で現在の state の値へアクセスできるようになります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Since `setState` calls are batched, this lets you chain updates and ensure they build on top of each other instead of conflicting:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>`setState` 呼び出しはバッチ処理されるため、更新処理を連結して、それぞれの更新が競合せずに順序だって動作することが保証されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>// Important: read `state` instead of `this.state` when updating.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>// 重要：更新には `this.state` ではなく `state` を使います。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>// Let's say `this.state.count` starts at 0.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>// `this.state.count` は 0 から始まるとします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>// If you read `this.state.count` now, it would still be 0.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>// ここで `this.state.count` を読んでもまだ 0 のままです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>// But when React re-renders the component, it will be 3.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>// しかし React がコンポーネントを再レンダーするとき、値は 3 になります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>[Learn more about setState](/docs/react-component.html#setstate)</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>[setState についてもっと学ぶ](/docs/react-component.html#setstate)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### When is `setState` asynchronous?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>### いつ `setState` は非同期になりますか？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Currently, `setState` is asynchronous inside event handlers.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>現在、`setState` はイベントハンドラの内側では非同期です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This ensures, for example, that if both `Parent` and `Child` call `setState` during a click event, `Child` isn't re-rendered twice.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>例えばクリックイベントの間に `Parent` と `Child` の両方が `setState` を呼ぶとき、非同期処理のおかげで `Child` が 2 度レンダーされないことが保証されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Instead, React "flushes" the state updates at the end of the browser event.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>その代わりに React はブラウザイベントの最後に state の更新を「フラッシュ (flush)」します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This results in significant performance improvements in larger apps.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>これにより大規模アプリのパフォーマンスが大幅に向上します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is an implementation detail so avoid relying on it directly.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>これは実装の詳細ですので、この仕組みに直接依存しないようにしてください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In the future versions, React will batch updates by default in more cases.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>将来のバージョンにおいて、React はより多くの場合にバッチ更新するようになります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Why doesn't React update `this.state` synchronously?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>### どうして React は `this.state` を同期的に更新しないのですか？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>As explained in the previous section, React intentionally "waits" until all components call `setState()` in their event handlers before starting to re-render.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>前項で説明したように、全てのコンポーネントがそのイベントハンドラ内で `setState()` を呼ぶまで、React は再レンダー前に意図的に「待つ」ようになっています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This boosts performance by avoiding unnecessary re-renders.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>これにより不必要な再レンダーが防がれ、パフォーマンスが向上します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>However, you might still be wondering why React doesn't just update `this.state` immediately without re-rendering.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>とはいえ、React がどうして再レンダーなしに `this.state` を即時更新しないのか、まだ疑問に思っているかもしれません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>There are two main reasons:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>これには主に 2 つの理由があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* This would break the consistency between `props` and `state`, causing issues that are very hard to debug.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>* 同期的更新が `props` と `state` の間の一貫性を破壊し、非常にデバッグが難しい問題を引き起こしうるため。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* This would make some of the new features we're working on impossible to implement.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>* 同期的更新が、我々が取り組んでいる新機能のいくつかを実装不可能にしうるため。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This [GitHub comment](https://github.com/facebook/react/issues/11527#issuecomment-360199710) dives deep into the specific examples.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>この [GitHub コメント](https://github.com/facebook/react/issues/11527#issuecomment-360199710)は特定の例について詳しく解説しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Should I use a state management library like Redux or MobX?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>### Redux や MobX のような state 管理ライブラリを使うべきでしょうか？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>[Maybe.](https://redux.js.org/faq/general#when-should-i-use-redux)</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>[時には必要かもしれません。](https://redux.js.org/faq/general#when-should-i-use-redux)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It's a good idea to get to know React first, before adding in additional libraries.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>まずは他のライブラリを追加する前に React を理解することをお勧めします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can build quite complex applications using only React.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T051641Z">
+        <seg>React だけでも非常に複雑なアプリケーションを作り上げることができます。</seg>
+      </tuv>
+    </tu>
+  </body>
+</tmx>

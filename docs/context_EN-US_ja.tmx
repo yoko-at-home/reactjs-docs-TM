@@ -1,0 +1,782 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tmx SYSTEM "tmx14.dtd">
+<tmx version="1.4">
+  <header creationtool="OmegaT" o-tmf="OmegaT TMX" adminlang="EN-US" datatype="plaintext" creationtoolversion="4.3.2_0_6a661c5e0" segtype="sentence" srclang="EN-US"/>
+  <body>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>---
+id: context
+title: Context
+permalink: docs/context.html
+---</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>---
+id: context
+title: コンテクスト
+permalink: docs/context.html
+---</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Context provides a way to pass data through the component tree without having to pass props down manually at every level.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>コンテクストは各階層で手動でプロパティを下に渡すことなく、コンポーネントツリー内でデータを渡す方法を提供します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In a typical React application, data is passed top-down (parent to child) via props, but such usage can be cumbersome for certain types of props (e.g. locale preference, UI theme) that are required by many components within an application.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>典型的な React アプリケーションでは、データは props を通してトップダウン（親から子）で渡されますが、このようなやり方は、アプリケーション内の多くのコンポーネントから必要とされる特定のタイプのプロパティ（例： ロケール設定、UI テーマ）にとっては面倒です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Context provides a way to share values like these between components without having to explicitly pass a prop through every level of the tree.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>コンテクストはツリーの各階層で明示的にプロパティを渡すことなく、コンポーネント間でこれらの様な値を共有する方法を提供します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>- [When to Use Context](#when-to-use-context)
+- [Before You Use Context](#before-you-use-context)
+- [API](#api)</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>- [コンテクストをいつ使用すべきか](#when-to-use-context)
+- [コンテクストを使用する前に](#before-you-use-context)
+- [API](#api)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>- [Context.displayName](#contextdisplayname)
+- [Examples](#examples)</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>- [Context.displayName](#contextdisplayname)
+- [例](#例)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>- [Dynamic Context](#dynamic-context)</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>- [動的なコンテクスト](#dynamic-context)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>- [Updating Context from a Nested Component](#updating-context-from-a-nested-component)</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>- [ネストしたコンポーネントからコンテクストを更新する](#updating-context-from-a-nested-component)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>- [Consuming Multiple Contexts](#consuming-multiple-contexts)
+- [Caveats](#caveats)
+- [Legacy API](#legacy-api)</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>- [複数のコンテクストを使用する](#consuming-multiple-contexts)
+- [注意事項](#caveats)
+- [レガシーな API](#legacy-api)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## When to Use Context {#when-to-use-context}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>## コンテクストをいつ使用すべきか {#when-to-use-context}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Context is designed to share data that can be considered "global" for a tree of React components, such as the current authenticated user, theme, or preferred language.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>コンテクストは、ある React コンポーネントのツリーに対して「グローバル」とみなすことができる、現在の認証済みユーザ・テーマ・優先言語といったデータを共有するために設計されています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, in the code below we manually thread through a "theme" prop in order to style the Button component:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>例えば、以下のコードでは Button コンポーネントをスタイルする為に、手動で "theme" プロパティを通しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Using context, we can avoid passing props through intermediate elements:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>コンテクストを使用することで、中間の要素群を経由してプロパティを渡すことを避けることができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Before You Use Context {#before-you-use-context}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>## コンテクストを使用する前に {#before-you-use-context}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Context is primarily used when some data needs to be accessible by *many* components at different nesting levels.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>コンテクストは主に、何らかのデータが、ネストレベルの異なる*多く*のコンポーネントからアクセスできる必要がある時に使用されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Apply it sparingly because it makes component reuse more difficult.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>コンテクストはコンポーネントの再利用をより難しくする為、慎重に利用してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>**If you only want to avoid passing some props through many levels, [component composition](/docs/composition-vs-inheritance.html) is often a simpler solution than context.**</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>**もし多くの階層を経由していくつかの props を渡すことを避けたいだけであれば、[コンポーネントコンポジション](/docs/composition-vs-inheritance.html)は多くの場合、コンテクストよりシンプルな解決策です。**</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, consider a `Page` component that passes a `user` and `avatarSize` prop several levels down so that deeply nested `Link` and `Avatar` components can read it:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>例えば、深くネストされた `Link` と `Avatar` コンポーネントがプロパティを読み取ることが出来るように、`user` と `avatarSize` プロパティをいくつかの階層下へ渡す `Page` コンポーネントを考えてみましょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>```js
+&lt;Page user={user} avatarSize={avatarSize} /&gt;
+// ... which renders ...
+&lt;PageLayout user={user} avatarSize={avatarSize} /&gt;
+// ... which renders ...
+&lt;NavigationBar user={user} avatarSize={avatarSize} /&gt;
+// ... which renders ...
+&lt;Link href={user.permalink}&gt;</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>```js
+&lt;Page user={user} avatarSize={avatarSize} /&gt;
+// ...Page コンポーネントは以下をレンダー ...
+&lt;PageLayout user={user} avatarSize={avatarSize} /&gt;
+// ...PageLayout コンポーネントは以下をレンダー ...
+&lt;NavigationBar user={user} avatarSize={avatarSize} /&gt;
+// ...NavigationBar コンポーネントは以下をレンダー ...
+&lt;Link href={user.permalink}&gt;</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&lt;Avatar user={user} size={avatarSize} /&gt;
+&lt;/Link&gt;
+```</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>&lt;Avatar user={user} size={avatarSize} /&gt;
+&lt;/Link&gt;
+```</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It might feel redundant to pass down the `user` and `avatarSize` props through many levels if in the end only the `Avatar` component really needs it.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>最終的に `Avatar` コンポーネントだけがプロパティを必要としているのであれば、多くの階層を通して `user` と `avatarSize` プロパティを下に渡すことは冗長に感じるかもしれません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It's also annoying that whenever the `Avatar` component needs more props from the top, you have to add them at all the intermediate levels too.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>また、`Avatar` コンポーネントが上のコンポーネントから追加のプロパティを必要とする時はいつでも、全ての間の階層にも追加しないといけないことも厄介です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>One way to solve this issue **without context** is to [pass down the `Avatar` component itself](/docs/composition-vs-inheritance.html#containment) so that the intermediate components don't need to know about the `user` or `avatarSize` props:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>**コンテクストを使用せずに**この問題を解決する 1 つの手法は、[`Avatar` コンポーネント自身を渡す](/docs/composition-vs-inheritance.html#containment)ようにするというもので、そうすれば間のコンポーネントは `user` や `avatarSize` プロパティを知る必要はありません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>return &lt;PageLayout userLink={userLink} /&gt;;
+}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>return &lt;PageLayout userLink={userLink} /&gt;;
+}// これで以下のようになります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>// Now, we have:
+&lt;Page user={user} avatarSize={avatarSize} /&gt;
+// ... which renders ...
+&lt;PageLayout userLink={...} /&gt;
+// ... which renders ...
+&lt;NavigationBar userLink={...} /&gt;
+// ... which renders ...
+{props.userLink}
+```</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>&lt;Page user={user} avatarSize={avatarSize} /&gt;
+// ...Page コンポーネントは以下をレンダー ...
+&lt;PageLayout userLink={...} /&gt;
+// ...PageLayout コンポーネントは以下をレンダー ...
+&lt;NavigationBar userLink={...} /&gt;
+// ...NavigationBar コンポーネントは以下をレンダー ...
+{props.userLink}
+```</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>With this change, only the top-most Page component needs to know about the `Link` and `Avatar` components' use of `user` and `avatarSize`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>この変更により、一番上の Page コンポーネントだけが、`Link` と `Avatar` コンポーネントの `user` と `avatarSize` の使い道について知る必要があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This *inversion of control* can make your code cleaner in many cases by reducing the amount of props you need to pass through your application and giving more control to the root components.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>この*制御の反転*はアプリケーション内で取り回す必要のあるプロパティの量を減らし、ルートコンポーネントにより多くの制御を与えることにより、多くのケースでコードを綺麗にすることができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Such inversion, however, isn't the right choice in every case; moving more complexity higher in the tree makes those higher-level components more complicated and forces the lower-level components to be more flexible than you may want.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>しかし、このような制御の反転がすべてのケースで正しい選択となるわけではありません。ツリー内の上層に複雑性が移ることは、それら高い階層のコンポーネントをより複雑にして、低い階層のコンポーネントに必要以上の柔軟性を強制します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You're not limited to a single child for a component.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>コンポーネントに対して 1 つの子までという制限はありません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You may pass multiple children, or even have multiple separate "slots" for children, [as documented here](/docs/composition-vs-inheritance.html#containment):</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>複数の子を渡したり、子のために複数の別々の「スロット」を持つことさえできます。[ドキュメントはここにあります。](/docs/composition-vs-inheritance.html#containment)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This pattern is sufficient for many cases when you need to decouple a child from its immediate parents.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>このパターンは、そのすぐ上の親から子を切り離す必要がある多くのケースにとって十分です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can take it even further with [render props](/docs/render-props.html) if the child needs to communicate with the parent before rendering.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>レンダーの前に子が親とやり取りする必要がある場合、さらに[レンダープロップ](/docs/render-props.html)と合わせて使うことができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>However, sometimes the same data needs to be accessible by many components in the tree, and at different nesting levels.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>しかし、たまに同じデータがツリー内の異なるネスト階層にある多くのコンポーネントからアクセス可能であることが必要となります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Context lets you "broadcast" such data, and changes to it, to all components below.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>コンテクストはそのようなデータとその変更を以下の全てのコンポーネントへ「ブロードキャスト」できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Common examples where using context might be simpler than the alternatives include managing the current locale, theme, or a data cache.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>コンテクストを使うことが他の手法よりシンプルである一般的な例としては、現在のロケール、テーマ、またはデータキャッシュの管理が挙げられます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Creates a Context object.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>コンテクストオブジェクトを作成します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>When React renders a component that subscribes to this Context object it will read the current context value from the closest matching `Provider` above it in the tree.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>React がこのコンテクストオブジェクトが登録されているコンポーネントをレンダーする場合、ツリー内の最も近い上位の一致する `Provider` から現在のコンテクストの値を読み取ります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The `defaultValue` argument is **only** used when a component does not have a matching Provider above it in the tree.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>`defaultValue` 引数は、コンポーネントがツリー内の上位に対応するプロバイダを持っていない場合のみ使用されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This default value can be helpful for testing components in isolation without wrapping them.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>このようなデフォルト値は、ラップしない単独でのコンポーネントのテストにて役に立ちます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Note: passing `undefined` as a Provider value does not cause consuming components to use `defaultValue`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>補足： `undefined` をプロバイダの値として渡しても、コンシューマコンポーネントが `defaultValue` を使用することはありません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>```js
+&lt;MyContext.Provider value={/* some value */}&gt;
+```</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>```js
+&lt;MyContext.Provider value={/* 何らかの値 */}&gt;
+```</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Every Context object comes with a Provider React component that allows consuming components to subscribe to context changes.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>全てのコンテクストオブジェクトにはプロバイダ (Provider) コンポーネントが付属しており、これによりコンシューマコンポーネントはコンテクストの変更を購読できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The Provider component accepts a `value` prop to be passed to consuming components that are descendants of this Provider.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>プロバイダコンポーネントは `value` プロパティを受け取り、これが子孫であるコンシューマコンポーネントに渡されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>One Provider can be connected to many consumers.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>1 つのプロバイダは多くのコンシューマと接続することができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Providers can be nested to override values deeper within the tree.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>プロバイダはネストしてツリー内のより深い位置で値を上書きすることができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>All consumers that are descendants of a Provider will re-render whenever the Provider's `value` prop changes.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>プロバイダの子孫の全てのコンシューマは、プロバイダの `value` プロパティが変更されるたびに再レンダーされます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The propagation from Provider to its descendant consumers (including [`.contextType`](#classcontexttype) and [`useContext`](/docs/hooks-reference.html#usecontext)) is not subject to the `shouldComponentUpdate` method, so the consumer is updated even when an ancestor component skips an update.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>プロバイダからその子孫コンシューマ（[`.contextType`](#classcontexttype) や [`useContext`](/docs/hooks-reference.html#usecontext) を含む）への伝播は `shouldComponentUpdate` メソッドの影響を受けないため、コンシューマは祖先のコンポーネントが更新をスキップしている場合でも更新されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Changes are determined by comparing the new and old values using the same algorithm as [`Object.is`](//developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>変更は、[`Object.is`](//developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description) と同じアルゴリズムを使用し、新しい値と古い値の比較によって判断されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt; Note
+&gt;
+&gt; The way changes are determined can cause some issues when passing objects as `value`: see [Caveats](#caveats).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>&gt; 補足
+&gt;
+&gt; この方法で変更の有無を判断するため、オブジェクトを `value` として渡した場合にいくつかの問題が発生する可能性があります。詳細は[注意事項](#caveats)を参照してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>/* perform a side-effect at mount using the value of MyContext */</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>/* MyContextの値を使用し、マウント時に副作用を実行します */</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>/* render something based on the value of MyContext */</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>/* MyContextの値に基づいて何かをレンダーします */</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The `contextType` property on a class can be assigned a Context object created by [`React.createContext()`](#reactcreatecontext).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>クラスの `contextType` プロパティには [`React.createContext()`](#reactcreatecontext) により作成されたコンテクストオブジェクトを指定することができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Using this property lets you consume the nearest current value of that Context type using `this.context`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>これにより、`this.context` を使って、そのコンテクストタイプの最も近い現在値を利用できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can reference this in any of the lifecycle methods including the render function.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>レンダー関数を含むあらゆるライフサイクルメソッドで参照できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt; Note:
+&gt;
+&gt; You can only subscribe to a single context using this API.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>&gt; 補足:
+&gt;
+&gt; この API では、1 つのコンテクストだけ登録することができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you need to read more than one see [Consuming Multiple Contexts](#consuming-multiple-contexts).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>もし 2 つ以上を読み取る必要がある場合、[複数のコンテクストを使用する](#consuming-multiple-contexts)を参照してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;
+&gt; If you are using the experimental [public class fields syntax](https://babeljs.io/docs/plugins/transform-class-properties/), you can use a **static** class field to initialize your `contextType`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>&gt;
+&gt; 実験的な [public class fields syntax](https://babeljs.io/docs/plugins/transform-class-properties/) を使用している場合、**static** クラスフィールドを使用することで `contextType` を初期化することができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>/* render something based on the value */</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>/* 値に基づいて何かをレンダーします */</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>{value =&gt; /* render something based on the context value */}
+&lt;/MyContext.Consumer&gt;
+```</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>{value =&gt; /* コンテクストの値に基づいて何かをレンダーします */}
+&lt;/MyContext.Consumer&gt;
+```</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>A React component that subscribes to context changes.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>コンテクストの変更を購読する React コンポーネントです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Using this component lets you subscribe to a context within a [function component](/docs/components-and-props.html#function-and-class-components).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>このコンポーネントを使うことで、[関数コンポーネント](/docs/components-and-props.html#function-and-class-components)内でコンテクストを購読することができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Requires a [function as a child](/docs/render-props.html#using-props-other-than-render).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>[function as a child](/docs/render-props.html#using-props-other-than-render) が必要です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The function receives the current context value and returns a React node.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>この関数は現在のコンテクストの値を受け取り、React ノードを返します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The `value` argument passed to the function will be equal to the `value` prop of the closest Provider for this context above in the tree.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>この関数に渡される引数 `value` は、ツリー内の上位で一番近いこのコンテクスト用のプロバイダの `value` プロパティと等しくなります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If there is no Provider for this context above, the `value` argument will be equal to the `defaultValue` that was passed to `createContext()`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>このコンテクスト用のプロバイダが上位に存在しない場合、引数の `value` は `createContext()` から渡された `defaultValue` と等しくなります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt; Note
+&gt;
+&gt; For more information about the 'function as a child' pattern, see [render props](/docs/render-props.html).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>&gt; 補足
+&gt; 
+&gt; "function as a child" パターンについてさらに情報が必要な場合は[レンダープロップ](/docs/render-props.html)を参照してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Context object accepts a `displayName` string property.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>コンテクストオブジェクトは `displayName` という文字列型のプロパティを有しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>React DevTools uses this string to determine what to display for the context.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>React DevTools はこの文字列を利用してコンテクストの表示のしかたを決定します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, the following component will appear as MyDisplayName in the DevTools:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>例えば以下のコンポーネントは DevTools で MyDisplayName と表示されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Examples {#examples}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>## 例 {#examples}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Dynamic Context {#dynamic-context}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>### 動的なコンテクスト {#dynamic-context}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>A more complex example with dynamic values for the theme:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>テーマに動的な値を使用したより複雑な例：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Updating Context from a Nested Component {#updating-context-from-a-nested-component}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>### ネストしたコンポーネントからコンテクストを更新する {#updating-context-from-a-nested-component}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It is often necessary to update the context from a component that is nested somewhere deeply in the component tree.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>コンポーネントツリーのどこか深くネストされたコンポーネントからコンテクストを更新することはよく必要になります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In this case you can pass a function down through the context to allow consumers to update the context:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>このケースでは、コンテクストを通して下に関数を渡すことで、コンシューマがコンテクストを更新可能にすることができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Consuming Multiple Contexts {#consuming-multiple-contexts}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>### 複数のコンテクストを使用する {#consuming-multiple-contexts}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>To keep context re-rendering fast, React needs to make each context consumer a separate node in the tree.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>コンテクストの再レンダーを高速に保つために、React は各コンテクストのコンシューマをツリー内の別々のノードにする必要があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If two or more context values are often used together, you might want to consider creating your own render prop component that provides both.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>2 つ以上のコンテクストの値が一緒に使用されることが多い場合、両方を提供する独自のレンダープロップコンポーネントの作成を検討した方が良いかもしれません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Caveats {#caveats}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>## 注意事項 {#caveats}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Because context uses reference identity to determine when to re-render, there are some gotchas that could trigger unintentional renders in consumers when a provider's parent re-renders.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>コンテクストは参照の同一性を使用していつ再レンダーするかを決定するため、プロバイダの親が再レンダーするときにコンシューマで意図しないレンダーを引き起こす可能性があるいくつかの問題があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, the code below will re-render all consumers every time the Provider re-renders because a new object is always created for `value`:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>例えば以下のコードでは、新しいオブジェクトが `value` に対して常に作成されるため、プロバイダが再レンダーするたびにすべてのコンシューマを再レンダーしてしまいます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>To get around this, lift the value into the parent's state:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>この問題を回避するためには、親の state に値をリフトアップします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Legacy API {#legacy-api}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>## レガシーな API {#legacy-api}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt; Note
+&gt;
+&gt; React previously shipped with an experimental context API.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>&gt; 補足
+&gt;
+&gt; React は以前に実験的なコンテクスト API を公開していました。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The old API will be supported in all 16.x releases, but applications using it should migrate to the new version.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>その古い API は全ての 16.x 系のリリースでサポートされる予定ですが、アプリケーションで使用しているのであれば、新しいバージョンにマイグレーションすべきです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The legacy API will be removed in a future major React version.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>レガシーな API は将来の React メジャーバージョンで削除されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Read the [legacy context docs here](/docs/legacy-context.html).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T045227Z">
+        <seg>[レガシーなコンテクストのドキュメントはここにあります。](/docs/legacy-context.html)</seg>
+      </tuv>
+    </tu>
+  </body>
+</tmx>

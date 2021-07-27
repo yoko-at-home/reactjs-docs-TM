@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tmx SYSTEM "tmx14.dtd">
+<tmx version="1.4">
+  <header creationtool="OmegaT" o-tmf="OmegaT TMX" adminlang="EN-US" datatype="plaintext" creationtoolversion="4.3.2_0_6a661c5e0" segtype="sentence" srclang="EN-US"/>
+  <body>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>---
+id: typechecking-with-proptypes
+title: Typechecking With PropTypes
+permalink: docs/typechecking-with-proptypes.html
+redirect_from:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074501Z">
+        <seg>---
+id: typechecking-with-proptypes
+title: PropTypes を用いた型チェック
+permalink: docs/typechecking-with-proptypes.html
+redirect_from:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt; Note:
+&gt;
+&gt; `React.PropTypes` has moved into a different package since React v15.5.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074501Z">
+        <seg>&gt; 注意:
+&gt;
+&gt; React.PropTypes は React v15.5 において別パッケージに移動しました。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Please use [the `prop-types` library instead](https://www.npmjs.com/package/prop-types).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074501Z">
+        <seg>代わりに [`prop-types` ライブラリ](https://www.npmjs.com/package/prop-types)を利用するようにしてください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;
+&gt;We provide [a codemod script](/blog/2017/04/07/react-v15.5.0.html#migrating-from-reactproptypes) to automate the conversion.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074501Z">
+        <seg>&gt;
+&gt; コードを自動で変換するための [codemod スクリプト](/blog/2017/04/07/react-v15.5.0.html#migrating-from-reactproptypes)を提供しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>As your app grows, you can catch a lot of bugs with typechecking.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074501Z">
+        <seg>アプリケーションが成長するにつれて、型チェックによって多くの不具合を見つけられるようになります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For some applications, you can use JavaScript extensions like [Flow](https://flow.org/) or [TypeScript](https://www.typescriptlang.org/) to typecheck your whole application.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074501Z">
+        <seg>アプリケーションによっては、[Flow](https://flow.org/) もしくは [TypeScript](https://www.typescriptlang.org/) のような JavaScript 拡張を使ってアプリケーション全体の型チェックを行うことができるでしょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>But even if you don't use those, React has some built-in typechecking abilities.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074501Z">
+        <seg>しかしそれらを使用せずとも、React は組み込みの型チェック機能を備えています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>To run typechecking on the props for a component, you can assign the special `propTypes` property:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074501Z">
+        <seg>コンポーネントの props に型チェックを行うために、特別な `propTypes` プロパティを割当てることができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In this example, we are using a class component, but the same functionality could also be applied to function components, or components created by [`React.memo`](/docs/react-api.html#reactmemo) or [`React.forwardRef`](/docs/react-api.html#reactforwardref).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074501Z">
+        <seg>この例ではクラスコンポーネントを使っていますが、同様の機能は関数コンポーネントや [`React.memo`](/docs/react-api.html#reactmemo) および [`React.forwardRef`](/docs/react-api.html#reactforwardref) で作ったコンポーネントでも使用できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>`PropTypes` exports a range of validators that can be used to make sure the data you receive is valid.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074501Z">
+        <seg>`PropTypes` は受け取ったデータが有効かどうかを確認するために使用できる種々のバリデーターをエクスポートしています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In this example, we're using `PropTypes.string`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074501Z">
+        <seg>上記の例では、`PropTypes.string` を使用しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>When an invalid value is provided for a prop, a warning will be shown in the JavaScript console.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074501Z">
+        <seg>無効な値がプロパティに与えられた場合、JavaScript のコンソールに警告文が出力されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For performance reasons, `propTypes` is only checked in development mode.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074501Z">
+        <seg>パフォーマンス上の理由から、`propTypes` のチェックは開発モードでのみ行われます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Here is an example documenting the different validators provided:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074501Z">
+        <seg>PropTypes によって提供されている様々なバリデーターの実例を紹介します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Requiring Single Child {#requiring-single-child}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074501Z">
+        <seg>### 単一の子要素を要求する {#requiring-single-child}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>With `PropTypes.element` you can specify that only a single child can be passed to a component as children.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074501Z">
+        <seg>`PropTypes.element` を使うことで、コンポーネントに単一の子要素しか渡せないことを指定することができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Default Prop Values {#default-prop-values}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074501Z">
+        <seg>### props のデフォルト値 {#default-prop-values}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can define default values for your `props` by assigning to the special `defaultProps` property:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074501Z">
+        <seg>`defaultProps` というプロパティを割り当てることで、`props` に値が渡されなかった際のデフォルト値を定義することができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you are using a Babel transform like [transform-class-properties](https://babeljs.io/docs/plugins/transform-class-properties/) , you can also declare `defaultProps` as static property within a React component class.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074501Z">
+        <seg>もし、[transform-class-properties](https://babeljs.io/docs/plugins/transform-class-properties/) のような Babel 変換のプラグインを使用している場合、`defaultProps` をクラス内の static プロパティとして定義することができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This syntax has not yet been finalized though and will require a compilation step to work within a browser.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074501Z">
+        <seg>この記法はまだ TC39 によって確定されていないため、ブラウザ上で正しく表示させるには、Babel 等で変換する必要があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For more information, see the [class fields proposal](https://github.com/tc39/proposal-class-fields).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074501Z">
+        <seg>詳細は [class fields proposal](https://github.com/tc39/proposal-class-fields) を参照してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The `defaultProps` will be used to ensure that `this.props.name` will have a value if it was not specified by the parent component.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074501Z">
+        <seg>`defaultProps` を使えば、`this.props.name` が親コンポーネントから値が指定されなかった場合でも値が代入されていることを保証できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The `propTypes` typechecking happens after `defaultProps` are resolved, so typechecking will also apply to the `defaultProps`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074501Z">
+        <seg>`propTypes` による型チェックは `defaultProps` が解決した後に行われるため、`defaultProps` にも型チェックが適用されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Function Components {#function-components}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074501Z">
+        <seg>### 関数コンポーネント {#function-components}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you are using function components in your regular development, you may want to make some small changes to allow PropTypes to be properly applied.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074501Z">
+        <seg>普段の開発で関数コンポーネントを利用している場合、正しく PropTypes が適用されるように小さな変更を加える必要があるかもしれません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Let's say you have a component like this:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074501Z">
+        <seg>以下のようなコンポーネントがあるとしましょう：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>To add PropTypes, you may want to declare the component in a separate function before exporting, like this:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074501Z">
+        <seg>PropTypes を加えるためには、エクスポートする前にコンポーネントを以下のように別の関数として宣言する必要があります：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Then, you can add PropTypes directly to the `HelloWorldComponent`:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074501Z">
+        <seg>これで `HelloWorldComponent` に PropTypes を加えることができるようになります：</seg>
+      </tuv>
+    </tu>
+  </body>
+</tmx>

@@ -1,0 +1,1357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tmx SYSTEM "tmx14.dtd">
+<tmx version="1.4">
+  <header creationtool="OmegaT" o-tmf="OmegaT TMX" adminlang="EN-US" datatype="plaintext" creationtoolversion="4.3.2_0_6a661c5e0" segtype="sentence" srclang="EN-US"/>
+  <body>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>---
+id: hooks-state
+title: Using the Effect Hook
+permalink: docs/hooks-effect.html
+next: hooks-rules.html
+prev: hooks-state.html
+---</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>---
+id: hooks-state
+title: 副作用フックの利用法
+permalink: docs/hooks-effect.html
+next: hooks-rules.html
+prev: hooks-state.html
+---</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>*Hooks* are a new addition in React 16.8.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>*フック (hook)* は React 16.8 で追加された新機能です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>They let you use state and other React features without writing a class.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>state などの React の機能を、クラスを書かずに使えるようになります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The *Effect Hook* lets you perform side effects in function components:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>*副作用 (effect) フック* により、関数コンポーネント内で副作用を実行することができるようになります：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This snippet is based on the [counter example from the previous page](/docs/hooks-state.html), but we added a new feature to it: we set the document title to a custom message including the number of clicks.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>このスニペットは [1 つ前のページのカウンターの例](/docs/hooks-state.html)に基づいていますが、新しい機能をひとつ加えてあります。クリック回数を含んだカスタムのメッセージをドキュメントのタイトルにセットしているのです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Data fetching, setting up a subscription, and manually changing the DOM in React components are all examples of side effects.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>データの取得、購読 (subscription) の設定、あるいは React コンポーネント内の DOM の手動での変更、といったものはすべて副作用の例です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Whether or not you're used to calling these operations "side effects" (or just "effects"), you've likely performed them in your components before.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>これらを "副作用 (side-effect)"（あるいは単に "作用 (effect)"）と呼ぶことに慣れているかどうかはともかくとしても、これらのようなことをコンポーネントの中で行ったことはあるでしょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;Tip
+&gt;
+&gt;If you're familiar with React class lifecycle methods, you can think of `useEffect` Hook as `componentDidMount`, `componentDidUpdate`, and `componentWillUnmount` combined.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>&gt; ヒント
+&gt;
+&gt; React のライフサイクルに馴染みがある場合は、`useEffect` フックを `componentDidMount` と `componentDidUpdate` と `componentWillUnmount` がまとまったものだと考えることができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>There are two common kinds of side effects in React components: those that don't require cleanup, and those that do.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>React コンポーネントにおける副作用には 2 種類あります。クリーンアップコードを必要としない副作用と、必要とする副作用です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Let's look at this distinction in more detail.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>これらの違いについて詳しく見ていきましょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Effects Without Cleanup {#effects-without-cleanup}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>## クリーンアップを必要としない副作用 {#effects-without-cleanup}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Sometimes, we want to **run some additional code after React has updated the DOM.** Network requests, manual DOM mutations, and logging are common examples of effects that don't require a cleanup.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>時に、**React が DOM を更新した後で追加のコードを実行したい**という場合があります。ネットワークリクエストの送信、手動での DOM 改変、ログの記録、といったものがクリーンアップを必要としない副作用の例です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We say that because we can run them and immediately forget about them.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>なぜかというとそれらのコードが実行されたあとすぐにそのことを忘れても構わないからです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Let's compare how classes and Hooks let us express such side effects.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>クラスとフックとでそのような副作用をどのように表現するのか比較してみましょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Example Using Classes {#example-using-classes}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>### クラスを使った例 {#example-using-classes}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In React class components, the `render` method itself shouldn't cause side effects.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>React のクラスコンポーネントでは、`render` メソッド自体が副作用を起こすべきではありません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It would be too early -- we typically want to perform our effects *after* React has updated the DOM.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>そこで副作用を起こすのは早すぎます -- 典型的には、副作用は React が DOM を更新した*あと*に起こすようにしたいのです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is why in React classes, we put side effects into `componentDidMount` and `componentDidUpdate`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>そのため React のクラスでは、副作用は `componentDidMount` と `componentDidUpdate` に記載します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Coming back to our example, here is a React counter class component that updates the document title right after React makes changes to the DOM:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>例に戻ると、以下が React のクラスで実装したカウンターコンポーネントであり、React が DOM に変更を加えた後に、ドキュメントのタイトルを更新しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Note how **we have to duplicate the code between these two lifecycle methods in class.**</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>ここで**同じコードを 2 回書かなければならなかった**ことに注意してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is because in many cases we want to perform the same side effect regardless of whether the component just mounted, or if it has been updated.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>これは、コンポーネントがマウント直後なのか更新後なのかに関係なく、大抵の場合は同じ副作用を起こしたいからです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Conceptually, we want it to happen after every render -- but React class components don't have a method like this.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>概念的には、毎回のレンダー時に起こってほしいのですが、React のクラスコンポーネントにはそのようなメソッドは存在していません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We could extract a separate method but we would still have to call it in two places.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>副作用のコードを別のメソッドに抽出することは可能ですが、2 か所でそのメソッドを呼ばなければいけないことに変わりはありません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Now let's see how we can do the same with the `useEffect` Hook.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>では、同じことが `useEffect` フックを用いるとどのように記述できるのか見ていきましょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Example Using Hooks {#example-using-hooks}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>### フックを使った例 {#example-using-hooks}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We've already seen this example at the top of this page, but let's take a closer look at it:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>以下の例は既にこのページの最初で見たものですが、改めて詳しく見ていきましょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>**What does `useEffect` do?** By using this Hook, you tell React that your component needs to do something after render.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>**`useEffect` は何をやっているのか？** このフックを使うことで、レンダー後に何かの処理をしないといけない、ということを React に伝えます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>React will remember the function you passed (we'll refer to it as our "effect"), and call it later after performing the DOM updates.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>React はあなたが渡した関数を覚えており（これを「副作用（関数）」と呼ぶこととします）、DOM の更新の後にそれを呼び出します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In this effect, we set the document title, but we could also perform data fetching or call some other imperative API.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>この副作用の場合はドキュメントのタイトルをセットしていますが、データを取得したりその他何らかの命令型の API を呼び出したりすることも可能です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>**Why is `useEffect` called inside a component?** Placing `useEffect` inside the component lets us access the `count` state variable (or any props) right from the effect.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>**`useEffect` がコンポーネント内で呼ばれるのはなぜか？** コンポーネント内で `useEffect` を記述することで、副作用内から state である `count`（や任意の props）にアクセスできるようになります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We don't need a special API to read it -- it's already in the function scope.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>それらは既に関数スコープ内に存在するので、参照するための特別な API は必要ありません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Hooks embrace JavaScript closures and avoid introducing React-specific APIs where JavaScript already provides a solution.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>フックは JavaScript のクロージャを活用しており、JavaScript で解決できることに対して React 特有の API を導入することはしません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>**Does `useEffect` run after every render?** Yes!</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>**`useEffect` は毎回のレンダー後に呼ばれるのか？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>By default, it runs both after the first render *and* after every update.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>** その通りです！デフォルトでは、副作用関数は初回のレンダー時*および*毎回の更新時に呼び出されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>(We will later talk about [how to customize this](#tip-optimizing-performance-by-skipping-effects).) Instead of thinking in terms of "mounting" and "updating", you might find it easier to think that effects happen "after render".</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>あとで[カスタマイズする方法](#tip-optimizing-performance-by-skipping-effects)について説明します。「マウント」と「更新」という観点で考えるのではなく、「レンダーの後」に副作用は起こる、というように考える方が簡単かもしれません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>React guarantees the DOM has been updated by the time it runs the effects.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>React は、副作用が実行される時点では DOM が正しく更新され終わっていることを保証します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Detailed Explanation {#detailed-explanation}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>### 詳しい説明 {#detailed-explanation}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Now that we know more about effects, these lines should make sense:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>副作用について学んだので、以下の行の意味はお分かりかと思います。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We declare the `count` state variable, and then we tell React we need to use an effect.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>ここでは `count` という state 変数を宣言し、次に副作用を使うことを React に伝えています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We pass a function to the `useEffect` Hook.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>`useEffect` フックには関数を渡しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This function we pass *is* our effect.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>この関数こそが副作用関数です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Inside our effect, we set the document title using the `document.title` browser API.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>この副作用関数内で `document.title` というブラウザ API を使ってドキュメントのタイトルを設定しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We can read the latest `count` inside the effect because it's in the scope of our function.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>副作用関数は関数スコープ内にあるため最新の `count` の値は副作用内から参照可能です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>When React renders our component, it will remember the effect we used, and then run our effect after updating the DOM. This happens for every render, including the first one.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>React がコンポーネントをレンダーする際に React はこの副作用を覚えておき、DOM を更新した後に呼び出します。これは初回を含む毎回のレンダー時に発生します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Experienced JavaScript developers might notice that the function passed to `useEffect` is going to be different on every render.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>経験のある JavaScript 開発者であれば、`useEffect` に渡される関数は毎回のレンダーごとに異なっているということに気付くかもしれません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is intentional.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>これは意図的なものです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In fact, this is what lets us read the `count` value from inside the effect without worrying about it getting stale.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>むしろ、そのようにすることで、古い値を参照してしまう心配なしに副作用関数内から `count` を読むことができるのです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Every time we re-render, we schedule a _different_ effect, replacing the previous one.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>再レンダーごとに、React は*違う*副作用関数をスケジュールし、前のものを置き換えます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In a way, this makes the effects behave more like a part of the render result -- each effect "belongs" to a particular render.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>ある意味で、こうすることで副作用はレンダーの結果の一部のようにふるまうようになります -- それぞれの副作用は特定の 1 回のレンダーと結びついているのです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We will see more clearly why this is useful [later on this page](#explanation-why-effects-run-on-each-update).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>これがなぜ便利なのかについては[このページの後半](#explanation-why-effects-run-on-each-update)で明らかになるでしょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;Tip
+&gt;
+&gt;Unlike `componentDidMount` or `componentDidUpdate`, effects scheduled with `useEffect` don't block the browser from updating the screen.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>&gt; ヒント
+&gt;
+&gt; `componentDidMount` や `componentDidUpdate` と異なり、`useEffect` でスケジュールされた副作用はブラウザによる画面更新をブロックしません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This makes your app feel more responsive.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>このためアプリの反応がより良く感じられます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The majority of effects don't need to happen synchronously.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>大部分の副作用は同期的に行われる必要がありません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In the uncommon cases where they do (such as measuring the layout), there is a separate [`useLayoutEffect`](/docs/hooks-reference.html#uselayouteffect) Hook with an API identical to `useEffect`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>同期的に行う必要がある稀なケース（レイアウトの測定など）のために、`useEffect` と同一の API を有する [`useLayoutEffect`](/docs/hooks-reference.html#uselayouteffect) という別のフックがあります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Effects with Cleanup {#effects-with-cleanup}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>## クリーンアップを有する副作用 {#effects-with-cleanup}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Earlier, we looked at how to express side effects that don't require any cleanup.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>ここまでに、クリーンアップを必要としない副作用の表現のしかたについて見てきました。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>However, some effects do.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>しかし幾つかの副作用ではそれが必要です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, **we might want to set up a subscription** to some external data source.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>例えば何らかの外部のデータソースへの**購読をセットアップしたい**ことがあります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In that case, it is important to clean up so that we don't introduce a memory leak!</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>そのような場合、メモリリークが発生しないようにクリーンアップが必要です！</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Let's compare how we can do it with classes and with Hooks.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>クラスの場合とフックの場合とでクリーンアップをどのように行えるのか比較しましょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Example Using Classes {#example-using-classes-1}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>### クラスを使った例 {#example-using-classes-1}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In a React class, you would typically set up a subscription in `componentDidMount`, and clean it up in `componentWillUnmount`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>React のクラスでは、典型的にはデータの購読を `componentDidMount` で行い、クリーンアップを `componentWillUnmount` で行います。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, let's say we have a `ChatAPI` module that lets us subscribe to a friend's online status.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>例えば、フレンドのオンライン状態を購読することができる `ChatAPI` というモジュールがあるとしましょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Here's how we might subscribe and display that status using a class:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>以下がクラスを使ってその状態を購読し、表示する例です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Notice how `componentDidMount` and `componentWillUnmount` need to mirror each other.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>ここで、`componentDidMount` と `componentWillUnmount` とがお互いに鏡のように対応していないといけないことに注意してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Lifecycle methods force us to split this logic even though conceptually code in both of them is related to the same effect.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>ライフサイクルメソッドを使うと、2 つのメソッドに書かれているコードが概念上は同一の副作用に関連しているとしても、それらを分割して書かないといけません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;Note
+&gt;
+&gt;Eagle-eyed readers may notice that this example also needs a `componentDidUpdate` method to be fully correct.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>&gt; 補足
+&gt;
+&gt; 目ざとい読者なら、この例が完全に正しいものであるためには `componentDidUpdate` も必要だと気付くかもしれません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We'll ignore this for now but will come back to it in a [later section](#explanation-why-effects-run-on-each-update) of this page.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>今のところは気にしないでおきますが、このページの[後に出てくる節](#explanation-why-effects-run-on-each-update)で改めて説明します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Example Using Hooks {#example-using-hooks-1}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>### フックを使った例 {#example-using-hooks-1}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Let's see how we could write this component with Hooks.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>このコンポーネントをフックを使ってどのように書けるのか見ていきましょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You might be thinking that we'd need a separate effect to perform the cleanup.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>クリーンアップ用の別の副作用が必要だとお考えかもしれません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>But code for adding and removing a subscription is so tightly related that `useEffect` is designed to keep it together.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>しかし購読を開始するコードと解除するコードとは密に関連しているため、`useEffect` はそれらを一緒に書けるようにデザインされています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If your effect returns a function, React will run it when it is time to clean up:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>あなたの副作用が関数を返した場合、React はクリーンアップのタイミングが来たらそれを実行するのです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>**Why did we return a function from our effect?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>**副作用内からなぜ関数を返したのか？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>** This is the optional cleanup mechanism for effects.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>** これこそが副作用のクリーンアップのためのオプションの仕組みです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Every effect may return a function that cleans up after it.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>すべての副作用は、それをクリーンアップするための関数を返すことができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This lets us keep the logic for adding and removing subscriptions close to each other.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>これにより購読を開始するためのロジックと解除するためのロジックを並べて書くことができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>They're part of the same effect!</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>両方とも同じ副作用の一部なのです！</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>**When exactly does React clean up an effect?** React performs the cleanup when the component unmounts.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>**React は具体的には副作用のクリーンアップをいつ発生させるのか？** React はコンポーネントがアンマウントされるときにクリーンアップを実行します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>However, as we learned earlier, effects run for every render and not just once.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>しかし、すでに学んだ通り、副作用は 1 回だけでなく毎回のレンダー時に実行されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is why React *also* cleans up effects from the previous render before running the effects next time.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>このため React は、ひとつ前のレンダーによる副作用を、次回の副作用を実行する前に*も*クリーンアップします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We'll discuss [why this helps avoid bugs](#explanation-why-effects-run-on-each-update) and [how to opt out of this behavior in case it creates performance issues](#tip-optimizing-performance-by-skipping-effects) later below.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>この後で、これが[なぜバグの回避につながるのか](#explanation-why-effects-run-on-each-update)、そして[これがパフォーマンスの問題を引き起こしている場合にどのようにしてこの挙動を止めるのか](#tip-optimizing-performance-by-skipping-effects)について説明します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;Note
+&gt;
+&gt;We don't have to return a named function from the effect.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>&gt; 補足
+&gt;
+&gt; 副作用から名前付きの関数を返す必要はありません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We called it `cleanup` here to clarify its purpose, but you could return an arrow function or call it something different.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>ここでは目的を明示するために `cleanup` という名前にしましたが、アロー関数を返すことも別の名前を付けることも可能です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Recap {#recap}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>## まとめ {#recap}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We've learned that `useEffect` lets us express different kinds of side effects after a component renders.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>`useEffect` を用いることで、コンポーネントのレンダー後に実行される様々な種類の副作用を表現できることを学びました。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Some effects might require cleanup so they return a function:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>いくつかの副作用はクリーンアップが必要である可能性があり、その場合は関数を返します：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Other effects might not have a cleanup phase, and don't return anything.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>クリーンアップフェーズが必要ない副作用もあり、その場合は何も返す必要はありません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The Effect Hook unifies both use cases with a single API.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>副作用フックは両方のユースケースをひとつの API に統合します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>**If you feel like you have a decent grasp on how the Effect Hook works, or if you feel overwhelmed, you can jump to the [next page about Rules of Hooks](/docs/hooks-rules.html) now.**</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>**副作用フックの動作について十分わかったと感じる場合や、逆にもううんざりだという場合は、ここで[次のページ（フックのルールについて）](/docs/hooks-rules.html)に進んでも構いません。**</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Tips for Using Effects {#tips-for-using-effects}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>## 副作用を使う場合のヒント {#tips-for-using-effects}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We'll continue this page with an in-depth look at some aspects of `useEffect` that experienced React users will likely be curious about.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>このページの残りの部分では、経験のある React 利用者が興味を持つかもしれない `useEffect` の深い概念について説明します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Don't feel obligated to dig into them now.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>今すぐ読み進める必要があるとは思わないでください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can always come back to this page to learn more details about the Effect Hook.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>副作用フックについて詳細が知りたくなったらいつでもこのページに戻ってくればいいのです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Tip: Use Multiple Effects to Separate Concerns {#tip-use-multiple-effects-to-separate-concerns}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>### ヒント：関心を分離するために複数の副作用を使う {#tip-use-multiple-effects-to-separate-concerns}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>One of the problems we outlined in the [Motivation](/docs/hooks-intro.html#complex-components-become-hard-to-understand) for Hooks is that class lifecycle methods often contain unrelated logic, but related logic gets broken up into several methods.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>フックを[導入する動機](/docs/hooks-intro.html#complex-components-become-hard-to-understand)のページで述べた問題のひとつは、しばしばそれぞれのライフサイクルメソッドに関連のないロジックが含まれ、一方で関連するロジックが複数のメソッドに分割されてしまう、ということです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Here is a component that combines the counter and the friend status indicator logic from the previous examples:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>以下に示すのは、これまでの例で挙げたカウンタとフレンド状態インジケータとを組み合わせたコンポーネントです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Note how the logic that sets `document.title` is split between `componentDidMount` and `componentDidUpdate`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>ここで、`document.title` を設定するためのロジックが `componentDidMount` と `componentDidUpdate` に分離してしまっていることに注意してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The subscription logic is also spread between `componentDidMount` and `componentWillUnmount`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>データ購読のためのロジックもやはり `componentDidMount` と `componentWillUnmount` とに分離しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>And `componentDidMount` contains code for both tasks.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>そして `componentDidMount` には両方の仕事のためのコードが含まれています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>So, how can Hooks solve this problem?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>ではフックはどのようにこの問題を解決するのでしょうか？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Just like [you can use the *State* Hook more than once](/docs/hooks-state.html#tip-using-multiple-state-variables), you can also use several effects.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>[*ステート*フックを複数回呼べる](/docs/hooks-state.html#tip-using-multiple-state-variables)のと同様の方法で、副作用を複数回利用することができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This lets us separate unrelated logic into different effects:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>このため、互いに関係のないロジックは別の副作用に分離することが可能です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>**Hooks let us split the code based on what it is doing** rather than a lifecycle method name.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>フックを使うことで、ライフサイクルのメソッド名に基づくのではなく、**実際に何をやっているのかに基づいてコードを分割できます**。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>React will apply *every* effect used by the component, in the order they were specified.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>React はコンポーネントで利用されている*すべての*副作用を、指定されている順番で適用していきます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Explanation: Why Effects Run on Each Update {#explanation-why-effects-run-on-each-update}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>### 解説：なぜ副作用は毎回の更新ごとに実行されるのか {#explanation-why-effects-run-on-each-update}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you're used to classes, you might be wondering why the effect cleanup phase happens after every re-render, and not just once during unmounting.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>クラスに慣れていれば、なぜクリーンアップフェーズは、アンマウント時の 1 度だけではなく再レンダー時に毎回発生するのか、と不思議に思っているかもしれません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Let's look at a practical example to see why this design helps us create components with fewer bugs.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>実践的な例で、この設計によりなぜバグの少ないコンポーネントが作れるようになるのか見てみましょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>[Earlier on this page](#example-using-classes-1), we introduced an example `FriendStatus` component that displays whether a friend is online or not.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>[このページの前の部分](#example-using-classes-1)で、フレンドがオンラインかどうかを表示する `FriendStatus` コンポーネントの例を示しました。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Our class reads `friend.id` from `this.props`, subscribes to the friend status after the component mounts, and unsubscribes during unmounting:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>このクラスでは `this.props` の中にある `friend.id` を参照して、コンポーネントがマウントした後にフレンドのステータスを購読し、アンマウント時には購読を解除します：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>**But what happens if the `friend` prop changes** while the component is on the screen?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>ですがコンポーネントが表示されている最中に **`friend` プロパティが変わったらどうなるのでしょう**か？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Our component would continue displaying the online status of a different friend.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>このコンポーネントは間違ったフレンドのオンラインステータスを表示し続けてしまいます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is a bug.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>これはバグです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We would also cause a memory leak or crash when unmounting since the unsubscribe call would use the wrong friend ID.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>しかも誤ったフレンド ID を使って購読解除を呼び出してしまうため、アンマウント時にメモリリークやクラッシュを引き起こしてしまうでしょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In a class component, we would need to add `componentDidUpdate` to handle this case:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>クラスコンポーネントの場合は、このようなケースに対処するために `componentDidUpdate` を加える必要がありました。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Forgetting to handle `componentDidUpdate` properly is a common source of bugs in React applications.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>適切な `componentDidUpdate` 処理をし忘れることが、React アプリケーションにおけるよくあるバグの原因となっていました。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Now consider the version of this component that uses Hooks:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>ではこのコンポーネントのフックを利用したバージョンを見てみましょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It doesn't suffer from this bug.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>動作は変わっておらず、前述のバグも起こらなくなります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>(But we also didn't make any changes to it.)</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>`useEffect` は*デフォルトで*更新を処理するため、更新のための特別なコードは不要です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>There is no special code for handling updates because `useEffect` handles them *by default*.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>新しい副作用を適用する前に、ひとつ前の副作用をクリーンアップします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It cleans up the previous effects before applying the next effects.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>これを例示するため、このコンポーネントが経時的に発生させる可能性のある購読登録と購読解除のシーケンスを示します：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>To illustrate this, here is a sequence of subscribe and unsubscribe calls that this component could produce over time:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>```js
+// Mount with { friend: { id: 100 } } props
+ChatAPI.subscribeToFriendStatus(100, handleStatusChange);     // Run first effect</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>```js
+// Mount with { friend: { id: 100 } } props
+ChatAPI.subscribeToFriendStatus(100, handleStatusChange);     // Run first effect // Update with { friend: { id: 200 } } props
+ChatAPI.unsubscribeFromFriendStatus(100, handleStatusChange); // Clean up previous effect
+ChatAPI.subscribeToFriendStatus(200, handleStatusChange);     // Run next effect</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>// Update with { friend: { id: 200 } } props
+ChatAPI.unsubscribeFromFriendStatus(100, handleStatusChange); // Clean up previous effect
+ChatAPI.subscribeToFriendStatus(200, handleStatusChange);     // Run next effect</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This behavior ensures consistency by default and prevents bugs that are common in class components due to missing update logic.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>この挙動によりデフォルトで一貫性を保証することができ、クラスコンポーネントでよく見られた更新ロジック書き忘れによるバグを防止することができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Tip: Optimizing Performance by Skipping Effects {#tip-optimizing-performance-by-skipping-effects}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>### ヒント：副作用のスキップによるパフォーマンス改善 {#tip-optimizing-performance-by-skipping-effects}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In some cases, cleaning up or applying the effect after every render might create a performance problem.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>いくつかの場合では、副作用のクリーンアップと適用とをレンダーごとに毎回行うことはパフォーマンスの問題を引き起こす可能性があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In class components, we can solve this by writing an extra comparison with `prevProps` or `prevState` inside `componentDidUpdate`:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>クラスコンポーネントの場合、この問題は `componentDidUpdate` の内部で `prevProps` や `prevState` と比較するコードを加えることで解決できました。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This requirement is common enough that it is built into the `useEffect` Hook API.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>これはよくある要求なので、`useEffect` フックの API にはこの動作が組み込まれています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can tell React to *skip* applying an effect if certain values haven't changed between re-renders.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>再レンダー間で特定の値が変わっていない場合には副作用の適用を*スキップ*するよう、React に伝えることができるのです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>To do so, pass an array as an optional second argument to `useEffect`:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>そのためには、`useEffect` のオプションの第 2 引数として配列を渡してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In the example above, we pass `[count]` as the second argument.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>上記の例では、第 2 引数として `[count]` を渡しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>What does this mean?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>どういう意味でしょうか？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If the `count` is `5`, and then our component re-renders with `count` still equal to `5`, React will compare `[5]` from the previous render and `[5]` from the next render.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>もし `count` が `5` で、次回のコンポーネントのレンダー時にも `count` がまだ `5` であった場合、React は前回のレンダー時に覚えておいた `[5]` と今回のレンダーの `[5]` とを比較します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Because all items in the array are the same (`5 === 5`), React would skip the effect.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>配列内のすべての要素が同一 (`5 === 5`) ですので、React は副作用をスキップします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>That's our optimization.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>これが最適化です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>When we render with `count` updated to `6`, React will compare the items in the `[5]` array from the previous render to items in the `[6]` array from the next render.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>再レンダー時に `count` が `6` に変更されている場合、前回レンダー時に覚えておいた `[5]` と今回のレンダー時の `[6]` という配列とを比較します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This time, React will re-apply the effect because `5 !== 6`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>今回は `5 !== 6` ですので React は副作用を再適用します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If there are multiple items in the array, React will re-run the effect even if just one of them is different.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>配列内に複数の要素がある場合、React は配列内の要素のうちひとつでも変わっている場合に副作用を再実行します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This also works for effects that have a cleanup phase:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>クリーンアップフェーズがある副作用でも同様に動作します：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In the future, the second argument might get added automatically by a build-time transformation.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>将来的には、ビルド時の変換で第 2 引数を自動で加えられるようになるかもしれません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;Note
+&gt;
+&gt;If you use this optimization, make sure the array includes **all values from the component scope (such as props and state) that change over time and that are used by the effect**.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>&gt; 補足
+&gt;
+&gt; この最適化を利用する場合、**時間の経過とともに変化し副作用によって利用される、コンポーネントスコープの値（props や state など）**がすべて配列に含まれていることを確認してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Otherwise, your code will reference stale values from previous renders.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>さもないとあなたのコードは以前のレンダー時の古い値を参照してしまうことになります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Learn more about [how to deal with functions](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) and [what to do when the array changes too often](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>その他の最適化のオプションについては[フック API リファレンス](/docs/hooks-reference.html)で説明しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;
+&gt;If you want to run an effect and clean it up only once (on mount and unmount), you can pass an empty array (`[]`) as a second argument.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>&gt;
+&gt; もしも副作用とそのクリーンアップを 1 度だけ（マウント時とアンマウント時にのみ）実行したいという場合、空の配列 (`[]`) を第 2 引数として渡すことができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This tells React that your effect doesn't depend on *any* values from props or state, so it never needs to re-run.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>こうすることで、あなたの副作用は props や state の値の*いずれにも*依存していないため再実行する必要が一切ない、ということを React に伝えることができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This isn't handled as a special case -- it follows directly from how the dependencies array always works.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>これは特別なケースとして処理されているわけではなく、依存配列を普通に処理すればそうなるというだけの話です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;
+&gt;If you pass an empty array (`[]`), the props and state inside the effect will always have their initial values.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>&gt;
+&gt; 空の配列 (`[]`) を渡した場合、副作用内では props と state の値は常にその初期値のままになります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>While passing `[]` as the second argument is closer to the familiar `componentDidMount` and `componentWillUnmount` mental model, there are usually [better](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) [solutions](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often) to avoid re-running effects too often.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>`[]` を渡すことはおなじみの `componentDidMount` と `componentWillUnmount` による概念と似ているように感じるでしょうが、通常は[こちら](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies)や[こちら](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often)のように、副作用を過度に再実行しないためのよりよい解決方法があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Also, don't forget that React defers running `useEffect` until after the browser has painted, so doing extra work is less of a problem.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>また `useEffect` はブラウザが描画し終えた後まで遅延されますので、追加の作業をしてもそれほど問題にならないということもお忘れなく。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;
+&gt;We recommend using the [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) rule as part of our [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) package.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>&gt;
+&gt; [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) パッケージの [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) ルールを有効にすることをお勧めします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It warns when dependencies are specified incorrectly and suggests a fix.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>これは依存の配列が正しく記述されていない場合に警告し、修正を提案します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Next Steps {#next-steps}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>## 次のステップ {#next-steps}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Congratulations!</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>おめでとうございます！</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This was a long page, but hopefully by the end most of your questions about effects were answered.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>長いページでしたが、最終的に副作用に関するほとんどの疑問が解決していることを望みます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You've learned both the State Hook and the Effect Hook, and there is a *lot* you can do with both of them combined.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>これでステートフックと副作用フックの両方を学んだので、それらを組み合わせてやれることが*たくさん*あります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>They cover most of the use cases for classes -- and where they don't, you might find the [additional Hooks](/docs/hooks-reference.html) helpful.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>クラスコンポーネントにおけるほとんどのユースケースがカバーされていますが、足りない部分については[他のフック](/docs/hooks-reference.html)が役立つかもしれません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We're also starting to see how Hooks solve problems outlined in [Motivation](/docs/hooks-intro.html#motivation).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>また、[動機](/docs/hooks-intro.html#motivation)のところで述べた問題をフックがどのように解決するのかについてもわかり始めてきたでしょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We've seen how effect cleanup avoids duplication in `componentDidUpdate` and `componentWillUnmount`, brings related code closer together, and helps us avoid bugs.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>副作用のクリーンアップがどのようにして `componentDidUpdate` と `componentWillUnmount` との間でのコードの重複を防ぎ、関係したコードを並べて書くことができるようにし、バグの少ないコードを記述できるようにするのかを見てきました。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We've also seen how we can separate effects by their purpose, which is something we couldn't do in classes at all.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>また目的別に副作用を分割する方法も学びましたが、これはクラスでは全く不可能なことでした。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>At this point you might be questioning how Hooks work.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>この時点で、一体フックがどのように動作しているのか疑問に感じているかもしれません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>How can React know which `useState` call corresponds to which state variable between re-renders?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>`useState` のそれぞれの呼び出しがどの state 変数に対応しているのかを、React はどのようにして知るのでしょうか？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>How does React "match up" previous and next effects on every update?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>更新のたびに、前回と今回の副作用とを React はどのように対応付けるのでしょうか？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>**On the next page we will learn about the [Rules of Hooks](/docs/hooks-rules.html) -- they're essential to making Hooks work.**</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T055413Z">
+        <seg>**次のページでは[フックのルール](/docs/hooks-rules.html)について学びます -- このルールはフックが動作するために必須のものです。**</seg>
+      </tuv>
+    </tu>
+  </body>
+</tmx>

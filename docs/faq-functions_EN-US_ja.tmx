@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tmx SYSTEM "tmx14.dtd">
+<tmx version="1.4">
+  <header creationtool="OmegaT" o-tmf="OmegaT TMX" adminlang="EN-US" datatype="plaintext" creationtoolversion="4.3.2_0_6a661c5e0" segtype="sentence" srclang="EN-US"/>
+  <body>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>---
+id: faq-functions
+title: Passing Functions to Components
+permalink: docs/faq-functions.html
+layout: docs
+category: FAQ
+---</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>---
+id: faq-functions
+title: コンポーネントに関数を渡す
+permalink: docs/faq-functions.html
+layout: docs
+category: FAQ
+---</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### How do I pass an event handler (like onClick) to a component?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>### コンポーネントに（onClick のような）イベントハンドラを渡すには？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Pass event handlers and other functions as props to child components:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>イベントハンドラやその他の関数を props として、子コンポーネントに渡してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you need to have access to the parent component in the handler, you also need to bind the function to the component instance (see below).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>ハンドラ内で親コンポーネントにアクセスする必要がある場合は、関数をコンポーネントインスタンスにバインドする必要があります（以下を参照）。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### How do I bind a function to a component instance?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>### 関数をコンポーネントインスタンスにバインドするには？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>There are several ways to make sure functions have access to component attributes like `this.props` and `this.state`, depending on which syntax and build steps you are using.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>使用する構文やビルドステップにより、`this.props` や `this.state` のようなコンポーネントの属性に、関数がアクセスできるようにする方法がいくつかあります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>#### Bind in Constructor (ES2015) {#bind-in-constructor-es2015}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>#### コンストラクタでバインドする (ES2015) {#bind-in-constructor-es2015}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>#### Class Properties (Stage 3 Proposal) {#class-properties-stage-3-proposal}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>#### クラスプロパティ (Stage 3 Proposal) {#class-properties-stage-3-proposal}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>#### Bind in Render {#bind-in-render}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>#### レンダー内でバインドする {#bind-in-render}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;**Note:**
+&gt;
+&gt;Using `Function.prototype.bind` in render creates a new function each time the component renders, which may have performance implications (see below).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>&gt; **補足：**
+&gt;
+&gt; レンダー内で `Function.prototype.bind` を利用すると、コンポーネントがレンダーされるたびに新しい関数が作成され、パフォーマンスに影響を与える可能性があります（下記参照）。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>#### Arrow Function in Render {#arrow-function-in-render}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>#### レンダー内でアロー関数を使用する {#arrow-function-in-render}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;**Note:**
+&gt;
+&gt;Using an arrow function in render creates a new function each time the component renders, which may break optimizations based on strict identity comparison.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>&gt; **注意：**
+&gt;
+&gt; レンダー内でアロー関数を利用するとコンポーネントがレンダーされるたびに新しい関数が作成されるため、厳密な一致による比較に基づいた最適化が動作しなくなる可能性があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Is it OK to use arrow functions in render methods?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>### レンダー内でアロー関数を使用しても良いのか？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Generally speaking, yes, it is OK, and it is often the easiest way to pass parameters to callback functions.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>一般的には問題ありません。コールバック関数にパラメータを渡すのに最も簡単な方法です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you do have performance issues, by all means, optimize!</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>しかしパフォーマンス上の問題が出た際には、ぜひ最適化しましょう！</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Why is binding necessary at all?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>### そもそもバインドはなぜ必要なのか？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In JavaScript, these two code snippets are **not** equivalent:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>JavaScript において、以下の 2 つのコードは同等 **ではありません**。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Binding methods helps ensure that the second snippet works the same way as the first one.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>メソッドはバインドすることで、2 つ目のコードが 1 つ目と同様に動作するようになります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>With React, typically you only need to bind the methods you *pass* to other components.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>React では、一般的に他のコンポーネントに *渡す* メソッドしかバインドする必要はありません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, `&lt;button onClick={this.handleClick}&gt;` passes `this.handleClick` so you want to bind it.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>たとえば、`&lt;button onClick={this.handleClick}&gt;` というコードは、`this.handleClick` を渡しているので、バインドする必要があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>However, it is unnecessary to bind the `render` method or the lifecycle methods: we don't pass them to other components.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>しかし、`render` メソッドやライフサイクルメソッドをバインドする必要はありません。それらは他のコンポーネントに渡すことがないからです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>[This post by Yehuda Katz](https://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/) explains what binding is, and how functions work in JavaScript, in detail.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>[Yehuda Katz の記事](https://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/) はバインドとは何か、また JavaScript における関数の動作について詳細に説明してくれています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Why is my function being called every time the component renders?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>### どうしてコンポーネントをレンダーするたびに、関数が呼ばれるのか？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Make sure you aren't _calling the function_ when you pass it to the component:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>関数をコンポーネントに渡すときにその関数を*呼び出していない*ことを確認してください：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Instead, *pass the function itself* (without parens):</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>代わりに、（カッコなしの）*関数自体を返すようにしてください*：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### How do I pass a parameter to an event handler or callback?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>### イベントハンドラやコールバックにパラメータを渡すには？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can use an arrow function to wrap around an event handler and pass parameters:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>イベントハンドラをラップするアロー関数を作成してパラメータを渡すことができます：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is equivalent to calling `.bind`:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>これは `.bind` を呼び出すのと同じことです：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>#### Example: Passing params using arrow functions {#example-passing-params-using-arrow-functions}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>#### 例：アロー関数を利用してパラメータを渡す {#example-passing-params-using-arrow-functions}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>#### Example: Passing params using data-attributes {#example-passing-params-using-data-attributes}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>#### 例：データ属性を利用してパラメータを渡す {#example-passing-params-using-data-attributes}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Alternately, you can use DOM APIs to store data needed for event handlers.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>ほかにも、DOM API をイベントハンドラに必要なデータの保存に使用することができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Consider this approach if you need to optimize a large number of elements or have a render tree that relies on React.PureComponent equality checks.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>大量の要素を最適化したり、React.PureComponent による等価性チェックに依存したレンダーツリーがある場合に、この方法を検討してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### How can I prevent a function from being called too quickly or too many times in a row?</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>### 関数があまりに頻繁にあるいは連続して呼ばれる場合の対処法は？</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you have an event handler such as `onClick` or `onScroll` and want to prevent the callback from being fired too quickly, then you can limit the rate at which callback is executed.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>`onClick` や `onScroll` のようなイベントハンドラがあって、それが高頻度で呼び出されるのを防ぎたい場合、コールバックが実行される頻度を制御するこができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This can be done by using:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>これは以下の方法で可能です：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>- **throttling**: sample changes based on a time based frequency (eg [`_.throttle`](https://lodash.com/docs#throttle))
+- **debouncing**: publish changes after a period of inactivity (eg [`_.debounce`](https://lodash.com/docs#debounce))
+- **`requestAnimationFrame` throttling**: sample changes based on [`requestAnimationFrame`](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) (eg [`raf-schd`](https://github.com/alexreardon/raf-schd))</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>- **スロットル**：時間ベースの頻度に基づくサンプルの制御（例：[`_.throttle`](https://lodash.com/docs#throttle)）
+- **デバウンス**：一定時間アクティブでなかった場合の出力の制御（例：[`_.debounce`](https://lodash.com/docs#debounce))
+- **`requestAnimationFrame` スロットル**：[`requestAnimationFrame`](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) に基づくサンプルの制御 (例：[`raf-schd`](https://github.com/alexreardon/raf-schd))</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>See [this visualization](http://demo.nimius.net/debounce_throttle/) for a comparison of `throttle` and `debounce` functions.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>スロットルとデバウンスの比較は[このビジュアルデモ](http://demo.nimius.net/debounce_throttle/) をご覧ください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt; Note:
+&gt;
+&gt; `_.debounce`, `_.throttle` and `raf-schd` provide a `cancel` method to cancel delayed callbacks.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>&gt; 補足：
+&gt; 
+&gt; `_.debounce`、`_.throttle`、`raf-schd` は遅延されるコールバックの呼び出しをキャンセルするための `cancel` メソッドを提供します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You should either call this method from `componentWillUnmount` _or_ check to ensure that the component is still mounted within the delayed function.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>`componentWillUnmount` でこのキャンセルメソッドを呼び出すか、*あるいは*遅延されるコールバック関数内でコンポーネントがまだマウントされていることを確認するようにしてください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>#### Throttle {#throttle}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>#### スロットル {#throttle}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Throttling prevents a function from being called more than once in a given window of time.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>スロットルは、特定の時間枠内に関数が複数回呼ばれるのを防ぎます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The example below throttles a "click" handler to prevent calling it more than once per second.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>以下の例では、「クリック」ハンドラをスロットルして、1 秒間に 2 回以上呼ばれるのを防ぎます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>#### Debounce {#debounce}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>#### デバウンス {#debounce}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Debouncing ensures that a function will not be executed until after a certain amount of time has passed since it was last called.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>デバウンスは、関数が最後に呼ばれてから一定時間経過するまで実行されないようにします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This can be useful when you have to perform some expensive calculation in response to an event that might dispatch rapidly (eg scroll or keyboard events).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>これは、高頻度で発生するイベント（例：スクロールやキーボードイベントなど）に応じた高コストな計算処理が必要なときに役立ちます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The example below debounces text input with a 250ms delay.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>下記の例は、250 ミリ秒の遅延でテキスト入力をデバウンスします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>#### `requestAnimationFrame` throttling {#requestanimationframe-throttling}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>#### `requestAnimationFrame` スロットル {#requestanimationframe-throttling}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>[`requestAnimationFrame`](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) is a way of queuing a function to be executed in the browser at the optimal time for rendering performance.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>[`requestAnimationFrame`](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) は描画パフォーマンスが最適化されるタイミングでブラウザで実行される関数をキューに入れる方法です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>A function that is queued with `requestAnimationFrame` will fire in the next frame.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>`requerstAnimationFrame` でキューに入れられている関数は、次のフレームで実行されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The browser will work hard to ensure that there are 60 frames per second (60 fps).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>ブラウザは、毎秒 60 フレーム (60fps) を確保するように努めます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>However, if the browser is unable to it will naturally *limit* the amount of frames in a second.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>しかし、それができなかった場合には、自然に 1 秒間のフレーム数が *制限* されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, a device might only be able to handle 30 fps and so you will only get 30 frames in that second.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>たとえば、デバイスが 30 fps しか処理できなければ、1 秒間に 30 フレームしか取得できません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Using `requestAnimationFrame` for throttling is a useful technique in that it prevents you from doing more than 60 updates in a second.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>`requestAnimationFrame` スロットルを使うことで、1 秒間に 60 回以上になる更新を防ぐことができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you are doing 100 updates in a second this creates additional work for the browser that the user will not see anyway.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>1 秒間に 100 回の更新をする場合、ユーザには確認できない追加作業をブラウザが作成することになります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;**Note:**
+&gt;
+&gt;Using this technique will only capture the last published value in a frame.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>&gt; **注意：**
+&gt;
+&gt; このテクニックにより、フレーム内の最後に公開された値のみがキャプチャされます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can see an example of how this optimization works on [`MDN`](https://developer.mozilla.org/en-US/docs/Web/Events/scroll)</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>この最適化がどのように動作するのかについての例は [`MDN`](https://developer.mozilla.org/en-US/docs/Web/Events/scroll) で確認できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>#### Testing your rate limiting {#testing-your-rate-limiting}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>#### レート制限をテストする {#testing-your-rate-limiting}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>When testing your rate limiting code works correctly it is helpful to have the ability to fast forward time.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>レート制限コードを正しくテストするとき、早送り機能があると便利です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you are using [`jest`](https://facebook.github.io/jest/) then you can use [`mock timers`](https://facebook.github.io/jest/docs/en/timer-mocks.html) to fast forward time.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>もし [`jest`](https://facebook.github.io/jest/) を使っているのであれば、[`mock timers`](https://facebook.github.io/jest/docs/en/timer-mocks.html) を使って時間を早送りすることができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you are using `requestAnimationFrame` throttling then you may find [`raf-stub`](https://github.com/alexreardon/raf-stub) to be a useful tool to control the ticking of animation frames.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T050903Z">
+        <seg>`requestAnimationFrame` スロットルを使っているのであれば、[`raf-stub`](https://github.com/alexreardon/raf-stub) がアニメーションフレームの間隔を制御するのに役立つでしょう。</seg>
+      </tuv>
+    </tu>
+  </body>
+</tmx>

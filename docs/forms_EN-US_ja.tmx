@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tmx SYSTEM "tmx14.dtd">
+<tmx version="1.4">
+  <header creationtool="OmegaT" o-tmf="OmegaT TMX" adminlang="EN-US" datatype="plaintext" creationtoolversion="4.3.2_0_6a661c5e0" segtype="sentence" srclang="EN-US"/>
+  <body>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>---
+id: forms
+title: Forms
+permalink: docs/forms.html
+prev: lists-and-keys.html
+next: lifting-state-up.html
+redirect_from:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>---
+id: forms
+title: フォーム
+permalink: docs/forms.html
+prev: lists-and-keys.html
+next: lifting-state-up.html
+redirect_from:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>HTML form elements work a bit differently from other DOM elements in React, because form elements naturally keep some internal state.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>HTML のフォーム要素は当然のこととして内部に何らかの状態を持っていますので、フォーム要素は React において他の DOM 要素とちょっと異なる動作をします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, this form in plain HTML accepts a single name:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>例えば、このプレーン HTML によるフォームは 1 つの名前を受け付けます：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This form has the default HTML form behavior of browsing to a new page when the user submits the form.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>このフォームは、ユーザがフォームを送信した際に新しいページに移動する、という、HTML フォームとしてのデフォルトの動作をします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you want this behavior in React, it just works.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>React でこの振る舞いが必要なら、そのまま動きます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>But in most cases, it's convenient to have a JavaScript function that handles the submission of the form and has access to the data that the user entered into the form.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>しかし大抵のケースでは、フォームの送信に応答してユーザがフォームに入力したデータにアクセスするような JavaScript 関数があった方が便利です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The standard way to achieve this is with a technique called "controlled components".</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>これを実現する標準的な方法は、"制御された (controlled) コンポーネント" と呼ばれるテクニックを使うことです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Controlled Components {#controlled-components}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>## 制御されたコンポーネント {#controlled-components}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In HTML, form elements such as `&lt;input&gt;`, `&lt;textarea&gt;`, and `&lt;select&gt;` typically maintain their own state and update it based on user input.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>HTML では `&lt;input&gt;`、`&lt;textarea&gt;`、そして `&lt;select&gt;` のようなフォーム要素は通常、自身で状態を保持しており、ユーザの入力に基づいてそれを更新します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In React, mutable state is typically kept in the state property of components, and only updated with [`setState()`](/docs/react-component.html#setstate).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>React では、変更されうる状態は通常はコンポーネントの state プロパティに保持され、[`setState()`](/docs/react-component.html#setstate) 関数でのみ更新されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We can combine the two by making the React state be the "single source of truth".</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>React の state を "信頼できる唯一の情報源 (single source of truth)" とすることで、上述の 2 つの状態を結合させることができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Then the React component that renders a form also controls what happens in that form on subsequent user input.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>そうすることで、フォームをレンダーしている React コンポーネントが、後続するユーザ入力でフォームで起きることも制御できるようになります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>An input form element whose value is controlled by React in this way is called a "controlled component".</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>このような方法で React によって値が制御される入力フォーム要素は「制御されたコンポーネント」と呼ばれます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, if we want to make the previous example log the name when it is submitted, we can write the form as a controlled component:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>例えば、前述のフォームの例において、フォーム送信時に名前をログに残すようにしたい場合、フォームを制御されたコンポーネントとして書くことができます：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Since the `value` attribute is set on our form element, the displayed value will always be `this.state.value`, making the React state the source of truth.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>フォーム要素の `value` 属性が設定されているので、表示される値は常に `this.state.value` となり、React の state が信頼できる情報源となります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Since `handleChange` runs on every keystroke to update the React state, the displayed value will update as the user types.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>`handleChange` はキーストロークごとに実行されて React の state を更新するので、表示される値はユーザがタイプするたびに更新されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>With a controlled component, the input's value is always driven by the React state.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>制御されたコンポーネントを使うと、ユーザ入力の値は常に React の state によって制御されるようになります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>While this means you have to type a bit more code, you can now pass the value to other UI elements too, or reset it from other event handlers.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>これによりタイプするコード量は少し増えますが、その値を他の UI 要素に渡したり、他のイベントハンドラからリセットしたりできるようになります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## The textarea Tag {#the-textarea-tag}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>## textarea タグ {#the-textarea-tag}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In HTML, a `&lt;textarea&gt;` element defines its text by its children:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>HTML では、`&lt;textarea&gt;` 要素はテキストを子要素として定義します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In React, a `&lt;textarea&gt;` uses a `value` attribute instead.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>React では、`&lt;textarea&gt;` は代わりに `value` 属性を使用します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This way, a form using a `&lt;textarea&gt;` can be written very similarly to a form that uses a single-line input:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>こうすることで、`&lt;textarea&gt;` を使用するフォームは単一行の入力フォームと非常に似た書き方ができるようになります：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Notice that `this.state.value` is initialized in the constructor, so that the text area starts off with some text in it.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>`this.state.value` がコンストラクタで初期化されているので、テキストエリアには始めからテキストが入っていることに注意してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## The select Tag {#the-select-tag}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>## select タグ {#the-select-tag}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In HTML, `&lt;select&gt;` creates a drop-down list.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>HTML では、`&lt;select&gt;` はドロップダウンリストを作成します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, this HTML creates a drop-down list of flavors:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>例えばこの HTML は味についてのドロップダウンリストを作成しています：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Note that the Coconut option is initially selected, because of the `selected` attribute.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>`selected` 属性があるため Coconut オプションが最初に選択されていることに注意してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>React, instead of using this `selected` attribute, uses a `value` attribute on the root `select` tag.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>この `selected` 属性の代わりに React は `value` 属性を親の `select` タグで使用します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is more convenient in a controlled component because you only need to update it in one place.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>一箇所で更新すればよいだけなので、制御されたコンポーネントを使う場合にはこちらがより便利です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>例えば：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Overall, this makes it so that `&lt;input type="text"&gt;`, `&lt;textarea&gt;`, and `&lt;select&gt;` all work very similarly - they all accept a `value` attribute that you can use to implement a controlled component.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>全体的に見て `&lt;input type="text"&gt;`、`&lt;textarea&gt;`、そして `&lt;select&gt;` が非常に似た動作をするようになっています。これらはすべて、制御されたコンポーネントを実装する時に使うことができる `value` 属性を受け取ります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt; Note
+&gt;
+&gt; You can pass an array into the `value` attribute, allowing you to select multiple options in a `select` tag:
+&gt;
+&gt;```js
+&gt;&lt;select multiple={true} value={['B', 'C']}&gt;
+&gt;```</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>&gt; 補足
+&gt;
+&gt; `value` 属性に配列を渡すことで、`select` タグ内の複数のオプションを選択することができます：
+&gt;
+&gt;```js
+&gt;&lt;select multiple={true} value={['B', 'C']}&gt;
+&gt;```</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## The file input Tag {#the-file-input-tag}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>##file input タグ {#the-file-input-tag}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In HTML, an `&lt;input type="file"&gt;` lets the user choose one or more files from their device storage to be uploaded to a server or manipulated by JavaScript via the [File API](https://developer.mozilla.org/en-US/docs/Web/API/File/Using_files_from_web_applications).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>HTML では、`&lt;input type="file"&gt;` によってユーザにデバイス内の 1 つ以上のファイルを選ばせて、それをサーバにアップロードしたり [File API](https://developer.mozilla.org/en-US/docs/Web/API/File/Using_files_from_web_applications) を使って JavaScript で操作したりすることができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Because its value is read-only, it is an **uncontrolled** component in React.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>この値は読み取り専用ですので、これは**非制御**コンポーネントになります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It is discussed together with other uncontrolled components [later in the documentation](/docs/uncontrolled-components.html#the-file-input-tag).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>[このドキュメントの後の方](/docs/uncontrolled-components.html#the-file-input-tag)で、他の非制御コンポーネントと併せて説明しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Handling Multiple Inputs {#handling-multiple-inputs}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>## 複数の入力の処理 {#handling-multiple-inputs}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>When you need to handle multiple controlled `input` elements, you can add a `name` attribute to each element and let the handler function choose what to do based on the value of `event.target.name`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>複数の制御された `input` 要素を処理する必要がある場合、それぞれの入力要素に `name` 属性を追加すれば、ハンドラ関数に `event.target.name` に基づいて処理を選択させるようにできます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>例えば：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Note how we used the ES6 [computed property name](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Object_initializer#Computed_property_names) syntax to update the state key corresponding to the given input name:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>渡された入力名に対応する state のキーを更新するのに用いた ES6 の [computed property name](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Object_initializer#Computed_property_names) 構文の使い方に注意してください：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It is equivalent to this ES5 code:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>これは以下の ES5 のコードと同等です：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Also, since `setState()` automatically [merges a partial state into the current state](/docs/state-and-lifecycle.html#state-updates-are-merged), we only needed to call it with the changed parts.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>また、`setState()` は自動的に[部分的な state を現在の state にマージする](/docs/state-and-lifecycle.html#state-updates-are-merged)ので、変更された部分のみで呼び出せば大丈夫です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Controlled Input Null Value {#controlled-input-null-value}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>## 制御された入力における null 値 {#controlled-input-null-value}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Specifying the value prop on a [controlled component](/docs/forms.html#controlled-components) prevents the user from changing the input unless you desire so.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>[制御されたコンポーネント](/docs/forms.html#controlled-components)で value プロパティに値を指定することで、変更させたくない場合にユーザが値を変更できないようになります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you've specified a `value` but the input is still editable, you may have accidentally set `value` to `undefined` or `null`. The following code demonstrates this.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>もしも 
+`value` を指定したのに入力フィールドが依然変更可能であるという場合は、`value` を誤って `undefined` もしくは `null` に設定してしまったのかもしれません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>(The input is locked at first but becomes editable after a short delay.)</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>以下のコードでこれを示しています（入力フィールドは最初はロックされていますが、短い遅延の後に編集可能になります）。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Alternatives to Controlled Components {#alternatives-to-controlled-components}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>## 制御されたコンポーネントの代替手段 {#alternatives-to-controlled-components}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It can sometimes be tedious to use controlled components, because you need to write an event handler for every way your data can change and pipe all of the input state through a React component.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>制御されたコンポーネントは、あらゆる種類のデータの変更に対してイベントハンドラを書き、あらゆる入力状態を React コンポーネントに通してやる必要があるため、時としてうんざりすることがあります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This can become particularly annoying when you are converting a preexisting codebase to React, or integrating a React application with a non-React library.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>このことは既存のコードベースを React に変換する場合や、React アプリケーションを非 React のライブラリと統合する場合に、特に問題化します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In these situations, you might want to check out [uncontrolled components](/docs/uncontrolled-components.html), an alternative technique for implementing input forms.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>これらの状況においては、入力フォームを実装する代替手段である[非制御コンポーネント](/docs/uncontrolled-components.html)を検討してみてください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Fully-Fledged Solutions {#fully-fledged-solutions}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>## 本格的なソリューション {#fully-fledged-solutions}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you're looking for a complete solution including validation, keeping track of the visited fields, and handling form submission, [Formik](https://jaredpalmer.com/formik) is one of the popular choices.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>入力値のバリデーション、訪問済みフィールドの追跡やフォーム送信を含む完全なソリューションをお探しの場合は、[Formik](https://jaredpalmer.com/formik) が人気のある選択肢のひとつです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>However, it is built on the same principles of controlled components and managing state — so don't neglect to learn them.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T052631Z">
+        <seg>しかしながらこれは制御されたコンポーネントや state の管理と同じ原理で作成されていますので、これらについて学ぶことを無視しないようにしましょう。</seg>
+      </tuv>
+    </tu>
+  </body>
+</tmx>

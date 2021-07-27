@@ -1,0 +1,1005 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tmx SYSTEM "tmx14.dtd">
+<tmx version="1.4">
+  <header creationtool="OmegaT" o-tmf="OmegaT TMX" adminlang="EN-US" datatype="plaintext" creationtoolversion="4.3.2_0_6a661c5e0" segtype="sentence" srclang="EN-US"/>
+  <body>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>---
+id: jsx-in-depth
+title: JSX In Depth
+permalink: docs/jsx-in-depth.html
+redirect_from:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>---
+id: jsx-in-depth
+title: JSX を深く理解する
+permalink: docs/jsx-in-depth.html
+redirect_from:</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Fundamentally, JSX just provides syntactic sugar for the `React.createElement(component, props, ...children)` function.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>JSX とは、つまるところ `React.createElement(component, props, ...children)` の糖衣構文にすぎません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The JSX code:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>例として、次の JSX コードを見てみましょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>compiles into:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>これは以下のようにコンパイルされます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can also use the self-closing form of the tag if there are no children.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>子要素を持たない場合には、自己クローズ (self-closing) タグを利用することもできます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>So:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>次のコードを見てください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>compiles into:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>これは以下のようにコンパイルされます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you want to test out how some specific JSX is converted into JavaScript, you can try out [the online Babel compiler](babel://jsx-simple-example).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>具体的に JSX がどのように JavaScript へ変換されるのかをテストしたい場合は、[オンライン Babel コンパイラ](babel://jsx-simple-example)で試すことができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Specifying The React Element Type {#specifying-the-react-element-type}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>## React 要素の型を指定する {#specifying-the-react-element-type}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The first part of a JSX tag determines the type of the React element.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>JSX タグの先頭の部分は、React 要素の型を決定しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Capitalized types indicate that the JSX tag is referring to a React component.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>大文字で始まる型は JSX タグが React コンポーネントを参照していることを示しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>These tags get compiled into a direct reference to the named variable, so if you use the JSX `&lt;Foo /&gt;` expression, `Foo` must be in scope.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>このような JSX タグはコンパイルを経てその大文字で始まる変数を直接参照するようになります。つまり JSX の `&lt;Foo /&gt;` 式を使用する場合、`Foo` がスコープになければなりません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### React Must Be in Scope {#react-must-be-in-scope}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>### React がスコープ内にあること {#react-must-be-in-scope}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Since JSX compiles into calls to `React.createElement`, the `React` library must also always be in scope from your JSX code.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>JSX は `React.createElement` の呼び出しへとコンパイルされるため、`React` ライブラリは常に JSX コードのスコープ内にある必要があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, both of the imports are necessary in this code, even though `React` and `CustomButton` are not directly referenced from JavaScript:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>例えば以下のコードでは、`React` も `CustomButton` も JavaScript から直接は参照されていませんが、両方ともインポートされていることが必要です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you don't use a JavaScript bundler and loaded React from a `&lt;script&gt;` tag, it is already in scope as the `React` global.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>JavaScript のバンドルツールを使わずに `&lt;script&gt;` タグから React を読み込んでいる場合は、`React` はグローバル変数として既にスコープに入っています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Using Dot Notation for JSX Type {#using-dot-notation-for-jsx-type}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>### JSX 型にドット記法を使用する {#using-dot-notation-for-jsx-type}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can also refer to a React component using dot-notation from within JSX.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>JSX の中においては、ドット記法を使うことによって React コンポーネントを参照することもできます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is convenient if you have a single module that exports many React components.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>これは単一のモジュールがたくさんの React コンポーネントをエクスポートしているような場合に便利です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, if `MyComponents.DatePicker` is a component, you can use it directly from JSX with:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>例えば、`MyComponents.DatePicker` というコンポーネントがあるのであれば、次のように JSX 内から直接利用することができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### User-Defined Components Must Be Capitalized {#user-defined-components-must-be-capitalized}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>### ユーザ定義のコンポーネントの名前は大文字で始めること {#user-defined-components-must-be-capitalized}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>When an element type starts with a lowercase letter, it refers to a built-in component like `&lt;div&gt;` or `&lt;span&gt;` and results in a string `'div'` or `'span'` passed to `React.createElement`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>ある要素の型が小文字から始まっているような場合、それは `&lt;div&gt;` や `&lt;span&gt;` のような組み込みのコンポーネントを参照しており、これらはそれぞれ `'div'` や `'span'` といった文字列に変換されて `React.createElement` に渡されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Types that start with a capital letter like `&lt;Foo /&gt;` compile to `React.createElement(Foo)` and correspond to a component defined or imported in your JavaScript file.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>一方で `&lt;Foo /&gt;` のように大文字で始まる型は `React.createElement(Foo)` にコンパイルされ、JavaScript ファイルにおいて定義あるいはインポートされたコンポーネントを参照します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>We recommend naming components with a capital letter.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>コンポーネントを命名するときには、大文字から始めるようにしてください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you do have a component that starts with a lowercase letter, assign it to a capitalized variable before using it in JSX.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>もしすでに小文字から始まるコンポーネントを作ってしまっていたら、JSX 内で利用する前にいちど大文字から始まる変数に代入しておきましょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, this code will not run as expected:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>例えば、以下のコードは期待通りには動きません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>// Wrong!</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>// 間違った例。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is a component and should have been capitalized:
+function hello(props) {</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>これはコンポーネントなので、大文字ではじめなければいけません。function hello(props) {</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>// Correct!</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>// 正しい例。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This use of &lt;div&gt; is legitimate because div is a valid HTML tag:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>div は HTML タグなので、&lt;div&gt; と書くのは正解です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>// Wrong!</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>// 間違った例。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>React thinks &lt;hello /&gt; is an HTML tag because it's not capitalized:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>大文字ではじまっていないため、React は &lt;hello /&gt; を HTML タグと認識してしまいます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>To fix this, we will rename `hello` to `Hello` and use `&lt;Hello /&gt;` when referring to it:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>`hello` を `Hello` に書き換え、`&lt;Hello /&gt;` を使って参照するようにすれば、このコードはきちんと動作するようになります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>// Correct!</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>// 正しい例。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is a component and should be capitalized:
+function Hello(props) {</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>コンポーネントなので大文字からはじまっています。function Hello(props) {</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>// Correct!</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>// 正しい例。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This use of &lt;div&gt; is legitimate because div is a valid HTML tag:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>div は HTML タグなので、&lt;div&gt; と書くのは正解です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>// Correct!</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>// 正しい例。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>React knows &lt;Hello /&gt; is a component because it's capitalized.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>大文字ではじまっているため、React は &lt;Hello /&gt; がコンポーネントだと認識できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Choosing the Type at Runtime {#choosing-the-type-at-runtime}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>### 実行時に型を選択する {#choosing-the-type-at-runtime}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You cannot use a general expression as the React element type.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>一般的な式を React の要素の型として使用することはできません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you do want to use a general expression to indicate the type of the element, just assign it to a capitalized variable first.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>どうしても一般的な式を使って要素の型を示したいのであれば、まずその式を大文字から始まる変数に代入してから利用しましょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This often comes up when you want to render a different component based on a prop:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>これはプロパティの値に応じて異なるコンポーネントを表示し分けたいような場合によくあるケースです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>// Wrong!</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>// 間違った例。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>JSX type can't be an expression.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>式は JSX の型に指定できません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>To fix this, we will assign the type to a capitalized variable first:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>大文字から始まる変数に型を代入することで、上のコードをきちんと動作するようにしてみましょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>// Correct!</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>// 正しい例。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>JSX type can be a capitalized variable.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>大文字で始まる変数は JSX の型に指定できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Props in JSX {#props-in-jsx}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>## JSX における props {#props-in-jsx}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>There are several different ways to specify props in JSX.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>JSX で props を指定するやり方はいくつかあります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### JavaScript Expressions as Props {#javascript-expressions-as-props}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>### プロパティとしての JavaScript 式 {#javascript-expressions-as-props}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can pass any JavaScript expression as a prop, by surrounding it with `{}`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>任意の JavaScript 式は `{}` で囲むことによって props として渡すことができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, in this JSX:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>例として次の JSX を見てみましょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For `MyComponent`, the value of `props.foo` will be `10` because the expression `1 + 2 + 3 + 4` gets evaluated.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>この `MyComponent` について、`props.foo` の値は `10` 、つまり `1 + 2 + 3 + 4` という式が評価されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>`if` statements and `for` loops are not expressions in JavaScript, so they can't be used in JSX directly.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>`if` 文や `for` 文は JavaScript においては式ではないため、JSX 内で直接利用することはできません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Instead, you can put these in the surrounding code.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>代わりに JSX の近くで間接的に利用してみてください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>次がその例です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can learn more about [conditional rendering](/docs/conditional-rendering.html) and [loops](/docs/lists-and-keys.html) in the corresponding sections.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>これについては、[条件付きレンダー](/docs/conditional-rendering.html)と[ループ](/docs/lists-and-keys.html)でさらに深く学ぶことができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### String Literals {#string-literals}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>### 文字列リテラル {#string-literals}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can pass a string literal as a prop.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>文字列リテラルを props として渡すことができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>These two JSX expressions are equivalent:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>そのため以下のふたつの JSX の式はまったく等しいものとなります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>When you pass a string literal, its value is HTML-unescaped.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>文字列リテラルを渡す際、その値における HTML エスケープは元の形に復元されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>So these two JSX expressions are equivalent:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>そのため以下のふたつの JSX の式もまったく等しいものとなります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This behavior is usually not relevant. It's only mentioned here for completeness.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>この振る舞いは多くの場合それほど重要なものではありませんが、包括的な解説の一環としてここで触れておきます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Props Default to "True" {#props-default-to-true}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>### プロパティのデフォルト値は true {#props-default-to-true}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you pass no value for a prop, it defaults to `true`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>プロパティに値を与えない場合、デフォルトの値は `true` となります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>These two JSX expressions are equivalent:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>そのため以下のふたつの JSX の式はまったく等しいものとなります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>```js
+&lt;MyTextBox autocomplete /&gt;</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>```js
+&lt;MyTextBox autocomplete /&gt;</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&lt;MyTextBox autocomplete={true} /&gt;
+```</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>&lt;MyTextBox autocomplete={true} /&gt;
+```</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In general, we don't recommend *not* passing a value for a prop, because it can be confused with the [ES6 object shorthand](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Object_initializer#New_notations_in_ECMAScript_2015) `{foo}` which is short for `{foo: foo}` rather than `{foo: true}`. This behavior is just there so that it matches the behavior of HTML.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>特別な理由がある場合を除いて、このように値を省略することは推奨していません。[ES6 におけるオブジェクトの簡略表記](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Object_initializer#New_notations_in_ECMAScript_2015)においては、`{foo}` は `{foo: true}` ではなく `{foo: foo}` を意味するため、HTML の動作に似せて作られたこの機能はかえって混乱をきたす可能性があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Spread Attributes {#spread-attributes}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>### 属性の展開 {#spread-attributes}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you already have `props` as an object, and you want to pass it in JSX, you can use `...` as a "spread" operator to pass the whole props object.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>`props` オブジェクトがあらかじめ存在しており、それを JSX に渡したいような場合は `...` を「スプレッド」演算子として使用することで、props オブジェクトそのものを渡すことができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>These two components are equivalent:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>そのため以下のふたつの JSX の式はまったく等しいものとなります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can also pick specific props that your component will consume while passing all other props using the spread operator.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>また、コンポーネントが利用する適当なプロパティを取り出しつつ、残りのすべてのプロパティに対してスプレッド演算子を利用することもできます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In the example above, the `kind` prop is safely consumed and *is not* passed on to the `&lt;button&gt;` element in the DOM.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>上の例では、`kind` プロパティは無事に取り出され、DOM 中の `&lt;button&gt;` 要素には*渡されていません*。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>All other props are passed via the `...other` object making this component really flexible.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>残りのプロパティは `...other` オブジェクトにより渡され、このコンポーネントを柔軟性の高いものにしています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can see that it passes an `onClick` and `children` props.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>上記のコードは `onClick` や `children` プロパティを渡していることが見てとれるはずです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Spread attributes can be useful but they also make it easy to pass unnecessary props to components that don't care about them or to pass invalid HTML attributes to the DOM. We recommend using this syntax sparingly.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>スプレッド演算子は便利ではありますが、コンポーネント内で利用しないプロパティを不用意に渡してしまったり、意味をなさない HTML 属性を DOM に渡してしまうようなことが容易に起きえます。そのためこの構文は慎重に利用してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Children in JSX {#children-in-jsx}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>## JSX における子要素 {#children-in-jsx}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>In JSX expressions that contain both an opening tag and a closing tag, the content between those tags is passed as a special prop: `props.children`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>開始タグと終了タグの両方を含む JSX 式においては、タグに囲まれた部分は、`props.children` という特別なプロパティとして渡されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>There are several different ways to pass children:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>このような子要素を渡す方法はいくつかあります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### String Literals {#string-literals-1}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>### 文字列リテラル {#string-literals-1}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can put a string between the opening and closing tags and `props.children` will just be that string.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>開始タグと終了タグの間に文字列を挟んでいる場合、その文字列が `props.children` となります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is useful for many of the built-in HTML elements.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>これは HTML 要素を JSX 内で利用するような場合よくあるケースです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>次の例を見てください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is valid JSX, and `props.children` in `MyComponent` will simply be the string `"Hello world!"`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>この JSX は正しく動作します。この場合 `props.children` は `MyComponent` において、単なる文字列 `"Hello world!"` となります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>HTML is unescaped, so you can generally write JSX just like you would write HTML in this way:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>HTML エスケープは元の文字列に復元されるため、多くの場合は以下のように HTML を書くように JSX を書くことができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>```html
+&lt;div&gt;This is valid HTML &amp;amp; JSX at the same time.&lt;/div&gt;
+```</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>```html
+&lt;div&gt;This is valid HTML &amp;amp; JSX at the same time.&lt;/div&gt;
+```</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>JSX removes whitespace at the beginning and ending of a line. It also removes blank lines.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>JSX は行の先頭と末尾の空白文字を削除し、また空白行も削除します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>New lines adjacent to tags are removed; new lines that occur in the middle of string literals are condensed into a single space.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>タグに隣接する改行も削除され、文字列リテラル内での改行は 1 つの空白文字に置き換えられます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>So these all render to the same thing:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>そのため以下の例はすべて同じものを表示します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### JSX Children {#jsx-children}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>### 子要素としての JSX 要素 {#jsx-children}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can provide more JSX elements as the children.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>JSX 要素を子要素として渡すこともできます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is useful for displaying nested components:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>これはネストしたコンポーネントを表示したいときに活用することができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can mix together different types of children, so you can use string literals together with JSX children.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>異なる型の子要素を混在させることができるため、文字列リテラルを JSX 要素と同時に子要素として渡すことができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is another way in which JSX is like HTML, so that this is both valid JSX and valid HTML:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>この点においても JSX と HTML は似ており、次のような例は JSX としても HTML としても正しく動作します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>A React component can also return an array of elements:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>また React コンポーネントは要素の配列を返すこともできます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>// No need to wrap list items in an extra element!</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>// リスト化するだけのために要素を用意する必要はありません！</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>// Don't forget the keys :)</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>// key 属性を書き忘れないようにしてください :)</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### JavaScript Expressions as Children {#javascript-expressions-as-children}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>### 子要素としての JavaScript 式 {#javascript-expressions-as-children}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>You can pass any JavaScript expression as children, by enclosing it within `{}`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>任意の JavaScript の式は `{}` で囲むことによって子要素として渡すことができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, these expressions are equivalent:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>そのため以下の JSX の式はまったく等しいものとなります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This is often useful for rendering a list of JSX expressions of arbitrary length.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>これは長さの決まっていない JSX 式のリストを表示したいような場合に特に便利に使うことができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, this renders an HTML list:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>次の例は HTML の表を表示します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>JavaScript expressions can be mixed with other types of children. This is often useful in lieu of string templates:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>JavaScript の式は異なる型の子要素と併用することができるため、テンプレートリテラルの代わりに次のような書き方をすることもできます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Functions as Children {#functions-as-children}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>### 子要素としての関数 {#functions-as-children}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Normally, JavaScript expressions inserted in JSX will evaluate to a string, a React element, or a list of those things.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>JSX タグに挟まれた JavaScript 式は、通常は文字列や React 要素、あるいはこれらのリストとして評価されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>However, `props.children` works just like any other prop in that it can pass any sort of data, not just the sorts that React knows how to render.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>しかし、他のあらゆる props と同様に `props.children` にも任意のデータを渡すことができ、そのデータとは必ずしも React がレンダーできるものに限りません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, if you have a custom component, you could have it take a callback as `props.children`:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>例えば独自コンポーネントに `props.children` を通してコールバックを定義することもできるのです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>```js{4,13}
+// Calls the children callback numTimes to produce a repeated component
+function Repeat(props) {</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>```js{4,13}
+// numTimes の数だけ子要素のコールバックを呼び出し、コンポーネントを繰り返し作成する
+function Repeat(props) {</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Children passed to a custom component can be anything, as long as that component transforms them into something React can understand before rendering.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>独自コンポーネントに渡される子要素は、レンダーが実行されるまでに React が理解できる要素に変換されている限りにおいては、どのようなものでも構いません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This usage is not common, but it works if you want to stretch what JSX is capable of.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>このようなやり方は一般的ではありませんが、JSX をさらに拡張したくなった時には活用してみてください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>### Booleans, Null, and Undefined Are Ignored {#booleans-null-and-undefined-are-ignored}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>### 真偽値、null、undefined は無視される {#booleans-null-and-undefined-are-ignored}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>`false`, `null`, `undefined`, and `true` are valid children.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>`true` と `false`、`null`、そして `undefined` は子要素として渡すことができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>They simply don't render.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>これらは何もレンダーしません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>These JSX expressions will all render to the same thing:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>以下の JSX の式はすべて同じ結果となります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This can be useful to conditionally render React elements.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>これは条件に応じて React 要素を表示する際に活用できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This JSX renders the `&lt;Header /&gt;` component only if `showHeader` is `true`:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>次の例は `showHeader` が `true` のときに限って `&lt;Header /&gt;` が表示されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>One caveat is that some ["falsy" values](https://developer.mozilla.org/en-US/docs/Glossary/Falsy), such as the `0` number, are still rendered by React.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>1 つ注意点として、数値 `0` のように ["falsy" な（偽と評価される）いくつかの値](https://developer.mozilla.org/en-US/docs/Glossary/Falsy)は、React によって表示されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, this code will not behave as you might expect because `0` will be printed when `props.messages` is an empty array:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>つまり次のコードは `props.messages` が空の配列のときには `0` が表示されてしまうため、期待通りには動作しません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>To fix this, make sure that the expression before `&amp;&amp;` is always boolean:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>`&amp;&amp;` の前の式が必ず真偽値となるようにすれば、期待通りに動作します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Conversely, if you want a value like `false`, `true`, `null`, or `undefined` to appear in the output, you have to [convert it to a string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#String_conversion) first:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T063919Z">
+        <seg>反対に、`false`、`true`、`null`、または `undefined` といった値を表示したいのであれば、まず[文字列に変換](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#String_conversion)する必要があります。</seg>
+      </tuv>
+    </tu>
+  </body>
+</tmx>

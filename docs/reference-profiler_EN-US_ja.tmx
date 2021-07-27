@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tmx SYSTEM "tmx14.dtd">
+<tmx version="1.4">
+  <header creationtool="OmegaT" o-tmf="OmegaT TMX" adminlang="EN-US" datatype="plaintext" creationtoolversion="4.3.2_0_6a661c5e0" segtype="sentence" srclang="EN-US"/>
+  <body>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>---
+id: profiler
+title: Profiler API
+layout: docs
+category: Reference
+permalink: docs/profiler.html
+---</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T065827Z">
+        <seg>---
+id: profiler
+title: プロファイラ API
+layout: docs
+category: Reference
+permalink: docs/profiler.html
+---</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The `Profiler` measures how often a React application renders and what the "cost" of rendering is.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T065827Z">
+        <seg>`Profiler` を使って、React アプリケーションのレンダーの頻度やレンダーの「コスト」を計測することができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Its purpose is to help identify parts of an application that are slow and may benefit from [optimizations such as memoization](/docs/hooks-faq.html#how-to-memoize-calculations).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T065827Z">
+        <seg>本機能の目的は、アプリケーション中の、低速で[メモ化などの最適化](/docs/hooks-faq.html#how-to-memoize-calculations)が有効な可能性のある部位を特定する手助けをすることです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt; Note:
+&gt;
+&gt; Profiling adds some additional overhead, so **it is disabled in [the production build](/docs/optimizing-performance.html#use-the-production-build)**.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T065827Z">
+        <seg>&gt; 補足:
+&gt;
+&gt; プロファイリングには追加のオーバーヘッドが生じますので、**[本番ビルド](/docs/optimizing-performance.html#use-the-production-build)では無効化されます**。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;
+&gt; To opt into production profiling, React provides a special production build with profiling enabled.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T065827Z">
+        <seg>&gt;
+&gt; 本番環境でプロファイリングを利用するために、React はプロファイリングを有効化した特別な本番用ビルドを提供しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt; Read more about how to use this build at [fb.me/react-profiling](https://fb.me/react-profiling)</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T065827Z">
+        <seg>&gt; このビルドの使用方法については [fb.me/react-profiling](https://fb.me/react-profiling) をご覧ください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Usage {#usage}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T065827Z">
+        <seg>## 使用法 {#usage}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>A `Profiler` can be added anywhere in a React tree to measure the cost of rendering that part of the tree.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T065827Z">
+        <seg>`Profiler` は React ツリー内の特定部位におけるレンダーのコストを計測するため、ツリー内のどこにでも追加できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It requires two props: an `id` (string) and an `onRender` callback (function) which React calls any time a component within the tree "commits" an update.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T065827Z">
+        <seg>2 つの props が必要です。`id`（文字列）と、ツリー内のコンポーネントが更新を「コミット」した際に React が毎回呼び出す `onRender` コールバック（関数）です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, to profile a `Navigation` component and its descendants:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T065827Z">
+        <seg>例えば、`Navigation` コンポーネントとその子孫のプロファイリングを行うには：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Multiple `Profiler` components can be used to measure different parts of an application:
+```js{3,6}
+render(</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T065827Z">
+        <seg>アプリケーション内の複数部位の計測を行うために複数の `Profiler` コンポーネントを使うことができます：
+```js{3,6}
+render(</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>`Profiler` components can also be nested to measure different components within the same subtree:
+```js{3,5,8}
+render(</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T065827Z">
+        <seg>同一のサブツリー内の複数のコンポーネントで計測を行うために `Profiler` コンポーネントをネストすることもできます：
+```js{3,5,8}
+render(</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt; Note
+&gt;
+&gt; Although `Profiler` is a light-weight component, it should be used only when necessary; each use adds some CPU and memory overhead to an application.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T065827Z">
+        <seg>&gt; 補足
+&gt;
+&gt; `Profiler` は軽いコンポーネントですが、必要な時にのみ利用すべきです。使うごとにアプリケーションに多少の CPU およびメモリオーバーヘッドが生じます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## `onRender` Callback {#onrender-callback}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T065827Z">
+        <seg>## `onRender` コールバック {#onrender-callback}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The `Profiler` requires an `onRender` function as a prop.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T065827Z">
+        <seg>`Profiler` には props として `onRender` 関数を渡す必要があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>React calls this function any time a component within the profiled tree "commits" an update.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T065827Z">
+        <seg>プロファイリングされているツリー内のコンポーネントが更新を「コミット」した際に、React がこの関数を毎回呼び出します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It receives parameters describing what was rendered and how long it took.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T065827Z">
+        <seg>この関数は、レンダー内容とかかった時間に関する情報を引数として受け取ります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Let's take a closer look at each of the props:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T065827Z">
+        <seg>それぞれを詳細に見てみましょう：</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* **`id: string`** - 
+The `id` prop of the `Profiler` tree that has just committed.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T065827Z">
+        <seg>* **`id: string`** - 
+コミットが起きた `Profiler` の `id` プロパティ。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This can be used to identify which part of the tree was committed if you are using multiple profilers.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T065827Z">
+        <seg>複数のプロファイラを使用している場合にどのツリーにコミットが起きたのかを区別するのに使うことができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* **`phase: "mount" | "update"`** -
+Identifies whether the tree has just been mounted for the first time or re-rendered due to a change in props, state, or hooks.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T065827Z">
+        <seg>* **`phase: "mount" | "update"`** -
+ツリーが初回マウントされたのか、props や state、フックの変更によって再レンダーされたのかを区別します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* **`actualDuration: number`** -
+Time spent rendering the `Profiler` and its descendants for the current update.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T065827Z">
+        <seg>* **`actualDuration: number`** -
+現在の更新で `Profiler` とその子孫のレンダーに要した時間。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This indicates how well the subtree makes use of memoization (e.g. [`React.memo`](/docs/react-api.html#reactmemo), [`useMemo`](/docs/hooks-reference.html#usememo), [`shouldComponentUpdate`](/docs/hooks-faq.html#how-do-i-implement-shouldcomponentupdate)).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T065827Z">
+        <seg>これが（[`React.memo`](/docs/react-api.html#reactmemo)、[`useMemo`](/docs/hooks-reference.html#usememo)、[`shouldComponentUpdate`](/docs/hooks-faq.html#how-do-i-implement-shouldcomponentupdate) などの）メモ化をどれだけうまく有効に使えているかの指標となります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Ideally this value should decrease significantly after the initial mount as many of the descendants will only need to re-render if their specific props change.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T065827Z">
+        <seg>理想的には、子孫要素は特定の props が変化した場合にのみ再レンダーされるため、初回マウント時以降にこの値は大幅に小さくなるはずです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* **`baseDuration: number`** -
+Duration of the most recent `render` time for each individual component within the `Profiler` tree.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T065827Z">
+        <seg>* **`baseDuration: number`** -
+`Profiler` ツリー内のそれぞれのコンポーネントの直近の `render` 時間。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This value estimates a worst-case cost of rendering (e.g. the initial mount or a tree with no memoization).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T065827Z">
+        <seg>この値を使って最悪の場合のレンダーコスト（初回マウント時や、メモ化の一切ないツリーの場合）を見積もることができます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* **`startTime: number`** -
+Timestamp when React began rendering the current update.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T065827Z">
+        <seg>* **`startTime: number`** -
+現在の更新のレンダーを React が開始した時刻に対応するタイムスタンプ。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* **`commitTime: number`** -
+Timestamp when React committed the current update.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T065827Z">
+        <seg>* **`commitTime: number`** -
+現在の更新を React がコミットした時刻に対応するタイムスタンプ。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This value is shared between all profilers in a commit, enabling them to be grouped if desirable.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T065827Z">
+        <seg>必要に応じてグループ化できるよう、1 コミット内のすべてのプロファイラ間でこの値は共有されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>* **`interactions: Set`** -
+Set of ["interactions"](https://fb.me/react-interaction-tracing) that were being traced when the update was scheduled (e.g. when `render` or `setState` were called).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T065827Z">
+        <seg>* **`interactions: Set`** -
+更新がスケジュールされた（`render` や `setState` の呼び出しなどにより）際に trace された ["interaction"](https://fb.me/react-interaction-tracing) の Set。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt; Note
+&gt;
+&gt; Interactions can be used to identify the cause of an update, although the API for tracing them is still experimental.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T065827Z">
+        <seg>&gt; 補足
+&gt;
+&gt; 更新の原因を特定するために interaction を利用可能ですが、trace 用の API は依然実験的です。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;
+&gt; Learn more about it at [fb.me/react-interaction-tracing](https://fb.me/react-interaction-tracing)</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T065827Z">
+        <seg>&gt;
+&gt; [fb.me/react-interaction-tracing](https://fb.me/react-interaction-tracing) に詳細があります。</seg>
+      </tuv>
+    </tu>
+  </body>
+</tmx>

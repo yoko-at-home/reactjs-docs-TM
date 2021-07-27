@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tmx SYSTEM "tmx14.dtd">
+<tmx version="1.4">
+  <header creationtool="OmegaT" o-tmf="OmegaT TMX" adminlang="EN-US" datatype="plaintext" creationtoolversion="4.3.2_0_6a661c5e0" segtype="sentence" srclang="EN-US"/>
+  <body>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>React and [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) are built to solve different problems.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074657Z">
+        <seg>React と [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) は異なる課題を解決する為に構築されました。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Web Components provide strong encapsulation for reusable components, while React provides a declarative library that keeps the DOM in sync with your data.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074657Z">
+        <seg>Web Components はコンポーネントをパッケージ化して、高い再利用性を与えます。一方で React は DOM とデータを同期させる為の宣言型のライブラリを提供しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The two goals are complementary.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074657Z">
+        <seg>この 2 つの目標は互いを補完しあっています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>As a developer, you are free to use React in your Web Components, or to use Web Components in React, or both.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074657Z">
+        <seg>あなたは開発者として、Web Components 内で React を使用することも、React 内で Web Components を使用することも、あるいはその両方を行うこともできます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Most people who use React don't use Web Components, but you may want to, especially if you are using third-party UI components that are written using Web Components.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074657Z">
+        <seg>React を使用するほとんどの人は Web Components を使用しませんが、Web Components を用いたサードパーティ製の UI コンポーネントを使用したい時などには活用できるかもしれません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Using Web Components in React {#using-web-components-in-react}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074657Z">
+        <seg>## React で Web Components を使用する {#using-web-components-in-react}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt; Note:
+&gt;
+&gt; Web Components often expose an imperative API.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074657Z">
+        <seg>&gt; 補足:
+&gt;
+&gt; Web Components はよく命令型の API を公開しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For instance, a `video` Web Component might expose `play()` and `pause()` functions.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074657Z">
+        <seg>例えば、`video` という Web Component が `play()` や `pause()` といった関数を公開しているかもしれません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>To access the imperative APIs of a Web Component, you will need to use a ref to interact with the DOM node directly.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074657Z">
+        <seg>Web Component が使う命令型の API にアクセスするには DOM ノードと直接やり取りするために ref を使う必要があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If you are using third-party Web Components, the best solution is to write a React component that behaves as a wrapper for your Web Component.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074657Z">
+        <seg>サードパーティ製の Web Components を使用している場合は、Web Component のラッパとして機能する React のコンポーネントを作成するのがベストな選択でしょう。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;
+&gt; Events emitted by a Web Component may not properly propagate through a React render tree.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074657Z">
+        <seg>&gt;
+&gt; Web Component から発された Event は React のレンダーツリーを正しく伝わってこない可能性があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt; You will need to manually attach event handlers to handle these events within your React components.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074657Z">
+        <seg>&gt; React コンポーネント内でイベントに適切に対応するにはそのためのイベントハンドラを与える必要があります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>One common confusion is that Web Components use "class" instead of "className".</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074657Z">
+        <seg>よくある混乱のひとつとして、Web Components が "className" の代わりに "class" を使用しているケースがあります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Using React in your Web Components {#using-react-in-your-web-components}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074657Z">
+        <seg>## Web Components で React を使用する {#using-react-in-your-web-components}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;Note:
+&gt;
+&gt;This code **will not** work if you transform classes with Babel.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074657Z">
+        <seg>&gt;補足:
+&gt;
+&gt;Babel を使ってクラス変換を行うと上記のコードは**機能しません**。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>See [this issue](https://github.com/w3c/webcomponents/issues/587) for the discussion.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074657Z">
+        <seg>詳細や議論は[この issue](https://github.com/w3c/webcomponents/issues/587) を参照してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;Include the [custom-elements-es5-adapter](https://github.com/webcomponents/polyfills/tree/master/packages/webcomponentsjs#custom-elements-es5-adapterjs) before you load your web components to fix this issue.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T074657Z">
+        <seg>&gt;この問題を解決するには [custom-elements-es5-adapter](https://github.com/webcomponents/polyfills/tree/master/packages/webcomponentsjs#custom-elements-es5-adapterjs) をあなたの web component の前に読み込む必要があります。</seg>
+      </tuv>
+    </tu>
+  </body>
+</tmx>

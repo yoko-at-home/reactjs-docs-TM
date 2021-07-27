@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tmx SYSTEM "tmx14.dtd">
+<tmx version="1.4">
+  <header creationtool="OmegaT" o-tmf="OmegaT TMX" adminlang="EN-US" datatype="plaintext" creationtoolversion="4.3.2_0_6a661c5e0" segtype="sentence" srclang="EN-US"/>
+  <body>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>---
+id: portals
+title: Portals
+permalink: docs/portals.html
+---</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064553Z">
+        <seg>---
+id: portals
+title: ポータル
+permalink: docs/portals.html
+---</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Portals provide a first-class way to render children into a DOM node that exists outside the DOM hierarchy of the parent component.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064553Z">
+        <seg>ポータル (portal) は、親コンポーネントの DOM 階層外にある DOM ノードに対して子コンポーネントをレンダーするための公式の仕組みを提供します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The first argument (`child`) is any [renderable React child](/docs/react-component.html#render), such as an element, string, or fragment.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064553Z">
+        <seg>第 1 引数 (`child`) は [React の子要素としてレンダー可能なもの](/docs/react-component.html#render)、例えば、要素、文字列、フラグメントなどです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>The second argument (`container`) is a DOM element.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064553Z">
+        <seg>第 2 引数 (`container`) は DOM 要素を指定します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Usage {#usage}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064553Z">
+        <seg>## 使い方 {#usage}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Normally, when you return an element from a component's render method, it's mounted into the DOM as a child of the nearest parent node:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064553Z">
+        <seg>通常、コンポーネントの `render` メソッドから要素を返すと、最も近い親ノードの子として DOM にマウントされます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>// React mounts a new div and renders the children into it</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064553Z">
+        <seg>// React は新しい div 要素をマウントし、子をその中に描画します</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>However, sometimes it's useful to insert a child into a different location in the DOM:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064553Z">
+        <seg>しかし、時に子要素を DOM 上の異なる位置に挿入したほうが便利なことがあります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>// React does *not* create a new div.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064553Z">
+        <seg>// React は新しい div をつくり*ません*。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>It renders the children into `domNode`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064553Z">
+        <seg>子要素は `domNode` に対して描画されます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>// `domNode` is any valid DOM node, regardless of its location in the DOM.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064553Z">
+        <seg>// `domNode` は DOM ノードであれば何でも良く、 DOM 構造内のどこにあるかは問いません。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>A typical use case for portals is when a parent component has an `overflow: hidden` or `z-index` style, but you need the child to visually "break out" of its container.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064553Z">
+        <seg>ポータルの典型的なユースケースとは、親要素が `overflow: hidden` や `z-index` のスタイルを持っていても、子要素がコンテナを「飛び出して」見える必要があるものです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, dialogs, hovercards, and tooltips.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064553Z">
+        <seg>例えば、ダイアログ、ホバーカード、ツールチップがそれに当たります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt; Note:
+&gt;
+&gt; When working with portals, remember that [managing keyboard focus](/docs/accessibility.html#programmatically-managing-focus) becomes very important.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064553Z">
+        <seg>&gt; 補足
+&gt;
+&gt; ポータルを利用する際は、[キーボードのフォーカスの管理](/docs/accessibility.html#programmatically-managing-focus)を行うことが重要になるので、忘れずに行ってください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>&gt;
+&gt; For modal dialogs, ensure that everyone can interact with them by following the [WAI-ARIA Modal Authoring Practices](https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal).</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064553Z">
+        <seg>&gt;
+&gt; モーダルダイアログについては [WAI-ARIA モーダルの推奨実装方法](https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal)に従い、誰もが利用できるという状態を確保してください。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>## Event Bubbling Through Portals {#event-bubbling-through-portals}</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064553Z">
+        <seg>## ポータルを介したイベントのバブリング {#event-bubbling-through-portals}</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Even though a portal can be anywhere in the DOM tree, it behaves like a normal React child in every other way.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064553Z">
+        <seg>ポータルは DOM ツリーのどこにでも存在できますが、他のあらゆる点では通常の React の子要素と変わらずに振る舞います。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Features like context work exactly the same regardless of whether the child is a portal, as the portal still exists in the *React tree* regardless of position in the *DOM tree*.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064553Z">
+        <seg>コンテクスト (context) のような機能は、たとえ子要素がポータルであろうと全く同じように動きます。というのも、*DOM ツリー*上の位置にかかわらず、ポータルは依然として *React のツリー*内にいるからです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>This includes event bubbling.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064553Z">
+        <seg>これにはイベントのバブリングも含まれます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>An event fired from inside a portal will propagate to ancestors in the containing *React tree*, even if those elements are not ancestors in the *DOM tree*.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064553Z">
+        <seg>ポータルの内部で発火したイベントは *React のツリー*内の祖先へと伝播します。たとえそれが *DOM ツリー*上では祖先でなくともです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Assuming the following HTML structure:</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064553Z">
+        <seg>次のような HTML 構造があったとして、</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>A `Parent` component in `#app-root` would be able to catch an uncaught, bubbling event from the sibling node `#modal-root`.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064553Z">
+        <seg>`#app-root` 内にある `Parent` コンポーネントは、`#modal-root` 内のコンポーネントから伝播したイベントが捕捉されなかった場合に、それを捕捉できます。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>```js{28-31,42-49,53,61-63,70-71,74}
+// These two containers are siblings in the DOM
+const appRoot = document.getElementById('app-root');
+const modalRoot = document.getElementById('modal-root');</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064553Z">
+        <seg>```js{28-31,42-49,53,61-63,70-71,74}
+// この 2 つのコンテナは DOM 上の兄弟要素とします
+const appRoot = document.getElementById('app-root');
+const modalRoot = document.getElementById('modal-root');</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>// The portal element is inserted in the DOM tree after</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064553Z">
+        <seg>// ポータルの要素が DOM ツリーに挿入されるのは、</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>// the Modal's children are mounted, meaning that children</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064553Z">
+        <seg>// Modal の子要素がマウントされた後になります。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>// will be mounted on a detached DOM node.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064553Z">
+        <seg>// つまり、子要素は一旦どこにも結びつかない</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>If a child // component requires to be attached to the DOM tree</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064553Z">
+        <seg>// DOM ノードへとマウントされるということです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>// immediately when mounted, for example to measure a</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064553Z">
+        <seg>// もし子コンポーネントがマウント後すぐに DOM ツリーに結びついてほしい ――</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>// DOM node, or uses 'autoFocus' in a descendant, add</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064553Z">
+        <seg>// たとえば DOM ノードの大きさを測りたい、子孫要素で `autoFocus` を使いたいなど</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>// state to Modal and only render the children when Modal</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064553Z">
+        <seg>// ―― 場合は、 Modal に状態を持たせて Modal が</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>// is inserted in the DOM tree.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064553Z">
+        <seg>// DOM ツリーに挿入されているときだけ子要素をレンダーするようにします。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>// This will fire when the button in Child is clicked,</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064553Z">
+        <seg>// これは Child 内のボタンがクリックされた際に発火し、</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>// updating Parent's state, even though button</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064553Z">
+        <seg>// Parent の state を更新します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>// is not direct descendant in the DOM.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064553Z">
+        <seg>// たとえそのボタンが DOM 上では直系の子孫でなかったとしてもです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>// The click event on this button will bubble up to parent,</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064553Z">
+        <seg>// クリックするとイベントが親に伝播します。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>// because there is no 'onClick' attribute defined</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064553Z">
+        <seg>// なぜならここには `onClick` 属性が定義されてないからです。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>Catching an event bubbling up from a portal in a parent component allows the development of more flexible abstractions that are not inherently reliant on portals.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064553Z">
+        <seg>ポータルから伝播したイベントが親コンポーネントで捕捉できるということは、ポータルに本質的に依存することのない、より柔軟な抽象化が可能であるということを示しています。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="EN-US">
+        <seg>For example, if you render a `&lt;Modal /&gt;` component, the parent can capture its events regardless of whether it's implemented using portals.</seg>
+      </tuv>
+      <tuv xml:lang="ja" creationid="OmegaT Aligner" creationdate="20210727T064553Z">
+        <seg>たとえば `&lt;Modal /&gt;` の実装がポータルを使っているかに関係なく、`&lt;Modal /&gt;` コンポーネントをレンダーしてそこから来るイベントを捕捉することができます。</seg>
+      </tuv>
+    </tu>
+  </body>
+</tmx>
